@@ -1,0 +1,9 @@
+{
+  "name": "Farih Muwaffaq Portfolio",
+  "short_name": "Farih FM",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f4ed",
+  "theme_color": "#075e57",
+  "icons": [{"src":"/favicon.svg","sizes":"any","type":"image/svg+xml","purpose":"any"}]
+}

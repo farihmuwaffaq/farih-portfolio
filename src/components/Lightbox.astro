@@ -1,0 +1,9 @@
+---
+const { id, src, alt, caption } = Astro.props;
+---
+<button class="placeholder-button" type="button" data-lightbox-open={id} aria-label={`Enlarge ${caption}`}><img src={src} alt={alt} width="800" height="450" loading="lazy" /><strong>{caption}</strong></button>
+<dialog class="lightbox" id={id} aria-label={caption}><button class="lightbox-close" type="button">Close</button><div class="lightbox-inner"><figure><img src={src} alt={alt} /><figcaption>{caption}</figcaption></figure></div></dialog>
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-lightbox-open]').forEach(open => open.addEventListener('click', () => document.querySelector<HTMLDialogElement>(`#${open.dataset.lightboxOpen}`)?.showModal()));
+  document.querySelectorAll<HTMLDialogElement>('.lightbox').forEach(dialog => { dialog.querySelector<HTMLButtonElement>('.lightbox-close')?.addEventListener('click', () => dialog.close()); dialog.addEventListener('click', e => { if (e.target === dialog) dialog.close(); }); });
+</script>

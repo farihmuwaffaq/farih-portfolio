@@ -1,0 +1,49 @@
+---
+import '../styles/global.css';
+import { nav, site } from '../data/site';
+interface Props { title: string; description?: string; image?: string; type?: 'website'|'article'; jsonLd?: Record<string, unknown>|Record<string, unknown>[] }
+const { title, description = site.description, image = '/social/social-card.svg', type = 'website', jsonLd } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const current = Astro.url.pathname;
+const schemas = [
+  { '@context':'https://schema.org','@type':'WebSite', name:`${site.name} Portfolio`, url:Astro.site?.toString() },
+  ...(Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : []),
+];
+---
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width" />
+  <meta name="description" content={description} />
+  <meta name="theme-color" content="#075e57" />
+  <link rel="canonical" href={canonical} />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="manifest" href="/site.webmanifest" />
+  <meta property="og:type" content={type} /><meta property="og:title" content={title} />
+  <meta property="og:description" content={description} /><meta property="og:url" content={canonical} />
+  <meta property="og:image" content={new URL(image, Astro.site)} /><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <title>{title}</title>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(schemas)} />
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header"><nav class="nav container" aria-label="Primary navigation">
+    <a class="brand" href="/">FM / Data systems</a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-links"><span class="sr-only">Toggle navigation</span><span aria-hidden="true">Menu</span></button>
+    <ul class="nav-links" id="primary-links">{nav.map(([label,href]) => <li><a href={href} aria-current={(href==='/' ? current==='/' : current.startsWith(href)) ? 'page' : undefined}>{label}</a></li>)}</ul>
+  </nav></header>
+  <main id="main"><slot /></main>
+  <footer class="site-footer"><div class="container footer-grid">
+    <div><strong>{site.name}</strong><br /><span>{site.location} · Data Analyst</span></div>
+    <div><a href="/work">Work</a> · <a href="/contact">Start a conversation</a><br /><small>© {new Date().getFullYear()} Farih Muwaffaq</small></div>
+  </div></footer>
+  <script is:inline>
+    window.portfolioAnalytics = window.portfolioAnalytics || { track: function(name, detail) { window.dispatchEvent(new CustomEvent('portfolio:analytics', { detail: { name: name, ...(detail || {}) } })); } };
+    document.addEventListener('click', function(event) { var el = event.target.closest('[data-event]'); if (el) window.portfolioAnalytics.track(el.dataset.event, { label: el.dataset.eventLabel || el.textContent.trim() }); });
+    var navToggle = document.querySelector('.nav-toggle'); var navLinks = document.querySelector('#primary-links');
+    navToggle?.addEventListener('click', function() { var open = navToggle.getAttribute('aria-expanded') === 'true'; navToggle.setAttribute('aria-expanded', String(!open)); navLinks?.classList.toggle('is-open', !open); });
+  </script>
+</body>
+</html>

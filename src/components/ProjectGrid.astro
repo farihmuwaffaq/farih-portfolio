@@ -1,0 +1,23 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import ProjectCard from './ProjectCard.astro';
+interface Props { projects: CollectionEntry<'work'>[]; filters?: boolean }
+const { projects, filters = false } = Astro.props;
+const categories = ['All','Analytics & Automation','Business Intelligence','Commercial & Operations','Machine Learning','Sustainability'];
+---
+{filters && <div class="filters" aria-label="Filter projects">{categories.map((category, i) => <button class="filter" type="button" aria-pressed={i===0 ? 'true':'false'} data-filter={category}>{category}</button>)}</div>}
+<p id="filter-status" class="sr-only" aria-live="polite"></p>
+<div class="grid" id="project-grid">{projects.map(project => <ProjectCard project={project} />)}</div>
+{filters && <script>
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>('[data-filter]')];
+  const cards = [...document.querySelectorAll<HTMLElement>('.project[data-categories]')];
+  const status = document.querySelector<HTMLElement>('#filter-status');
+  buttons.forEach(button => button.addEventListener('click', () => {
+    const filter = button.dataset.filter || 'All';
+    buttons.forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+    let shown = 0;
+    cards.forEach(card => { const visible = filter === 'All' || (card.dataset.categories || '').split('|').includes(filter); card.hidden = !visible; if (visible) shown++; });
+    if (status) status.textContent = `${shown} project${shown === 1 ? '' : 's'} shown for ${filter}.`;
+    window.portfolioAnalytics?.track('work_filter', { filter });
+  }));
+</script>}
