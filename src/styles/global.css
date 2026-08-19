@@ -196,7 +196,7 @@ p { margin: 0 0 1rem; max-width: 65ch; }
 
 /* proof line — numeric evidence + experience, hairline mono */
 .proof-line {
-  display: flex; flex-wrap: wrap; gap: 0.5rem 2rem;
+  display: flex; flex-wrap: wrap; gap: 0.5rem 2rem; margin: 1.1rem 0 0;
   font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; color: var(--muted);
 }
 .proof-line span { display: inline-flex; gap: 0.5rem; align-items: baseline; }
