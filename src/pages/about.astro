@@ -13,14 +13,20 @@ const career = [
 <BaseLayout title="About Farih Muwaffaq | Data Analyst" description="About Farih Muwaffaq: analytics systems, commercial analysis, management education, and Forestry Engineering background." jsonLd={profile}>
   <section class="section"><div class="container grid two">
     <div><p class="eyebrow rise"><span class="idx">Profile</span> About</p><h1 class="rise rise-1">Systems thinking, business context, practical analysis.</h1><figure class="about-photo rise rise-1"><img src="/images/farih.png" alt="Portrait of Farih Muwaffaq" width="928" height="1080" loading="lazy" /></figure></div>
-    <div><p class="lede">I am a Data Analyst who enjoys solving the gap between available data and actual decisions. My work spans analytics systems, reporting automation, commercial analysis, and stakeholder communication across FMCG, healthcare, startups, and creative industries.</p><p>I studied Forestry Engineering at Institut Teknologi Bandung and am pursuing a Master's degree in Management at PPM School of Management. That combination shapes how I work: understand the system, test the assumptions, and connect technical outputs to business consequences.</p></div>
+    <div><p class="lede">I am a Data Analyst who enjoys solving the gap between available data and actual decisions. My work spans analytics systems, reporting automation, commercial analysis, and stakeholder communication across FMCG, healthcare, startups, and creative industries.</p><p>I studied Forestry Engineering at Institut Teknologi Bandung and am pursuing a Master's degree in Management at PPM School of Management. That combination shapes how I work: understand the system, test the assumptions, and connect technical outputs to business consequences.</p>
+      <aside class="about-glance"><dl>
+        <div class="g-row"><dt>Currently</dt><dd>Senior Associate Data Analyst, SKINTIFIC</dd></div>
+        <div class="g-row"><dt>Focus</dt><dd>Commercial analytics, inventory, pricing, reporting automation</dd></div>
+        <div class="g-row"><dt>Location</dt><dd>Jakarta, Indonesia</dd></div>
+        <div class="g-row"><dt>Open to</dt><dd>Analytics systems &amp; decision-support work</dd></div>
+      </dl></aside></div>
   </div></section>
   <section class="section"><div class="container">
     <p class="eyebrow"><span class="idx">01</span> Career</p>
     <h2>A selective timeline</h2>
     <div class="resume-block">
       {career.map(([org, role, when, desc], i) => (
-        <div class="resume-item">
+        <div class={`resume-item${i === 0 ? ' is-current' : ''}`}>
           <span class="when">{when}</span>
           <div>
             <h3><span class="mono" style="color:var(--signal);margin-right:0.6rem">{String(i + 1).padStart(2, '0')}</span>{role} · {org}</h3>
@@ -30,9 +36,16 @@ const career = [
       ))}
     </div>
   </div></section>
+  <section class="section"><div class="container">
+    <p class="eyebrow"><span class="idx">02</span> Endorsements</p>
+    <blockquote class="panel endorsement">
+      <p>&ldquo;We are always directed to create useful and relevant content based on data. His ability to analyze the latest trends and markets in data-driven content creation is undeniable.&rdquo;</p>
+      <footer class="endorsement-by">Fadhila Hanna Ramdhani<span class="endorsement-role">Forestry Engineering, Institut Teknologi Bandung · reported directly to Farih, Selasar Kampus</span></footer>
+    </blockquote>
+  </div></section>
   <section class="section"><div class="container grid two">
-    <article class="card"><p class="eyebrow"><span class="idx">02</span> Education</p><h2>Management and forestry</h2><p><strong>PPM School of Management</strong><br />Master of Management, January 2026 — present.</p><p><strong>Institut Teknologi Bandung</strong><br />Bachelor of Forestry Engineering, 2018 — 2023.</p></article>
-    <article class="card"><p class="eyebrow"><span class="idx">03</span> Tools</p><h2>Technical range</h2>
+    <article class="card"><p class="eyebrow"><span class="idx">03</span> Education</p><h2>Management and forestry</h2><p><strong>PPM School of Management</strong><br />Master of Management, January 2026 — present.</p><p><strong>Institut Teknologi Bandung</strong><br />Bachelor of Forestry Engineering, 2018 — 2023.</p></article>
+    <article class="card"><p class="eyebrow"><span class="idx">04</span> Tools</p><h2>Technical range</h2>
       <ul class="tool-grid" role="list">
         <li class="tool-item"><Icon name="logo-postgresql" size="1.4em" /><span>PostgreSQL</span></li>
         <li class="tool-item"><Icon name="logo-mysql" size="1.4em" /><span>MySQL</span></li>
@@ -49,12 +62,5 @@ const career = [
         <li class="tool-item"><Icon name="logo-jupyter" size="1.4em" /><span>Jupyter</span></li>
       </ul>
       <p class="tool-note">Plus SQL, TablePlus, and REST APIs. Tools support the work; decisions remain the organizing principle.</p></article>
-  </div></section>
-  <section class="section"><div class="container">
-    <p class="eyebrow"><span class="idx">04</span> Endorsements</p>
-    <blockquote class="panel endorsement">
-      <p>&ldquo;We are always directed to create useful and relevant content based on data. His ability to analyze the latest trends and markets in data-driven content creation is undeniable.&rdquo;</p>
-      <footer class="endorsement-by">Fadhila Hanna Ramdhani<span class="endorsement-role">Forestry Engineering, Institut Teknologi Bandung · reported directly to Farih, Selasar Kampus</span></footer>
-    </blockquote>
   </div></section>
 </BaseLayout>

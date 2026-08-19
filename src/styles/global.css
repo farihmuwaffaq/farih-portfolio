@@ -75,6 +75,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .section + .section { border-top: 1px solid var(--line); }
 .section-tight { padding: clamp(2rem, 5vw, 3.5rem) 0; }
 .grid { display: grid; gap: clamp(1.5rem, 3vw, 2.5rem); }
+.grid > * { min-width: 0; }
 .grid.two { grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
 .skip-link { position: absolute; left: var(--gutter); top: -4rem; z-index: 100; background: var(--ink); color: var(--paper); padding: 0.6rem 1rem; font: 500 0.8rem var(--mono); text-decoration: none; transition: top 160ms var(--ease); }
@@ -333,6 +334,9 @@ p { margin: 0 0 1rem; max-width: 65ch; }
 .resume-item { display: grid; grid-template-columns: minmax(7rem, 11rem) 1fr; gap: 1.5rem; padding: 1.1rem 0; }
 .resume-item + .resume-item { border-top: 1px dashed var(--line); }
 .resume-item .when { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.06em; color: var(--muted); text-transform: uppercase; padding-top: 0.2rem; }
+/* current-role marker */
+.resume-item.is-current h3::after { content: "current"; margin-left: 0.6rem; font-family: var(--mono); font-size: 0.6rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--signal); border: 1px solid var(--signal); border-radius: 2px; padding: 0.15em 0.4em; vertical-align: middle; }
+.resume-item.is-current .when { color: var(--signal); }
 .resume-item h3 { margin-bottom: 0.3rem; font-size: 1.1rem; }
 .resume-item p { margin-bottom: 0.35rem; font-size: 0.95rem; color: var(--ink-soft); }
 
@@ -369,12 +373,13 @@ p { margin: 0 0 1rem; max-width: 65ch; }
 .stack-item .icon { color: var(--signal); flex-shrink: 0; }
 
 /* Tool grid (about) */
-.tool-grid { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(7.5rem, 1fr)); gap: 0.35rem; }
-.tool-item { display: flex; align-items: center; gap: 0.55rem; padding: 0.5rem 0.65rem; border: 1px solid var(--border); background: var(--surface); border-radius: 0.35rem; transition: border-color 0.18s ease, transform 0.18s ease; }
+.tool-grid { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 6.2rem), 1fr)); gap: 0.35rem; }
+@media (max-width: 480px) { .tool-grid { grid-template-columns: repeat(auto-fill, minmax(min(100%, 5.2rem), 1fr)); } }
+.tool-item { display: flex; align-items: center; gap: 0.55rem; padding: 0.5rem 0.65rem; border: 1px solid var(--line); background: var(--paper-raised); border-radius: var(--radius); transition: border-color 0.18s ease, transform 0.18s ease; }
 .tool-item:hover { border-color: var(--signal); transform: translateY(-1px); }
 .tool-item .icon { color: var(--signal); flex-shrink: 0; }
-.tool-item span { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.02em; color: var(--text); line-height: 1.2; }
-.tool-note { margin-top: 1rem; color: var(--text-soft); font-size: 0.85rem; }
+.tool-item span { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.02em; color: var(--ink); line-height: 1.2; }
+.tool-note { margin-top: 1rem; color: var(--muted); font-size: 0.85rem; }
 .footer-meta { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; color: var(--muted); text-transform: uppercase; display: flex; gap: 1.5rem; flex-wrap: wrap; }
 
 /* ——— entrance motion ——— */
@@ -402,9 +407,14 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   .register-num { display: none; }
 }
 
-/* About: portrait + endorsement */
+/* About: portrait + at-a-glance + endorsement */
 .about-photo { margin: 1.75rem 0 0; max-width: 300px; }
 .about-photo img { width: 100%; height: auto; display: block; border: 1px solid var(--line); border-radius: var(--radius); }
+.about-glance { margin: 1.75rem 0 0; max-width: 26rem; }
+.about-glance dl { margin: 0; border-top: 1px solid var(--line); }
+.about-glance .g-row { display: grid; grid-template-columns: minmax(6.5rem, 9rem) 1fr; gap: 1rem; padding: 0.65rem 0; border-bottom: 1px solid var(--line); }
+.about-glance dt { font-family: var(--mono); font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); padding-top: 0.15rem; }
+.about-glance dd { margin: 0; font-size: 0.92rem; color: var(--ink); }
 .endorsement { max-width: 46rem; }
 .endorsement p { font-size: 1.05rem; color: var(--ink); }
 .endorsement-by { margin-top: 1rem; font-family: var(--mono); font-size: 0.82rem; letter-spacing: 0.02em; color: var(--ink); }
