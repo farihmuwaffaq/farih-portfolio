@@ -6,7 +6,7 @@ export const site = {
 };
 
 export const social: Array<[label: string, href: string, icon: 'logo-linkedin' | 'logo-github']> = [
-  ['LinkedIn', 'https://www.linkedin.com/in/farih-muwaffaq', 'logo-linkedin'],
+  ['LinkedIn', 'https://www.linkedin.com/in/farihmuwaffaq/', 'logo-linkedin'],
   ['GitHub', 'https://github.com/farihmuwaffaq', 'logo-github'],
 ];
 
