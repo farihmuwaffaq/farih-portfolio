@@ -6,7 +6,7 @@ evidenceType: Professional Experience
 organization: Skintific
 industry: Beauty and personal care (e-commerce)
 role: Data Analyst
-timeline: 2025–2026
+timeline: 2026–present
 tools: [Google Apps Script, Google Sheets, HTML, CSS, JavaScript, Chart.js]
 categories: [Analytics & Automation, Commercial & Operations]
 featured: false
