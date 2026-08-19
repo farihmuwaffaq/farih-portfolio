@@ -138,7 +138,7 @@ p { margin: 0 0 1rem; max-width: 65ch; }
 .nav-toggle:hover { border-color: var(--ink); }
 
 /* ——— hero ——— */
-.hero { padding: clamp(4rem, 10vw, 8rem) 0 clamp(2rem, 4vw, 3rem); position: relative; }
+.hero { padding: clamp(2.5rem, 5vw, 4rem) 0 clamp(2rem, 4vw, 3rem); position: relative; }
 .hero::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background-image: linear-gradient(var(--line) 1px, transparent 1px);
