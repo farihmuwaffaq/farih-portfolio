@@ -3,21 +3,26 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
 const projects = (await getCollection('work')).filter(p=>p.data.featured).sort((a,b)=>['analytics-automation','healthtech-data-infrastructure','loan-default-model'].indexOf(a.data.slug)-['analytics-automation','healthtech-data-infrastructure','loan-default-model'].indexOf(b.data.slug));
+const heroProof: Record<string, string> = {
+  'analytics-automation': 'Four-brand pipeline',
+  'healthtech-data-infrastructure': '10+ dashboards & reports',
+  'loan-default-model': 'AUC 0.857 · KS 0.5675',
+};
 const person = {'@context':'https://schema.org','@type':'Person',name:'Farih Muwaffaq',jobTitle:'Data Analyst',address:{'@type':'PostalAddress',addressLocality:'Jakarta',addressCountry:'ID'},knowsAbout:['Analytics automation','Business intelligence','Commercial analytics','Data pipelines']};
 const capabilities = [
-  ['Analytics systems','Reliable data flows that connect, clean, and maintain fragmented business data.'],
-  ['Automation','Repeatable reporting, alerts, and updates that reduce manual operating steps.'],
-  ['Business intelligence','Decision-ready dashboards and KPI structures designed around stakeholder questions.'],
-  ['Commercial and operational analysis','Analysis framed around inventory, performance, pricing, and business action.'],
+  ['Analytics systems','Reliable data flows that connect, clean, and keep fragmented business data trustworthy.'],
+  ['Automation','Repeatable reporting, alerts, and updates that remove manual operating steps.'],
+  ['Business intelligence','Decision-ready dashboards and KPI structures built around stakeholder questions.'],
+  ['Commercial and operational analysis','Analysis framed around inventory, pricing, and performance — ending in business action.'],
 ];
 ---
 <BaseLayout title="Farih Muwaffaq | Data Analyst & Analytics Automation" jsonLd={person}>
   <section class="hero"><div class="container">
     <p class="eyebrow rise"><span class="idx">Portfolio — IDX.2025</span> Data Analyst · Analytics Automation · Business Intelligence</p>
     <h1 class="hero-name rise rise-1">Farih Muwaffaq</h1>
-    <p class="hero-role rise rise-2"><span class="dot" aria-hidden="true"></span> Data Analyst <span aria-hidden="true">/</span> Jakarta, Indonesia</p>
+    <p class="hero-role rise rise-2"><span class="dot" aria-hidden="true"></span> Data Analyst <span aria-hidden="true">·</span> Jakarta, Indonesia</p>
     <p class="lede rise rise-3">I build data systems that move teams from reporting to action — turning fragmented data into reliable pipelines, dashboards, alerts, and business recommendations across FMCG, healthcare, and marketing analytics.</p>
-    <div class="actions rise rise-4"><a class="button" href="/work">View selected work<Icon name="arrow-right" /></a><a class="button secondary" href="/Farih-Muwaffaq-Resume.pdf" download="Farih-Muwaffaq-Resume.pdf" data-event="download_resume">Download resume<Icon name="download" /></a><a class="button secondary" href="/contact">Contact me<Icon name="arrow-right" /></a></div>
+    <div class="actions rise rise-4"><a class="button" href="/work">View selected work<Icon name="arrow-right" /></a><a class="button secondary" href="/Farih-Muwaffaq-Resume.pdf" download="Farih-Muwaffaq-Resume.pdf" data-event="download_resume">Download resume<Icon name="download" /></a><a class="button-link" href="/contact">Contact <Icon name="arrow-right" /></a></div>
     <div class="hero-meta rise rise-4">
       <span class="stack-meta"><b>Stack</b> <span class="stack-logos"><span class="stack-item"><Icon name="logo-postgresql" size="1em" />SQL</span><span class="stack-item"><Icon name="logo-python" size="1em" />Python</span><span class="stack-item"><Icon name="logo-tableau" size="1em" />Tableau</span><span class="stack-item"><Icon name="logo-powerbi" size="1em" />Power BI</span><span class="stack-item"><Icon name="logo-looker" size="1em" />Looker Studio</span></span></span>
       <span><b>Domain</b> FMCG · Health-tech · Marketing</span>
@@ -26,7 +31,7 @@ const capabilities = [
   </div></section>
 
   <section class="section-tight"><div class="container">
-    <p class="mono small" style="margin:0">Experience across SKINTIFIC, Future Creative Network, Lifepack.id, FMCG operations, and project-based analytics for Kimia Farma and ID/X Partners.</p>
+    <p class="proof-line" style="margin:0"><span><b>Proof</b> Credit model AUC 0.857 · 10+ dashboards shipped · Four-brand reporting pipeline</span><span><b>Experience</b> SKINTIFIC · Future Creative Network · Lifepack.id · Kimia Farma & ID/X Partners projects</span></p>
   </div></section>
 
   <section class="section"><div class="container">
@@ -37,8 +42,9 @@ const capabilities = [
         <a class="register-row" href={`/work/${p.data.slug}`} data-event="view_project" data-event-label={p.data.slug}>
           <span class="register-num">{String(i + 1).padStart(2, '0')}</span>
           <span>
-            <h3 class="register-title">{p.data.title}</h3>
+            <span class="register-title">{p.data.title}</span>
             <p class="register-summary">{p.data.summary}</p>
+            <p class="register-proof">{heroProof[p.data.slug]}</p>
             <span class="register-tags">
               {p.data.tools.slice(0, 4).map(tool => <span class="tag">{tool}</span>)}
               {p.data.confidential && <span class="status confidential">Confidential</span>}
@@ -77,6 +83,6 @@ const capabilities = [
     <p class="eyebrow"><span class="idx">04</span> Contact</p>
     <h2 style="max-width:20ch">Need an analyst who connects systems to decisions?</h2>
     <p class="lede">I am open to conversations about data analytics, business intelligence, commercial analytics, and analytics automation.</p>
-    <div class="actions"><a class="button" href="/contact">Contact Farih<Icon name="arrow-right" /></a><a class="button secondary" href="/resume">View resume<Icon name="arrow-right" /></a></div>
+    <div class="actions"><a class="button" href="/contact">Contact Farih<Icon name="arrow-right" /></a><a class="button secondary" href="/Farih-Muwaffaq-Resume.pdf" download="Farih-Muwaffaq-Resume.pdf" data-event="download_resume">Download resume<Icon name="download" /></a></div>
   </div></section>
 </BaseLayout>
