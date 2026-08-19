@@ -138,7 +138,7 @@ p { margin: 0 0 1rem; max-width: 65ch; }
 .nav-toggle:hover { border-color: var(--ink); }
 
 /* ——— hero ——— */
-.hero { padding: clamp(4rem, 10vw, 8rem) 0 clamp(3rem, 7vw, 5.5rem); position: relative; }
+.hero { padding: clamp(4rem, 10vw, 8rem) 0 clamp(2rem, 4vw, 3rem); position: relative; }
 .hero::after {
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background-image: linear-gradient(var(--line) 1px, transparent 1px);
@@ -147,6 +147,7 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   -webkit-mask-image: linear-gradient(to bottom, black, transparent 70%);
 }
 .hero > .container { position: relative; }
+.hero + .section { padding-top: clamp(1.5rem, 3vw, 2.5rem); }
 .hero-name { font-size: clamp(2.9rem, 8.5vw, 6.5rem); font-weight: 680; letter-spacing: -0.035em; line-height: 0.98; margin: 0 0 1.25rem; max-width: 12ch; }
 .hero-role { display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem; margin-bottom: 1.75rem; font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-soft); }
 .hero-role .dot { width: 0.45rem; height: 0.45rem; border-radius: 50%; background: var(--signal); box-shadow: 0 0 0 4px var(--wash); }
