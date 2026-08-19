@@ -16,8 +16,22 @@ const capabilities = [
   ['Commercial and operational analysis','Analysis framed around inventory, pricing, and performance — ending in business action.'],
 ];
 ---
-<BaseLayout title="Farih Muwaffaq | Data Analyst & Analytics Automation" jsonLd={person}>
-  <section class="hero"><div class="container">
+<BaseLayout title="Farih Muwaffaq | Data Analyst & Analytics Automation" jsonLd={person} animate={true}>
+  <div id="intro-splash" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Welcome">
+    <div class="splash-canvas-wrap"><canvas class="splash-canvas" aria-hidden="true"></canvas></div>
+    <div class="splash-inner">
+      <div class="splash-teaser">
+        <p class="t-line">Want to see data turned into decisions?</p>
+        <p class="t-line">Pipelines, dashboards, and models that move teams to act.</p>
+        <p class="t-line t-proof">AUC 0.857 · 10+ dashboards shipped · Four-brand reporting pipeline.</p>
+      </div>
+      <p class="splash-name">Farih Muwaffaq <span>— Data Analyst</span></p>
+      <button class="splash-enter" type="button" disabled>Enter — get to know me</button>
+      <button class="splash-skip" type="button">Skip intro</button>
+    </div>
+  </div>
+
+  <section class="hero"><canvas id="hero-canvas" aria-hidden="true"></canvas><div class="container">
     <p class="eyebrow rise"><span class="idx">Portfolio — IDX.2025</span> Data Analyst · Analytics Automation · Business Intelligence</p>
     <h1 class="hero-name rise rise-1">Farih Muwaffaq</h1>
     <p class="hero-role rise rise-2"><span class="dot" aria-hidden="true"></span> Data Analyst <span aria-hidden="true">·</span> Jakarta, Indonesia</p>
@@ -28,10 +42,10 @@ const capabilities = [
       <span><b>Domain</b> FMCG · Health-tech · Marketing</span>
       <span><b>Index</b> 06 case studies</span>
     </div>
-    <p class="proof-line rise rise-4"><span><b>Proof</b> Credit model AUC 0.857 · 10+ dashboards shipped · Four-brand reporting pipeline</span><span><b>Experience</b> SKINTIFIC · Future Creative Network · Lifepack.id · Kimia Farma & ID/X Partners projects</span></p>
+    <p class="proof-line rise rise-4"><span><b>Proof</b> Credit model AUC <span data-count="0.857" data-count-decimals="3">0.857</span> · <span data-count="10" data-count-suffix="+">10+</span> dashboards shipped · Four-brand reporting pipeline</span><span><b>Experience</b> SKINTIFIC · Future Creative Network · Lifepack.id · Kimia Farma & ID/X Partners projects</span></p>
   </div></section>
 
-  <section class="section"><div class="container">
+  <section class="section" data-reveal><div class="container">
     <p class="eyebrow"><span class="idx">01</span> Selected work</p>
     <h2 style="max-width:18ch">Systems built around decisions</h2>
     <div class="register">
@@ -59,7 +73,7 @@ const capabilities = [
     <div class="actions"><a class="button secondary" href="/work">See all case studies<Icon name="arrow-right" /></a></div>
   </div></section>
 
-  <section class="section"><div class="container">
+  <section class="section" data-reveal><div class="container">
     <p class="eyebrow"><span class="idx">02</span> Capabilities</p>
     <dl class="defs">
       {capabilities.map(([term, def], i) => (
@@ -71,12 +85,12 @@ const capabilities = [
     </dl>
   </div></section>
 
-  <section class="section"><div class="container grid two">
+  <section class="section" data-reveal><div class="container grid two">
     <div><p class="eyebrow"><span class="idx">03</span> Current focus</p><h2>Commercial and inventory analytics</h2></div>
     <p>At SKINTIFIC, I support inventory and commercial analytics across multiple brands and channels, including stock health, slow-moving inventory, pricing parity, NPD monitoring, critical SKU tracking, and promotional analysis. Public descriptions remain high-level to protect confidential operating data.</p>
   </div></section>
 
-  <section class="section"><div class="container">
+  <section class="section" data-reveal><div class="container">
     <p class="eyebrow"><span class="idx">04</span> Contact</p>
     <h2 style="max-width:20ch">Need an analyst who connects systems to decisions?</h2>
     <p class="lede">I am open to conversations about data analytics, business intelligence, commercial analytics, and analytics automation.</p>

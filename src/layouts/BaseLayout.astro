@@ -2,8 +2,8 @@
 import '../styles/global.css';
 import { nav, site, social } from '../data/site';
 import Icon from '../components/Icon.astro';
-interface Props { title: string; description?: string; image?: string; type?: 'website'|'article'; jsonLd?: Record<string, unknown>|Record<string, unknown>[] }
-const { title, description = site.description, image = '/social/social-card.svg', type = 'website', jsonLd } = Astro.props;
+interface Props { title: string; description?: string; image?: string; type?: 'website'|'article'; jsonLd?: Record<string, unknown>|Record<string, unknown>[]; animate?: boolean }
+const { title, description = site.description, image = '/social/social-card.svg', type = 'website', jsonLd, animate = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const current = Astro.url.pathname;
 const schemas = [
@@ -56,5 +56,12 @@ const schemas = [
     var navToggle = document.querySelector('.nav-toggle'); var navLinks = document.querySelector('#primary-links');
     navToggle?.addEventListener('click', function() { var open = navToggle.getAttribute('aria-expanded') === 'true'; navToggle.setAttribute('aria-expanded', String(!open)); navLinks?.classList.toggle('is-open', !open); });
   </script>
+  {animate && (
+    <>
+      <script is:inline src="/vendor/gsap.min.js" defer></script>
+      <script is:inline src="/vendor/ScrollTrigger.min.js" defer></script>
+      <script is:inline src="/js/animations.js" defer></script>
+    </>
+  )}
 </body>
 </html>
