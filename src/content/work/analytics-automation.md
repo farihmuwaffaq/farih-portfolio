@@ -45,15 +45,7 @@ Four FMCG brands anchored the workload. Names are shown with permission; all fig
 
 The system moved data from source to decision signal through a maintained processing layer:
 
-```
-ClickHouse Cloud ──▶ Apps Script (scheduled) ──▶ Google Sheets (KPI workbook)
-       │                                              │
-       ▼                                              ▼
-Python scrapers ──────────────▶ BI layer (Looker Studio, Tableau, Metabase)
-(KOL, campaign)                                       │
-                                                      ▼
-                                   Reports, dashboards, daily chatbot nudges
-```
+![Abstract pipeline from data sources through processing to reports and daily decision signals. No client data.](/images/projects/pipeline-flow.svg)
 
 1. **ClickHouse → Sheets.** Apps Script pulled platform tables into brand workbooks on a daily schedule, refreshing content and follower tabs automatically.
 2. **KPI workbook.** Each workbook separated raw/update tabs from a master sheet that appended manual campaign fields, then computed standardized engagement metrics.

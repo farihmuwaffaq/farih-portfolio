@@ -5,4 +5,5 @@ export default defineConfig({
   site: 'https://farih-portfolio.vercel.app',
   output: 'static',
   integrations: [sitemap()],
+  markdown: { shikiConfig: { theme: 'css-variables' } },
 });

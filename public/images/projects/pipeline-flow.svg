@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" role="img" aria-labelledby="pt pd" font-family="IBM Plex Mono, ui-monospace, monospace">
+  <title id="pt">Social media analytics pipeline</title>
+  <desc id="pd">Abstract flow: ClickHouse and Python scrapers feed a KPI workbook and BI layer, which drive reports and daily signals. No client data.</desc>
+  <defs>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" fill="#0e6b3c"/></marker>
+  </defs>
+  <rect width="760" height="300" fill="#f4f5f0"/>
+  <!-- edges -->
+  <g fill="none" stroke="#0e6b3c" stroke-width="2" marker-end="url(#arr)">
+    <path d="M185 78 H300"/>
+    <path d="M185 222 H300"/>
+    <path d="M415 78 C470 78 470 150 525 150"/>
+    <path d="M415 222 C470 222 470 150 525 150"/>
+    <path d="M640 150 H688"/>
+  </g>
+  <!-- source nodes -->
+  <g font-size="11" fill="#101312" text-anchor="middle">
+    <rect x="55" y="55" width="130" height="46" rx="4" fill="#ffffff" stroke="#101312" stroke-width="1.5"/>
+    <text x="120" y="74" font-weight="600">ClickHouse</text><text x="120" y="90" fill="#535d58">warehouse</text>
+    <rect x="55" y="199" width="130" height="46" rx="4" fill="#ffffff" stroke="#101312" stroke-width="1.5"/>
+    <text x="120" y="218" font-weight="600">Python</text><text x="120" y="234" fill="#535d58">KOL / campaign</text>
+  </g>
+  <!-- processing nodes -->
+  <g font-size="11" fill="#101312" text-anchor="middle">
+    <rect x="300" y="55" width="115" height="46" rx="4" fill="#ffffff" stroke="#101312" stroke-width="1.5"/>
+    <text x="357" y="74" font-weight="600">Apps Script</text><text x="357" y="90" fill="#535d58">Sheets KPI</text>
+    <rect x="300" y="199" width="115" height="46" rx="4" fill="#ffffff" stroke="#101312" stroke-width="1.5"/>
+    <text x="357" y="218" font-weight="600">BI layer</text><text x="357" y="234" fill="#535d58">dashboards</text>
+  </g>
+  <!-- merge hub -->
+  <rect x="525" y="127" width="115" height="46" rx="4" fill="#0e6b3c" stroke="#0a522e" stroke-width="1.5"/>
+  <text x="582" y="146" font-size="11" font-weight="600" fill="#ffffff" text-anchor="middle">Outputs</text>
+  <text x="582" y="162" font-size="10" fill="#dcefe2" text-anchor="middle">reports + signals</text>
+  <!-- end node -->
+  <rect x="688" y="127" width="60" height="46" rx="4" fill="#ffffff" stroke="#101312" stroke-width="1.5"/>
+  <text x="718" y="146" font-size="10" font-weight="600" fill="#101312" text-anchor="middle">Teams</text>
+  <text x="718" y="160" font-size="9" fill="#535d58" text-anchor="middle">daily</text>
+  <text x="20" y="285" font-size="9" fill="#535d58">Abstract representation — no client data.</text>
+</svg>
