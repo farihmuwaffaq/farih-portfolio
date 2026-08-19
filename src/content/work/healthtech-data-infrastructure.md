@@ -1,4 +1,4 @@
----
+﻿---
 title: Health-Tech Data Infrastructure and Dashboards
 slug: healthtech-data-infrastructure
 summary: Supported reliable data integration and built decision-ready reporting for a health-tech operation navigating evolving business needs.
@@ -6,10 +6,10 @@ evidenceType: Professional Experience
 organization: Lifepack.id
 industry: Healthcare / health-tech
 role: Data Analyst
-timeline: November 2024–April 2025
+timeline: November 2024â€“April 2025
 tools: [PostgreSQL, Metabase, Python, Google Sheets, REST API, MySQL]
 categories: [Analytics & Automation, Business Intelligence]
-featured: true
+featured: false
 confidential: true
 confidentialityNote: Operational data and dashboard screenshots are not public. Delivery-cost and aggregator-growth claims remain excluded pending validation.
 coverImage: /images/projects/healthtech-data-infrastructure.svg

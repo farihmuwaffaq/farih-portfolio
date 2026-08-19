@@ -2,11 +2,11 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
-const projects = (await getCollection('work')).filter(p=>p.data.featured).sort((a,b)=>['analytics-automation','healthtech-data-infrastructure','loan-default-model'].indexOf(a.data.slug)-['analytics-automation','healthtech-data-infrastructure','loan-default-model'].indexOf(b.data.slug));
+const projects = (await getCollection('work')).filter(p=>p.data.featured).sort((a,b)=>['analytics-automation','nexus-bi-platform','loan-default-model'].indexOf(a.data.slug)-['analytics-automation','nexus-bi-platform','loan-default-model'].indexOf(b.data.slug));
 const heroProof: Record<string, string> = {
   'analytics-automation': 'Four-brand pipeline',
-  'healthtech-data-infrastructure': '10+ dashboards & reports',
-  'loan-default-model': 'AUC 0.857 · KS 0.5675',
+  'nexus-bi-platform': 'BigQuery BI platform · RBAC',
+  'loan-default-model': 'AUC 0.857 A� KS 0.5675',
 };
 const person = {'@context':'https://schema.org','@type':'Person',name:'Farih Muwaffaq',jobTitle:'Data Analyst',address:{'@type':'PostalAddress',addressLocality:'Jakarta',addressCountry:'ID'},knowsAbout:['Analytics automation','Business intelligence','Commercial analytics','Data pipelines']};
 const capabilities = [

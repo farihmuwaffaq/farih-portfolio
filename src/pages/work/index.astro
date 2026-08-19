@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ProjectGrid from '../../components/ProjectGrid.astro';
 import Lightbox from '../../components/Lightbox.astro';
-const order=['analytics-automation','healthtech-data-infrastructure','fmcg-operations-analytics','loan-default-model','retail-sales-datamart','carbon-methodology-assessment'];
+const order=['analytics-automation','nexus-bi-platform','shopee-pricing-tracker','healthtech-data-infrastructure','fmcg-operations-analytics','loan-default-model','retail-sales-datamart','carbon-methodology-assessment'];
 const projects=(await getCollection('work')).sort((a,b)=>order.indexOf(a.data.slug)-order.indexOf(b.data.slug));
 const labs=[['AdventureWorks Sales Report','Power BI · sample/training data','Revenue, profit, orders, returns, category and customer analysis.','/images/lab/adventureworks.svg'],['Maven Cycles Report','Power BI · sample/training data','Product, geography, period, key-influencer and decomposition-tree analysis.','/images/lab/maven-cycles.svg'],['UNIX-O Sales Dashboard','Excel · sample/training data','Sales, cost, marketplace, geography, rating and product analysis.','/images/lab/unix-o.svg'],['Couture28 Sales Dashboard','Excel · sample/training data','Structured cleaning, lookups, pivot analysis and interactive dashboarding.','/images/lab/couture28.svg'],['Social Media Analytics Pipeline','Apps Script · Python · SQL · illustrative pattern','Multi-platform data pull, scheduled refresh, KPI workbook, and BI layer. Abstract representation — no client data.','/images/lab/social-pipeline.svg']];
 ---
