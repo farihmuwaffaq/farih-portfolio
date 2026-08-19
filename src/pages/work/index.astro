@@ -8,6 +8,16 @@ const projects=(await getCollection('work')).sort((a,b)=>order.indexOf(a.data.sl
 const labs=[['AdventureWorks Sales Report','Power BI · sample/training data','Revenue, profit, orders, returns, category and customer analysis.','/images/lab/adventureworks.svg'],['Maven Cycles Report','Power BI · sample/training data','Product, geography, period, key-influencer and decomposition-tree analysis.','/images/lab/maven-cycles.svg'],['UNIX-O Sales Dashboard','Excel · sample/training data','Sales, cost, marketplace, geography, rating and product analysis.','/images/lab/unix-o.svg'],['Couture28 Sales Dashboard','Excel · sample/training data','Structured cleaning, lookups, pivot analysis and interactive dashboarding.','/images/lab/couture28.svg']];
 ---
 <BaseLayout title="Data Analytics Work | Farih Muwaffaq" description="Case studies in analytics automation, business intelligence, commercial operations, machine learning, and sustainability by Farih Muwaffaq.">
- <section class="section"><div class="container"><p class="eyebrow">Work</p><h1>Analytics systems, models, and decision tools.</h1><p class="lede">Filter by problem type. Professional case studies protect confidential data; project exercises are labeled and bounded by their source datasets.</p><ProjectGrid projects={projects} filters={true} /></div></section>
- <section class="section" id="dashboard-lab"><div class="container"><p class="eyebrow">Dashboard Lab</p><h2>Focused interface studies</h2><p class="lede">Independent exercises using sample or training data. These are gallery items—not client results or standalone case studies. Visuals are safe abstract placeholders until source exports are available.</p><div class="lab-grid">{labs.map((lab,i)=><article class="card"><Lightbox id={`lab-${i}`} src={lab[3]} alt={`Abstract placeholder for ${lab[0]}`} caption={lab[0]} /><p class="eyebrow">{lab[1]}</p><p>{lab[2]}</p></article>)}</div></div></section>
+  <section class="section"><div class="container">
+    <p class="eyebrow rise"><span class="idx">Index</span> {projects.length} case studies · {labs.length} lab studies</p>
+    <h1 class="rise rise-1" style="max-width:16ch">Analytics systems, models, and decision tools.</h1>
+    <p class="lede rise rise-2">Filter by problem type. Professional case studies protect confidential data; project exercises are labeled and bounded by their source datasets.</p>
+    <ProjectGrid projects={projects} filters={true} />
+  </div></section>
+  <section class="section" id="dashboard-lab"><div class="container">
+    <p class="eyebrow"><span class="idx">Lab</span> Dashboard Lab</p>
+    <h2>Focused interface studies</h2>
+    <p class="lede">Independent exercises using sample or training data. These are gallery items — not client results or standalone case studies. Visuals are safe abstract placeholders until source exports are available.</p>
+    <div class="card-grid">{labs.map((lab,i)=><article class="card"><Lightbox id={`lab-${i}`} src={lab[3]} alt={`Abstract placeholder for ${lab[0]}`} caption={lab[0]} /><p class="eyebrow" style="margin-top:1rem">{lab[1]}</p><p>{lab[2]}</p></article>)}</div>
+  </div></section>
 </BaseLayout>

@@ -3,14 +3,49 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 const endpoint=import.meta.env.PUBLIC_CONTACT_FORM_ENDPOINT || '';
 ---
 <BaseLayout title="Contact Farih Muwaffaq | Data Analyst" description="Contact Farih Muwaffaq about data analytics, business intelligence, commercial performance, and automation-focused roles or collaborations.">
-<section class="section"><div class="container grid two"><div><p class="eyebrow">Contact</p><h1>Let's turn a data question into a useful system.</h1><p class="lede">I am open to conversations about analytics, business intelligence, commercial performance, and automation-focused roles or collaborations.</p><p><strong>Email</strong><br /><a href="mailto:farihmuwaffaq@gmail.com" data-event="click_email">farihmuwaffaq@gmail.com</a></p><p><strong>Location</strong><br />Jakarta, Indonesia</p><p class="notice"><strong>LinkedIn:</strong> URL pending confirmation; no non-functional external link is published.</p><p><small>Privacy: form details are used only to respond to your inquiry. No external analytics or form provider is active without configuration, and message content is never sent to analytics.</small></p></div><div class="card"><h2>Send a message</h2><form id="contact-form" data-endpoint={endpoint} novalidate><div class="form-grid"><label class="field">Name<input name="name" autocomplete="name" required /></label><label class="field">Work email<input type="email" name="email" autocomplete="email" required /></label><label class="field full">Company <span class="sr-only">(optional)</span><input name="company" autocomplete="organization" /></label><label class="field full">Reason for contacting<select name="reason" required><option value="">Select one</option><option>Role opportunity</option><option>Analytics collaboration</option><option>Portfolio question</option><option>Other</option></select></label><label class="field full">Message<textarea name="message" required minlength="20"></textarea></label><label class="field full"><span><input type="checkbox" name="consent" required /> I consent to this information being used to respond to my inquiry.</span></label><div class="field full sr-only" aria-hidden="true"><label>Website<input name="website" tabindex="-1" autocomplete="off" /></label></div></div><button class="button" type="submit">Send message</button><p class="status" id="form-status" role="status" aria-live="polite"></p></form></div></div></section>
-<script is:inline define:vars={{ endpoint }}>
-  const form=document.querySelector('#contact-form'); const status=document.querySelector('#form-status');
-  form?.addEventListener('submit',async(event)=>{event.preventDefault(); status.textContent=''; if(!form.checkValidity()){form.reportValidity(); status.textContent='Please complete the required fields.'; return;} const data=new FormData(form); if(data.get('website')) return; const button=form.querySelector('button[type="submit"]'); button.disabled=true; button.textContent='Sending…';
-    if(!endpoint){status.textContent='Demo mode: the form is not connected yet. Please email Farih directly.'; button.disabled=false; button.textContent='Send message'; window.portfolioAnalytics?.track('submit_contact', { state: 'demo' }); return;}
-    try{const response=await fetch(endpoint,{method:'POST',body:data,headers:{Accept:'application/json'}}); if(!response.ok) throw new Error(); form.reset(); status.textContent='Thank you. Your message has been sent.'; window.portfolioAnalytics?.track('submit_contact', { state: 'success' });}
-    catch{status.textContent='The message could not be sent. Please use the email link instead.'; window.portfolioAnalytics?.track('contact_error');}
-    finally{button.disabled=false;button.textContent='Send message';}
+<section class="section"><div class="container grid two">
+  <div>
+    <p class="eyebrow rise"><span class="idx">Signal</span> Contact</p>
+    <h1 class="rise rise-1">Let's turn a data question into a useful system.</h1>
+    <p class="lede rise rise-2">I am open to conversations about analytics, business intelligence, commercial operations, data quality, and automation-focused roles or collaborations.</p>
+    <dl class="spec rise rise-3">
+      <div class="spec-row"><dt>Email</dt><dd><a href="mailto:farihmuwaffaq@gmail.com" data-event="contact_email">farihmuwaffaq@gmail.com</a></dd></div>
+      <div class="spec-row"><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/farih-muwaffaq" data-event="contact_linkedin">linkedin.com/in/farih-muwaffaq</a></dd></div>
+      <div class="spec-row"><dt>GitHub</dt><dd><a href="https://github.com/farihmuwaffaq" data-event="contact_github">github.com/farihmuwaffaq</a></dd></div>
+      <div class="spec-row"><dt>Location</dt><dd>Jakarta, Indonesia · open to relocation · remote-friendly</dd></div>
+    </dl>
+  </div>
+  <form class="form card" id="contact-form" data-endpoint={endpoint} novalidate>
+    <p class="mono" style="margin:0">Message form</p>
+    <div class="field"><label for="name">Name</label><input id="name" name="name" autocomplete="name" required /></div>
+    <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
+    <div class="field"><label for="message">Message</label><textarea id="message" name="message" required minlength="20"></textarea></div>
+    <div class="field honeypot"><label for="company">Company</label><input id="company" name="company" tabindex="-1" autocomplete="off" /></div>
+    <button class="button" type="submit">Send message</button>
+    <p class="small" style="margin:0">The form uses a serverless endpoint when configured. Until then, use email or LinkedIn. This disclosure is intentional — no fake success state.</p>
+    <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+  </form>
+</div></section>
+<script>
+  const form=document.querySelector<HTMLFormElement>('#contact-form');
+  const status=document.querySelector<HTMLElement>('#form-status');
+  form?.addEventListener('submit', async event=>{
+    event.preventDefault();
+    const data=new FormData(form);
+    if(data.get('company')) return;
+    if(!form.reportValidity()) return;
+    const endpoint=form.dataset.endpoint||'';
+    const button=form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    if(!endpoint){status!.textContent='The form endpoint is not configured. Please use the email link instead.';return;}
+    button!.disabled=true;button!.textContent='Sending…';
+    try{
+      const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.fromEntries(data))});
+      if(!response.ok) throw new Error('request failed');
+      status!.textContent='Message sent. I usually reply within one business day.';
+      form.reset();window.portfolioAnalytics?.track('contact_submit',{state:'success'});
+    }
+    catch{status!.textContent='The message could not be sent. Please use the email link instead.';window.portfolioAnalytics?.track('contact_error');}
+    finally{button!.disabled=false;button!.textContent='Send message';}
   });
 </script>
 </BaseLayout>

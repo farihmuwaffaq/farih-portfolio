@@ -1,14 +1,21 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-const { project } = Astro.props as { project: CollectionEntry<'work'> };
+const { project, index } = Astro.props as { project: CollectionEntry<'work'>; index?: number };
 const d = project.data;
 ---
 <article class="card project" data-categories={d.categories.join('|')}>
+  <div class="project-head">
+    <span class="mono">{index !== undefined ? String(index + 1).padStart(2, '0') : ''}</span>
+    {d.confidential
+      ? <span class="status confidential">Confidential</span>
+      : <span class="status">{d.evidenceType}</span>}
+  </div>
   <img src={d.coverImage} alt={d.coverAlt} width="800" height="450" loading="lazy" />
   <p class="eyebrow">{d.evidenceType} · {d.industry}</p>
-  <h3>{d.title}</h3><p>{d.summary}</p>
+  <h3>{d.title}</h3>
+  <p>{d.summary}</p>
   <ul class="tags" aria-label="Tools">{d.tools.slice(0,5).map(tool => <li class="tag">{tool}</li>)}</ul>
   <p><strong>Role:</strong> {d.role}</p>
   {d.outcomes[0] && <p><strong>Evidence:</strong> {d.outcomes[0]}</p>}
-  <a class="card-link" href={`/work/${d.slug}`} data-event="view_project" data-event-label={d.slug}>Read case study <span aria-hidden="true">→</span></a>
+  <a class="card-link" href={`/work/${d.slug}`} data-event="view_project" data-event-label={d.slug}>Read case study</a>
 </article>

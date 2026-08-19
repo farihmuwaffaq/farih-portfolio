@@ -11,11 +11,22 @@ const creative = {'@context':'https://schema.org','@type':'CreativeWork',name:d.
 ---
 <BaseLayout title={`${d.title} | Farih Muwaffaq`} description={d.summary} type="article" jsonLd={[breadcrumb,creative]}>
   <section class="section"><div class="container">
-    <a href="/work">← All work</a><p class="eyebrow">{d.evidenceType} · {d.industry}</p><h1>{d.title}</h1><p class="lede">{d.summary}</p>
-    {d.confidential && <p class="notice"><strong>Confidentiality note:</strong> {d.confidentialityNote}</p>}
-    <dl class="meta"><div><dt>Organization</dt><dd>{d.organization}</dd></div><div><dt>Role</dt><dd>{d.role}</dd></div><div><dt>Timeline</dt><dd>{d.timeline}</dd></div><div><dt>Tools</dt><dd>{d.tools.join(', ')}</dd></div></dl>
-    <img src={d.coverImage} alt={d.coverAlt} width="1200" height="675" />
-    {d.outcomes.length > 0 && <div class="outcomes" aria-label="Validated outcomes">{d.outcomes.map(outcome => <div class="outcome">{outcome}</div>)}</div>}
+    <p class="mono rise" style="margin-bottom:1.5rem"><a href="/work">← Index / All work</a></p>
+    <p class="eyebrow rise rise-1"><span class="idx">{d.evidenceType}</span> · {d.industry}</p>
+    <h1 class="rise rise-2" style="max-width:16ch">{d.title}</h1>
+    <p class="lede rise rise-3">{d.summary}</p>
+    {d.confidential && <p class="rise rise-3" style="margin-top:1.5rem"><span class="status confidential">{d.confidentialityNote}</span></p>}
+    <dl class="spec rise rise-4">
+      <div class="spec-row"><dt>Organization</dt><dd>{d.organization}</dd></div>
+      <div class="spec-row"><dt>Role</dt><dd>{d.role}</dd></div>
+      <div class="spec-row"><dt>Timeline</dt><dd>{d.timeline}</dd></div>
+      <div class="spec-row"><dt>Tools</dt><dd><ul class="tags">{d.tools.map(tool => <li class="tag">{tool}</li>)}</ul></dd></div>
+    </dl>
+    <figure style="margin:2.5rem 0 0">
+      <img src={d.coverImage} alt={d.coverAlt} width="1200" height="675" style="border:1px solid var(--line);border-radius:var(--radius)" />
+      <figcaption class="mono" style="margin-top:0.6rem;font-size:0.72rem;color:var(--muted)">FIG. 01 — {d.coverAlt}</figcaption>
+    </figure>
+    {d.outcomes.length > 0 && <div class="panel" aria-label="Validated outcomes"><p class="mono" style="margin-bottom:0.75rem;color:var(--signal-deep)">Validated outcomes</p>{d.outcomes.map(outcome => <p>{outcome}</p>)}</div>}
     <article class="prose"><slot /></article>
     <section class="prose"><h2>Related evidence</h2>{d.relatedAssets.length ? <ul>{d.relatedAssets.map(asset => <li>{asset.available && asset.href ? <a href={asset.href} data-event="open_project_asset" data-event-label={asset.label}>{asset.label}</a> : <span><strong>{asset.label}</strong> — {asset.note || 'Not publicly available.'}</span>}</li>)}</ul> : <p>No public assets are attached to this case study.</p>}</section>
     <div class="actions"><a class="button" href="/contact" data-event="case_study_contact">Discuss this work</a><a class="button secondary" href="/work">Explore more work</a></div>

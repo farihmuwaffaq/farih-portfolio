@@ -7,7 +7,7 @@ const categories = ['All','Analytics & Automation','Business Intelligence','Comm
 ---
 {filters && <div class="filters" aria-label="Filter projects">{categories.map((category, i) => <button class="filter" type="button" aria-pressed={i===0 ? 'true':'false'} data-filter={category}>{category}</button>)}</div>}
 <p id="filter-status" class="sr-only" aria-live="polite"></p>
-<div class="grid" id="project-grid">{projects.map(project => <ProjectCard project={project} />)}</div>
+<div class="card-grid" id="project-grid">{projects.map((project, i) => <ProjectCard project={project} index={i} />)}</div>
 {filters && <script>
   const buttons = [...document.querySelectorAll<HTMLButtonElement>('[data-filter]')];
   const cards = [...document.querySelectorAll<HTMLElement>('.project[data-categories]')];

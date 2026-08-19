@@ -66,10 +66,10 @@ Di akhir, laporkan secara ringkas perubahan, file utama, hasil check/build/audit
 ```text
 Informasi/aset yang sudah dikonfirmasi:
 
-- LinkedIn: [URL]
-- GitHub: [URL]
-- CV final: [path file]
-- Bulan/tahun CV: [month year]
+- LinkedIn: https://www.linkedin.com/in/farihmuwaffaq/
+- GitHub: [https://github.com/farihmuwaffaq](https://github.com/farihmuwaffaq)
+- CV final: https://drive.google.com/file/d/1ZqhduYkG0Yln5cJ_oS0ClrGdx0FnAfMI/view?usp=sharing
+- Bulan/tahun CV: July 2026
 - Headshot: [path file]
 - Contact form provider: [provider/endpoint]
 - Custom domain: [domain]

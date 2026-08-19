@@ -1,15 +1,81 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import ProjectGrid from '../components/ProjectGrid.astro';
 const projects = (await getCollection('work')).filter(p=>p.data.featured).sort((a,b)=>['analytics-automation','healthtech-data-infrastructure','loan-default-model'].indexOf(a.data.slug)-['analytics-automation','healthtech-data-infrastructure','loan-default-model'].indexOf(b.data.slug));
 const person = {'@context':'https://schema.org','@type':'Person',name:'Farih Muwaffaq',jobTitle:'Data Analyst',address:{'@type':'PostalAddress',addressLocality:'Jakarta',addressCountry:'ID'},knowsAbout:['Analytics automation','Business intelligence','Commercial analytics','Data pipelines']};
+const capabilities = [
+  ['Analytics systems','Reliable data flows that connect, clean, and maintain fragmented business data.'],
+  ['Automation','Repeatable reporting, alerts, and updates that reduce manual operating steps.'],
+  ['Business intelligence','Decision-ready dashboards and KPI structures designed around stakeholder questions.'],
+  ['Commercial and operational analysis','Analysis framed around inventory, performance, pricing, and business action.'],
+];
 ---
 <BaseLayout title="Farih Muwaffaq | Data Analyst & Analytics Automation" jsonLd={person}>
-  <section class="section"><div class="container hero"><div><p class="eyebrow">Data Analyst · Analytics Automation · Business Intelligence</p><h1>I build data systems that move teams from reporting to action.</h1><p class="lede">I am Farih Muwaffaq, a Jakarta-based Data Analyst working across FMCG, healthcare, and marketing analytics. I turn fragmented data into reliable pipelines, dashboards, alerts, and business recommendations.</p><div class="actions"><a class="button" href="/work">View selected work</a><a class="button secondary" href="/resume" data-event="download_resume">Download resume</a><a href="/contact">Contact me</a></div></div><div class="hero-mark" aria-hidden="true">FM</div></div></section>
-  <section class="section-sm"><div class="container notice">Experience across SKINTIFIC, Future Creative Network, Lifepack.id, FMCG operations, and project-based analytics for Kimia Farma and ID/X Partners.</div></section>
-  <section class="section"><div class="container"><p class="eyebrow">Selected work</p><h2>Systems built around decisions</h2><ProjectGrid projects={projects} /><div class="actions"><a class="button secondary" href="/work">See all case studies</a></div></div></section>
-  <section class="section"><div class="container"><p class="eyebrow">Capabilities</p><div class="grid capability-grid"><article class="card"><h3>Analytics systems</h3><p>Reliable data flows that connect, clean, and maintain fragmented business data.</p></article><article class="card"><h3>Automation</h3><p>Repeatable reporting, alerts, and updates that reduce manual operating steps.</p></article><article class="card"><h3>Business intelligence</h3><p>Decision-ready dashboards and KPI structures designed around stakeholder questions.</p></article><article class="card"><h3>Commercial and operational analysis</h3><p>Analysis framed around inventory, performance, pricing, and business action.</p></article></div></div></section>
-  <section class="section"><div class="container grid two"><div><p class="eyebrow">Current focus</p><h2>Commercial and inventory analytics</h2></div><p>At SKINTIFIC, I support inventory and commercial analytics across multiple brands and channels, including stock health, slow-moving inventory, pricing parity, NPD monitoring, critical SKU tracking, and promotional analysis. Public descriptions remain high-level to protect confidential operating data.</p></div></section>
-  <section class="section"><div class="container card"><h2>Need an analyst who connects systems to decisions?</h2><p class="lede">I am open to conversations about data analytics, business intelligence, commercial analytics, and analytics automation.</p><div class="actions"><a class="button" href="/contact">Contact Farih</a><a class="button secondary" href="/resume">View resume</a></div></div></section>
+  <section class="hero"><div class="container">
+    <p class="eyebrow rise"><span class="idx">Portfolio — IDX.2025</span> Data Analyst · Analytics Automation · Business Intelligence</p>
+    <h1 class="hero-name rise rise-1">Farih Muwaffaq</h1>
+    <p class="hero-role rise rise-2"><span class="dot" aria-hidden="true"></span> Data Analyst <span aria-hidden="true">/</span> Jakarta, Indonesia</p>
+    <p class="lede rise rise-3">I build data systems that move teams from reporting to action — turning fragmented data into reliable pipelines, dashboards, alerts, and business recommendations across FMCG, healthcare, and marketing analytics.</p>
+    <div class="actions rise rise-4"><a class="button" href="/work">View selected work</a><a class="button secondary" href="/resume" data-event="download_resume">Download resume</a><a class="button secondary" href="/contact">Contact me</a></div>
+    <div class="hero-meta rise rise-4">
+      <span><b>Stack</b> SQL · Python · Tableau · Power BI · Looker Studio</span>
+      <span><b>Domain</b> FMCG · Health-tech · Marketing</span>
+      <span><b>Index</b> 06 case studies</span>
+    </div>
+  </div></section>
+
+  <section class="section-tight"><div class="container">
+    <p class="mono small" style="margin:0">Experience across SKINTIFIC, Future Creative Network, Lifepack.id, FMCG operations, and project-based analytics for Kimia Farma and ID/X Partners.</p>
+  </div></section>
+
+  <section class="section"><div class="container">
+    <p class="eyebrow"><span class="idx">01</span> Selected work</p>
+    <h2 style="max-width:18ch">Systems built around decisions</h2>
+    <div class="register">
+      {projects.map((p, i) => (
+        <a class="register-row" href={`/work/${p.data.slug}`} data-event="view_project" data-event-label={p.data.slug}>
+          <span class="register-num">{String(i + 1).padStart(2, '0')}</span>
+          <span>
+            <h3 class="register-title">{p.data.title}</h3>
+            <p class="register-summary">{p.data.summary}</p>
+            <span class="register-tags">
+              {p.data.tools.slice(0, 4).map(tool => <span class="tag">{tool}</span>)}
+              {p.data.confidential && <span class="status confidential">Confidential</span>}
+            </span>
+          </span>
+          <span class="register-meta">
+            <span>{p.data.organization}</span>
+            <span>{p.data.timeline}</span>
+            <span>{p.data.evidenceType}</span>
+          </span>
+          <span class="register-arrow" aria-hidden="true">→</span>
+        </a>
+      ))}
+    </div>
+    <div class="actions"><a class="button secondary" href="/work">See all case studies</a></div>
+  </div></section>
+
+  <section class="section"><div class="container">
+    <p class="eyebrow"><span class="idx">02</span> Capabilities</p>
+    <dl class="defs">
+      {capabilities.map(([term, def], i) => (
+        <div class="def-row">
+          <dt><span class="mono">{String(i + 1).padStart(2, '0')}</span> {term}</dt>
+          <dd>{def}</dd>
+        </div>
+      ))}
+    </dl>
+  </div></section>
+
+  <section class="section"><div class="container grid two">
+    <div><p class="eyebrow"><span class="idx">03</span> Current focus</p><h2>Commercial and inventory analytics</h2></div>
+    <p>At SKINTIFIC, I support inventory and commercial analytics across multiple brands and channels, including stock health, slow-moving inventory, pricing parity, NPD monitoring, critical SKU tracking, and promotional analysis. Public descriptions remain high-level to protect confidential operating data.</p>
+  </div></section>
+
+  <section class="section"><div class="container">
+    <p class="eyebrow"><span class="idx">04</span> Contact</p>
+    <h2 style="max-width:20ch">Need an analyst who connects systems to decisions?</h2>
+    <p class="lede">I am open to conversations about data analytics, business intelligence, commercial analytics, and analytics automation.</p>
+    <div class="actions"><a class="button" href="/contact">Contact Farih</a><a class="button secondary" href="/resume">View resume</a></div>
+  </div></section>
 </BaseLayout>
