@@ -26,6 +26,9 @@ PRD_*.md
 *.jpeg
 *.jpg
 
+# Public resume download (explicitly published)
+!public/Farih-Muwaffaq-Resume.pdf
+
 # Credentials and private keys
 credentials/
 credentials.*

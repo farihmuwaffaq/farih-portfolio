@@ -377,3 +377,11 @@ p { margin: 0 0 1rem; max-width: 65ch; }
   .register-row { grid-template-columns: minmax(0, 1fr) auto; }
   .register-num { display: none; }
 }
+
+/* About: portrait + endorsement */
+.about-photo { margin: 1.75rem 0 0; max-width: 300px; }
+.about-photo img { width: 100%; height: auto; display: block; border: 1px solid var(--line); border-radius: var(--radius); }
+.endorsement { max-width: 46rem; }
+.endorsement p { font-size: 1.05rem; color: var(--ink); }
+.endorsement-by { margin-top: 1rem; font-family: var(--mono); font-size: 0.82rem; letter-spacing: 0.02em; color: var(--ink); }
+.endorsement-role { display: block; margin-top: 0.3rem; color: var(--muted); font-size: 0.76rem; }
