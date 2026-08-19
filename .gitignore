@@ -13,6 +13,7 @@ asset/
 assets/source/
 private/
 confidential/
+porto/
 raw-data/
 raw_data/
 PRD_*.md
@@ -22,6 +23,8 @@ PRD_*.md
 *.xls
 *.xlsx
 *.csv
+*.jpeg
+*.jpg
 
 # Credentials and private keys
 credentials/

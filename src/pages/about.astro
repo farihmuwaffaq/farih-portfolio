@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
 const profile={'@context':'https://schema.org','@type':'ProfilePage',mainEntity:{'@type':'Person',name:'Farih Muwaffaq',jobTitle:'Data Analyst'}};
 const career = [
   ['SKINTIFIC','Senior Associate Data Analyst','June 2026 — present','Inventory, pricing, NPD, critical SKU, promotional, and commercial monitoring across brands and channels. Details remain high-level for confidentiality.'],
@@ -31,6 +32,22 @@ const career = [
   </div></section>
   <section class="section"><div class="container grid two">
     <article class="card"><p class="eyebrow"><span class="idx">02</span> Education</p><h2>Management and forestry</h2><p><strong>PPM School of Management</strong><br />Master of Management, January 2026 — present.</p><p><strong>Institut Teknologi Bandung</strong><br />Bachelor of Forestry Engineering, 2018 — 2023.</p></article>
-    <article class="card"><p class="eyebrow"><span class="idx">03</span> Tools</p><h2>Technical range</h2><p>SQL, PostgreSQL, MySQL, Python, Pandas, Scikit-learn, Tableau, Power BI, Looker Studio, Metabase, Excel, Google Sheets, TablePlus, REST APIs, and Jupyter Notebook.</p><p>Tools support the work; decisions remain the organizing principle.</p></article>
+    <article class="card"><p class="eyebrow"><span class="idx">03</span> Tools</p><h2>Technical range</h2>
+      <ul class="tool-grid" role="list">
+        <li class="tool-item"><Icon name="logo-postgresql" size="1.4em" /><span>PostgreSQL</span></li>
+        <li class="tool-item"><Icon name="logo-mysql" size="1.4em" /><span>MySQL</span></li>
+        <li class="tool-item"><Icon name="logo-python" size="1.4em" /><span>Python</span></li>
+        <li class="tool-item"><Icon name="logo-pandas" size="1.4em" /><span>Pandas</span></li>
+        <li class="tool-item"><Icon name="logo-numpy" size="1.4em" /><span>NumPy</span></li>
+        <li class="tool-item"><Icon name="logo-scikitlearn" size="1.4em" /><span>scikit-learn</span></li>
+        <li class="tool-item"><Icon name="logo-tableau" size="1.4em" /><span>Tableau</span></li>
+        <li class="tool-item"><Icon name="logo-powerbi" size="1.4em" /><span>Power BI</span></li>
+        <li class="tool-item"><Icon name="logo-looker" size="1.4em" /><span>Looker Studio</span></li>
+        <li class="tool-item"><Icon name="logo-metabase" size="1.4em" /><span>Metabase</span></li>
+        <li class="tool-item"><Icon name="logo-excel" size="1.4em" /><span>Excel</span></li>
+        <li class="tool-item"><Icon name="logo-googlesheets" size="1.4em" /><span>Google Sheets</span></li>
+        <li class="tool-item"><Icon name="logo-jupyter" size="1.4em" /><span>Jupyter</span></li>
+      </ul>
+      <p class="tool-note">Plus SQL, TablePlus, and REST APIs. Tools support the work; decisions remain the organizing principle.</p></article>
   </div></section>
 </BaseLayout>

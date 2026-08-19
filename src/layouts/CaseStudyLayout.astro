@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
+import Icon from '../components/Icon.astro';
 interface Props { project: CollectionEntry<'work'> }
 const { project } = Astro.props;
 const d = project.data;
@@ -29,6 +30,6 @@ const creative = {'@context':'https://schema.org','@type':'CreativeWork',name:d.
     {d.outcomes.length > 0 && <div class="panel" aria-label="Validated outcomes"><p class="mono" style="margin-bottom:0.75rem;color:var(--signal-deep)">Validated outcomes</p>{d.outcomes.map(outcome => <p>{outcome}</p>)}</div>}
     <article class="prose"><slot /></article>
     <section class="prose"><h2>Related evidence</h2>{d.relatedAssets.length ? <ul>{d.relatedAssets.map(asset => <li>{asset.available && asset.href ? <a href={asset.href} data-event="open_project_asset" data-event-label={asset.label}>{asset.label}</a> : <span><strong>{asset.label}</strong> — {asset.note || 'Not publicly available.'}</span>}</li>)}</ul> : <p>No public assets are attached to this case study.</p>}</section>
-    <div class="actions"><a class="button" href="/contact" data-event="case_study_contact">Discuss this work</a><a class="button secondary" href="/work">Explore more work</a></div>
+    <div class="actions"><a class="button" href="/contact" data-event="case_study_contact">Discuss this work<Icon name="arrow-right" /></a><a class="button secondary" href="/work">Explore more work<Icon name="arrow-right" /></a></div>
   </div></section>
 </BaseLayout>

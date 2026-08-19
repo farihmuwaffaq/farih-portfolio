@@ -36,7 +36,7 @@ architecture.
 | `--line` / `--line-strong` | ink 14% / 38% | Hairlines, rules |
 | `--radius` | `2px` | All radii |
 
-Contrast: ink/paper 16.9:1 · ink-soft/paper 11.4:1 · muted/paper 6.9:1 ·
+Contrast: ink/paper 16.9:1 · ink-soft/paper 11.4:1 · muted/paper 7.1:1 ·
 signal/paper 5.5:1 · signal/paper-white 5.4:1 (AA pass on all text pairs).
 
 ## Component contracts

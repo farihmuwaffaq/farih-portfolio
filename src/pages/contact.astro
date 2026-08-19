@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
 const endpoint=import.meta.env.PUBLIC_CONTACT_FORM_ENDPOINT || '';
 ---
 <BaseLayout title="Contact Farih Muwaffaq | Data Analyst" description="Contact Farih Muwaffaq about data analytics, business intelligence, commercial performance, and automation-focused roles or collaborations.">
@@ -9,9 +10,9 @@ const endpoint=import.meta.env.PUBLIC_CONTACT_FORM_ENDPOINT || '';
     <h1 class="rise rise-1">Let's turn a data question into a useful system.</h1>
     <p class="lede rise rise-2">I am open to conversations about analytics, business intelligence, commercial operations, data quality, and automation-focused roles or collaborations.</p>
     <dl class="spec rise rise-3">
-      <div class="spec-row"><dt>Email</dt><dd><a href="mailto:farihmuwaffaq@gmail.com" data-event="contact_email">farihmuwaffaq@gmail.com</a></dd></div>
-      <div class="spec-row"><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/farih-muwaffaq" data-event="contact_linkedin">linkedin.com/in/farih-muwaffaq</a></dd></div>
-      <div class="spec-row"><dt>GitHub</dt><dd><a href="https://github.com/farihmuwaffaq" data-event="contact_github">github.com/farihmuwaffaq</a></dd></div>
+      <div class="spec-row"><dt>Email</dt><dd><a class="contact-link" href="mailto:farihmuwaffaq@gmail.com" data-event="contact_email"><Icon name="mail" />farihmuwaffaq@gmail.com</a></dd></div>
+      <div class="spec-row"><dt>LinkedIn</dt><dd><a class="contact-link" href="https://www.linkedin.com/in/farih-muwaffaq" data-event="contact_linkedin"><Icon name="logo-linkedin" size="1em" />linkedin.com/in/farih-muwaffaq</a></dd></div>
+      <div class="spec-row"><dt>GitHub</dt><dd><a class="contact-link" href="https://github.com/farihmuwaffaq" data-event="contact_github"><Icon name="logo-github" size="1em" />github.com/farihmuwaffaq</a></dd></div>
       <div class="spec-row"><dt>Location</dt><dd>Jakarta, Indonesia · open to relocation · remote-friendly</dd></div>
     </dl>
   </div>
@@ -21,7 +22,7 @@ const endpoint=import.meta.env.PUBLIC_CONTACT_FORM_ENDPOINT || '';
     <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
     <div class="field"><label for="message">Message</label><textarea id="message" name="message" required minlength="20"></textarea></div>
     <div class="field honeypot"><label for="company">Company</label><input id="company" name="company" tabindex="-1" autocomplete="off" /></div>
-    <button class="button" type="submit">Send message</button>
+    <button class="button" type="submit"><span class="btn-label">Send message</span><Icon name="arrow-right" /></button>
     <p class="small" style="margin:0">The form uses a serverless endpoint when configured. Until then, use email or LinkedIn. This disclosure is intentional — no fake success state.</p>
     <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
   </form>
@@ -37,7 +38,7 @@ const endpoint=import.meta.env.PUBLIC_CONTACT_FORM_ENDPOINT || '';
     const endpoint=form.dataset.endpoint||'';
     const button=form.querySelector<HTMLButtonElement>('button[type="submit"]');
     if(!endpoint){status!.textContent='The form endpoint is not configured. Please use the email link instead.';return;}
-    button!.disabled=true;button!.textContent='Sending…';
+    button!.disabled=true;const label=button!.querySelector('.btn-label');label!.textContent='Sending…';
     try{
       const response=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.fromEntries(data))});
       if(!response.ok) throw new Error('request failed');
@@ -45,7 +46,7 @@ const endpoint=import.meta.env.PUBLIC_CONTACT_FORM_ENDPOINT || '';
       form.reset();window.portfolioAnalytics?.track('contact_submit',{state:'success'});
     }
     catch{status!.textContent='The message could not be sent. Please use the email link instead.';window.portfolioAnalytics?.track('contact_error');}
-    finally{button!.disabled=false;button!.textContent='Send message';}
+    finally{button!.disabled=false;label!.textContent='Send message';}
   });
 </script>
 </BaseLayout>

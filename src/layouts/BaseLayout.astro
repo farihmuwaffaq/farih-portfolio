@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
-import { nav, site } from '../data/site';
+import { nav, site, social } from '../data/site';
+import Icon from '../components/Icon.astro';
 interface Props { title: string; description?: string; image?: string; type?: 'website'|'article'; jsonLd?: Record<string, unknown>|Record<string, unknown>[] }
 const { title, description = site.description, image = '/social/social-card.svg', type = 'website', jsonLd } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
@@ -45,6 +46,7 @@ const schemas = [
     </div>
     <div class="container footer-grid">
       <ul class="footer-links">{nav.map(([label,href]) => <li><a href={href}>{label}</a></li>)}</ul>
+      <ul class="footer-links footer-social" aria-label="Social links">{social.map(([label,href,icon]) => <li><a href={href} target="_blank" rel="noopener noreferrer" data-event={`footer_${label.toLowerCase()}`}><Icon name={icon} size="1.15em" /><span>{label}</span></a></li>)}</ul>
       <p class="footer-meta"><span>{site.location}</span><span>Data Analyst</span><span>© {new Date().getFullYear()} {site.name}</span></p>
     </div>
   </footer>
