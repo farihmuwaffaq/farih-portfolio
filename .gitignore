@@ -43,3 +43,4 @@ secrets.*
 .vscode/
 .idea/
 Thumbs.db
+AUDIT.md
