@@ -12,8 +12,8 @@ categories: [Analytics & Automation, Business Intelligence]
 featured: true
 confidential: true
 confidentialityNote: Brand names are shown with permission, but all operating figures, stakeholder identities, competitor handles, internal file names, and campaign specifics are withheld. Code samples are generic templates with placeholders; diagrams and tables use illustrative data.
-coverImage: /images/projects/analytics-automation.svg
-coverAlt: Abstract flow from data sources through processing to dashboards and decision signals
+coverImage: /images/projects/maleo-dashboard-silverqueen.png
+coverAlt: Campaign monitoring dashboard for a SilverQueen campaign, recreated with synthetic data, showing actual-vs-KPI gauges, a track score, and best-performing content
 outcomes: [Reduced repetitive manual reporting across brands, Improved consistency of recurring monthly and campaign outputs, Created timely daily signals for performance discussions]
 relatedAssets:
   - { label: Sanitized architecture diagram, type: image, href: /images/projects/analytics-automation.svg, available: true, note: Abstract representation only }
@@ -52,6 +52,12 @@ The system moved data from source to decision signal through a maintained proces
 3. **Python scrapers.** Notebook templates handled KOL and campaign pulls that the warehouse did not cover, with logging so errors could be traced.
 4. **BI layer.** Dashboards and recurring outputs consumed the cleaned tables.
 5. **Decision signals.** A chatbot delivered daily performance nudges to internal teams.
+
+The BI layer surfaced campaign performance against KPIs as **actual-vs-KPI gauges, a track score, phase and channel distribution, and best-performing content** — the primary way marketing stakeholders consumed the pipeline's output, replacing a manual slide-deck compile each week. The examples below are recreated with synthetic data.
+
+![Campaign monitoring dashboard for a SilverQueen campaign, recreated with synthetic data, showing actual-vs-KPI gauges for reach and impressions, a track score, and best-performing content.](/images/projects/maleo-dashboard-silverqueen.png)
+
+![Campaign monitoring dashboard for a BlueBand campaign, recreated with synthetic data, showing Instagram organic performance gauges, a best-performing content table, and submission activity.](/images/projects/maleo-dashboard-blueband.png)
 
 ## Technical patterns
 
