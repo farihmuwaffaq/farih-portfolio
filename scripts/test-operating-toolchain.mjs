@@ -18,5 +18,6 @@ expected.forEach((tool) => assert.match(page, new RegExp(`['"]${tool.replace(/[.
 assert.match(css, /\.capability-tools/, 'toolchain needs visual treatment');
 assert.match(css, /\.capability-step\.is-active[\s\S]*\.capability-tools li/, 'tools need progress-driven reveal');
 assert.match(css, /prefers-reduced-motion:[\s\S]*\.capability-tools li/, 'reduced motion needs static tool state');
+assert.match(css, /\.capability-step > \.mono, \.capability-step h3, \.capability-step > p:not\(\.mono\), \.capability-tools \{ grid-column: 2; \}/, 'mobile tools and copy must stay in content column');
 
 console.log('Operating toolchain contract passed.');

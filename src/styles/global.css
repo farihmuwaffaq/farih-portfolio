@@ -714,9 +714,10 @@ p { max-width: 66ch; }
   .capability-map { grid-template-columns: 1fr; gap: 0; padding-left: 1rem; }
   .capability-line { display: block; top: 3rem; bottom: 3rem; left: 2.45rem; right: auto; width: 1px; height: auto; }
   .capability-line::after { inset: 0 auto 0 -1px; width: 3px; height: auto; transform: scaleY(var(--progress)); transform-origin: top; }
-  .capability-step { display: grid; grid-template-columns: 4rem 1fr; padding: 0 0 2.5rem; }
-  .capability-node { grid-row: 1 / span 3; margin: 0; }
-  .capability-step > .mono, .capability-step h3, .capability-step > p:last-child { grid-column: 2; }
+  .capability-step { display: grid; grid-template-columns: 4rem minmax(0,1fr); padding: 0 0 2.5rem; }
+  .capability-node { grid-row: 1 / span 4; margin: 0; }
+  .capability-step > .mono, .capability-step h3, .capability-step > p:not(.mono), .capability-tools { grid-column: 2; }
+  .capability-tools { max-width: 100%; margin-top: .9rem; }
   .capability-step h3 { margin: .4rem 0; }
   .focus-copy { display: block; }
   .focus-system { transform: none; }
