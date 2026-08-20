@@ -20,6 +20,7 @@ Sebelum mengubah apa pun:
 2. Baca `README.md`, `PRODUCT.md`, `DESIGN.md`, `CONTENT_GUIDE.md`, dan bagian Implementation Addendum pada PRD.
 3. Pertahankan perubahan user atau agent lain yang tidak terkait. Jangan revert dirty worktree tanpa instruksi eksplisit.
 4. Audit implementasi aktual sebelum menyimpulkan behavior dari dokumentasi.
+5. Anggap `AUDIT.md` sebagai snapshot historis 19 Agustus dan `docs/plans/2026-08-20-hero-system-boot.md` sebagai decision record, bukan backlog aktif.
 
 Kondisi production terverifikasi per 20 Agustus 2026:
 
@@ -27,6 +28,11 @@ Kondisi production terverifikasi per 20 Agustus 2026:
 - Sembilan validated Work Detail entries menggunakan Content Collections.
 - Canonical URL dan sitemap production sudah aktif.
 - LinkedIn, GitHub, portrait, verified resume PDF, project evidence, interface studies, dan social preview sudah terpasang.
+- Empat selected credential PDF tampil pada About dan sebagai compact list pada Resume.
+- Session-scoped identity intro memakai explicit Enter, no-script bypass, reduced-motion bypass, inert background, dan focus handoff.
+- Homepage memiliki one-shot Operating Layer boot sequence dan interactive Operating Model toolchain mapper.
+- Eligible internal links memakai route-aware SQL transition: 950 ms desktop dan 700 ms mobile.
+- Native-dialog `SQL_` query console mendukung shortcut `/`, bounded commands, dan build-time search atas sembilan case studies tanpa free-form SQL atau backend.
 - Mobile navigation adalah independent fixed fullscreen layer di luar floating navbar containing block.
 - About hero memakai tiga semantic headline lines pada desktop dan natural wrapping pada mobile.
 - About capability cards stack satu kolom di bawah 900px.
@@ -34,6 +40,7 @@ Kondisi production terverifikasi per 20 Agustus 2026:
 - Focused Interface Studies tetap compact dua kolom di bawah 768px.
 - Contact production menggunakan direct email dan social links; tidak ada form endpoint.
 - Analytics hanya memakai local event abstraction; tidak ada external tracker atau cookie.
+- Query transition dan console ikut mengirim local analytics events yang aman no-op tanpa provider.
 
 Kontrak penting:
 
@@ -43,22 +50,31 @@ Kontrak penting:
 - Jangan menyamakan semua responsive grids: text-heavy cards stack; visual interface gallery boleh tetap dua kolom.
 - Jangan mengubah claim, provenance, metric, confidentiality note, atau evidence tanpa mengikuti `CONTENT_GUIDE.md`.
 - Bedakan Professional Experience, Project-Based Internship, Technical Assessment, dan sample/training data.
+- Jangan intercept external, download, modified-click, same-page hash, current-page, `mailto:`, `tel:`, atau reduced-motion navigation dalam SQL transition.
+- Pertahankan native `<dialog>` semantics, semantic result links, Escape/backdrop close, dan focus restoration pada query console.
 
 Verification wajib sebelum menyatakan selesai:
 
-1. Jalankan `npm run check`.
-2. Jalankan `npm run build`.
-3. Jalankan `npm run audit:links`.
-4. Jalankan syntax check untuk client JS yang diubah.
-5. Periksa `git diff --check`.
-6. Untuk perubahan UI, browser-test sekitar 390px, 768px, dan 1440px.
-7. Untuk fixed overlay, ukur geometry aktual terhadap viewport dan cek focus, Escape, Tab loop, scroll lock, serta reduced motion.
-8. Deploy hanya jika diminta atau merupakan bagian eksplisit dari task; smoke-test production setelah deploy.
+1. Jalankan `npm run test:identity-intro`.
+2. Jalankan `npm run test:hero-boot`.
+3. Jalankan `npm run test:operating-toolchain`.
+4. Jalankan `npm run test:selected-credentials`.
+5. Jalankan `npm run test:v1-launch`.
+6. Jalankan `npm run test:query-interface`.
+7. Jalankan `npm run check`.
+8. Jalankan `npm run build`.
+9. Jalankan `npm run audit:links`.
+10. Jalankan `npm audit` dan syntax check untuk client JS yang diubah.
+11. Periksa `git diff --check`.
+12. Untuk perubahan UI, browser-test sekitar 390px, 768px, dan 1440px.
+13. Untuk fixed overlay atau dialog, ukur geometry aktual terhadap viewport dan cek focus, Escape, Tab loop, scroll lock, native link exclusions, serta reduced motion.
+14. Deploy hanya jika diminta atau merupakan bagian eksplisit dari task; smoke-test production setelah deploy.
 
 Konfigurasi eksternal yang masih optional:
 
 - External analytics provider
 - Custom domain
+- Physical-device, screen-reader, dan Lighthouse audit baru; `AUDIT.md` lama bukan skor production terkini
 
 Jangan commit atau publikasikan `.env`, secrets, credentials, raw source materials, spreadsheet operasional, customer/SKU/account identifiers, private URLs, atau data rahasia. Audit keamanan setiap aset sebelum publikasi.
 ```

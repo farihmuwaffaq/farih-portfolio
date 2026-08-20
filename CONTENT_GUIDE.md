@@ -1,6 +1,13 @@
 # Content validation and publishing guide
 
-The six case studies are Astro Content Collection entries in `src/content/work`. Their frontmatter is validated by `src/content.config.ts`.
+The nine case studies are Astro Content Collection entries in `src/content/work`. Their frontmatter is validated by `src/content.config.ts`.
+
+Current evidence mix:
+
+- Six Professional Experience case studies.
+- Two Project-Based Internship case studies.
+- One Technical Assessment case study.
+- Six additional lab studies appear as a separate Work gallery. They are interface or pipeline studies, not standalone case studies; sample/training status is stated per item.
 
 ## Before publishing a change
 
@@ -11,7 +18,18 @@ The six case studies are Astro Content Collection entries in `src/content/work`.
 5. For `relatedAssets`, use `available: false` without an `href` until a real local asset or confirmed public URL exists. Never use `#` or invented links.
 6. Mark sample/training data explicitly. Distinguish assessments and internships from production deployments.
 7. Revalidate changing methodologies, regulations, and external facts before publication.
-8. Run `npm run check` and `npm run build`.
+8. Keep `slug`, title, summary, and categories suitable for build-time query-console search. The console indexes these fields directly and executes no free-form SQL.
+9. Credential evidence belongs in `public/credentials/` and `src/data/credentials.ts`; publish only approved, redacted PDFs.
+10. Run the applicable interaction contracts, then `npm run check`, `npm run build`, and `npm run audit:links`.
+
+## Verification matrix
+
+- `npm run test:v1-launch` checks page count, structured content, contact fallback, SEO, and launch assets.
+- `npm run test:identity-intro` checks shared entry behavior.
+- `npm run test:hero-boot` and `npm run test:operating-toolchain` check homepage interaction contracts.
+- `npm run test:selected-credentials` checks credential content and local PDF evidence.
+- `npm run test:query-interface` checks navigation exclusions, project indexing, console behavior, accessibility hooks, and transition timing.
+- `npm run check`, `npm run build`, and `npm run audit:links` remain mandatory release gates.
 
 ## Known claims intentionally withheld
 

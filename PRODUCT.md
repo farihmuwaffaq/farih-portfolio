@@ -4,6 +4,8 @@
 
 Personal static portfolio that persuades recruiters and hiring managers in data analytics to connect with Farih Muwaffaq. It presents nine validated case studies with explicit evidence and provenance boundaries while protecting confidential client information, commercial metrics, credentials, and operational data. The site demonstrates analytical competence, trustworthy craft, and professional credibility without revealing sensitive business artifacts.
 
+Current production surface contains 15 generated pages: five primary routes, nine case-study detail pages, and one custom 404 page. Supporting evidence includes four selected credential PDFs, a downloadable resume, and sanitized repository links where public artifacts are available.
+
 ## Positioning
 
 Portfolio of a Jakarta-based data analyst building analytics systems, automated reporting, dashboards, and commercial insights across FMCG, healthcare, and marketing. The work is real, validated, and sanitized. No client secrets, no fabricated metrics, no speculative claims—only measurable value with disciplined boundaries.
@@ -23,6 +25,7 @@ Primary CTA: send email directly or connect through LinkedIn/GitHub. Secondary C
 - Download Resume: visitor obtains verified PDF
 - Contact Form Submit: not part of current production behavior
 - Email Link Click: direct mailto action
+- Exploratory signals: SQL transition starts, query console opens, bounded command submissions, and result clicks
 
 ## Evidence on hand
 
@@ -55,14 +58,20 @@ Tone: analytical, calm, modern, credible, editorial, spacious, professional. Avo
 ## Technical and operational truth
 
 - Internal page navigation frames the portfolio as queryable evidence through a brief route-aware SQL transition. It replaces generic page transition motion rather than stacking another animation layer.
-- The optional `SQL_` query console supports bounded route and project discovery commands. Native navigation remains primary, results remain native links, and reduced-motion users bypass transition animation.
+- Eligible internal links use a `950 ms` desktop or `700 ms` mobile sequence. Query text appears promptly, the result state receives a readable beat, then full-document Astro navigation proceeds.
+- The optional `SQL_` query console supports bounded route and project discovery commands plus local matching against the build-time case-study index. It does not execute arbitrary SQL, call a search backend, or replace primary navigation.
+- Query console results remain native links. External, download, modified-click, same-page hash, current-page, `mailto:`, and `tel:` behavior remains native; reduced-motion users bypass transition animation.
+- `/` opens the console only outside editable controls and after the identity intro has cleared. Native dialog behavior provides focus containment, `Escape` close, backdrop close, and focus restoration.
+- The first session visit presents an explicit identity-intro gate. It does not block no-script users and does not replay during the same tab session.
+- The homepage operating layer uses a one-shot boot sequence to clarify analytical hierarchy; it never represents live production data.
+- The About page exposes four selected credentials as approved local PDF evidence.
 
 - Platform: Astro static site with TypeScript and Content Collections (Markdown case studies)
 - Production domain: `https://farih-portfolio.vercel.app`
 - Sitemap: `https://farih-portfolio.vercel.app/sitemap-index.xml`
 - Robots.txt: configured for crawler access; no tracking cookies enabled
 - Analytics: local event abstraction emitting `portfolio:analytics`; no external trackers required
-- Quality gates: `npm run check`, `build`, `audit:links`, `npm audit` must pass before deploy
+- Quality gates: all six `test:*` source contracts, `npm run check`, `npm run build`, `npm run audit:links`, and `npm audit` must pass before deploy
 
 ## Configuration boundaries
 

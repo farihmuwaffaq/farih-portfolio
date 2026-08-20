@@ -29,6 +29,8 @@ Soft Structuralism with asymmetric editorial composition. Evidence remains prima
 - Mobile overlay contract: `position: fixed`, `inset: 0`, `width: 100%`, `height: 100dvh`, solid off-white background, and viewport-level stacking.
 - Never place mobile overlay inside an ancestor with constrained width, border radius, clipping, `transform`, or `backdrop-filter`; those properties can create an incorrect containing block.
 - Open state includes its own logo, Close control, numbered primary links, conversation CTA, and social links.
+- `SQL_` trigger sits inside desktop navigation and mobile menu. The query console uses native `<dialog>`, one search field, bounded results, keyboard dismissal, backdrop dismissal, and focus restoration.
+- Slash shortcut ignores input, textarea, select, and contenteditable targets. Mobile console close restores focus to the visible menu toggle rather than a hidden menu trigger.
 - Body scrolling locks while open. Escape closes it, focus enters the layer, Tab remains contained, and hidden controls leave tab order.
 - Navigation and Close touch targets remain at least 44px.
 
@@ -53,7 +55,12 @@ Soft Structuralism with asymmetric editorial composition. Evidence remains prima
 - Post-sequence chart hover may brighten line and peak on fine pointers. No cursor-follow glow, fake tooltip data, card tilt, or live-data simulation.
 - Operating Model embeds tool context inside `Ingest / Govern / Model / Decide`, rather than using a standalone logo marquee. Tool labels remain monochrome system evidence, reveal with stage progress, and clarify on stage hover or focus.
 - Credentials remain supporting evidence: exactly four curated applied programs appear as editorial cards on About and a compact list on Resume. Certificate artwork stays behind explicit PDF links; Home has no credential showcase, while Excel and WebHozz remain additional training outside featured content.
+- SQL-inspired interaction uses a dark graphite plane, emerald execution signals, mono query text, and line-number rhythm. It reads as an editorial data-system metaphor, not an imitation IDE.
+- Eligible internal links receive a fullscreen SQL exit transition. Desktop duration is `950 ms`; mobile duration is `700 ms`. Query appears at `120/100 ms`, result state appears at `560/400 ms`, and navigation follows after a readable final beat.
+- Transition is a single centered frame on desktop and a full-viewport plane on mobile. It contains route label, route-specific query, execution status, result count, and destination hint; no tabs, minimap, fake shell controls, or decorative terminal clutter.
+- Query results use numbered semantic anchors with title, metadata, and directional affordance. They enter the same route-transition path as ordinary eligible internal links.
 - Menu feedback begins within 250-350ms; no long reveal delays block navigation.
 - No continuous scroll listeners or layout-property animation.
 - Reduced-motion users receive static final states.
+- Reduced-motion users bypass the SQL route transition entirely; query cursor animation is disabled.
 - Backdrop blur is restricted to floating navigation and modal layers, never the fullscreen mobile-menu containing hierarchy.
