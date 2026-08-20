@@ -34,7 +34,7 @@ Kondisi production terverifikasi per 20 Agustus 2026:
 - Eligible internal links memakai route-aware SQL transition: 950 ms desktop dan 700 ms mobile.
 - Native-dialog `SQL_` query console mendukung shortcut `/`, bounded commands, build-time search, `EXPLAIN <project>`, dan maksimal lima tab-scoped query history entries tanpa free-form SQL atau backend.
 - Semua Work Detail memiliki governed evidence status, assumptions/constraints, dan decision log; project domain-kompleks dapat memiliki metric dictionary.
-- Maleo Work Detail menampilkan delapan approved Google Slides dari 30+ client decks/reports melalui satu lazy-loaded native dialog; iframe tidak memiliki `src` sebelum klik dan selalu memiliki direct-link fallback.
+- Maleo Work Detail menampilkan delapan approved Google Slides dari 30+ client decks/reports sebagai local first-slide thumbnail cards; seluruh card membuka satu lazy-loaded native dialog, iframe tidak memiliki `src` sebelum klik, dan direct source links tidak diekspos.
 - Mobile navigation adalah independent fixed fullscreen layer di luar floating navbar containing block.
 - About hero memakai tiga semantic headline lines pada desktop dan natural wrapping pada mobile.
 - About capability cards stack satu kolom di bawah 900px.

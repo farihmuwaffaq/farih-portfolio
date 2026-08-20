@@ -64,7 +64,7 @@ npm run audit:links
 - Project filtering, lightbox behavior, motion, and navigation use lightweight client JavaScript.
 - Internal navigation uses a route-aware SQL query exit transition; native external, download, modified-click, same-page hash, and reduced-motion behavior remains untouched.
 - The optional `SQL_` console indexes validated case-study content at build time and exposes bounded commands without a backend or free-form SQL execution.
-- The Maleo case study includes eight approved representative Google Slides from 30+ client-facing decks and reports. One native dialog keeps the iframe inert until click and preserves direct-link fallbacks.
+- The Maleo case study includes eight approved representative Google Slides from 30+ client-facing decks and reports. Optimized local cover thumbnails make the work scannable, while one native dialog keeps Google iframe content inert until click and exposes no direct source links.
 - Query console commands include `help`, `work`, `projects`, `experience`, `skills`, `about`, `resume`, `contact`, `email`, and `linkedin`; unmatched text searches project title, slug, summary, and categories.
 - Analytics hooks cover contact actions, project navigation, filters, evidence views, query transition starts, console opens, console submits, and console result clicks. They safely no-op when no analytics provider is configured.
 - Analytics uses `window.portfolioAnalytics.track` and emits local `portfolio:analytics` events. GA4 loads only when `PUBLIC_GA_MEASUREMENT_ID` is configured; without it, no external analytics request is made.

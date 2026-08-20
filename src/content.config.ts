@@ -40,6 +40,8 @@ const work = defineCollection({
         year: z.string().regex(/^20\d{2}$/),
         documentId: z.string().regex(/^[\w-]+$/),
         href: z.string().regex(/^https:\/\/docs\.google\.com\/presentation\/d\/[\w-]+\/edit\?usp=sharing$/),
+        thumbnail: z.string().regex(/^\/images\/projects\/maleo\/decks\/[\w-]+\.webp$/),
+        thumbnailAlt: z.string().trim().min(1),
       }).superRefine((deck, ctx) => {
         const hrefDocumentId = deck.href.match(/\/presentation\/d\/([\w-]+)\//)?.[1];
         if (hrefDocumentId !== deck.documentId) ctx.addIssue({ code: 'custom', path: ['href'], message: 'Google Slides href must match documentId' });

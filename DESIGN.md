@@ -42,7 +42,7 @@ Soft Structuralism with asymmetric editorial composition. Evidence remains prima
 - Text-heavy capability cards stack to one column below 900px.
 - Work Detail evidence stacks to one column below 900px; technical summaries use two columns on tablet and one on mobile.
 - Work Detail credibility frame pairs dark assumptions/constraints with an editorial decision log, then collapses to one column below 900px. Evidence status stays adjacent to project metadata; optional metric dictionaries use native `<details>`.
-- Approved client decks use a numbered editorial ledger rather than eager thumbnail embeds. A single native preview dialog loads Google content only after click, preserves a direct-link fallback, restores trigger focus, and becomes a near-full-viewport surface on mobile.
+- Approved client decks use a two-column editorial gallery of optimized local first-slide thumbnails. Each full card opens one native preview dialog; Google content loads only after click, source links stay hidden, trigger focus is restored, and the dialog becomes a near-full-viewport surface on mobile.
 - Focused Interface Studies remain a compact two-column gallery below 768px because they support visual browsing rather than long-form reading.
 - Work Detail section rhythm tightens below 768px without reducing body readability.
 - Gutters become 16px below 768px. Overlaps and decorative rotations disappear. Primary CTAs may become full width where scanning benefits.
