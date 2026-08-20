@@ -11,11 +11,12 @@ tools: [SQL, Excel, Looker Studio]
 categories: [Business Intelligence, Analytics & Automation]
 featured: false
 confidential: false
-coverImage: /images/projects/retail-sales-datamart.svg
-coverAlt: Abstract retail sales datamart with base and aggregate tables feeding a dashboard
+coverImage: /images/projects/retail-sales/kimia-farma-dashboard.jpg
+coverAlt: Kimia Farma sales dashboard showing invoice, sales, product and customer reporting
 outcomes: [Defined a composite sales key, Designed base and aggregate table structures, Produced sales performance dashboard outputs]
 relatedAssets:
-  - { label: Abstract datamart diagram, type: image, href: /images/projects/retail-sales-datamart.svg, available: true }
+  - { label: Kimia Farma sales dashboard, type: image, href: /images/projects/retail-sales/kimia-farma-dashboard.jpg, available: true }
+  - { label: Sales datamart design, type: image, href: /images/projects/retail-sales/datamart-design.png, available: true }
 ---
 ## Snapshot
 

@@ -31,6 +31,11 @@ PRD_*.md
 !public/images/projects/lifepack/
 !public/images/projects/lifepack/*.jpg
 
+# Explicitly published portfolio screenshots
+!public/images/lab/*.jpg
+!public/images/projects/retail-sales/
+!public/images/projects/retail-sales/*.jpg
+
 # Public resume download (explicitly published)
 !public/Farih-Muwaffaq-Resume.pdf
 

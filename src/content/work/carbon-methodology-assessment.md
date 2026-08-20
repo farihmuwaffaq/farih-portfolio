@@ -11,11 +11,13 @@ tools: [Methodology review, Scenario modeling, Implementation planning]
 categories: [Sustainability]
 featured: false
 confidential: false
-coverImage: /images/projects/carbon-methodology-assessment.svg
-coverAlt: Abstract forest carbon methodology and implementation pathway
+coverImage: /images/projects/carbon-methodology/vm0010-plan.png
+coverAlt: VM0010 forest carbon methodology recommendation and implementation pathway
 outcomes: [Compared methodology options, Outlined baseline and monitoring needs, Created an implementation and certification pathway]
 relatedAssets:
-  - { label: Original assessment, type: document, available: false, note: Not supplied as a publication-ready asset; methodology requires current revalidation. }
+  - { label: IFM and APD methodology comparison, type: image, href: /images/projects/carbon-methodology/methodology-comparison.png, available: true }
+  - { label: VM0010 methodology and concession plan, type: image, href: /images/projects/carbon-methodology/vm0010-plan.png, available: true }
+  - { label: VM0010 implementation timeline, type: image, href: /images/projects/carbon-methodology/implementation-timeline.png, available: true }
 ---
 ## Snapshot
 

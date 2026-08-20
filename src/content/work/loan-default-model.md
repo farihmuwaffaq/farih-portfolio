@@ -11,10 +11,12 @@ tools: [Python, Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn, Jupyter Notebo
 categories: [Machine Learning]
 featured: true
 confidential: false
-coverImage: /images/projects/loan-default-model.svg
-coverAlt: Abstract model evaluation chart for a loan default training project
+coverImage: /images/projects/loan-default/model-results.png
+coverAlt: Loan default model results showing ROC and Kolmogorov-Smirnov evaluation charts
 outcomes: [Random Forest AUC of 0.857 on the project dataset, KS statistic of 0.5675 in the project report, Compared three model families]
 relatedAssets:
+  - { label: Random Forest model results, type: image, href: /images/projects/loan-default/model-results.png, available: true }
+  - { label: Model training and evaluation workflow, type: image, href: /images/projects/loan-default/model-evaluation.png, available: true }
   - { label: Repository, type: repository, available: false, note: No verified public repository URL was supplied. }
 ---
 ## Snapshot
