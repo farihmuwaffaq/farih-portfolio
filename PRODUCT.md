@@ -2,7 +2,7 @@
 
 ## Product definition
 
-Personal static portfolio that persuades recruiters and hiring managers in data analytics to connect with Farih Muwaffaq. It presents six validated case studies while protecting confidential client information, commercial metrics, credentials, and operational data. The site demonstrates analytical competence, trustworthy craft, and professional credibility without revealing sensitive business artifacts.
+Personal static portfolio that persuades recruiters and hiring managers in data analytics to connect with Farih Muwaffaq. It presents nine validated case studies with explicit evidence and provenance boundaries while protecting confidential client information, commercial metrics, credentials, and operational data. The site demonstrates analytical competence, trustworthy craft, and professional credibility without revealing sensitive business artifacts.
 
 ## Positioning
 
@@ -17,19 +17,19 @@ Portfolio of a Jakarta-based data analyst building analytics systems, automated 
 
 ## Goals and conversions (KPIs)
 
-Primary CTA: send email through contact form or reach via LinkedIn/GitHub. Secondary CTAs: navigate to case studies for depth; download final CV PDF; explore capabilities overview.
+Primary CTA: send email directly or connect through LinkedIn/GitHub. Secondary CTAs: navigate to case studies for depth, download the verified CV PDF, and explore the capabilities overview. Production intentionally uses direct contact; adding a provider-backed form requires a separate product and implementation decision.
 
 - Click → Case Study: visitor moves to evidence pages
 - Download Resume: visitor obtains verified PDF
-- Contact Form Submit: request sent to provider endpoint
+- Contact Form Submit: not part of current production behavior
 - Email Link Click: direct mailto action
 
 ## Evidence on hand
 
-Six Astro Content Collection case studies (validated Markdown): Analytics and Reporting Automation, Health-Tech Data Infrastructure and Dashboards, Loan Default Prediction, and three additional aligned with PRD. Each includes Snapshot, situation/problem, responsibility, approach, solution, outcome, learnings, and related assets (sanitized).
+Nine Astro Content Collection case studies (validated Markdown): Analytics and Reporting Automation, NEXUS BI Platform, Shopee Pricing Tracker, Health-Tech Data Infrastructure, Delivery Margin Analysis, FMCG Operations Analytics, Loan Default Model, Retail Sales Datamart, and Carbon Methodology Assessment. Each includes a snapshot, situation/problem, responsibility, approach, solution, outcome, learnings, and sanitized related assets where approved.
 
 **Evidence rules (from CONTENT_GUIDE.md):**
-- `evidenceType` stays accurate: Professional Experience, Project-Based Internship, or Technical Assessment.
+- `evidenceType` stays accurate: Professional Experience, Project-Based Internship, or Technical Assessment. Sample/training-data context belongs in provenance copy rather than a new evidence-type label.
 - Metrics only when definition, period, source, baseline, attribution, and public-use approval are known.
 - Keep client/operating data, screenshots, queries, names, and credentials out unless sanitized and approved.
 - `confidential: true` + specific `confidentialityNote` for restricted work.
@@ -61,12 +61,12 @@ Tone: analytical, calm, modern, credible, editorial, spacious, professional. Avo
 - Analytics: local event abstraction emitting `portfolio:analytics`; no external trackers required
 - Quality gates: `npm run check`, `build`, `audit:links`, `npm audit` must pass before deploy
 
-## Placeholder boundaries
+## Configuration boundaries
 
-- **Professional:** LinkedIn URL, GitHub URL, professional headshot
-- **Asset:** PDF resume (verified), sanitized project visuals, social preview PNG (1200×630)
-- **Configuration:** contact form endpoint, analytics provider if used, custom domain if adopted
+- **Configured:** LinkedIn URL, GitHub URL, professional headshot, verified PDF resume, sanitized project visuals, and social preview.
+- **Optional:** external analytics provider and custom domain. A contact form requires a new explicit decision.
+- **Prohibited:** secrets, raw operational data, customer/SKU/account identifiers, private URLs, unsupported metrics, and unsanitized source materials.
 
 ## Next steps
 
-After this product context is written, proceed to shape new surfaces or refine existing ones under the incumbent visual system, preserving identity outside scope. Redesign replaces old appearance but keeps product truth, content, function, native affordances, and constraints.
+Refine existing surfaces under `DESIGN.md`, preserving product truth, evidence provenance, native affordances, and confidentiality constraints. Validate responsive behavior in a real browser before deployment; source-level CSS assertions alone are insufficient for fixed overlays and visual hierarchy.

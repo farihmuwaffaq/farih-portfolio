@@ -1,29 +1,52 @@
 # Portfolio Design System
 
-Soft Structuralism with asymmetric editorial composition. Evidence remains primary; depth, motion, and hardware-like framing support legibility rather than decorate it.
+Soft Structuralism with asymmetric editorial composition. Evidence remains primary; depth, motion, and hardware-like framing support legibility rather than decoration.
 
 ## Principles
 
 - Silver-white canvas, graphite ink, emerald signal.
 - Geist Variable and Geist Mono, self-hosted through build dependencies.
-- Massive restrained typography with short line lengths.
+- Massive restrained typography with deliberate line lengths and semantic wrapping.
 - Double-bezel framing for evidence, project cards, forms, and key metric surfaces.
-- Asymmetric bento compositions on desktop; clean single-column flow below 768px.
-- Floating island navigation, detached from viewport edges.
+- Asymmetric compositions on desktop; responsive structure follows content type rather than shrinking desktop layouts.
+- Floating island navigation remains detached from viewport edges in closed state.
 - CTA pills use nested circular icon islands.
 - Confidentiality labels and evidence boundaries remain explicit.
+
+## Evidence
+
+- Dashboard and document screenshots use `width: 100%`, `height: auto`, and `object-fit: contain` when full content must remain visible.
+- Case-study evidence uses explicit `standard` and `featured` variants; layout must not depend on asset filename, position, or dimensions.
+- Evidence stacks to one full-width item below 900px. Captions remain attached and readable.
+- Lightbox affordances supplement readable inline evidence; they do not excuse illegible thumbnails.
+- Code keeps readable typography and scrolls horizontally within its block on narrow screens.
+- Tables become cards or use local horizontal scrolling; page-level horizontal overflow is prohibited.
+
+## Navigation
+
+- Desktop uses compact floating island navigation.
+- Below 900px, navigation opens as an independent fixed fullscreen layer rendered outside the floating navbar.
+- Mobile overlay contract: `position: fixed`, `inset: 0`, `width: 100%`, `height: 100dvh`, solid off-white background, and viewport-level stacking.
+- Never place mobile overlay inside an ancestor with constrained width, border radius, clipping, `transform`, or `backdrop-filter`; those properties can create an incorrect containing block.
+- Open state includes its own logo, Close control, numbered primary links, conversation CTA, and social links.
+- Body scrolling locks while open. Escape closes it, focus enters the layer, Tab remains contained, and hidden controls leave tab order.
+- Navigation and Close touch targets remain at least 44px.
+
+## Responsive
+
+- Desktop compositions use 12-column asymmetry.
+- About hero uses three semantic headline lines on desktop with an approximately 57/43 text-to-portrait ratio. Mobile returns to natural wrapping and a shorter landscape portrait crop.
+- Text-heavy capability cards stack to one column below 900px.
+- Work Detail evidence stacks to one column below 900px; technical summaries use two columns on tablet and one on mobile.
+- Focused Interface Studies remain a compact two-column gallery below 768px because they support visual browsing rather than long-form reading.
+- Work Detail section rhythm tightens below 768px without reducing body readability.
+- Gutters become 16px below 768px. Overlaps and decorative rotations disappear. Primary CTAs may become full width where scanning benefits.
 
 ## Motion
 
 - Primary easing: `cubic-bezier(0.32, 0.72, 0, 1)`.
 - Entry motion uses IntersectionObserver, transform, opacity, and light blur.
+- Menu feedback begins within 250-350ms; no long reveal delays block navigation.
 - No continuous scroll listeners or layout-property animation.
 - Reduced-motion users receive static final states.
-- Backdrop blur is restricted to fixed navigation and modal layers.
-
-## Responsive
-
-- Desktop compositions use 12-column asymmetry.
-- Below 900px navigation becomes full-screen overlay.
-- Below 768px grids collapse to one column, overlaps and rotations disappear, gutter becomes 16px, and CTAs become full width.
-- Touch targets remain at least 44px.
+- Backdrop blur is restricted to floating navigation and modal layers, never the fullscreen mobile-menu containing hierarchy.

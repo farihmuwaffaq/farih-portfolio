@@ -1,6 +1,6 @@
 # Prompt untuk Melanjutkan Pengembangan
 
-Salin dan gunakan prompt berikut saat ingin melanjutkan pengembangan website portofolio Farih Muwaffaq.
+Gunakan prompt berikut saat melanjutkan pengembangan website portofolio Farih Muwaffaq.
 
 ```text
 Lanjutkan pengembangan website portofolio Farih Muwaffaq dari workspace dan repository yang sudah ada.
@@ -16,64 +16,49 @@ main
 
 Sebelum mengubah apa pun:
 
-1. Periksa workspace dan status Git.
-2. Jalankan:
-   - `git status`
-   - `git remote -v`
-   - `git log --oneline -10`
-3. Jika workspace belum memiliki repository, clone repository tersebut.
-4. Jika repository sudah tersedia dan working tree bersih, jalankan `git pull --ff-only`.
-5. Jangan menghapus atau menimpa perubahan lokal yang belum di-commit.
-6. Baca `README.md`, `CONTENT_GUIDE.md`, dan `PRD_Portfolio_Farih_Muwaffaq_EN.md` jika tersedia.
-7. Jangan commit atau push PRD, folder `asset/`, source materials, PDF mentah, spreadsheet, data operasional, credentials, atau informasi rahasia.
+1. Periksa `git status`, remote, dan commit terbaru. Gunakan `HEAD` sebagai kondisi terkini; jangan mengandalkan commit hash yang tersimpan dalam dokumentasi.
+2. Baca `README.md`, `PRODUCT.md`, `DESIGN.md`, `CONTENT_GUIDE.md`, dan bagian Implementation Addendum pada PRD.
+3. Pertahankan perubahan user atau agent lain yang tidak terkait. Jangan revert dirty worktree tanpa instruksi eksplisit.
+4. Audit implementasi aktual sebelum menyimpulkan behavior dari dokumentasi.
 
-Kondisi saat ini:
+Kondisi production terverifikasi per 20 Agustus 2026:
 
-- Website menggunakan Astro + TypeScript.
-- Static production build berjalan di Vercel.
-- Canonical production URL: `https://farih-portfolio.vercel.app`
-- Sitemap: `https://farih-portfolio.vercel.app/sitemap-index.xml`
-- Commit konfigurasi production terakhir: `02313fd Configure production site URL`
-- Check, build, dan internal-link audit terakhir berhasil.
-- PDF CV, LinkedIn URL, headshot, contact form provider, analytics provider, dan sebagian visual project masih placeholder.
+- Astro + TypeScript static site, 15 generated pages.
+- Sembilan validated Work Detail entries menggunakan Content Collections.
+- Canonical URL dan sitemap production sudah aktif.
+- LinkedIn, GitHub, portrait, verified resume PDF, project evidence, interface studies, dan social preview sudah terpasang.
+- Mobile navigation adalah independent fixed fullscreen layer di luar floating navbar containing block.
+- About hero memakai tiga semantic headline lines pada desktop dan natural wrapping pada mobile.
+- About capability cards stack satu kolom di bawah 900px.
+- Work Detail evidence stack full-width di bawah 900px; code/table scroll secara lokal pada narrow viewport.
+- Focused Interface Studies tetap compact dua kolom di bawah 768px.
+- Contact production menggunakan direct email dan social links; tidak ada form endpoint.
+- Analytics hanya memakai local event abstraction; tidak ada external tracker atau cookie.
 
-Fokus sesi berikutnya:
+Kontrak penting:
 
-1. Audit website production pada viewport mobile sekitar 390 px, tablet sekitar 768 px, dan desktop sekitar 1440 px.
-2. Periksa dan langsung perbaiki responsive layout, horizontal overflow, mobile navigation, keyboard navigation, focus management, project filters, accessible lightbox, contact form states, metadata, structured data, broken links, missing assets, dan visual consistency.
-3. Jika browser automation atau screenshot testing tersedia, ambil screenshot Home, Work, satu case study, About, Resume, dan Contact pada ketiga breakpoint; lalu implementasikan perbaikannya.
-4. Jalankan Lighthouse atau audit ekuivalen untuk Home, Work, satu case study, dan Contact. Target semua kategori minimal 90.
-5. Audit social preview. Jika memungkinkan, ganti SVG Open Graph placeholder dengan PNG lokal 1200 × 630.
-6. Jangan mengarang metrik atau business impact, mempublikasikan data operasional/customer/SKU/account/credentials/private URL, atau memakai logo tanpa izin.
-7. Pertahankan perbedaan Professional Experience, Project-Based Internship, Technical Assessment, dan sample/training data. Jangan menggambarkan assessment atau training project sebagai production deployment.
-8. Jika PDF CV final belum tersedia, pertahankan tombol download non-broken. Jangan mengambil PDF mentah dari folder `asset/` tanpa audit dan persetujuan.
-9. Jalankan:
-   - `npm run check`
-   - `npm run build`
-   - `npm run audit:links`
-   - `npm audit`
-   - lint/test lain jika tersedia
-10. Sebelum commit, periksa `git status`, diff, dan file yang di-stage. Pastikan tidak ada file rahasia atau aset mentah.
-11. Jika semua verifikasi berhasil, commit perubahan dan push ke branch `main`. Verifikasi deployment Vercel terbaru, homepage, robots.txt, dan sitemap production.
+- Jangan letakkan mobile menu di dalam `.nav`, `.nav-shell`, atau ancestor dengan constrained width, border radius, clipping, transform, atau `backdrop-filter`.
+- Mobile menu harus `position: fixed`, `inset: 0`, `width: 100%`, `height: 100dvh`, solid background, dan viewport-level z-index.
+- Jangan shrink screenshot, code, atau table sampai tidak terbaca. Gunakan full-width evidence dan local overflow.
+- Jangan menyamakan semua responsive grids: text-heavy cards stack; visual interface gallery boleh tetap dua kolom.
+- Jangan mengubah claim, provenance, metric, confidentiality note, atau evidence tanpa mengikuti `CONTENT_GUIDE.md`.
+- Bedakan Professional Experience, Project-Based Internship, Technical Assessment, dan sample/training data.
 
-Jangan berhenti setelah membuat rencana. Audit dan implementasikan langsung semua perbaikan yang aman. Tanyakan hanya jika ada keputusan yang benar-benar menghalangi.
+Verification wajib sebelum menyatakan selesai:
 
-Di akhir, laporkan secara ringkas perubahan, file utama, hasil check/build/audit/Lighthouse, commit dan push, status deployment, placeholder tersisa, informasi yang perlu dikonfirmasi, dan rekomendasi berikutnya.
-```
+1. Jalankan `npm run check`.
+2. Jalankan `npm run build`.
+3. Jalankan `npm run audit:links`.
+4. Jalankan syntax check untuk client JS yang diubah.
+5. Periksa `git diff --check`.
+6. Untuk perubahan UI, browser-test sekitar 390px, 768px, dan 1440px.
+7. Untuk fixed overlay, ukur geometry aktual terhadap viewport dan cek focus, Escape, Tab loop, scroll lock, serta reduced motion.
+8. Deploy hanya jika diminta atau merupakan bagian eksplisit dari task; smoke-test production setelah deploy.
 
-## Informasi tambahan yang dapat ditambahkan
+Konfigurasi eksternal yang masih optional:
 
-```text
-Informasi/aset yang sudah dikonfirmasi:
+- External analytics provider
+- Custom domain
 
-- LinkedIn: https://www.linkedin.com/in/farihmuwaffaq/
-- GitHub: [https://github.com/farihmuwaffaq](https://github.com/farihmuwaffaq)
-- CV final: https://drive.google.com/file/d/1ZqhduYkG0Yln5cJ_oS0ClrGdx0FnAfMI/view?usp=sharing
-- Bulan/tahun CV: July 2026
-- Headshot: [path file]
-- Contact form provider: [provider/endpoint]
-- Custom domain: [domain]
-- Sanitized project visuals: [path folder]
-
-Audit keamanan setiap aset sebelum dipublikasikan.
+Jangan commit atau publikasikan `.env`, secrets, credentials, raw source materials, spreadsheet operasional, customer/SKU/account identifiers, private URLs, atau data rahasia. Audit keamanan setiap aset sebelum publikasi.
 ```

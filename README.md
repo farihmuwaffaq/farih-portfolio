@@ -1,18 +1,22 @@
 # Farih Muwaffaq portfolio
 
-Static Astro + TypeScript portfolio. The original `PRD_Portfolio_Farih_Muwaffaq_EN.md` remains the content source and is not modified.
+Static Astro + TypeScript portfolio for a Jakarta-based Data Analyst. Production: https://farih-portfolio.vercel.app.
+
+`PRD_Portfolio_Farih_Muwaffaq_EN.md` preserves the original product brief and includes a dated implementation addendum. Current implementation contracts live in `PRODUCT.md` and `DESIGN.md`; claim and confidentiality rules live in `CONTENT_GUIDE.md`.
 
 ## Architecture
 
-- `src/content/work/` — six validated Markdown case studies.
-- `src/content.config.ts` — collection schema including safe structured `relatedAssets`.
-- `src/layouts/` — global SEO shell and case-study layout.
-- `src/components/` — reusable cards, filter grid, and accessible lightbox.
-- `src/pages/` — Home, Work, six generated work routes, About, Resume, Contact, and 404.
-- `src/styles/global.css` — global design tokens and responsive styles; component behavior remains lightweight.
-- `public/` — local abstract SVGs, favicon, manifest, robots, and a 1200×630 social card.
+- `src/content/work/` - nine validated Markdown case studies spanning professional experience, technical assessments, project-based work, and sample/training data.
+- `src/content.config.ts` - collection schema, evidence provenance, and structured related assets.
+- `src/layouts/` - global SEO shell, generated case-study layout, and evidence presentation variants.
+- `src/components/` - reusable project grids, evidence surfaces, icons, and accessible lightbox.
+- `src/pages/` - Home, Work, nine generated Work Detail routes, About, Resume, Contact, and 404; 15 static pages total.
+- `src/styles/global.css` - design tokens, component styling, and content-specific responsive behavior.
+- `public/js/animations.js` - progressive navigation, reveal, lightbox, filter, and interaction behavior.
+- `public/images/` - approved portrait, project evidence, interface studies, and generated visual assets.
+- `public/Farih-Muwaffaq-Resume.pdf` - verified downloadable resume.
 
-## Setup
+## Commands
 
 ```sh
 npm install
@@ -20,14 +24,23 @@ npm run dev
 npm run check
 npm run build
 npm run audit:links
+npm run preview
 ```
 
-Copy `.env.example` to `.env` only if connecting a privacy-respecting form endpoint. With no endpoint, the contact form clearly enters demo mode and directs visitors to email. The honeypot field provides basic spam deterrence; production protection should also be configured at the chosen service.
+Run `npm run check`, `npm run build`, and `npm run audit:links` before completion. Browser-test navigation and responsive changes at approximately 390px, 768px, and 1440px.
 
-Analytics uses a local event abstraction (`window.portfolioAnalytics.track`) and emits `portfolio:analytics` browser events. No external analytics service, cookies, or tracking requests are enabled.
+## Runtime behavior
 
-## Pre-launch configuration
+- Static output deploys to Vercel with sitemap and canonical metadata.
+- Mobile navigation is an independent fixed viewport layer, outside the floating navbar containing block.
+- Project filtering, lightbox behavior, motion, and navigation use lightweight client JavaScript.
+- Analytics uses `window.portfolioAnalytics.track` and emits local `portfolio:analytics` events. No external analytics service, cookies, or tracking requests are enabled.
+- Contact uses direct email and LinkedIn; no form endpoint is configured.
 
-Replace `https://example.com` in `astro.config.mjs` and `public/robots.txt` with the final domain. Add only confirmed social URLs and approved assets. A PDF resume download is deliberately disabled until a verified CV file is supplied.
+## External configuration
 
-See `CONTENT_GUIDE.md` for claim, asset, and confidentiality validation rules.
+- Canonical Vercel production URL, LinkedIn, GitHub, portrait, resume, and approved evidence assets are configured.
+- Custom domain and external analytics provider remain optional and are not configured. A contact form would require a new explicit product and implementation decision.
+- Never publish raw source assets, operational data, customer/SKU/account identifiers, credentials, private URLs, or unsupported impact claims.
+
+See `CONTENT_GUIDE.md` before changing project claims or evidence.
