@@ -17,8 +17,10 @@ coverAlt: Lifepack doctor registry dashboard showing aggregate qualification and
 outcomes: [Developed and maintained more than 10 dashboards and reports, Supported operational visibility, Identified and escalated data risks]
 relatedAssets:
   - { label: Doctor registry dashboard, type: image, href: /images/projects/lifepack/dashboard-doctor-registry.jpg, available: true }
+  - { label: Doctor registry data pipeline, type: image, href: /images/projects/lifepack/doctor-data-pipeline.svg, available: true }
   - { label: Pharmacy partner dashboard, type: image, href: /images/projects/lifepack/dashboard-pharmacy-partner.jpg, available: true }
   - { label: Delivery performance dashboard, type: image, href: /images/projects/lifepack/dashboard-delivery-performance.jpg, available: true }
+  - { label: Prescription recall workflow, type: image, href: /images/projects/lifepack/pharmacy-recall-workflow.svg, available: true }
 ---
 ## Snapshot
 
@@ -46,6 +48,14 @@ I supported integration and data quality, investigated risks, and translated ope
 ## Solution
 
 The work combined data integration, monitoring practices, and stakeholder-facing reporting across Metabase, Looker Studio, and BigQuery. Published visuals are cropped to remove row-level records and contact fields.
+
+### Doctor registry pipeline
+
+I structured a repeatable path from public doctor-registry extraction through validation and deduplication into BigQuery. The reporting layer exposed aggregate qualification and university distributions while keeping row-level registry records outside the public portfolio.
+
+### Prescription follow-up operations
+
+I also supported visibility over prescription recall queues. The workflow separated incoming prescriptions, waiting or hold states, assigned follow-up, and recorded resolution so operational teams could inspect pending work without relying on an undifferentiated row-level export.
 
 ## Outcome
 
