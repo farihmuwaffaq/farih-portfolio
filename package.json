@@ -12,6 +12,7 @@
     "test:identity-intro": "node scripts/test-identity-intro.mjs",
     "test:operating-toolchain": "node scripts/test-operating-toolchain.mjs",
     "test:selected-credentials": "node scripts/test-selected-credentials.mjs",
+    "test:v1-launch": "node scripts/test-v1-launch-contract.mjs",
     "preview": "astro preview"
   },
   "dependencies": {

@@ -2,7 +2,7 @@
 import Icon from './Icon.astro';
 const { id, src, alt, caption, index, variant = 'standard' } = Astro.props;
 ---
-<button class:list={['placeholder-button',index&&'evidence-card',index&&`evidence-${variant}`]} type="button" data-lightbox-open={id} aria-label={`Enlarge ${caption}`}><span class="evidence-visual"><img src={src} alt={alt} width="800" height="450" loading="lazy" /></span><strong>{index&&<span class="evidence-index">{String(index).padStart(2,'0')} / Evidence</span>}<span class="evidence-caption">{caption}</span><Icon name="zoom-in" /></strong></button>
+<button class:list={['placeholder-button',index&&'evidence-card',index&&`evidence-${variant}`]} type="button" data-lightbox-open={id} data-event="evidence_open" data-event-label={id} aria-label={`Enlarge ${caption}`}><span class="evidence-visual"><img src={src} alt={alt} width="800" height="450" loading="lazy" /></span><strong>{index&&<span class="evidence-index">{String(index).padStart(2,'0')} / Evidence</span>}<span class="evidence-caption">{caption}</span><Icon name="zoom-in" /></strong></button>
 <dialog class="lightbox" id={id} aria-label={caption}><button class="lightbox-close" type="button" aria-label="Close"><Icon name="x" /></button><div class="lightbox-inner"><figure><img src={src} alt={alt} /><figcaption>{caption}</figcaption></figure></div></dialog>
 <script>
   document.querySelectorAll<HTMLButtonElement>('[data-lightbox-open]').forEach(open=>open.addEventListener('click',()=>{const dialog=document.querySelector<HTMLDialogElement>(`#${open.dataset.lightboxOpen}`);if(dialog){dialog.dataset.trigger=open.dataset.lightboxOpen;dialog.showModal();}}));

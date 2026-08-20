@@ -34,13 +34,13 @@ Run `npm run check`, `npm run build`, and `npm run audit:links` before completio
 - Static output deploys to Vercel with sitemap and canonical metadata.
 - Mobile navigation is an independent fixed viewport layer, outside the floating navbar containing block.
 - Project filtering, lightbox behavior, motion, and navigation use lightweight client JavaScript.
-- Analytics uses `window.portfolioAnalytics.track` and emits local `portfolio:analytics` events. No external analytics service, cookies, or tracking requests are enabled.
+- Analytics uses `window.portfolioAnalytics.track` and emits local `portfolio:analytics` events. GA4 loads only when `PUBLIC_GA_MEASUREMENT_ID` is configured; without it, no external analytics request is made.
 - Contact uses direct email and LinkedIn; no form endpoint is configured.
 
 ## External configuration
 
 - Canonical Vercel production URL, LinkedIn, GitHub, portrait, resume, and approved evidence assets are configured.
-- Custom domain and external analytics provider remain optional and are not configured. A contact form would require a new explicit product and implementation decision.
+- Custom domain remains optional. To enable GA4, set `PUBLIC_GA_MEASUREMENT_ID` (for example, `G-XXXXXXXXXX`) in the deployment environment. A contact form would require a separate explicit product and implementation decision.
 - Never publish raw source assets, operational data, customer/SKU/account identifiers, credentials, private URLs, or unsupported impact claims.
 
 See `CONTENT_GUIDE.md` before changing project claims or evidence.

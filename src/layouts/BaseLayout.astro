@@ -6,6 +6,7 @@ import { nav, site, social } from '../data/site';
 import Icon from '../components/Icon.astro';
 interface Props { title: string; description?: string; image?: string; type?: 'website'|'article'; jsonLd?: Record<string, unknown>|Record<string, unknown>[]; animate?: boolean; footerVariant?: 'default'|'compact'|'resume' }
 const { title, description = site.description, image = '/social/social-card.svg', type = 'website', jsonLd, footerVariant = 'default' } = Astro.props;
+const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || '';
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const current = Astro.url.pathname;
 const schemas = [
@@ -29,6 +30,7 @@ const schemas = [
   <meta name="twitter:card" content="summary_large_image" />
   <title>{title}</title>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(schemas)} />
+  {gaMeasurementId && <script is:inline async src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`}></script>}
   <script is:inline>
     try {
       if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !sessionStorage.getItem('fm-intro-seen')) document.documentElement.classList.add('intro-pending');
@@ -68,17 +70,28 @@ const schemas = [
   <footer class:list={['site-footer',footerVariant==='compact'&&'footer-compact',footerVariant==='resume'&&'footer-resume']}>
     {footerVariant!=='compact' && <div class="container footer-cta">
       <div><p class="eyebrow">Direct line</p><p class="footer-prompt">Have a difficult data question?</p></div>
-      <a class="footer-email" href={`mailto:${site.email}`} data-event="footer_email">{site.email}<Icon name="arrow-up-right" /></a>
+      <a class="footer-email" href={`mailto:${site.email}`} data-event="email_click" data-event-label="footer">{site.email}<Icon name="arrow-up-right" /></a>
     </div>}
     <div class="container footer-grid">
       <ul class="footer-links">{nav.map(([label,href]) => <li><a href={href}>{label}</a></li>)}</ul>
-      <ul class="footer-links footer-social" aria-label="Social links">{social.map(([label,href,icon]) => <li><a href={href} target="_blank" rel="noopener noreferrer" data-event={`footer_${label.toLowerCase()}`}><Icon name={icon} size="1.15em" /><span>{label}</span></a></li>)}</ul>
+      <ul class="footer-links footer-social" aria-label="Social links">{social.map(([label,href,icon]) => <li><a href={href} target="_blank" rel="noopener noreferrer" data-event={label==='LinkedIn'?'linkedin_click':undefined} data-event-label="footer"><Icon name={icon} size="1.15em" /><span>{label}</span></a></li>)}</ul>
       <p class="footer-meta"><span>{site.location}</span><span>Data Analyst</span><span>© {new Date().getFullYear()} {site.name}</span></p>
     </div>
   </footer>
-  <script is:inline>
-    window.portfolioAnalytics = window.portfolioAnalytics || { track: function(name, detail) { window.dispatchEvent(new CustomEvent('portfolio:analytics', { detail: { name: name, ...(detail || {}) } })); } };
-    document.addEventListener('click', function(event) { var el = event.target.closest('[data-event]'); if (el) window.portfolioAnalytics.track(el.dataset.event, { label: el.dataset.eventLabel || el.textContent.trim() }); });
+  <script is:inline define:vars={{ gaMeasurementId }}>
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = window.gtag || function(){ window.dataLayer.push(arguments); };
+    if (gaMeasurementId) { window.gtag('js', new Date()); window.gtag('config', gaMeasurementId, { anonymize_ip: true }); }
+    window.portfolioAnalytics = window.portfolioAnalytics || { track: function(name, detail) { var payload = detail || {}; if (gaMeasurementId) window.gtag('event', name, payload); window.dispatchEvent(new CustomEvent('portfolio:analytics', { detail: { name: name, ...payload } })); } };
+    document.addEventListener('click', function(event) {
+      var el = event.target.closest('a,button'); if (!el) return;
+      var name = el.dataset.event;
+      if (!name && el.matches('a[href^="/work/"]')) name = 'project_card_click';
+      if (!name && el.matches('a[href$="Farih-Muwaffaq-Resume.pdf"]')) name = 'resume_download';
+      if (!name && el.matches('a[href^="mailto:"]')) name = 'email_click';
+      if (!name && el.matches('a[href*="linkedin.com"]')) name = 'linkedin_click';
+      if (name) window.portfolioAnalytics.track(name, { label: el.dataset.eventLabel || el.getAttribute('href') || el.textContent.trim() });
+    });
   </script>
   <script is:inline src="/js/animations.js" defer></script>
 </body>

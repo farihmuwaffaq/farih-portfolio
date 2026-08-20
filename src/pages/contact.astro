@@ -10,9 +10,9 @@ const endpoint=import.meta.env.PUBLIC_CONTACT_FORM_ENDPOINT || '';
     <h1 class="rise rise-1">Let's turn a data question into a useful system.</h1>
     <p class="lede rise rise-2">I am open to conversations about analytics, business intelligence, commercial operations, data quality, and automation-focused roles or collaborations.</p>
     <dl class="spec rise rise-3">
-      <div class="spec-row"><dt>Email</dt><dd><a class="contact-link" href="mailto:farihmuwaffaq@gmail.com" data-event="contact_email"><Icon name="mail" />farihmuwaffaq@gmail.com</a></dd></div>
-      <div class="spec-row"><dt>LinkedIn</dt><dd><a class="contact-link" href="https://www.linkedin.com/in/farihmuwaffaq/" data-event="contact_linkedin"><Icon name="logo-linkedin" size="1em" />linkedin.com/in/farihmuwaffaq</a></dd></div>
-      <div class="spec-row"><dt>GitHub</dt><dd><a class="contact-link" href="https://github.com/farihmuwaffaq" data-event="contact_github"><Icon name="logo-github" size="1em" />github.com/farihmuwaffaq</a></dd></div>
+      <div class="spec-row"><dt>Email</dt><dd><a class="contact-link" href="mailto:farihmuwaffaq@gmail.com" data-event="email_click" data-event-label="contact"><Icon name="mail" />farihmuwaffaq@gmail.com</a></dd></div>
+      <div class="spec-row"><dt>LinkedIn</dt><dd><a class="contact-link" href="https://www.linkedin.com/in/farihmuwaffaq/" data-event="linkedin_click" data-event-label="contact"><Icon name="logo-linkedin" size="1em" />linkedin.com/in/farihmuwaffaq</a></dd></div>
+      <div class="spec-row"><dt>GitHub</dt><dd><a class="contact-link" href="https://github.com/farihmuwaffaq"><Icon name="logo-github" size="1em" />github.com/farihmuwaffaq</a></dd></div>
       <div class="spec-row"><dt>Location</dt><dd>Jakarta, Indonesia · open to relocation · remote-friendly</dd></div>
     </dl>
   </div>
@@ -24,7 +24,7 @@ const endpoint=import.meta.env.PUBLIC_CONTACT_FORM_ENDPOINT || '';
     <div class="field honeypot"><label for="company">Company</label><input id="company" name="company" tabindex="-1" autocomplete="off" /></div>
     <button class="button" type="submit"><span class="btn-label">Send message</span><Icon name="arrow-right" /></button>
     <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-  </form> : <aside class="contact-form contact-direct" id="message-form"><p class="mono">Direct message</p><h2>Email works best.</h2><p>Share the question, context, and expected outcome. I will reply as soon as I can.</p><a class="button" href="mailto:farihmuwaffaq@gmail.com?subject=Data%20conversation"><span>Write an email</span><Icon name="arrow-right" /></a><a class="contact-link" href="https://www.linkedin.com/in/farihmuwaffaq/" target="_blank" rel="noopener noreferrer">Or connect on LinkedIn<Icon name="arrow-up-right" /></a></aside>}
+  </form> : <aside class="contact-form contact-direct" id="message-form"><p class="mono">Direct message</p><h2>Email works best.</h2><p>Share the question, context, and expected outcome. I will reply as soon as I can.</p><a class="button" href="mailto:farihmuwaffaq@gmail.com?subject=Data%20conversation" data-event="contact_cta_click"><span>Write an email</span><Icon name="arrow-right" /></a><a class="contact-link" href="https://www.linkedin.com/in/farihmuwaffaq/" target="_blank" rel="noopener noreferrer" data-event="linkedin_click" data-event-label="contact_alternative">Or connect on LinkedIn<Icon name="arrow-up-right" /></a></aside>}
 </div></section>
 <script>
   const form=document.querySelector<HTMLFormElement>('form#message-form');

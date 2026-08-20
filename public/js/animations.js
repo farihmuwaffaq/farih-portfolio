@@ -185,15 +185,27 @@
         }
       }, { threshold: 0.3 });
       commercialObserver.observe(commercial);
-      if (window.matchMedia('(pointer:fine)').matches) {
-        commercial.addEventListener('pointermove', function (event) {
-          var rect = commercial.getBoundingClientRect();
-          commercial.style.setProperty('--center-x', ((event.clientX - rect.left) / rect.width - .5) * 10 + 'px');
-          commercial.style.setProperty('--center-y', ((event.clientY - rect.top) / rect.height - .5) * 10 + 'px');
-        });
-        commercial.addEventListener('pointerleave', function () { commercial.style.setProperty('--center-x', '0px'); commercial.style.setProperty('--center-y', '0px'); });
-      }
     }
+  }
+
+  var caseProgress = document.querySelector('[data-case-progress]');
+  if (caseProgress) {
+    var progressEvents = { 50: false, 90: false };
+    var updateCaseProgress = function () {
+      var scrollable = document.documentElement.scrollHeight - window.innerHeight;
+      var progress = scrollable > 0 ? Math.min(Math.max(window.scrollY / scrollable, 0), 1) : 1;
+      document.documentElement.style.setProperty('--case-progress', (progress * 100).toFixed(2) + '%');
+      [50, 90].forEach(function (threshold) {
+        if (!progressEvents[threshold] && progress * 100 >= threshold) {
+          progressEvents[threshold] = true;
+          window.portfolioAnalytics?.track('case_study_' + threshold, { path: window.location.pathname });
+        }
+      });
+    };
+    updateCaseProgress();
+    window.addEventListener('scroll', updateCaseProgress, { passive: true });
+    window.addEventListener('resize', updateCaseProgress);
+    window.portfolioAnalytics?.track('project_view', { path: window.location.pathname });
   }
 
   var toggle = document.querySelector('.nav-toggle');
