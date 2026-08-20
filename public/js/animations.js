@@ -114,6 +114,7 @@
     steps.forEach(function (step, index) {
       function inspect(active) {
         if (!completed) return;
+        map?.classList.toggle('has-inspection', active);
         map?.style.setProperty('--progress', String(active ? index / Math.max(1, steps.length - 1) : 1));
         steps.forEach(function (item, itemIndex) {
           item.classList.toggle('is-muted', active && itemIndex !== index);

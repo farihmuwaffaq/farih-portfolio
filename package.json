@@ -10,6 +10,7 @@
     "audit:links": "node scripts/audit-links.mjs",
     "test:hero-boot": "node scripts/test-hero-boot.mjs",
     "test:identity-intro": "node scripts/test-identity-intro.mjs",
+    "test:operating-toolchain": "node scripts/test-operating-toolchain.mjs",
     "preview": "astro preview"
   },
   "dependencies": {

@@ -51,6 +51,7 @@ Soft Structuralism with asymmetric editorial composition. Evidence remains prima
 - Identity reveal is progressive enhancement: hidden by default, enabled before first paint only when session and motion preferences permit, and never waits for network completion. Background content remains inert while open, entry state persists only after button activation, and focus moves to the main landmark on completion.
 - System metrics retain final values in HTML; JavaScript may initialize count-up only after motion support and viewport observation are confirmed.
 - Post-sequence chart hover may brighten line and peak on fine pointers. No cursor-follow glow, fake tooltip data, card tilt, or live-data simulation.
+- Operating Model embeds tool context inside `Ingest / Govern / Model / Decide`, rather than using a standalone logo marquee. Tool labels remain monochrome system evidence, reveal with stage progress, and clarify on stage hover or focus.
 - Menu feedback begins within 250-350ms; no long reveal delays block navigation.
 - No continuous scroll listeners or layout-property animation.
 - Reduced-motion users receive static final states.

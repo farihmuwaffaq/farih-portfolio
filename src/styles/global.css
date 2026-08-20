@@ -257,7 +257,13 @@ p { max-width: 66ch; }
 .capability-node span { font: 500 .62rem var(--mono); }
 .capability-step > .mono { color: var(--signal); font-size: .62rem; text-transform: uppercase; letter-spacing: .14em; }
 .capability-step h3 { margin: .7rem 0; }
-.capability-step > p:last-child { color: var(--muted); font-size: .9rem; }
+.capability-step > p:not(.mono) { color: var(--muted); font-size: .9rem; }
+.capability-tools { display: flex; flex-wrap: wrap; gap: .4rem; margin: 1.2rem 0 0; padding: 0; list-style: none; }
+.capability-tools li { padding: .34rem .52rem; border: 1px solid rgba(13,107,72,.14); color: var(--signal-deep); background: rgba(220,236,229,.42); font: 520 .58rem/1 var(--mono); letter-spacing: .035em; opacity: .18; transform: translateY(.45rem); transition: opacity .4s ease, transform .45s var(--ease), color .25s ease, background .25s ease, border-color .25s ease; }
+.capability-tools li:nth-child(2) { transition-delay: .06s; }
+.capability-tools li:nth-child(3) { transition-delay: .12s; }
+.capability-step.is-active .capability-tools li, .capability-step:hover .capability-tools li, .capability-step:focus-visible .capability-tools li { opacity: 1; transform: none; }
+.capability-step:hover .capability-tools li, .capability-step:focus-visible .capability-tools li { color: var(--paper); border-color: var(--signal); background: var(--signal); }
 
 /* Commercial intelligence topology */
 .focus-zone { background: #e8ece9; }
@@ -738,6 +744,7 @@ p { max-width: 66ch; }
   .motion-ready { opacity: 1; filter: none; transform: none; }
   .capability-map { --progress: 1 !important; }
   .capability-step { opacity: 1; }
+  .capability-tools li { opacity: 1; transform: none; transition: none; }
   .focus-system .orbit-item, .focus-system .focus-orbit > svg path { opacity: 1; transform: none; }
   .focus-center { transform: translate(-50%,-50%); }
 }
