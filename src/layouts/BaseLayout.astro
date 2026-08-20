@@ -35,9 +35,13 @@ const schemas = [
   <header class="site-header"><nav class="nav" aria-label="Primary navigation">
     <a class="brand" href="/"><span class="brand-mark">FM<em>/</em></span><span class="brand-role">Data Analyst — Jakarta</span></a>
     <div class="nav-shell"><ul class="nav-links" id="primary-links">{nav.map(([label,href], i) => <li><a href={href} aria-current={(href==='/' ? current==='/' : current.startsWith(href)) ? 'page' : undefined}><sup>{String(i+1).padStart(2,'0')}</sup>{label}</a></li>)}</ul><a class="nav-cta" href={current.startsWith('/contact')?'#message-form':'/contact'}>Start a conversation <Icon name="arrow-up-right" /></a></div>
-    <div class="mobile-nav-footer"><a class="mobile-nav-cta" href={`mailto:${site.email}`}>Start a conversation <Icon name="arrow-up-right" /></a><div>{social.map(([label,href])=><a href={href} target="_blank" rel="noreferrer">{label}</a>)}</div></div>
-    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-links" aria-label="Open navigation"><span class="sr-only">Toggle navigation</span><i></i><i></i></button>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation"><span class="sr-only">Toggle navigation</span><i></i><i></i></button>
   </nav></header>
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <div class="mobile-menu-top"><a class="brand" href="/" tabindex="-1"><span class="brand-mark">FM<em>/</em></span></a><button class="mobile-menu-close" type="button" aria-label="Close navigation"><i></i><i></i></button></div>
+    <nav class="mobile-menu-nav" aria-label="Mobile navigation"><ul>{nav.map(([label,href], i) => <li><a href={href} aria-current={(href==='/' ? current==='/' : current.startsWith(href)) ? 'page' : undefined} tabindex="-1"><sup>{String(i+1).padStart(2,'0')}</sup>{label}</a></li>)}</ul></nav>
+    <div class="mobile-menu-footer"><a class="mobile-menu-cta" href={`mailto:${site.email}`} tabindex="-1">Start a conversation <Icon name="arrow-up-right" /></a><div>{social.map(([label,href])=><a href={href} target="_blank" rel="noreferrer" tabindex="-1">{label}</a>)}</div></div>
+  </div>
   <div class="nav-backdrop" aria-hidden="true"></div>
   <main id="main"><slot /></main>
   <footer class:list={['site-footer',footerVariant==='compact'&&'footer-compact',footerVariant==='resume'&&'footer-resume']}>

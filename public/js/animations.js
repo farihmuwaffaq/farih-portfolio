@@ -123,25 +123,27 @@
   }
 
   var toggle = document.querySelector('.nav-toggle');
-  var backdrop = document.querySelector('.nav-backdrop');
-  var links = document.querySelector('.nav-links');
-  var navFocusables = document.querySelectorAll('.nav-links a, .mobile-nav-footer a');
+  var menu = document.querySelector('.mobile-menu');
+  var close = document.querySelector('.mobile-menu-close');
+  var navFocusables = menu?.querySelectorAll('a, button') || [];
   function setNav(open) {
     toggle?.setAttribute('aria-expanded', String(open));
     toggle?.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
-    links?.classList.toggle('is-open', open); document.body.classList.toggle('nav-open', open);
-    if (open) links?.querySelector('a')?.focus(); else toggle?.focus();
+    menu?.classList.toggle('is-open', open);
+    menu?.setAttribute('aria-hidden', String(!open));
+    navFocusables.forEach(function (item) { item.setAttribute('tabindex', open ? '0' : '-1'); });
+    document.body.classList.toggle('nav-open', open);
+    if (open) requestAnimationFrame(function () { close?.focus(); }); else toggle?.focus();
   }
   toggle?.addEventListener('click', function () { setNav(toggle.getAttribute('aria-expanded') !== 'true'); });
-  backdrop?.addEventListener('click', function () { setNav(false); });
+  close?.addEventListener('click', function () { setNav(false); });
   document.addEventListener('keydown', function (event) {
     if (toggle?.getAttribute('aria-expanded') !== 'true') return;
     if (event.key === 'Escape') setNav(false);
     if (event.key === 'Tab' && navFocusables.length) {
       var first = navFocusables[0]; var last = navFocusables[navFocusables.length - 1];
-      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); toggle.focus(); }
-      else if (!event.shiftKey && document.activeElement === toggle) { event.preventDefault(); first.focus(); }
-      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); toggle.focus(); }
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
     }
   });
   navFocusables.forEach(function (link) { link.addEventListener('click', function () { setNav(false); }); });
