@@ -6,27 +6,27 @@
   <text x="80" y="148" fill="#71756f" font-family="ui-monospace, monospace" font-size="22" letter-spacing="4">LIFEPACK / PRESCRIPTION OPERATIONS</text>
   <text x="80" y="250" fill="#171a18" font-family="Arial, sans-serif" font-size="82" font-weight="700" letter-spacing="-4">A visible path</text>
   <text x="80" y="330" fill="#171a18" font-family="Arial, sans-serif" font-size="82" font-weight="700" letter-spacing="-4">from queue to closure.</text>
-  <path d="M160 565H1440" stroke="#171a18" stroke-width="4"/>
+  <path d="M170 565H1430" stroke="#171a18" stroke-width="4"/>
   <g font-family="ui-monospace, monospace">
-    <g transform="translate(160 565)">
+    <g transform="translate(170 565)">
       <circle r="34" fill="#171a18"/><text y="9" text-anchor="middle" fill="#f1efe8" font-size="24">01</text>
-      <text y="-78" fill="#171a18" font-family="Arial, sans-serif" font-size="34" font-weight="700">Prescription enters queue</text>
-      <text y="72" fill="#71756f" font-size="20" letter-spacing="2">INCOMING</text>
+      <text y="-104" text-anchor="middle" fill="#171a18" font-family="Arial, sans-serif" font-size="31" font-weight="700"><tspan x="0">Prescription</tspan><tspan x="0" dy="36">enters queue</tspan></text>
+      <text y="72" text-anchor="middle" fill="#71756f" font-size="20" letter-spacing="2">INCOMING</text>
     </g>
-    <g transform="translate(570 565)">
+    <g transform="translate(590 565)">
       <circle r="34" fill="#e0ae34"/><text y="9" text-anchor="middle" fill="#171a18" font-size="24">02</text>
-      <text x="-60" y="-78" fill="#171a18" font-family="Arial, sans-serif" font-size="34" font-weight="700">Status review</text>
-      <text x="-60" y="72" fill="#71756f" font-size="20" letter-spacing="2">WAITING / HOLD</text>
+      <text y="-86" text-anchor="middle" fill="#171a18" font-family="Arial, sans-serif" font-size="31" font-weight="700">Status review</text>
+      <text y="72" text-anchor="middle" fill="#71756f" font-size="20" letter-spacing="2">WAITING / HOLD</text>
     </g>
-    <g transform="translate(990 565)">
+    <g transform="translate(1010 565)">
       <circle r="34" fill="#d4542d"/><text y="9" text-anchor="middle" fill="#f1efe8" font-size="24">03</text>
-      <text x="-80" y="-78" fill="#171a18" font-family="Arial, sans-serif" font-size="34" font-weight="700">Follow-up action</text>
-      <text x="-80" y="72" fill="#71756f" font-size="20" letter-spacing="2">ASSIGNED OWNER</text>
+      <text y="-86" text-anchor="middle" fill="#171a18" font-family="Arial, sans-serif" font-size="31" font-weight="700">Follow-up action</text>
+      <text y="72" text-anchor="middle" fill="#71756f" font-size="20" letter-spacing="2">ASSIGNED OWNER</text>
     </g>
-    <g transform="translate(1440 565)">
+    <g transform="translate(1430 565)">
       <circle r="34" fill="#171a18"/><text y="9" text-anchor="middle" fill="#f1efe8" font-size="24">04</text>
-      <text x="-230" y="-78" fill="#171a18" font-family="Arial, sans-serif" font-size="34" font-weight="700">Resolution recorded</text>
-      <text x="-190" y="72" fill="#71756f" font-size="20" letter-spacing="2">FULFILLED / CLOSED</text>
+      <text y="-104" text-anchor="middle" fill="#171a18" font-family="Arial, sans-serif" font-size="31" font-weight="700"><tspan x="0">Resolution</tspan><tspan x="0" dy="36">recorded</tspan></text>
+      <text y="72" text-anchor="middle" fill="#71756f" font-size="20" letter-spacing="2">FULFILLED / CLOSED</text>
     </g>
   </g>
   <rect x="80" y="720" width="1440" height="50" fill="#171a18"/>

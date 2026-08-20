@@ -8,35 +8,35 @@
   <text x="80" y="322" fill="#171a18" font-family="Arial, sans-serif" font-size="76" font-weight="700" letter-spacing="-4">to aggregate decisions.</text>
   <g transform="translate(80 430)">
     <g>
-      <rect width="310" height="250" fill="#171a18"/>
+      <rect width="280" height="250" fill="#171a18"/>
       <text x="30" y="48" fill="#e0ae34" font-family="ui-monospace, monospace" font-size="18" letter-spacing="3">01 / EXTRACT</text>
       <text x="30" y="110" fill="#f1efe8" font-family="Arial, sans-serif" font-size="38" font-weight="700">Public doctor</text>
       <text x="30" y="152" fill="#f1efe8" font-family="Arial, sans-serif" font-size="38" font-weight="700">registry</text>
       <text x="30" y="214" fill="#bfc1bc" font-family="Arial, sans-serif" font-size="22">Structured scraping</text>
     </g>
-    <path d="M330 125H400" stroke="#d4542d" stroke-width="5"/><path d="m390 113 16 12-16 12" fill="none" stroke="#d4542d" stroke-width="5"/>
-    <g transform="translate(420)">
-      <rect width="310" height="250" fill="#fff" stroke="#171a18" stroke-width="3"/>
+    <path d="M300 125H380" stroke="#d4542d" stroke-width="5"/><path d="m370 113 16 12-16 12" fill="none" stroke="#d4542d" stroke-width="5"/>
+    <g transform="translate(400)">
+      <rect width="280" height="250" fill="#fff" stroke="#171a18" stroke-width="3"/>
       <text x="30" y="48" fill="#d4542d" font-family="ui-monospace, monospace" font-size="18" letter-spacing="3">02 / QUALITY</text>
       <text x="30" y="110" fill="#171a18" font-family="Arial, sans-serif" font-size="38" font-weight="700">Validate &amp;</text>
       <text x="30" y="152" fill="#171a18" font-family="Arial, sans-serif" font-size="38" font-weight="700">deduplicate</text>
       <text x="30" y="214" fill="#71756f" font-family="Arial, sans-serif" font-size="22">Schema and field checks</text>
     </g>
-    <path d="M750 125H820" stroke="#d4542d" stroke-width="5"/><path d="m810 113 16 12-16 12" fill="none" stroke="#d4542d" stroke-width="5"/>
-    <g transform="translate(840)">
-      <rect width="310" height="250" fill="#e0ae34"/>
+    <path d="M700 125H780" stroke="#d4542d" stroke-width="5"/><path d="m770 113 16 12-16 12" fill="none" stroke="#d4542d" stroke-width="5"/>
+    <g transform="translate(800)">
+      <rect width="280" height="250" fill="#e0ae34"/>
       <text x="30" y="48" fill="#171a18" font-family="ui-monospace, monospace" font-size="18" letter-spacing="3">03 / WAREHOUSE</text>
       <text x="30" y="110" fill="#171a18" font-family="Arial, sans-serif" font-size="38" font-weight="700">BigQuery</text>
       <text x="30" y="152" fill="#171a18" font-family="Arial, sans-serif" font-size="38" font-weight="700">registry table</text>
-      <text x="30" y="214" fill="#4b4331" font-family="Arial, sans-serif" font-size="22">122K+ records analyzed</text>
+      <text x="30" y="214" fill="#4b4331" font-family="Arial, sans-serif" font-size="20">122K+ records analyzed</text>
     </g>
-    <path d="M1170 125H1240" stroke="#d4542d" stroke-width="5"/><path d="m1230 113 16 12-16 12" fill="none" stroke="#d4542d" stroke-width="5"/>
-    <g transform="translate(1260)">
-      <rect width="260" height="250" fill="#d4542d"/>
+    <path d="M1100 125H1180" stroke="#d4542d" stroke-width="5"/><path d="m1170 113 16 12-16 12" fill="none" stroke="#d4542d" stroke-width="5"/>
+    <g transform="translate(1200)">
+      <rect width="250" height="250" fill="#d4542d"/>
       <text x="28" y="48" fill="#f7cfc1" font-family="ui-monospace, monospace" font-size="18" letter-spacing="3">04 / REPORT</text>
       <text x="28" y="110" fill="#fff" font-family="Arial, sans-serif" font-size="36" font-weight="700">Aggregate</text>
       <text x="28" y="150" fill="#fff" font-family="Arial, sans-serif" font-size="36" font-weight="700">dashboard</text>
-      <text x="28" y="214" fill="#f7cfc1" font-family="Arial, sans-serif" font-size="21">Qualifications &amp; origins</text>
+      <text x="28" y="214" fill="#f7cfc1" font-family="Arial, sans-serif" font-size="18">Qualifications &amp; origins</text>
     </g>
   </g>
   <text x="80" y="754" fill="#71756f" font-family="ui-monospace, monospace" font-size="18" letter-spacing="3">PUBLIC VIEW: ARCHITECTURE AND AGGREGATES ONLY / ROW-LEVEL RECORDS WITHHELD</text>
