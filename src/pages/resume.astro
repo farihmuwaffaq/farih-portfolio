@@ -1,39 +1,21 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
+const skills=[['Data & engineering','SQL · PostgreSQL · MySQL · BigQuery · Python · Pandas · REST APIs'],['BI & analytics','Power BI · Tableau · Looker Studio · Metabase · Excel · Google Sheets'],['Business domains','Commercial analytics · Inventory · Operations · Marketing analytics · Data governance']];
+const projects=[['01','ID/X Partners × Rakamin Academy','Loan default modeling'],['02','Kimia Farma × Rakamin Academy','Sales datamart and dashboard'],['03','Fairatmos','Forest carbon methodology hiring assessment']];
 ---
-<BaseLayout title="Resume | Farih Muwaffaq" description="HTML resume for Farih Muwaffaq, Data Analyst in Jakarta with experience across FMCG, health-tech, and marketing analytics.">
-<section class="section case-hero"><div class="container">
-  <p class="eyebrow rise"><span class="idx">CV</span> Resume</p>
-  <h1 class="rise rise-1" style="max-width:18ch">Data Analyst building reliable systems for business decisions.</h1>
-  <p class="lede rise rise-2">Jakarta-based analyst with experience in automation, business intelligence, commercial operations, and data infrastructure.</p>
-  <div class="actions rise rise-3"><a class="button" href="/Farih-Muwaffaq-Resume.pdf" download="Farih-Muwaffaq-Resume.pdf" data-event="download_resume_pdf">Download PDF<Icon name="download" /></a><a class="button secondary" href="mailto:farihmuwaffaq@gmail.com" data-event="resume_email">Email for latest copy<Icon name="mail" /></a></div>
-
-  <div class="resume-block">
-    <p class="eyebrow" style="margin-top:2.5rem"><span class="idx">01</span> Experience</p>
-    <div class="resume-item"><span class="when">June 2026 — present</span><div><h3>SKINTIFIC — Senior Associate Data Analyst</h3><p>Governed BI semantic layer, RBAC and row-level security; automated pricing snapshots; commercial monitoring across brands and channels.</p></div></div>
-    <div class="resume-item"><span class="when">June 2025 — June 2026</span><div><h3>Future Creative Network (Maleo) — Data Analyst</h3><p>Built multi-source social analytics pipelines and recurring reporting automation for four FMCG brands; delivered dashboards and AI-assisted performance nudges.</p></div></div>
-    <div class="resume-item"><span class="when">November 2024 — April 2025</span><div><h3>Lifepack.id — Data Analyst</h3><p>Developed and maintained 10+ operational dashboards and reports; integrated systems, validated data, and escalated integrity risks.</p></div></div>
-    <div class="resume-item"><span class="when">March — October 2024</span><div><h3>PT Gajahpangan Jaya Makmur — Data Analyst</h3><p>Supported production capacity growth from 300 to 5,000 units/day and monthly profit growth from below IDR 100M to above IDR 700M through operational and commercial analysis.</p></div></div>
-    <div class="resume-item"><span class="when">August 2021 — June 2023</span><div><h3>Selasar Kampus — Founder and CEO</h3><p>Built an education-startup initiative and developed entrepreneurial and stakeholder experience. Specific incubation, traction, and funding claims are not published because supporting evidence has not been verified.</p></div></div>
+<BaseLayout title="Resume | Farih Muwaffaq" description="HTML resume for Farih Muwaffaq, Data Analyst in Jakarta with experience across FMCG, health-tech, and marketing analytics." footerVariant="resume">
+<section class="section case-hero resume-page"><div class="container">
+  <p class="eyebrow rise"><span class="idx">CV</span> Resume</p><h1 class="rise rise-1">Data Analyst building reliable systems for business decisions.</h1><p class="lede rise rise-2">Data analyst working across commercial analytics, automation, BI, and data systems—translating operational data into decision-ready information.</p><div class="actions rise rise-3"><a class="button" href="/Farih-Muwaffaq-Resume.pdf" download="Farih-Muwaffaq-Resume.pdf" data-event="download_resume_pdf">Download PDF<Icon name="download" /></a><a class="button secondary" href="mailto:farihmuwaffaq@gmail.com" data-event="resume_email">Get latest copy<Icon name="mail" /></a></div>
+  <div class="resume-block resume-experience"><p class="eyebrow"><span class="idx">01</span> Experience</p>
+    <div class="resume-item"><span class="when">June 2026 — present</span><div><h3>SKINTIFIC — Senior Associate Data Analyst</h3><p>Governed BI semantic definitions and row-level access while automating pricing snapshots and commercial monitoring across brands and channels.</p></div></div>
+    <div class="resume-item"><span class="when">June 2025 — June 2026</span><div><h3>Future Creative Network (Maleo) — Data Analyst</h3><p>Built multi-source analytics pipelines and automated recurring reporting across four FMCG brands, improving consistency and reducing manual consolidation.</p></div></div>
+    <div class="resume-item"><span class="when">November 2024 — April 2025</span><div><h3>Lifepack.id — Data Analyst</h3><p>Developed and maintained 10+ operational dashboards and reports, supporting visibility while validating data and escalating integrity risks.</p></div></div>
+    <div class="resume-item"><span class="when">March — October 2024</span><div><h3>PT Gajahpangan Jaya Makmur — Data Analyst</h3><p>Supported production growth from 300 to 5,000 units/day and monthly profit growth from below IDR 100M to above IDR 700M through operational and commercial analysis.</p></div></div>
+    <div class="resume-item"><span class="when">August 2021 — June 2023</span><div><h3>Selasar Kampus — Founder and CEO</h3><p>Founded an education initiative and led early-stage product, stakeholder, and operational development.</p></div></div>
   </div>
-
-  <div class="resume-block">
-    <p class="eyebrow"><span class="idx">02</span> Education</p>
-    <div class="resume-item"><span class="when">Jan 2026 — present</span><div><h3>PPM School of Management — Master of Management</h3></div></div>
-    <div class="resume-item"><span class="when">2018 — 2023</span><div><h3>Institut Teknologi Bandung — Bachelor of Forestry Engineering</h3></div></div>
-  </div>
-
-  <div class="resume-block">
-    <p class="eyebrow"><span class="idx">03</span> Skills</p>
-    <p><strong>Data and engineering:</strong> SQL, PostgreSQL, MySQL, Python, Pandas, Scikit-learn, REST APIs, Jupyter Notebook.</p>
-    <p><strong>BI and analysis:</strong> Tableau, Power BI, Looker Studio, Metabase, Excel, Google Sheets.</p>
-    <p><strong>Business domains:</strong> Commercial analytics, inventory monitoring, operations, marketing analytics, data quality and governance.</p>
-  </div>
-
-  <div class="resume-block">
-    <p class="eyebrow"><span class="idx">04</span> Project training</p>
-    <p>ID/X Partners x Rakamin Academy — loan default modeling.<br />Kimia Farma x Rakamin Academy — sales datamart and dashboard.<br />Fairatmos — forest carbon methodology hiring assessment.</p>
-  </div>
+  <div class="resume-block"><p class="eyebrow"><span class="idx">02</span> Education</p><div class="resume-item"><span class="when">Jan 2026 — present</span><div><h3>PPM School of Management — Master of Management</h3><p>Current study focused on strategy, management, and business decision-making.</p></div></div><div class="resume-item"><span class="when">2018 — 2023</span><div><h3>Institut Teknologi Bandung — Bachelor of Forestry Engineering</h3><p>Systems-oriented foundation spanning resource constraints, evidence, and long-term outcomes.</p></div></div></div>
+  <div class="resume-block"><p class="eyebrow"><span class="idx">03</span> Skills</p><div class="resume-skills">{skills.map(([category,items])=><article><h3>{category}</h3><p>{items}</p></article>)}</div></div>
+  <div class="resume-block resume-projects"><p class="eyebrow"><span class="idx">04</span> Selected applied projects</p><div>{projects.map(([index,name,scope])=><article><span class="mono">{index}</span><h3>{name}</h3><p>{scope}</p></article>)}</div></div>
 </div></section>
 </BaseLayout>

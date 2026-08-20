@@ -3,8 +3,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
 const endpoint=import.meta.env.PUBLIC_CONTACT_FORM_ENDPOINT || '';
 ---
-<BaseLayout title="Contact Farih Muwaffaq | Data Analyst" description="Contact Farih Muwaffaq about data analytics, business intelligence, commercial performance, and automation-focused roles or collaborations.">
-<section class="section case-hero"><div class="container grid two">
+<BaseLayout title="Contact Farih Muwaffaq | Data Analyst" description="Contact Farih Muwaffaq about data analytics, business intelligence, commercial performance, and automation-focused roles or collaborations." footerVariant="compact">
+<section class="section case-hero contact-page"><div class="container grid two contact-grid">
   <div>
     <p class="eyebrow rise"><span class="idx">Signal</span> Contact</p>
     <h1 class="rise rise-1">Let's turn a data question into a useful system.</h1>
@@ -16,19 +16,18 @@ const endpoint=import.meta.env.PUBLIC_CONTACT_FORM_ENDPOINT || '';
       <div class="spec-row"><dt>Location</dt><dd>Jakarta, Indonesia · open to relocation · remote-friendly</dd></div>
     </dl>
   </div>
-  <form class="contact-form" id="contact-form" data-endpoint={endpoint} novalidate>
+  {endpoint ? <form class="contact-form" id="message-form" data-endpoint={endpoint} novalidate>
     <p class="mono" style="margin:0">Message form</p>
     <div class="field"><label for="name">Name</label><input id="name" name="name" autocomplete="name" required /></div>
     <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
     <div class="field"><label for="message">Message</label><textarea id="message" name="message" required minlength="20"></textarea></div>
     <div class="field honeypot"><label for="company">Company</label><input id="company" name="company" tabindex="-1" autocomplete="off" /></div>
     <button class="button" type="submit"><span class="btn-label">Send message</span><Icon name="arrow-right" /></button>
-    <p class="small" style="margin:0">The form uses a serverless endpoint when configured. Until then, use email or LinkedIn. This disclosure is intentional — no fake success state.</p>
     <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
-  </form>
+  </form> : <aside class="contact-form contact-direct" id="message-form"><p class="mono">Direct message</p><h2>Email works best.</h2><p>Share the question, context, and expected outcome. I will reply as soon as I can.</p><a class="button" href="mailto:farihmuwaffaq@gmail.com?subject=Data%20conversation"><span>Write an email</span><Icon name="arrow-right" /></a><a class="contact-link" href="https://www.linkedin.com/in/farihmuwaffaq/" target="_blank" rel="noopener noreferrer">Or connect on LinkedIn<Icon name="arrow-up-right" /></a></aside>}
 </div></section>
 <script>
-  const form=document.querySelector<HTMLFormElement>('#contact-form');
+  const form=document.querySelector<HTMLFormElement>('form#message-form');
   const status=document.querySelector<HTMLElement>('#form-status');
   form?.addEventListener('submit', async event=>{
     event.preventDefault();

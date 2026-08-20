@@ -4,8 +4,8 @@ import '@fontsource-variable/geist';
 import '@fontsource-variable/geist-mono';
 import { nav, site, social } from '../data/site';
 import Icon from '../components/Icon.astro';
-interface Props { title: string; description?: string; image?: string; type?: 'website'|'article'; jsonLd?: Record<string, unknown>|Record<string, unknown>[]; animate?: boolean }
-const { title, description = site.description, image = '/social/social-card.svg', type = 'website', jsonLd } = Astro.props;
+interface Props { title: string; description?: string; image?: string; type?: 'website'|'article'; jsonLd?: Record<string, unknown>|Record<string, unknown>[]; animate?: boolean; footerVariant?: 'default'|'compact'|'resume' }
+const { title, description = site.description, image = '/social/social-card.svg', type = 'website', jsonLd, footerVariant = 'default' } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const current = Astro.url.pathname;
 const schemas = [
@@ -34,16 +34,16 @@ const schemas = [
   <a class="skip-link" href="#main">Skip to main content</a>
   <header class="site-header"><nav class="nav" aria-label="Primary navigation">
     <a class="brand" href="/"><span class="brand-mark">FM<em>/</em></span><span class="brand-role">Data Analyst — Jakarta</span></a>
-    <div class="nav-shell"><ul class="nav-links" id="primary-links">{nav.map(([label,href], i) => <li><a href={href} aria-current={(href==='/' ? current==='/' : current.startsWith(href)) ? 'page' : undefined}><sup>{String(i+1).padStart(2,'0')}</sup>{label}</a></li>)}</ul><a class="nav-cta" href="/contact">Start a conversation <Icon name="arrow-up-right" /></a></div>
+    <div class="nav-shell"><ul class="nav-links" id="primary-links">{nav.map(([label,href], i) => <li><a href={href} aria-current={(href==='/' ? current==='/' : current.startsWith(href)) ? 'page' : undefined}><sup>{String(i+1).padStart(2,'0')}</sup>{label}</a></li>)}</ul><a class="nav-cta" href={current.startsWith('/contact')?'#message-form':'/contact'}>Start a conversation <Icon name="arrow-up-right" /></a></div>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-links" aria-label="Open navigation"><span class="sr-only">Toggle navigation</span><i></i><i></i></button>
   </nav></header>
   <div class="nav-backdrop" aria-hidden="true"></div>
   <main id="main"><slot /></main>
-  <footer class="site-footer">
-    <div class="container footer-cta">
+  <footer class:list={['site-footer',footerVariant==='compact'&&'footer-compact',footerVariant==='resume'&&'footer-resume']}>
+    {footerVariant!=='compact' && <div class="container footer-cta">
       <div><p class="eyebrow">Direct line</p><p class="footer-prompt">Have a difficult data question?</p></div>
       <a class="footer-email" href={`mailto:${site.email}`} data-event="footer_email">{site.email}<Icon name="arrow-up-right" /></a>
-    </div>
+    </div>}
     <div class="container footer-grid">
       <ul class="footer-links">{nav.map(([label,href]) => <li><a href={href}>{label}</a></li>)}</ul>
       <ul class="footer-links footer-social" aria-label="Social links">{social.map(([label,href,icon]) => <li><a href={href} target="_blank" rel="noopener noreferrer" data-event={`footer_${label.toLowerCase()}`}><Icon name={icon} size="1.15em" /><span>{label}</span></a></li>)}</ul>
