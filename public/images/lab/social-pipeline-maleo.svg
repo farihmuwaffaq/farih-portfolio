@@ -29,7 +29,7 @@
     <text x="549" y="620" fill="#71756f" font-size="16" letter-spacing="0">Performance · labelling</text>
     <text x="549" y="646" fill="#71756f" font-size="16" letter-spacing="0">processing data</text>
     <path d="M885 540H960" stroke="#d4542d" stroke-width="5"/><path d="m950 528 16 12-16 12" fill="none" stroke="#d4542d" stroke-width="5"/>
-    <rect x="980" y="350" width="550" height="380" fill="#fff5f0" stroke="#d4542d" stroke-width="2"/>
+    <rect x="980" y="350" width="550" height="450" fill="#fff5f0" stroke="#d4542d" stroke-width="2"/>
     <rect x="980" y="350" width="550" height="48" fill="#d4542d"/>
     <text x="1004" y="382" fill="#fffdf8">03 / DATA CONSUMPTION</text>
     <g font-family="Arial, sans-serif" font-weight="700" font-size="22">
@@ -40,6 +40,16 @@
       <path d="M1370 587V625" stroke="#171a18" stroke-width="3"/><rect x="1260" y="625" width="220" height="62" fill="#e7eee9" stroke="#075e57"/><text x="1293" y="663" fill="#075e57">Master Looker Base</text>
     </g>
   </g>
-  <text x="980" y="770" fill="#d4542d" font-family="ui-monospace, monospace" font-size="18" letter-spacing="2">AI DAILY NUDGE</text>
-  <text x="1190" y="770" fill="#71756f" font-family="ui-monospace, monospace" font-size="17">Prefect / Astronomer / Airbyte → N8N → AI Agent → AnyCross → Chat card → Lark Chat</text>
+  <text x="1004" y="718" fill="#d4542d" font-family="ui-monospace, monospace" font-size="16" letter-spacing="2">AI DAILY NUDGE / AUTOMATION</text>
+  <g font-family="Arial, sans-serif" font-size="16" text-anchor="middle">
+    <rect x="1004" y="740" width="116" height="38" fill="#fff" stroke="#171a18"/><text x="1062" y="764" fill="#171a18">Orchestrator</text>
+    <path d="M1120 759H1140" stroke="#d4542d" stroke-width="3"/><path d="m1135 753 8 6-8 6" fill="none" stroke="#d4542d" stroke-width="3"/>
+    <rect x="1145" y="740" width="72" height="38" fill="#fff" stroke="#171a18"/><text x="1181" y="764" fill="#171a18">N8N</text>
+    <path d="M1217 759H1237" stroke="#d4542d" stroke-width="3"/><path d="m1232 753 8 6-8 6" fill="none" stroke="#d4542d" stroke-width="3"/>
+    <rect x="1242" y="740" width="92" height="38" fill="#fff" stroke="#171a18"/><text x="1288" y="764" fill="#171a18">AI Agent</text>
+    <path d="M1334 759H1354" stroke="#d4542d" stroke-width="3"/><path d="m1349 753 8 6-8 6" fill="none" stroke="#d4542d" stroke-width="3"/>
+    <rect x="1359" y="740" width="76" height="38" fill="#fff" stroke="#171a18"/><text x="1397" y="764" fill="#171a18">AnyCross</text>
+    <path d="M1435 759H1455" stroke="#d4542d" stroke-width="3"/><path d="m1450 753 8 6-8 6" fill="none" stroke="#d4542d" stroke-width="3"/>
+    <rect x="1460" y="740" width="52" height="38" fill="#e7eee9" stroke="#075e57"/><text x="1486" y="764" fill="#075e57">Chat</text>
+  </g>
 </svg>
