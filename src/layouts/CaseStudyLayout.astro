@@ -2,6 +2,7 @@
 import type { CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
 import Icon from '../components/Icon.astro';
+import Lightbox from '../components/Lightbox.astro';
 interface Props { project: CollectionEntry<'work'> }
 const { project } = Astro.props;
 const d = project.data;
@@ -9,6 +10,8 @@ const breadcrumb = {'@context':'https://schema.org','@type':'BreadcrumbList',ite
   {'@type':'ListItem',position:1,name:'Home',item:new URL('/',Astro.site)}, {'@type':'ListItem',position:2,name:'Work',item:new URL('/work',Astro.site)}, {'@type':'ListItem',position:3,name:d.title,item:Astro.url}
 ]};
 const creative = {'@context':'https://schema.org','@type':'CreativeWork',name:d.title,description:d.summary,author:{'@type':'Person',name:'Farih Muwaffaq'},isBasedOn:d.evidenceType};
+const imageAssets = d.relatedAssets.filter(asset => asset.type === 'image' && asset.available && asset.href);
+const otherAssets = d.relatedAssets.filter(asset => asset.type !== 'image' || !asset.available || !asset.href);
 ---
 <BaseLayout title={`${d.title} | Farih Muwaffaq`} description={d.summary} type="article" jsonLd={[breadcrumb,creative]}>
   <section class="section"><div class="container">
@@ -29,7 +32,11 @@ const creative = {'@context':'https://schema.org','@type':'CreativeWork',name:d.
     </figure>
     {d.outcomes.length > 0 && <div class="panel" aria-label="Validated outcomes"><p class="mono" style="margin-bottom:0.75rem;color:var(--signal-deep)">Validated outcomes</p>{d.outcomes.map(outcome => <p>{outcome}</p>)}</div>}
     <article class="prose"><slot /></article>
-    <section class="prose"><h2>Related evidence</h2>{d.relatedAssets.length ? <ul>{d.relatedAssets.map(asset => <li>{asset.available && asset.href ? <a href={asset.href} data-event="open_project_asset" data-event-label={asset.label}>{asset.label}</a> : <span><strong>{asset.label}</strong> — {asset.note || 'Not publicly available.'}</span>}</li>)}</ul> : <p>No public assets are attached to this case study.</p>}</section>
+    {imageAssets.length > 0 && <section class="evidence-section" aria-labelledby="evidence-title">
+      <div class="evidence-heading"><p class="mono">Selected evidence</p><h2 id="evidence-title">Work, not placeholders.</h2><p>Published views are selected for clarity and privacy. Open any frame to inspect it at full size.</p></div>
+      <div class="evidence-grid">{imageAssets.map((asset, index) => <div class:list={['evidence-item', index === 0 && 'evidence-item-featured']}><span class="mono evidence-index">FIG. {String(index + 2).padStart(2, '0')}</span><Lightbox id={`evidence-${d.slug}-${index}`} src={asset.href} alt={asset.label} caption={asset.label} /></div>)}</div>
+    </section>}
+    {otherAssets.length > 0 && <section class="prose"><h2>Related evidence</h2><ul>{otherAssets.map(asset => <li>{asset.available && asset.href ? <a href={asset.href} data-event="open_project_asset" data-event-label={asset.label}>{asset.label}</a> : <span><strong>{asset.label}</strong> — {asset.note || 'Not publicly available.'}</span>}</li>)}</ul></section>}
     <div class="actions"><a class="button" href="/contact" data-event="case_study_contact">Discuss this work<Icon name="arrow-right" /></a><a class="button secondary" href="/work">Explore more work<Icon name="arrow-right" /></a></div>
   </div></section>
 </BaseLayout>

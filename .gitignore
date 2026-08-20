@@ -27,6 +27,10 @@ PRD_*.md
 *.jpeg
 *.jpg
 
+# Sanitized Lifepack portfolio evidence
+!public/images/projects/lifepack/
+!public/images/projects/lifepack/*.jpg
+
 # Public resume download (explicitly published)
 !public/Farih-Muwaffaq-Resume.pdf
 
@@ -45,3 +49,4 @@ secrets.*
 .idea/
 Thumbs.db
 AUDIT.md
+.vercel

@@ -6,17 +6,19 @@ evidenceType: Professional Experience
 organization: Lifepack.id
 industry: Healthcare / health-tech
 role: Data Analyst
-timeline: November 2024â€“April 2025
-tools: [PostgreSQL, Metabase, Python, Google Sheets, REST API, MySQL]
+timeline: November 2024-April 2025
+tools: [PostgreSQL, Metabase, Looker Studio, BigQuery, Python, Google Sheets, REST API, MySQL]
 categories: [Analytics & Automation, Business Intelligence]
 featured: false
 confidential: true
-confidentialityNote: Operational data and dashboard screenshots are not public. Delivery-cost and aggregator-growth claims remain excluded pending validation.
-coverImage: /images/projects/healthtech-data-infrastructure.svg
-coverAlt: Abstract health-tech data integration and dashboard architecture
+confidentialityNote: Selected visuals are cropped to remove sensitive fields. Patient and doctor contact data, row-level records, and internal GMV figures are withheld.
+coverImage: /images/projects/lifepack/dashboard-doctor-registry.jpg
+coverAlt: Lifepack doctor registry dashboard showing aggregate qualification and university distributions
 outcomes: [Developed and maintained more than 10 dashboards and reports, Supported operational visibility, Identified and escalated data risks]
 relatedAssets:
-  - { label: Abstract integration diagram, type: image, href: /images/projects/healthtech-data-infrastructure.svg, available: true }
+  - { label: Doctor registry dashboard, type: image, href: /images/projects/lifepack/dashboard-doctor-registry.jpg, available: true }
+  - { label: Pharmacy partner dashboard, type: image, href: /images/projects/lifepack/dashboard-pharmacy-partner.jpg, available: true }
+  - { label: Delivery performance dashboard, type: image, href: /images/projects/lifepack/dashboard-delivery-performance.jpg, available: true }
 ---
 ## Snapshot
 
@@ -43,7 +45,7 @@ I supported integration and data quality, investigated risks, and translated ope
 
 ## Solution
 
-The work combined data integration, monitoring practices, and Metabase reporting. The public visual is intentionally abstract and contains no health or operational records.
+The work combined data integration, monitoring practices, and stakeholder-facing reporting across Metabase, Looker Studio, and BigQuery. Published visuals are cropped to remove row-level records and contact fields.
 
 ## Outcome
 

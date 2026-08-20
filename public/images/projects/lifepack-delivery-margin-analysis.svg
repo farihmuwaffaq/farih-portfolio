@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Delivery margin distance analysis</title>
+  <desc id="desc">Editorial chart emphasizing a 7.17 kilometer positive margin threshold.</desc>
+  <rect width="1600" height="900" fill="#f1efe8"/>
+  <path d="M80 90H1520M80 810H1520" stroke="#171a18" stroke-width="2"/>
+  <text x="80" y="148" fill="#71756f" font-family="ui-monospace, monospace" font-size="22" letter-spacing="4">LIFEPACK / DELIVERY ECONOMICS</text>
+  <text x="80" y="250" fill="#171a18" font-family="Arial, sans-serif" font-size="82" font-weight="700" letter-spacing="-4">Where margin</text>
+  <text x="80" y="330" fill="#171a18" font-family="Arial, sans-serif" font-size="82" font-weight="700" letter-spacing="-4">crosses zero.</text>
+  <line x1="830" y1="660" x2="1480" y2="660" stroke="#171a18" stroke-width="3"/>
+  <line x1="830" y1="410" x2="830" y2="720" stroke="#171a18" stroke-width="3"/>
+  <line x1="1005" y1="390" x2="1005" y2="720" stroke="#d4542d" stroke-width="5" stroke-dasharray="14 12"/>
+  <path d="M850 490C900 468 942 480 977 522C1018 572 1088 622 1170 650C1268 683 1362 692 1460 698" fill="none" stroke="#171a18" stroke-width="7"/>
+  <g fill="#e0ae34">
+    <circle cx="865" cy="460" r="9"/><circle cx="892" cy="498" r="9"/><circle cx="920" cy="475" r="9"/><circle cx="948" cy="532" r="9"/><circle cx="978" cy="568" r="9"/><circle cx="1035" cy="613" r="9"/><circle cx="1092" cy="642" r="9"/><circle cx="1190" cy="675" r="9"/>
+  </g>
+  <text x="1033" y="430" fill="#d4542d" font-family="ui-monospace, monospace" font-size="24" letter-spacing="2">OBSERVED THRESHOLD</text>
+  <text x="80" y="700" fill="#d4542d" font-family="Arial, sans-serif" font-size="126" font-weight="700" letter-spacing="-8">7.17 km</text>
+  <text x="83" y="754" fill="#71756f" font-family="Arial, sans-serif" font-size="25">furthest observed distance with positive net margin</text>
+  <text x="1320" y="760" fill="#71756f" font-family="ui-monospace, monospace" font-size="20">NET MARGIN →</text>
+</svg>
