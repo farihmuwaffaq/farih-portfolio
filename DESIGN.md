@@ -52,6 +52,7 @@ Soft Structuralism with asymmetric editorial composition. Evidence remains prima
 - System metrics retain final values in HTML; JavaScript may initialize count-up only after motion support and viewport observation are confirmed.
 - Post-sequence chart hover may brighten line and peak on fine pointers. No cursor-follow glow, fake tooltip data, card tilt, or live-data simulation.
 - Operating Model embeds tool context inside `Ingest / Govern / Model / Decide`, rather than using a standalone logo marquee. Tool labels remain monochrome system evidence, reveal with stage progress, and clarify on stage hover or focus.
+- Credentials remain supporting evidence: exactly four curated applied programs appear as editorial cards on About and a compact list on Resume. Certificate artwork stays behind explicit PDF links; Home has no credential showcase, while Excel and WebHozz remain additional training outside featured content.
 - Menu feedback begins within 250-350ms; no long reveal delays block navigation.
 - No continuous scroll listeners or layout-property animation.
 - Reduced-motion users receive static final states.

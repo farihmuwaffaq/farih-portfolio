@@ -49,6 +49,11 @@ credentials.*
 service-account*.json
 secrets.*
 
+# Curated public credential records and documents
+!src/data/credentials.ts
+!public/credentials/
+!public/credentials/*.pdf
+
 # Local editor and OS files
 .vscode/
 .idea/

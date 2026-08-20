@@ -481,6 +481,19 @@ p { max-width: 66ch; }
 .endorsement > p { margin: 0 0 5rem; font-size: clamp(1.25rem,2vw,1.7rem); line-height: 1.25; letter-spacing: -.02em; }
 .endorsement-by { color: #d8e2dd; }
 .endorsement-role { display: block; margin-top: .5rem; color: #8fa098; font: .6rem/1.5 var(--mono); }
+.credentials-zone { background: var(--paper); }
+.credential-grid { display: grid; grid-template-columns: repeat(4,minmax(0,1fr)); border-top: 1px solid var(--line-strong); }
+.credential-grid > a { position: relative; display: flex; min-width: 0; min-height: 22rem; padding: 1.5rem; border-right: 1px solid var(--line); flex-direction: column; color: var(--ink); transition: color .3s ease, background .3s ease; }
+.credential-grid > a:first-child { padding-left: 0; }
+.credential-grid > a:last-child { border-right: 0; }
+.credential-grid > a:hover, .credential-grid > a:focus-visible { color: var(--paper); background: var(--signal); }
+.credential-index { color: var(--muted); font-size: .62rem; }
+.credential-field { margin-top: 3.5rem; color: var(--signal); font-size: .62rem; text-transform: uppercase; transition: color .3s ease; }
+.credential-grid > a:hover .credential-field, .credential-grid > a:focus-visible .credential-field { color: #bce5d3; }
+.credential-grid h3 { margin: .75rem 0; font-size: clamp(1.15rem,1.8vw,1.55rem); line-height: 1.05; }
+.credential-grid p { margin: 0; color: var(--muted); font-size: .84rem; line-height: 1.5; transition: color .3s ease; }
+.credential-grid > a:hover p, .credential-grid > a:focus-visible p { color: #d8e8e0; }
+.credential-foot { display: flex; margin-top: auto; align-items: center; justify-content: space-between; font: .65rem var(--mono); }
 .technical-zone { padding-bottom: clamp(5rem,8vw,8rem); }
 .technical-grid { display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid var(--line-strong); }
 .technical-grid article { min-width: 0; padding: 2rem 1.5rem 3rem; border-right: 1px solid var(--line); }
@@ -507,6 +520,13 @@ p { max-width: 66ch; }
 .resume-projects { margin-bottom: 0; }
 .resume-projects > div { border-top: 1px solid var(--line-strong); }
 .resume-projects article { display: grid; grid-template-columns: 3rem minmax(17rem,.8fr) 1fr; gap: 1.5rem; align-items: baseline; padding: 1.35rem 0; border-bottom: 1px solid var(--line); }
+.credential-list { border-top: 1px solid var(--line-strong); }
+.credential-list a { display: grid; grid-template-columns: 5rem minmax(0,1fr) auto; gap: 1.5rem; align-items: center; padding: 1.2rem 0; border-bottom: 1px solid var(--line); color: var(--ink); }
+.credential-list a:hover strong, .credential-list a:focus-visible strong { color: var(--signal); }
+.credential-list .mono { color: var(--signal); font-size: .65rem; }
+.credential-list strong, .credential-list small { display: block; }
+.credential-list strong { font-size: .95rem; transition: color .25s ease; }
+.credential-list small { margin-top: .3rem; color: var(--muted); font-size: .78rem; }
 .resume-projects article > .mono { color: var(--signal); font-size: .62rem; }
 .resume-projects h3, .resume-projects p { margin: 0; }
 .resume-projects h3 { font-size: 1rem; }
@@ -690,6 +710,9 @@ p { max-width: 66ch; }
   .foundation-study article > .mono { grid-row: auto; }
   .endorsement { width: 100%; }
   .endorsement > p { margin-bottom: 3rem; }
+  .credential-grid { grid-template-columns: 1fr; }
+  .credential-grid > a, .credential-grid > a:first-child { min-height: 16rem; padding: 1.5rem 0; border-right: 0; border-bottom: 1px solid var(--line); }
+  .credential-field { margin-top: 2.5rem; }
   .technical-grid { grid-template-columns: 1fr; }
   .technical-grid article:nth-child(n) { padding: 1.7rem 0 2.5rem; border-right: 0; border-top: 1px solid var(--line); }
   .technical-grid h3 { margin-top: 2rem; }
@@ -699,6 +722,7 @@ p { max-width: 66ch; }
   .resume-page .resume-block { margin-top: 4rem; }
   .resume-page .resume-item { grid-template-columns: 1fr; }
   .resume-projects article { grid-template-columns: 2rem 1fr; gap: 1rem; }
+  .credential-list a { grid-template-columns: 3rem minmax(0,1fr) auto; gap: 1rem; }
   .contact-page { padding-top: 8rem; padding-bottom: 4rem; }
   .contact-page h1 { font-size: clamp(3.5rem,16vw,5.5rem); }
   .contact-direct h2 { margin-top: 3rem; }
