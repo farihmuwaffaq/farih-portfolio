@@ -15,6 +15,10 @@ confidentialityNote: Selected visuals are cropped to remove sensitive fields. Pa
 coverImage: /images/projects/lifepack/dashboard-doctor-registry.jpg
 coverAlt: Lifepack doctor registry dashboard showing aggregate qualification and university distributions
 outcomes: [Developed and maintained more than 10 dashboards and reports, Supported operational visibility, Identified and escalated data risks]
+keyContributions:
+  - Cleaned, validated, and reconciled operational data with the BI team.
+  - Developed and maintained more than 10 dashboards and reports for operational visibility.
+  - Integrated backend systems with a central database and escalated data-integrity risks.
 relatedAssets:
   - { label: Doctor registry dashboard, type: image, href: /images/projects/lifepack/dashboard-doctor-registry.jpg, available: true }
   - { label: Doctor registry data pipeline, type: image, href: /images/projects/lifepack/doctor-data-pipeline.svg, available: true }

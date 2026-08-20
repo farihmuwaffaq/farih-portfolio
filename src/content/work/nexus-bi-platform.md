@@ -15,6 +15,10 @@ confidentialityNote: The platform name and the company are shown with permission
 coverImage: /images/projects/nexus-bi-platform.png
 coverAlt: NEXUS Domain Intelligence dashboard showing category scorecards and a category-breakdown table with synthetic data
 outcomes: [Centralized governed access to warehouse data for non-technical teams, Removed repetitive analyst-built reporting through a self-serve query builder, Enforced consistent KPI definitions and row-level data security]
+keyContributions:
+  - Designed the semantic layer, visual query builder, and governed self-serve reporting flow.
+  - Implemented RBAC and row-level security so teams could explore data within approved scope.
+  - Built executive dashboards and a sales-extrapolation engine on the shared BI foundation.
 relatedAssets:
   - { label: Source repository (sanitized), type: repository, href: https://github.com/farihmuwaffaq/nexus-bi-platform, available: true }
   - { label: Stock data model (companion), type: repository, href: https://github.com/farihmuwaffaq/powerbi-stock-model, available: true }

@@ -11,16 +11,22 @@ tools: [Python, Looker Studio, Excel]
 categories: [Commercial & Operations, Business Intelligence]
 featured: false
 confidential: true
-confidentialityNote: Reported production and profit figures are withheld until their periods, definitions, attribution, and publication approval are confirmed.
+confidentialityNote: Production and profit outcomes are reported at business level during my engagement; supplier details, SKU-level data, margin formulas, and transaction records remain withheld.
 coverImage: /images/projects/fmcg-operations-analytics.svg
 coverAlt: Abstract FMCG operations view connecting production, channels, and commercial decisions
-outcomes: [Supported production planning, Informed channel expansion, Improved coordination of operational decisions]
+outcomes: ['Supported production capacity growth of 1,567%, from 300 to 5,000 units per day', 'Supported monthly profit growth from below IDR 100M to above IDR 700M', 'Informed Modern Trade to General Trade expansion']
+keyContributions:
+  - Analyzed production and profit bottlenecks to support operational scaling.
+  - Used product, channel, and supply-chain analysis to guide commercial decisions.
+  - Built decision-ready reporting that helped coordinate production, sales, and after-sales teams.
 relatedAssets:
+  - { label: FMCG project overview and key contributions, type: image, href: /images/projects/fmcg-operations/page-08.png, available: true, note: Portfolio evidence page with approved business outcomes }
+  - { label: FMCG dashboard and analysis evidence, type: image, href: /images/projects/fmcg-operations/page-09.png, available: true, note: Portfolio evidence page with dashboard and data-processing visuals }
   - { label: Abstract decision workflow, type: image, href: /images/projects/fmcg-operations-analytics.svg, available: true }
 ---
 ## Snapshot
 
-This professional case study covers operational and commercial analysis supporting production, distribution, and profit-oriented decisions. It intentionally excludes strong numeric claims that have not been cleared and fully defined.
+This professional case study covers operational and commercial analysis supporting production, distribution, and profit-oriented decisions. Approved business-level outcomes are shown with team attribution; commercially sensitive operating details remain withheld.
 
 ## The situation
 
@@ -44,8 +50,8 @@ The output was a practical analysis and reporting workflow linking production, c
 
 ## Outcome
 
-The work supported production scaling, channel expansion, and operational coordination. No production-capacity or profit number is presented because baseline, comparison period, attribution, and profit definition require confirmation.
+During my engagement, daily production capacity increased 1,567%, from 300 to 5,000 units per day, while monthly profit grew from below IDR 100M to above IDR 700M. My analysis supported these team-level outcomes through bottleneck review, product and channel analysis, supply-chain mapping, and decision-facing reporting; it was one contribution within broader operational execution.
 
 ## What I learned
 
-Operational metrics need explicit definitions and owners. Future publication should add only approved metrics with periods, methodology, and team-versus-individual attribution.
+Operational metrics need explicit definitions and owners. Strong outcomes are most credible when the baseline, comparison period, and team-versus-individual attribution remain visible.

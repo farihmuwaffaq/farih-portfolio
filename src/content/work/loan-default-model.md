@@ -14,6 +14,10 @@ confidential: false
 coverImage: /images/projects/loan-default/model-results.png
 coverAlt: Loan default model results showing ROC and Kolmogorov-Smirnov evaluation charts
 outcomes: [Random Forest AUC of 0.857 on the project dataset, KS statistic of 0.5675 in the project report, Compared three model families]
+keyContributions:
+  - Prepared missing values, outliers, and derived features including debt-to-income and repayment ratios.
+  - Compared model families using exploratory analysis and a reproducible evaluation workflow.
+  - Applied stratified cross-validation and grid search, then evaluated the Random Forest with AUC and KS.
 relatedAssets:
   - { label: Random Forest model results, type: image, href: /images/projects/loan-default/model-results.png, available: true }
   - { label: Model training and evaluation workflow, type: image, href: /images/projects/loan-default/model-evaluation.png, available: true }

@@ -15,6 +15,10 @@ confidentialityNote: Brand names and architecture tooling are shown with permiss
 coverImage: /images/projects/maleo-dashboard-silverqueen.png
 coverAlt: Campaign monitoring dashboard for a SilverQueen campaign, recreated with synthetic data, showing actual-vs-KPI gauges, a track score, and best-performing content
 outcomes: [Reduced repetitive manual reporting across brands, Improved consistency of recurring monthly and campaign outputs, Created timely daily signals for performance discussions]
+keyContributions:
+  - Designed end-to-end analytics workflows from KPI definition through reporting across digital platforms.
+  - Built and maintained multi-source automated pipelines, dashboards, and scheduled reporting outputs.
+  - Developed an AI-assisted daily performance nudge and supported client-facing insight and pitch work.
 relatedAssets:
   - { label: Maleo pipeline architecture, type: image, href: /images/lab/maleo-pipeline-architecture.png, available: true, note: Real architecture diagram with client performance data withheld }
   - { label: Editorial pipeline architecture, type: image, href: /images/lab/social-pipeline-maleo.svg, available: true, note: Reframed for web readability }

@@ -15,6 +15,10 @@ confidentialityNote: The company and channel names are shown with permission. Li
 coverImage: /images/projects/shopee-pricing-tracker.png
 coverAlt: Pricing tracker dashboard showing a daily summary snapshot and per-SKU price comparison across channels with synthetic data
 outcomes: [Replaced manual daily price checks with an automated snapshot, Made cross-channel pricing gaps visible in one dashboard, Flagged SKUs priced below benchmark for commercial follow-up]
+keyContributions:
+  - Built an unattended daily snapshot workflow across online and offline price sources.
+  - Compared observed prices against target SRP and surfaced cross-channel gaps in one dashboard.
+  - Added recovery utilities and historical checks so commercial teams could trust the latest snapshot.
 relatedAssets:
   - { label: Source repository (sanitized), type: repository, href: https://github.com/farihmuwaffaq/shopee-pricing-tracker, available: true }
 ---

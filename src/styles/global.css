@@ -320,6 +320,19 @@ p { margin: 0 0 1rem; max-width: 65ch; }
 .prose thead th { font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); background: var(--paper-raised); border-bottom: 1px solid var(--line-strong); }
 .prose tbody tr:last-child td { border-bottom: 0; }
 .prose tbody tr:hover { background: var(--wash); }
+.contribution-block { display: grid; grid-template-columns: minmax(14rem, 0.72fr) 1.28fr; gap: clamp(2rem, 6vw, 6rem); margin: clamp(3.5rem, 8vw, 7rem) 0; padding: clamp(1.5rem, 3vw, 2.5rem) 0; border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); }
+.contribution-heading h2 { margin: 0.45rem 0 0.75rem; font-size: clamp(2rem, 4vw, 3.8rem); line-height: 0.98; letter-spacing: -0.045em; }
+.contribution-heading p { color: var(--ink-soft); font-size: 0.92rem; max-width: 32ch; }
+.contribution-list { list-style: none; margin: 0; padding: 0; }
+.contribution-list li { display: grid; grid-template-columns: 2.5rem 1fr; gap: 1rem; align-items: start; padding: 1.05rem 0; border-top: 1px solid var(--line); }
+.contribution-list li:first-child { border-top: 0; padding-top: 0; }
+.contribution-list span { color: var(--signal); font: 600 0.7rem/1.5 var(--mono); letter-spacing: 0.12em; }
+.contribution-list p { margin: 0; max-width: 58ch; font-size: clamp(1rem, 1.3vw, 1.16rem); line-height: 1.5; }
+@media (max-width: 760px) { .contribution-block { grid-template-columns: 1fr; gap: 1.75rem; } }
+.contribution-summary article { padding-top: 1rem; border-top: 1px solid var(--line-strong); }
+.contribution-summary .mono { color: var(--signal); font-size: 0.68rem; letter-spacing: 0.1em; }
+.contribution-summary h3 { margin: 0.8rem 0 0.55rem; font-size: clamp(1.15rem, 2vw, 1.55rem); }
+.contribution-summary p { margin: 0; color: var(--ink-soft); }
 
 .panel { border: 1px solid var(--line); border-left: 3px solid var(--signal); background: var(--paper-raised); padding: 1.25rem 1.5rem; border-radius: var(--radius); margin: 2rem 0; }
 .panel.amber { border-left-color: var(--amber); background: var(--amber-bg); }

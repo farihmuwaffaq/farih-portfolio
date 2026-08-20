@@ -14,6 +14,10 @@ confidential: false
 coverImage: /images/projects/retail-sales/kimia-farma-dashboard.jpg
 coverAlt: Kimia Farma sales dashboard showing invoice, sales, product and customer reporting
 outcomes: [Defined a composite sales key, Designed base and aggregate table structures, Produced sales performance dashboard outputs]
+keyContributions:
+  - Defined a composite sales key and documented base and aggregate table structures.
+  - Cleaned and analyzed sales data to make product, customer, and invoice performance comparable.
+  - Produced dashboard-ready outputs for recurring sales reporting.
 relatedAssets:
   - { label: Kimia Farma sales dashboard, type: image, href: /images/projects/retail-sales/kimia-farma-dashboard.jpg, available: true }
   - { label: Sales datamart design, type: image, href: /images/projects/retail-sales/datamart-design.png, available: true }

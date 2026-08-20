@@ -20,6 +20,7 @@ const work = defineCollection({
     confidentialityNote: z.string().optional(),
     coverImage: z.string(),
     coverAlt: z.string(),
+    keyContributions: z.array(z.string()).min(1).max(6).optional(),
     outcomes: z.array(z.string()).max(3),
     relatedAssets: z.array(z.object({
       label: z.string(),
