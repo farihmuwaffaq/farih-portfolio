@@ -46,6 +46,9 @@ Soft Structuralism with asymmetric editorial composition. Evidence remains prima
 
 - Primary easing: `cubic-bezier(0.32, 0.72, 0, 1)`.
 - Entry motion uses IntersectionObserver, transform, opacity, and light blur.
+- Homepage Operating Layer card uses a one-shot system boot sequence: header signal, chart draw, final point, hierarchical metric count-up, then stable status. Total duration stays near 2.5 seconds and never loops.
+- System metrics retain final values in HTML; JavaScript may initialize count-up only after motion support and viewport observation are confirmed.
+- Post-sequence chart hover may brighten line and peak on fine pointers. No cursor-follow glow, fake tooltip data, card tilt, or live-data simulation.
 - Menu feedback begins within 250-350ms; no long reveal delays block navigation.
 - No continuous scroll listeners or layout-property animation.
 - Reduced-motion users receive static final states.

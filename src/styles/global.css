@@ -121,6 +121,30 @@ p { max-width: 66ch; }
 .cockpit-footer { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); color: var(--muted); font: 500 .6rem var(--mono); text-transform: uppercase; letter-spacing: .1em; }
 .cockpit-footer strong { margin-left: auto; color: var(--signal); font-weight: 550; }
 .cockpit-footer i { width: .45rem; aspect-ratio: 1; margin-left: .4rem; border-radius: 50%; background: #2d9a69; box-shadow: 0 0 0 .28rem rgba(45,154,105,.1); }
+.system-boot.is-boot-ready .cockpit-header { opacity: 0; transform: translateY(.4rem); }
+.system-boot.is-boot-ready .availability::before { box-shadow: none; }
+.system-boot.is-boot-ready .signal-area { opacity: 0; }
+.system-boot.is-boot-ready .signal-path { stroke-dasharray: 1; stroke-dashoffset: 1; }
+.system-boot.is-boot-ready .signal-chart circle { opacity: 0; transform: scale(0); transform-box: fill-box; transform-origin: center; }
+.system-boot.is-boot-ready .metric { opacity: 0; transform: translateY(.65rem); }
+.system-boot.is-boot-ready .metric:first-child { transform: translate(-1rem,.65rem); }
+.system-boot.is-boot-ready .cockpit-footer { opacity: 0; transform: translateY(.4rem); }
+.system-boot.is-booted .cockpit-header { opacity: 1; transform: none; transition: opacity .3s ease .12s, transform .35s var(--ease) .12s; }
+.system-boot.is-booted .availability::before { animation: boot-pulse .55s ease .25s 1; }
+.system-boot.is-booted .signal-path { stroke-dashoffset: 0; transition: stroke-dashoffset 1.2s cubic-bezier(.22,1,.36,1) .4s, stroke .25s ease; }
+.system-boot.is-booted .signal-area { opacity: 1; transition: opacity .65s ease .9s; }
+.system-boot.is-booted .signal-chart circle { opacity: 1; transform: scale(1); transition: opacity .15s ease 1.55s, transform .3s var(--ease) 1.55s, fill .25s ease; animation: boot-point-pulse .55s ease 1.72s 1; }
+.system-boot.is-booted .metric { opacity: 1; transform: none; transition: opacity .25s ease 1.92s, transform .35s var(--ease) 1.92s; }
+.system-boot.is-booted .metric:first-child { transform: translateX(-1rem); transition-delay: 1.65s; }
+.system-boot.is-booted .metric:nth-child(3) { transition-delay: 2.12s; }
+.system-boot.is-booted .cockpit-footer { opacity: 1; transform: none; transition: opacity .3s ease 2.34s, transform .35s var(--ease) 2.34s; }
+.system-boot.is-booted .cockpit-footer i { animation: boot-pulse .55s ease 2.48s 1; }
+@keyframes boot-pulse { 0%,100% { box-shadow: 0 0 0 .28rem rgba(45,154,105,.1); } 50% { box-shadow: 0 0 0 .62rem rgba(45,154,105,.2); } }
+@keyframes boot-point-pulse { 0%,100% { filter: drop-shadow(0 0 0 rgba(45,154,105,0)); } 50% { filter: drop-shadow(0 0 .35rem rgba(45,154,105,.65)); } }
+@media (hover: hover) and (pointer: fine) {
+  .system-boot.is-booted .signal-chart:hover .signal-path { stroke: #2d9a69; }
+  .system-boot.is-booted .signal-chart:hover circle { fill: #2d9a69; }
+}
 .proof-line { display: flex; gap: 1rem 2rem; flex-wrap: wrap; margin-top: 3rem; color: var(--muted); font: 500 .68rem/1.6 var(--mono); }
 .proof-line b { color: var(--signal); text-transform: uppercase; letter-spacing: .1em; }
 .section-heading { display: grid; grid-template-columns: .7fr 1.3fr; gap: 2rem; align-items: end; margin-bottom: clamp(3rem,7vw,6rem); }
@@ -469,6 +493,13 @@ p { max-width: 66ch; }
 .motion-ready { opacity: 0; filter: blur(7px); transform: translateY(3.5rem); }
 .motion-ready.is-visible { opacity: 1; filter: blur(0); transform: none; transition: opacity .9s var(--ease), filter .9s var(--ease), transform .9s var(--ease); }
 .rise-1 { transition-delay: .08s !important; }.rise-2 { transition-delay: .16s !important; }.rise-3 { transition-delay: .24s !important; }.rise-4 { transition-delay: .32s !important; }
+
+@media (prefers-reduced-motion: reduce) {
+  .system-boot .cockpit-header, .system-boot .signal-area, .system-boot .signal-chart circle, .system-boot .metric, .system-boot .cockpit-footer { opacity: 1; transform: none; animation: none; transition: none; }
+  .system-boot .metric:first-child { transform: translateX(-1rem); }
+  .system-boot .signal-path { stroke-dasharray: none; stroke-dashoffset: 0; transition: none; }
+  .system-boot .availability::before, .system-boot .cockpit-footer i { animation: none; }
+}
 
 @media (max-width: 900px) {
   .brand-role, .nav-shell { display: none; }

@@ -8,6 +8,7 @@
     "build": "astro build",
     "check": "astro check",
     "audit:links": "node scripts/audit-links.mjs",
+    "test:hero-boot": "node scripts/test-hero-boot.mjs",
     "preview": "astro preview"
   },
   "dependencies": {

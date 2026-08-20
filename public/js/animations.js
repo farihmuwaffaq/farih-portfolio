@@ -9,6 +9,48 @@
     reveal.forEach(function (el) { el.classList.add('motion-ready'); observer.observe(el); });
   } else reveal.forEach(function (el) { el.classList.add('is-visible'); });
 
+  var systemBoot = document.querySelector('[data-system-boot]');
+  if (systemBoot) {
+    var bootMetrics = systemBoot.querySelectorAll('[data-count-to]');
+    function formatBootMetric(metric, value) {
+      var pad = Number(metric.getAttribute('data-count-pad') || 0);
+      var suffix = metric.getAttribute('data-count-suffix') || '';
+      return Math.round(value).toLocaleString('en-US').padStart(pad, '0') + suffix;
+    }
+    function countBootMetric(metric, delay, duration) {
+      var target = Number(metric.getAttribute('data-count-to'));
+      window.setTimeout(function () {
+        var started = performance.now();
+        function update(now) {
+          var progress = Math.min((now - started) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          metric.textContent = formatBootMetric(metric, target * eased);
+          if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+      }, delay);
+    }
+    function startSystemBoot() {
+      systemBoot.classList.add('is-booted');
+      countBootMetric(bootMetrics[0], 1650, 800);
+      countBootMetric(bootMetrics[1], 1920, 480);
+      countBootMetric(bootMetrics[2], 2120, 420);
+    }
+    if (!reduced && 'IntersectionObserver' in window) {
+      systemBoot.classList.add('is-boot-ready');
+      bootMetrics.forEach(function (metric) { metric.textContent = formatBootMetric(metric, 0); });
+      var bootObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            startSystemBoot();
+            bootObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.45 });
+      bootObserver.observe(systemBoot);
+    }
+  }
+
   var operating = document.querySelector('[data-operating-model]');
   if (operating) {
     var map = operating.querySelector('.capability-map');
