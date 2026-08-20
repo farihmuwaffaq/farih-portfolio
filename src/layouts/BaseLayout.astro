@@ -35,6 +35,7 @@ const schemas = [
   <header class="site-header"><nav class="nav" aria-label="Primary navigation">
     <a class="brand" href="/"><span class="brand-mark">FM<em>/</em></span><span class="brand-role">Data Analyst — Jakarta</span></a>
     <div class="nav-shell"><ul class="nav-links" id="primary-links">{nav.map(([label,href], i) => <li><a href={href} aria-current={(href==='/' ? current==='/' : current.startsWith(href)) ? 'page' : undefined}><sup>{String(i+1).padStart(2,'0')}</sup>{label}</a></li>)}</ul><a class="nav-cta" href={current.startsWith('/contact')?'#message-form':'/contact'}>Start a conversation <Icon name="arrow-up-right" /></a></div>
+    <div class="mobile-nav-footer"><a class="mobile-nav-cta" href={`mailto:${site.email}`}>Start a conversation <Icon name="arrow-up-right" /></a><div>{social.map(([label,href])=><a href={href} target="_blank" rel="noreferrer">{label}</a>)}</div></div>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-links" aria-label="Open navigation"><span class="sr-only">Toggle navigation</span><i></i><i></i></button>
   </nav></header>
   <div class="nav-backdrop" aria-hidden="true"></div>
