@@ -12,6 +12,24 @@ categories: [Commercial & Operations, Analytics & Automation]
 featured: false
 confidential: true
 confidentialityNote: Published evidence excludes customer records, addresses, transaction identifiers, and internal pricing logic. Monetary values shown in the source chart are historical analytical outputs.
+evidenceStatus: PROTECTED DETAILS
+evidenceNote: Source charts retain historical analytical outputs, but customer records, addresses, transaction identifiers, and internal pricing logic are excluded.
+assumptionsConstraints:
+  - Distance is measured between warehouse and customer.
+  - Margin interpretation depends on recorded delivery distance, delivery fee, and net-margin fields.
+  - The observed seven-kilometer threshold requires data-quality checks, outlier review, and visible assumptions before operational use.
+decisionLog:
+  - decision: Join delivery distance with fee and net-margin data.
+    why: Transaction and fee totals alone did not explain where delivery economics weakened.
+  - decision: Analyze margin behavior by distance band.
+    why: The analysis needed to locate where the existing delivery-price structure stopped covering operational cost.
+  - decision: Retain only the analytical relationship in public evidence.
+    why: Customer-level and internal pricing details are sensitive.
+dictionary:
+  - term: Net margin
+    definition: Remaining margin examined against delivery distance and fees.
+  - term: Distance band
+    definition: Grouping of deliveries by warehouse-to-customer distance for comparison.
 coverImage: /images/projects/lifepack-delivery-margin-analysis.svg
 coverAlt: Editorial visualization of a seven-kilometer delivery margin threshold
 outcomes:

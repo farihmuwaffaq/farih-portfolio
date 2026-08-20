@@ -11,6 +11,28 @@ tools: [Python, Pandas, NumPy, Scikit-learn, Matplotlib, Seaborn, Jupyter Notebo
 categories: [Machine Learning]
 featured: true
 confidential: false
+evidenceStatus: PUBLIC PROJECT
+evidenceNote: Non-confidential project materials publish model evaluation results, but no verified public repository URL is available.
+assumptionsConstraints:
+  - The analysis uses a provided historical project dataset with more than 70 borrower and loan attributes.
+  - Reported AUC and KS values apply only to the project dataset.
+  - The model was not deployed; real use would require out-of-time validation, fairness testing, calibration, monitoring, and governance.
+decisionLog:
+  - decision: Engineer debt-to-income, repayment-to-income, and tenure features.
+    why: The high-dimensional source data required prepared predictors for repayment-risk analysis.
+  - decision: Compare Logistic Regression, Decision Tree, and Random Forest using stratified cross-validation and grid search.
+    why: Model selection required reproducible comparison under class-discrimination requirements.
+  - decision: Select the optimized Random Forest.
+    why: It was the chosen model among the compared families based on project evaluation.
+dictionary:
+  - term: AUC
+    definition: Area under the ROC curve used to evaluate class discrimination.
+  - term: KS statistic
+    definition: Kolmogorov-Smirnov statistic used to measure separation between outcome classes.
+  - term: Stratified k-fold cross-validation
+    definition: Validation approach preserving class proportions across folds.
+  - term: Calibration
+    definition: Alignment between predicted probabilities and observed outcomes.
 coverImage: /images/projects/loan-default/model-results.png
 coverAlt: Loan default model results showing ROC and Kolmogorov-Smirnov evaluation charts
 outcomes: [Random Forest AUC of 0.857 on the project dataset, KS statistic of 0.5675 in the project report, Compared three model families]

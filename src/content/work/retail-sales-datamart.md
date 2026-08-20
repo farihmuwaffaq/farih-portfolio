@@ -11,6 +11,28 @@ tools: [SQL, Excel, Looker Studio]
 categories: [Business Intelligence, Analytics & Automation]
 featured: false
 confidential: false
+evidenceStatus: PUBLIC PROJECT
+evidenceNote: Non-confidential project materials show table designs and dashboard outputs; an undocumented 20% efficiency claim is deliberately excluded.
+assumptionsConstraints:
+  - The sales source has no single unique column.
+  - Reporting requires consistent integration of transaction, customer, and product data.
+  - Location and weather enrichment should be used only when analytical purpose and data quality are established.
+decisionLog:
+  - decision: Define a composite key from invoice and item identifiers.
+    why: No individual sales-table column uniquely identified each sales item.
+  - decision: Set the base table grain at sales-item level.
+    why: Consistent reporting depended on explicit grain and predictable joins.
+  - decision: Create aggregates by date, customer, and invoice for dashboard views.
+    why: Commercial reporting required performance views at multiple useful levels.
+dictionary:
+  - term: Datamart
+    definition: Structured reporting dataset integrating sales-related source data.
+  - term: Composite key
+    definition: Combined invoice and item identifiers used to uniquely identify a sales item.
+  - term: Grain
+    definition: Level represented by each table row; here, one sales item.
+  - term: Aggregate
+    definition: Summarized data grouped by dimensions such as date, customer, or invoice.
 coverImage: /images/projects/retail-sales/kimia-farma-dashboard.jpg
 coverAlt: Kimia Farma sales dashboard showing invoice, sales, product and customer reporting
 outcomes: [Defined a composite sales key, Designed base and aggregate table structures, Produced sales performance dashboard outputs]

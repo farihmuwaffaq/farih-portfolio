@@ -12,7 +12,18 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
 const current = Astro.url.pathname;
 const queryProjectIndex = (await getCollection('work'))
   .sort((a,b)=>a.data.title.localeCompare(b.data.title))
-  .map(project=>({ title:project.data.title, slug:project.data.slug, summary:project.data.summary, categories:project.data.categories }));
+  .map(project=>({
+    title: project.data.title,
+    slug: project.data.slug,
+    summary: project.data.summary,
+    categories: project.data.categories,
+    organization: project.data.organization,
+    problem: project.data.summary,
+    decisions: project.data.decisionLog,
+    constraints: project.data.assumptionsConstraints,
+    evidenceStatus: project.data.evidenceStatus,
+    evidenceNote: project.data.evidenceNote,
+  }));
 const serializedQueryProjectIndex = JSON.stringify(queryProjectIndex).replace(/</g, '\\u003c');
 const schemas = [
   { '@context':'https://schema.org','@type':'WebSite', name:`${site.name} Portfolio`, url:Astro.site?.toString() },

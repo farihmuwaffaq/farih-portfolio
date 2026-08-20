@@ -11,6 +11,28 @@ tools: [Methodology review, Scenario modeling, Implementation planning]
 categories: [Sustainability]
 featured: false
 confidential: false
+evidenceStatus: PUBLIC PROJECT
+evidenceNote: Non-confidential hiring-assessment materials document methodology comparison and planning; simulated emission reductions are hypothetical and not project results.
+assumptionsConstraints:
+  - The work addresses a supplied scenario involving an Indonesian logging concession.
+  - The output is an assessment and phased plan, not an operating carbon project.
+  - Methodology eligibility and recommendations must be rechecked against current Verra and Indonesian requirements.
+decisionLog:
+  - decision: Compare methodology options against scenario conditions.
+    why: The recommendation needed to fit project boundaries, baseline needs, monitoring, and certification requirements.
+  - decision: Recommend VM0010 and MSAH-002 for the assessment context.
+    why: The comparison identified them as approaches suited to the supplied scenario.
+  - decision: Translate methodology selection into a phased implementation pathway.
+    why: A methodology recommendation alone did not provide a practical plan for engagement, monitoring, verification, and certification.
+dictionary:
+  - term: Baseline
+    definition: Reference scenario against which carbon-project effects would be assessed.
+  - term: VM0010
+    definition: Forest-carbon methodology recommended within the supplied assessment scenario.
+  - term: MSAH-002
+    definition: Methodology approach recommended within the supplied assessment scenario.
+  - term: Verification
+    definition: Assessment step included before certification.
 coverImage: /images/projects/carbon-methodology/vm0010-plan.png
 coverAlt: VM0010 forest carbon methodology recommendation and implementation pathway
 outcomes: [Compared methodology options, Outlined baseline and monitoring needs, Created an implementation and certification pathway]

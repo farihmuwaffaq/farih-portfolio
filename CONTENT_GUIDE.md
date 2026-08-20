@@ -19,8 +19,11 @@ Current evidence mix:
 6. Mark sample/training data explicitly. Distinguish assessments and internships from production deployments.
 7. Revalidate changing methodologies, regulations, and external facts before publication.
 8. Keep `slug`, title, summary, and categories suitable for build-time query-console search. The console indexes these fields directly and executes no free-form SQL.
-9. Credential evidence belongs in `public/credentials/` and `src/data/credentials.ts`; publish only approved, redacted PDFs.
-10. Run the applicable interaction contracts, then `npm run check`, `npm run build`, and `npm run audit:links`.
+9. Keep `evidenceStatus` within `PROTECTED DETAILS`, `RECONSTRUCTED VIEW`, `SYNTHETIC DATA`, or `PUBLIC PROJECT`; use `evidenceNote` to state the exact publication boundary.
+10. Ground every `assumptionsConstraints` and `decisionLog` entry in the case-study narrative. Do not infer business decisions, causality, impact, or system behavior that the evidence does not support.
+11. Add `dictionary` only when domain terms materially affect interpretation; definitions must match the published methodology.
+12. Credential evidence belongs in `public/credentials/` and `src/data/credentials.ts`; publish only approved, redacted PDFs.
+13. Run the applicable interaction contracts, then `npm run check`, `npm run build`, and `npm run audit:links`.
 
 ## Verification matrix
 
@@ -29,6 +32,7 @@ Current evidence mix:
 - `npm run test:hero-boot` and `npm run test:operating-toolchain` check homepage interaction contracts.
 - `npm run test:selected-credentials` checks credential content and local PDF evidence.
 - `npm run test:query-interface` checks navigation exclusions, project indexing, console behavior, accessibility hooks, and transition timing.
+- `npm run test:analyst-credibility` checks required evidence, constraint, and decision fields plus Work Detail and `EXPLAIN` presentation contracts.
 - `npm run check`, `npm run build`, and `npm run audit:links` remain mandatory release gates.
 
 ## Known claims intentionally withheld

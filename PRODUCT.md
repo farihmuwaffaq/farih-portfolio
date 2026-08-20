@@ -29,7 +29,7 @@ Primary CTA: send email directly or connect through LinkedIn/GitHub. Secondary C
 
 ## Evidence on hand
 
-Nine Astro Content Collection case studies (validated Markdown): Analytics and Reporting Automation, NEXUS BI Platform, Shopee Pricing Tracker, Health-Tech Data Infrastructure, Delivery Margin Analysis, FMCG Operations Analytics, Loan Default Model, Retail Sales Datamart, and Carbon Methodology Assessment. Each includes a snapshot, situation/problem, responsibility, approach, solution, outcome, learnings, and sanitized related assets where approved.
+Nine Astro Content Collection case studies (validated Markdown): Analytics and Reporting Automation, NEXUS BI Platform, Shopee Pricing Tracker, Health-Tech Data Infrastructure, Delivery Margin Analysis, FMCG Operations Analytics, Loan Default Model, Retail Sales Datamart, and Carbon Methodology Assessment. Each includes a snapshot, evidence classification, assumptions/constraints, decision log, situation/problem, responsibility, approach, solution, outcome, learnings, and sanitized related assets where approved. Domain-heavy studies may include a metric dictionary.
 
 **Evidence rules (from CONTENT_GUIDE.md):**
 - `evidenceType` stays accurate: Professional Experience, Project-Based Internship, or Technical Assessment. Sample/training-data context belongs in provenance copy rather than a new evidence-type label.
@@ -59,7 +59,7 @@ Tone: analytical, calm, modern, credible, editorial, spacious, professional. Avo
 
 - Internal page navigation frames the portfolio as queryable evidence through a brief route-aware SQL transition. It replaces generic page transition motion rather than stacking another animation layer.
 - Eligible internal links use a `950 ms` desktop or `700 ms` mobile sequence. Query text appears promptly, the result state receives a readable beat, then full-document Astro navigation proceeds.
-- The optional `SQL_` query console supports bounded route and project discovery commands plus local matching against the build-time case-study index. It does not execute arbitrary SQL, call a search backend, or replace primary navigation.
+- The optional `SQL_` query console supports bounded route and project discovery commands, local matching against the build-time case-study index, `EXPLAIN <project>` analytical summaries, and up to five tab-scoped history entries. It does not execute arbitrary SQL, call a search backend, or replace primary navigation.
 - Query console results remain native links. External, download, modified-click, same-page hash, current-page, `mailto:`, and `tel:` behavior remains native; reduced-motion users bypass transition animation.
 - `/` opens the console only outside editable controls and after the identity intro has cleared. Native dialog behavior provides focus containment, `Escape` close, backdrop close, and focus restoration.
 - The first session visit presents an explicit identity-intro gate. It does not block no-script users and does not replay during the same tab session.

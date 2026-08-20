@@ -12,6 +12,28 @@ categories: [Analytics & Automation, Business Intelligence]
 featured: true
 confidential: true
 confidentialityNote: Brand names and architecture tooling are shown with permission. Operating figures, stakeholder identities, competitor handles, internal file names, credentials, and campaign specifics are withheld. The pipeline diagram contains real tool relationships but no client performance data.
+evidenceStatus: RECONSTRUCTED VIEW
+evidenceNote: Real tool relationships are retained in the architecture diagram, while dashboard examples are recreated with synthetic data and client performance details, identities, credentials, and campaign specifics are withheld.
+assumptionsConstraints:
+  - Reporting spans at least five social platforms and four FMCG brands.
+  - Approved quantitative measurements are unavailable for publication, so outcomes remain qualitative.
+  - Automation depends on stable KPI definitions, freshness checks, ownership, and escalation paths.
+decisionLog:
+  - decision: Build a maintained multi-source pipeline from ClickHouse into spreadsheets, reports, and BI dashboards.
+    why: Raw data was scattered across tools and analysts were spending time on manual preparation.
+  - decision: Standardize reusable extraction, transformation, and scheduled-reporting patterns.
+    why: The next analyst needed to rerun workflows without reverse-engineering individual scripts.
+  - decision: Surface actual-versus-KPI gauges, track scores, distributions, and best-performing content in BI.
+    why: Marketing stakeholders needed recurring decision signals instead of manually compiled weekly slide decks.
+dictionary:
+  - term: KOL
+    definition: Key opinion leader monitored through dedicated scraping workflows.
+  - term: KPI
+    definition: Key performance indicator used as a dashboard benchmark.
+  - term: Track score
+    definition: Campaign-monitoring indicator shown alongside actual-versus-KPI views.
+  - term: Data freshness
+    definition: Whether scheduled reporting reflects sufficiently current source data.
 coverImage: /images/projects/maleo-dashboard-silverqueen.png
 coverAlt: Campaign monitoring dashboard for a SilverQueen campaign, recreated with synthetic data, showing actual-vs-KPI gauges, a track score, and best-performing content
 outcomes: [Reduced repetitive manual reporting across brands, Improved consistency of recurring monthly and campaign outputs, Created timely daily signals for performance discussions]

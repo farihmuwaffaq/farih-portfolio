@@ -12,6 +12,28 @@ categories: [Business Intelligence, Analytics & Automation]
 featured: true
 confidential: true
 confidentialityNote: The platform name and the company are shown with permission. All operating figures, project IDs, script and spreadsheet IDs, and user identities are replaced with placeholders; the interface screenshots use synthetic demo data.
+evidenceStatus: SYNTHETIC DATA
+evidenceNote: Platform and company names are permitted, but interface screenshots use synthetic demo data and operating figures, IDs, and user identities are replaced with placeholders.
+assumptionsConstraints:
+  - Non-technical users require governed self-service access to warehouse data.
+  - Access must reflect role-based permissions and row-level restrictions.
+  - Adoption and time-saving figures are internal and cannot be published.
+decisionLog:
+  - decision: Create a governed semantic layer over BigQuery.
+    why: KPI definitions needed to remain consistent across teams and query paths.
+  - decision: Implement RBAC with row-level security.
+    why: Self-service exploration required centralized control over which data each user could access.
+  - decision: Provide a visual query builder, executive dashboards, and sales extrapolation in one platform.
+    why: Commercial and marketing teams needed routine analysis without waiting for an analyst.
+dictionary:
+  - term: RBAC
+    definition: Role-based access control governing platform capabilities.
+  - term: Row-level security
+    definition: Rules restricting which data rows each user may access.
+  - term: Semantic layer
+    definition: Central governed layer containing shared dimensions, measures, and KPI definitions.
+  - term: Sales extrapolation
+    definition: Platform function projecting sales from available period data.
 coverImage: /images/projects/nexus-bi-platform.png
 coverAlt: NEXUS Domain Intelligence dashboard showing category scorecards and a category-breakdown table with synthetic data
 outcomes: [Centralized governed access to warehouse data for non-technical teams, Removed repetitive analyst-built reporting through a self-serve query builder, Enforced consistent KPI definitions and row-level data security]

@@ -12,6 +12,28 @@ categories: [Analytics & Automation, Commercial & Operations]
 featured: false
 confidential: true
 confidentialityNote: The company and channel names are shown with permission. Live spreadsheet data, script IDs, and product-level operating figures are replaced with placeholders; the interface screenshot uses synthetic demo data.
+evidenceStatus: SYNTHETIC DATA
+evidenceNote: Company and channel names are permitted, while screenshots use synthetic demo data and live spreadsheet data, script IDs, and product-level figures are replaced or withheld.
+assumptionsConstraints:
+  - Each tracked SKU has a target SRP used as a pricing benchmark.
+  - Prices must be captured daily across Shopee, Watsons, Guardian, and Sociolla.
+  - Source changes or failed runs can create missing history and therefore require recovery utilities.
+decisionLog:
+  - decision: Use a time-driven daily snapshot rather than manual entry.
+    why: Launch prices changed across channels and manual compilation was slow and error-prone.
+  - decision: Store snapshots as historical records and build a SKU-by-date board.
+    why: Commercial users needed to see price trends and drops over time.
+  - decision: Add benchmark flags, backfill, repair, and run-health checks.
+    why: Same-day follow-up and trust in current data depended on visible exceptions and complete history.
+dictionary:
+  - term: NPD
+    definition: New product development.
+  - term: SKU
+    definition: Stock-keeping unit tracked separately by channel and date.
+  - term: SRP
+    definition: Target suggested retail price used as a comparison benchmark.
+  - term: Snapshot
+    definition: Daily stored record of each SKU's channel prices.
 coverImage: /images/projects/shopee-pricing-tracker.png
 coverAlt: Pricing tracker dashboard showing a daily summary snapshot and per-SKU price comparison across channels with synthetic data
 outcomes: [Replaced manual daily price checks with an automated snapshot, Made cross-channel pricing gaps visible in one dashboard, Flagged SKUs priced below benchmark for commercial follow-up]

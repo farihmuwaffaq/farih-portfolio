@@ -295,6 +295,8 @@
     var consoleInput = consoleForm.querySelector('input');
     var consoleResults = queryConsole.querySelector('[data-query-console-results]');
     var projectIndex = JSON.parse(document.querySelector('#query-project-index')?.textContent || '[]');
+    var queryHistoryKey = 'fm-query-history';
+    var queryHistory = [];
     var lastConsoleTrigger = null;
     var routeCommands = {
       about: [{ title: 'About Farih Muwaffaq', href: '/about', meta: 'Perspective and profile' }],
@@ -306,6 +308,11 @@
       email: [{ title: 'Email Farih', href: 'mailto:farihmuwaffaq@gmail.com', meta: 'farihmuwaffaq@gmail.com' }],
       linkedin: [{ title: 'LinkedIn', href: 'https://www.linkedin.com/in/farihmuwaffaq/', meta: 'Professional profile', external: true }]
     };
+    try {
+      queryHistory = JSON.parse(sessionStorage.getItem(queryHistoryKey) || '[]');
+      if (!Array.isArray(queryHistory)) queryHistory = [];
+      queryHistory = queryHistory.filter(function (item) { return typeof item === 'string' && item.trim(); }).slice(-5);
+    } catch (_) { queryHistory = []; }
 
     function renderConsoleResults(command, results, message) {
       consoleResults.replaceChildren();
@@ -339,18 +346,121 @@
       consoleResults.appendChild(list);
     }
 
+    function renderQueryHistory() {
+      if (!queryHistory.length) {
+        renderConsoleResults('', [], 'Type help for commands or EXPLAIN <project> for analytical context');
+        return;
+      }
+      consoleResults.replaceChildren();
+      var summary = document.createElement('p');
+      summary.className = 'query-result-summary';
+      summary.textContent = 'QUERY HISTORY';
+      var list = document.createElement('ol');
+      queryHistory.forEach(function (query) {
+        var item = document.createElement('li');
+        var button = document.createElement('button');
+        button.type = 'button';
+        button.dataset.queryHistory = query;
+        var title = document.createElement('strong');
+        title.textContent = query;
+        var meta = document.createElement('span');
+        meta.textContent = 'Run again';
+        button.append(title, meta);
+        item.appendChild(button);
+        list.appendChild(item);
+      });
+      consoleResults.append(summary, list);
+    }
+
+    function rememberQuery(query) {
+      if (!query) return;
+      queryHistory = queryHistory.filter(function (item) { return item.toLowerCase() !== query.toLowerCase(); });
+      queryHistory.push(query);
+      queryHistory = queryHistory.slice(-5);
+      try { sessionStorage.setItem(queryHistoryKey, JSON.stringify(queryHistory)); } catch (_) {}
+    }
+
+    function findExplainProjects(term) {
+      var needle = term.toLowerCase().trim().replace(/^['"]|['"]$/g, '');
+      if (!needle) return [];
+      var exact = projectIndex.filter(function (project) {
+        return project.slug.toLowerCase() === needle || project.title.toLowerCase() === needle;
+      });
+      if (exact.length) return exact;
+      return projectIndex.filter(function (project) {
+        return project.slug.toLowerCase().includes(needle) || project.title.toLowerCase().includes(needle);
+      });
+    }
+
+    function renderExplain(term) {
+      var matches = findExplainProjects(term);
+      if (!matches.length) { renderConsoleResults(term, []); return; }
+      if (matches.length > 1) {
+        renderConsoleResults(term, matches.map(function (project) {
+          return { title: project.slug, href: '', meta: 'Use EXPLAIN ' + project.slug };
+        }), 'AMBIGUOUS PROJECT · Use an exact slug');
+        return;
+      }
+      var project = matches[0];
+      consoleResults.replaceChildren();
+      var article = document.createElement('article');
+      article.className = 'query-explain';
+      var summary = document.createElement('p');
+      summary.className = 'query-result-summary';
+      summary.textContent = 'EXPLAIN / ' + project.slug.toUpperCase();
+      var fields = [
+        ['PROBLEM', project.problem],
+        ['SYSTEM', project.decisions.map(function (item) { return item.decision; }).join(' → ')],
+        ['DECISION USE', project.decisions[0]?.why || project.summary],
+        ['EVIDENCE', project.evidenceStatus + ' · ' + project.evidenceNote]
+      ];
+      var definitionList = document.createElement('dl');
+      fields.forEach(function (field) {
+        var row = document.createElement('div');
+        var termNode = document.createElement('dt');
+        var valueNode = document.createElement('dd');
+        termNode.textContent = field[0];
+        valueNode.textContent = field[1];
+        row.append(termNode, valueNode);
+        definitionList.appendChild(row);
+      });
+      var link = document.createElement('a');
+      link.href = '/work/' + project.slug;
+      link.dataset.event = 'query_console_result_click';
+      link.dataset.eventLabel = 'explain:' + project.slug;
+      link.textContent = 'Open case study ↗';
+      article.append(summary, definitionList, link);
+      consoleResults.appendChild(article);
+    }
+
+    function renderEasterEgg(query) {
+      if (query === 'SELECT * FROM analyst WHERE curiosity = TRUE') {
+        renderConsoleResults(query, [], '1 ROW RETURNED · Farih Muwaffaq · Systems thinker · Business context · Probably debugging something');
+        return true;
+      }
+      if (query === 'SELECT coffee FROM analyst') {
+        renderConsoleResults(query, [], '1 ROW RETURNED · Cold brew · Query latency improved; causal relationship not established');
+        return true;
+      }
+      return false;
+    }
+
     function handleConsoleCommand(value) {
-      var command = value.trim().toLowerCase().replace(/^(show|select|open|find)\s+/, '');
+      var rawCommand = value.trim().replace(/;$/, '');
+      var command = rawCommand.toLowerCase().replace(/^(show|select|open|find)\s+/, '');
       window.portfolioAnalytics?.track('query_console_submit', { label: command || 'help', path: window.location.pathname });
       if (!command || command === 'help') {
         renderConsoleResults(command, [
           { title: 'work', href: '/work', meta: 'List all case studies' },
+          { title: 'EXPLAIN <project>', href: '', meta: 'Read problem, system, decision use, and evidence' },
           { title: 'experience', href: '/about#experience', meta: 'Open career timeline' },
           { title: 'skills', href: '/resume#skills', meta: 'Open skills and toolchain' },
           { title: 'contact', href: '/contact', meta: 'Open contact channels' }
         ], 'Available commands');
         return;
       }
+      if (renderEasterEgg(rawCommand)) return;
+      if (command.startsWith('explain ')) { renderExplain(rawCommand.slice(8).trim()); return; }
       if (command === 'work' || command === 'projects' || command === 'case studies' || command === 'cases') {
         renderConsoleResults(command, projectIndex.map(function (project) { return { title: project.title, href: '/work/' + project.slug, meta: project.categories.join(' · ') }; }));
         return;
@@ -368,6 +478,7 @@
       lastConsoleTrigger = trigger?.classList.contains('mobile-query-trigger') ? document.querySelector('.nav-toggle') : trigger || document.activeElement;
       setNav(false);
       queryConsole.showModal();
+      renderQueryHistory();
       window.portfolioAnalytics?.track('query_console_open', { label: trigger?.textContent.trim() || 'shortcut', path: window.location.pathname });
       requestAnimationFrame(function () { consoleInput.focus(); });
     }
@@ -381,8 +492,20 @@
     consoleClose.addEventListener('click', closeQueryConsole);
     queryConsole.addEventListener('cancel', function (event) { event.preventDefault(); closeQueryConsole(); });
     queryConsole.addEventListener('click', function (event) { if (event.target === queryConsole) closeQueryConsole(); });
-    consoleResults.addEventListener('click', function (event) { if (event.target.closest('a[href]')) queryConsole.close(); });
-    consoleForm.addEventListener('submit', function (event) { event.preventDefault(); handleConsoleCommand(consoleInput.value); });
+    consoleResults.addEventListener('click', function (event) { if (event.target.closest('a[href]')) queryConsole.close();
+      var historyButton = event.target.closest('[data-query-history]');
+      if (historyButton) {
+        consoleInput.value = historyButton.dataset.queryHistory;
+        rememberQuery(consoleInput.value);
+        handleConsoleCommand(consoleInput.value);
+        return;
+      }
+    });
+    consoleForm.addEventListener('submit', function (event) {
+      event.preventDefault();
+      rememberQuery(consoleInput.value.trim());
+      handleConsoleCommand(consoleInput.value);
+    });
     document.addEventListener('keydown', function (event) {
       var tag = event.target.tagName;
       var editable = event.target.isContentEditable || event.target.closest('[contenteditable="true"]') || /INPUT|TEXTAREA|SELECT/.test(tag);

@@ -32,7 +32,8 @@ Kondisi production terverifikasi per 20 Agustus 2026:
 - Session-scoped identity intro memakai explicit Enter, no-script bypass, reduced-motion bypass, inert background, dan focus handoff.
 - Homepage memiliki one-shot Operating Layer boot sequence dan interactive Operating Model toolchain mapper.
 - Eligible internal links memakai route-aware SQL transition: 950 ms desktop dan 700 ms mobile.
-- Native-dialog `SQL_` query console mendukung shortcut `/`, bounded commands, dan build-time search atas sembilan case studies tanpa free-form SQL atau backend.
+- Native-dialog `SQL_` query console mendukung shortcut `/`, bounded commands, build-time search, `EXPLAIN <project>`, dan maksimal lima tab-scoped query history entries tanpa free-form SQL atau backend.
+- Semua Work Detail memiliki governed evidence status, assumptions/constraints, dan decision log; project domain-kompleks dapat memiliki metric dictionary.
 - Mobile navigation adalah independent fixed fullscreen layer di luar floating navbar containing block.
 - About hero memakai tiga semantic headline lines pada desktop dan natural wrapping pada mobile.
 - About capability cards stack satu kolom di bawah 900px.
@@ -61,14 +62,15 @@ Verification wajib sebelum menyatakan selesai:
 4. Jalankan `npm run test:selected-credentials`.
 5. Jalankan `npm run test:v1-launch`.
 6. Jalankan `npm run test:query-interface`.
-7. Jalankan `npm run check`.
-8. Jalankan `npm run build`.
-9. Jalankan `npm run audit:links`.
-10. Jalankan `npm audit` dan syntax check untuk client JS yang diubah.
-11. Periksa `git diff --check`.
-12. Untuk perubahan UI, browser-test sekitar 390px, 768px, dan 1440px.
-13. Untuk fixed overlay atau dialog, ukur geometry aktual terhadap viewport dan cek focus, Escape, Tab loop, scroll lock, native link exclusions, serta reduced motion.
-14. Deploy hanya jika diminta atau merupakan bagian eksplisit dari task; smoke-test production setelah deploy.
+7. Jalankan `npm run test:analyst-credibility`.
+8. Jalankan `npm run check`.
+9. Jalankan `npm run build`.
+10. Jalankan `npm run audit:links`.
+11. Jalankan `npm audit` dan syntax check untuk client JS yang diubah.
+12. Periksa `git diff --check`.
+13. Untuk perubahan UI, browser-test sekitar 390px, 768px, dan 1440px.
+14. Untuk fixed overlay atau dialog, ukur geometry aktual terhadap viewport dan cek focus, Escape, Tab loop, scroll lock, native link exclusions, serta reduced motion.
+15. Deploy hanya jika diminta atau merupakan bagian eksplisit dari task; smoke-test production setelah deploy.
 
 Konfigurasi eksternal yang masih optional:
 

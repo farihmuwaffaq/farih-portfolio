@@ -24,7 +24,8 @@ Static Astro + TypeScript portfolio for a Jakarta-based Data Analyst. Production
 - Session-scoped identity intro with explicit entry and a no-script bypass.
 - Homepage operating-layer boot sequence and operating-model toolchain interaction.
 - Route-aware SQL transition for eligible internal links: `950 ms` desktop and `700 ms` mobile.
-- Optional `SQL_` query console with bounded commands and build-time case-study search; `/` opens it outside editable controls.
+- Optional `SQL_` query console with bounded commands, build-time case-study search, session-scoped five-query history, and `EXPLAIN <project>` analytical summaries; `/` opens it outside editable controls.
+- Every case study exposes a governed evidence status, assumptions/constraints, and decision log; domain-heavy studies add a compact metric dictionary.
 - Work filters, image lightbox, contact route with direct-email fallback, downloadable resume, sitemap, manifest, robots directives, and lightweight analytics hooks.
 
 ## Commands
@@ -49,6 +50,7 @@ npm run test:operating-toolchain
 npm run test:selected-credentials
 npm run test:v1-launch
 npm run test:query-interface
+npm run test:analyst-credibility
 npm run check
 npm run build
 npm run audit:links

@@ -30,6 +30,7 @@ Soft Structuralism with asymmetric editorial composition. Evidence remains prima
 - Never place mobile overlay inside an ancestor with constrained width, border radius, clipping, `transform`, or `backdrop-filter`; those properties can create an incorrect containing block.
 - Open state includes its own logo, Close control, numbered primary links, conversation CTA, and social links.
 - `SQL_` trigger sits inside desktop navigation and mobile menu. The query console uses native `<dialog>`, one search field, bounded results, keyboard dismissal, backdrop dismissal, and focus restoration.
+- Console opening state shows up to five tab-scoped query-history entries. `EXPLAIN <project>` renders Problem, System, Decision Use, and Evidence from validated build-time content; hidden exact-match Easter eggs remain absent from visible help.
 - Slash shortcut ignores input, textarea, select, and contenteditable targets. Mobile console close restores focus to the visible menu toggle rather than a hidden menu trigger.
 - Body scrolling locks while open. Escape closes it, focus enters the layer, Tab remains contained, and hidden controls leave tab order.
 - Navigation and Close touch targets remain at least 44px.
@@ -40,6 +41,7 @@ Soft Structuralism with asymmetric editorial composition. Evidence remains prima
 - About hero uses three semantic headline lines on desktop with an approximately 57/43 text-to-portrait ratio. Mobile returns to natural wrapping and a shorter landscape portrait crop.
 - Text-heavy capability cards stack to one column below 900px.
 - Work Detail evidence stacks to one column below 900px; technical summaries use two columns on tablet and one on mobile.
+- Work Detail credibility frame pairs dark assumptions/constraints with an editorial decision log, then collapses to one column below 900px. Evidence status stays adjacent to project metadata; optional metric dictionaries use native `<details>`.
 - Focused Interface Studies remain a compact two-column gallery below 768px because they support visual browsing rather than long-form reading.
 - Work Detail section rhythm tightens below 768px without reducing body readability.
 - Gutters become 16px below 768px. Overlaps and decorative rotations disappear. Primary CTAs may become full width where scanning benefits.

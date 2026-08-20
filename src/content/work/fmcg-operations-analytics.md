@@ -12,6 +12,24 @@ categories: [Commercial & Operations, Business Intelligence]
 featured: false
 confidential: true
 confidentialityNote: Production and profit outcomes are reported at business level during my engagement; supplier details, SKU-level data, margin formulas, and transaction records remain withheld.
+evidenceStatus: PROTECTED DETAILS
+evidenceNote: Approved business-level outcomes and portfolio visuals are shown with team attribution; supplier details, SKU-level data, margin formulas, and transaction records remain withheld.
+assumptionsConstraints:
+  - Published production and profit outcomes describe business performance during the engagement, not solely individual contribution.
+  - Operating metrics require explicit definitions, baselines, comparison periods, and owners.
+  - Commercially sensitive supplier, SKU, margin, and transaction details cannot be disclosed.
+decisionLog:
+  - decision: Connect production, distribution, and profit analysis rather than report them separately.
+    why: The business needed coordinated operational and commercial decisions.
+  - decision: Use dashboards and recurring analysis to support production and channel decisions.
+    why: Operational execution required shared visibility across functions.
+  - decision: Report outcomes at business level with team attribution.
+    why: The results occurred within broader operational execution and should not be presented as individual-only impact.
+dictionary:
+  - term: SKU
+    definition: Stock-keeping unit; unit-level operating data remains withheld.
+  - term: Business-level outcome
+    definition: Result attributed to broader company or team execution during the engagement.
 coverImage: /images/projects/fmcg-operations/page-09.png
 coverAlt: FMCG dashboard, visualization, coding, and data-processing evidence from the project portfolio
 outcomes: ['Supported production capacity growth of 1,567%, from 300 to 5,000 units per day', 'Supported monthly profit growth from below IDR 100M to above IDR 700M', 'Informed Modern Trade to General Trade expansion']

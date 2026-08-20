@@ -12,6 +12,26 @@ categories: [Analytics & Automation, Business Intelligence]
 featured: false
 confidential: true
 confidentialityNote: Selected visuals are cropped to remove sensitive fields. Patient and doctor contact data, row-level records, and internal GMV figures are withheld.
+evidenceStatus: PROTECTED DETAILS
+evidenceNote: Published visuals are cropped to aggregate views; patient and doctor contacts, row-level records, and internal GMV figures remain withheld.
+assumptionsConstraints:
+  - Operational reporting depended on integrating backend systems with a central database.
+  - Doctor-registry data required validation and deduplication before loading into BigQuery.
+  - Claims about delivery-cost effectiveness and aggregator growth cannot be published because definitions and evidence are unverified.
+decisionLog:
+  - decision: Create a repeatable registry pipeline with validation and deduplication.
+    why: Public doctor-registry extraction needed reliable preparation before central storage and reporting.
+  - decision: Expose aggregate qualification and university distributions rather than row-level registry data.
+    why: Stakeholders needed reporting while public disclosure had to protect contact and record-level details.
+  - decision: Escalate data-integrity risks alongside dashboard delivery.
+    why: Reliable operational decisions required trustworthy definitions and source data, not visualization alone.
+dictionary:
+  - term: GMV
+    definition: Gross merchandise value; internal figures are withheld.
+  - term: Deduplication
+    definition: Removal or reconciliation of repeated registry records.
+  - term: Row-level records
+    definition: Individual source records excluded from public portfolio evidence.
 coverImage: /images/projects/lifepack/dashboard-doctor-registry.jpg
 coverAlt: Lifepack doctor registry dashboard showing aggregate qualification and university distributions
 outcomes: [Developed and maintained more than 10 dashboards and reports, Supported operational visibility, Identified and escalated data risks]
