@@ -47,8 +47,8 @@ Soft Structuralism with asymmetric editorial composition. Evidence remains prima
 - Primary easing: `cubic-bezier(0.32, 0.72, 0, 1)`.
 - Entry motion uses IntersectionObserver, transform, opacity, and light blur.
 - Homepage Operating Layer card uses a one-shot system boot sequence: header signal, chart draw, final point, hierarchical metric count-up, then stable status. Total duration stays near 2.5 seconds and never loops.
-- First session entry may use a non-loading identity reveal: `FM/`, name, role, `Data / Systems / Decisions`, then `System ready`. It uses a vertical curtain exit, lasts about 2.4 seconds desktop and 1.6 seconds mobile including exit, and never repeats within the session.
-- Identity reveal is progressive enhancement: hidden by default, enabled before first paint only when session and motion preferences permit, and never waits for network completion. Skip and Escape reveal content, background content remains inert while open, and focus moves to the main landmark on completion.
+- First session entry may use a non-loading identity reveal: `FM/`, name, role, `Data / Systems / Decisions`, then `System ready`. It waits for explicit `Enter portfolio` confirmation before using a vertical curtain exit, and never repeats within the session after entry.
+- Identity reveal is progressive enhancement: hidden by default, enabled before first paint only when session and motion preferences permit, and never waits for network completion. Background content remains inert while open, entry state persists only after button activation, and focus moves to the main landmark on completion.
 - System metrics retain final values in HTML; JavaScript may initialize count-up only after motion support and viewport observation are confirmed.
 - Post-sequence chart hover may brighten line and peak on fine pointers. No cursor-follow glow, fake tooltip data, card tilt, or live-data simulation.
 - Menu feedback begins within 250-350ms; no long reveal delays block navigation.

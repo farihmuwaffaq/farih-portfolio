@@ -58,9 +58,10 @@ p { max-width: 66ch; }
 .intro-progress { position: relative; width: min(18rem,60vw); height: 1px; margin: clamp(2rem,5vh,3.5rem) auto 0; background: var(--line-strong); }
 .intro-progress i { position: absolute; inset: 0; background: var(--signal); transform: scaleX(0); transform-origin: left; }
 .intro-progress b { position: absolute; right: -.2rem; top: -.2rem; width: .4rem; aspect-ratio: 1; border-radius: 50%; background: var(--signal); opacity: 0; transform: scale(0); }
-.intro-skip { justify-self: end; padding: .45rem 0; border: 0; color: var(--muted); background: transparent; font: 500 .68rem var(--mono); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; opacity: 0; }
-.intro-skip span { display: inline-block; margin-left: .35rem; color: var(--signal); transition: transform .25s var(--ease); }
-.intro-skip:hover span { transform: translate(.15rem,-.12rem); }
+.intro-enter { justify-self: end; padding: .75rem 1rem; border: 1px solid rgba(13,107,72,.28); border-radius: 999px; color: var(--signal-deep); background: rgba(255,255,255,.48); font: 560 .68rem var(--mono); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; opacity: 0; transition: color .25s ease, background .25s ease, border-color .25s ease; }
+.intro-enter span { display: inline-block; margin-left: .35rem; color: var(--signal); transition: transform .25s var(--ease); }
+.intro-enter:hover, .intro-enter:focus-visible { color: white; border-color: var(--signal); background: var(--signal); }
+.intro-enter:hover span, .intro-enter:focus-visible span { color: white; transform: translate(.15rem,-.12rem); }
 .identity-intro.is-running .intro-frame::before { animation: intro-orbit 1.8s var(--ease) .1s both; }
 .identity-intro.is-running .intro-top { animation: intro-in .3s ease .05s both; }
 .identity-intro.is-running .intro-status span:first-child { animation: intro-status-initial 1.35s ease .18s both; }
@@ -75,7 +76,7 @@ p { max-width: 66ch; }
 .identity-intro.is-running .intro-signals span:nth-child(5) { animation: intro-signal .3s var(--ease) 1.34s both; }
 .identity-intro.is-running .intro-progress i { animation: intro-progress 1.45s var(--ease) .42s both; }
 .identity-intro.is-running .intro-progress b { animation: intro-ready .25s var(--ease) 1.48s both; }
-.identity-intro.is-running .intro-skip { animation: intro-in .3s ease .25s both; }
+.identity-intro.is-running .intro-enter { animation: intro-in .35s ease 1.58s both; }
 .identity-intro.is-leaving { transform: translateY(-100%); transition: transform .65s var(--ease); }
 @keyframes intro-in { to { opacity: 1; transform: none; } }
 @keyframes intro-name { to { opacity: 1; transform: none; } }
@@ -103,6 +104,7 @@ p { max-width: 66ch; }
   .identity-intro.is-running .intro-signals span:nth-child(5) { animation-delay: .86s; }
   .identity-intro.is-running .intro-progress i { animation-duration: .9s; animation-delay: .25s; }
   .identity-intro.is-running .intro-progress b { animation-delay: 1.05s; }
+  .identity-intro.is-running .intro-enter { animation-delay: 1.08s; }
   .identity-intro.is-leaving { transition-duration: .45s; }
 }
 .container { width: min(calc(100% - (var(--gutter) * 2)), var(--container)); margin-inline: auto; }

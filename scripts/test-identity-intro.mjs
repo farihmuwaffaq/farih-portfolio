@@ -9,7 +9,8 @@ const [layout, css, js] = await Promise.all([
 
 assert.match(layout, /sessionStorage\.getItem\('fm-intro-seen'\)/, 'head gate must check session before first paint');
 assert.match(layout, /class="identity-intro"/, 'global layout needs identity intro');
-assert.match(layout, /data-intro-skip/, 'intro needs a skip control');
+assert.match(layout, /data-intro-enter/, 'intro needs an explicit entry control');
+assert.match(layout, />Enter portfolio\s*<span>/, 'entry control needs clear destination copy');
 assert.match(layout, /<noscript>[\s\S]*identity-intro/, 'no-JS must hide overlay');
 
 assert.match(css, /\.identity-intro\s*\{[^}]*display:\s*none/, 'overlay must be hidden by default');
@@ -19,7 +20,9 @@ assert.match(css, /@media \(max-width:\s*600px\)[\s\S]*identity-intro/, 'mobile 
 
 assert.match(js, /sessionStorage\.setItem\('fm-intro-seen',\s*'true'\)/, 'controller must persist session state');
 assert.match(js, /intro:complete/, 'intro must signal hero handoff');
-assert.match(js, /data-intro-skip/, 'controller must handle Skip');
+assert.match(js, /data-intro-enter/, 'controller must handle explicit entry');
+assert.doesNotMatch(js, /setTimeout\(finishIntro/, 'intro must not close automatically');
+assert.doesNotMatch(js, /function skipIntro/, 'intro must not register an Escape bypass');
 assert.match(js, /querySelector\('#main'\)\?\.focus/, 'focus must move into revealed page');
 assert.match(js, /systemBoot[\s\S]*intro:complete/, 'hero boot must wait for intro completion');
 

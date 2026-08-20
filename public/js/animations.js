@@ -4,20 +4,15 @@
   var intro = document.querySelector('.identity-intro');
   var introPending = document.documentElement.classList.contains('intro-pending') && intro;
   if (introPending) {
-    var introSkip = intro.querySelector('[data-intro-skip]');
-    var introDuration = window.matchMedia('(max-width: 600px)').matches ? 1150 : 1750;
+    var introEnter = intro.querySelector('[data-intro-enter]');
     var introExitDuration = window.matchMedia('(max-width: 600px)').matches ? 450 : 650;
-    var introTimer;
     var introFinished = false;
     var introBackground = document.querySelectorAll('.skip-link, .site-header, .mobile-menu, #main, .site-footer');
     introBackground.forEach(function (element) { element.inert = true; });
-    try { sessionStorage.setItem('fm-intro-seen', 'true'); } catch (error) { /* Session gating remains best-effort. */ }
-    function skipIntro(event) { if (event.key === 'Escape') finishIntro(); }
     function finishIntro() {
       if (introFinished) return;
       introFinished = true;
-      window.clearTimeout(introTimer);
-      document.removeEventListener('keydown', skipIntro);
+      try { sessionStorage.setItem('fm-intro-seen', 'true'); } catch (error) { /* Session gating remains best-effort. */ }
       intro.classList.add('is-leaving');
       window.setTimeout(function () {
         introBackground.forEach(function (element) { element.inert = false; });
@@ -29,11 +24,9 @@
     }
     requestAnimationFrame(function () {
       intro.classList.add('is-running');
-      introSkip?.focus({ preventScroll: true });
+      introEnter?.focus({ preventScroll: true });
     });
-    introTimer = window.setTimeout(finishIntro, introDuration);
-    introSkip?.addEventListener('click', finishIntro);
-    document.addEventListener('keydown', skipIntro);
+    introEnter?.addEventListener('click', finishIntro);
   }
   var reveal = document.querySelectorAll('.rise, [data-reveal]');
   if (!reduced && 'IntersectionObserver' in window) {
