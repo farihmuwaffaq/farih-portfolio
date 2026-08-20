@@ -254,9 +254,9 @@
     var opening = queryTransition.querySelector('[data-query-opening]');
     var clock = queryTransition.querySelector('[data-query-clock]');
     var mobile = window.matchMedia('(max-width: 767px)').matches;
-    var revealDelay = mobile ? 90 : 130;
-    var resultDelay = mobile ? 250 : 390;
-    var navigateDelay = mobile ? 450 : 680;
+    var revealDelay = mobile ? 100 : 120;
+    var resultDelay = mobile ? 400 : 560;
+    var navigateDelay = mobile ? 700 : 950;
     queryRunning = true;
     route.textContent = 'QUERY / ' + query.route;
     code.textContent = '';

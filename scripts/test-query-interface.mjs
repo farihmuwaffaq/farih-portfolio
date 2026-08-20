@@ -31,6 +31,9 @@ assert.match(js, /query_transition_start/, 'transition analytics missing');
 assert.match(js, /query_console_open/, 'console-open analytics missing');
 assert.match(js, /query_console_submit/, 'console-submit analytics missing');
 assert.match(js, /query_console_result_click/, 'console-result analytics missing');
+assert.match(js, /revealDelay = mobile \? 100 : 120/, 'query should appear promptly on both breakpoints');
+assert.match(js, /resultDelay = mobile \? 400 : 560/, 'query result needs a readable execution beat');
+assert.match(js, /navigateDelay = mobile \? 700 : 950/, 'transition needs enough total reading time');
 
 assert.match(css, /\.query-transition/, 'transition styles missing');
 assert.match(css, /\.query-console/, 'console styles missing');
