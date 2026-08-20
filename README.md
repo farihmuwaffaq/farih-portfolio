@@ -9,7 +9,7 @@ Static Astro + TypeScript portfolio for a Jakarta-based Data Analyst. Production
 - `src/content/work/` - nine validated Markdown case studies spanning professional experience, technical assessments, project-based work, and sample/training data.
 - `src/content.config.ts` - collection schema, evidence provenance, and structured related assets.
 - `src/layouts/` - global SEO shell, SQL query interface, generated case-study layout, and evidence presentation variants.
-- `src/components/` - reusable project grids, evidence surfaces, icons, and accessible lightbox.
+- `src/components/` - reusable project grids, evidence surfaces, icons, accessible lightbox, and lazy-loaded approved deck preview.
 - `src/pages/` - Home, Work, nine generated Work Detail routes, About, Resume, Contact, and 404; 15 static pages total.
 - `src/styles/global.css` - design tokens, component styling, and content-specific responsive behavior.
 - `public/js/animations.js` - identity intro, navigation, SQL transition and console, reveal, lightbox, filter, and interaction behavior.
@@ -51,6 +51,7 @@ npm run test:selected-credentials
 npm run test:v1-launch
 npm run test:query-interface
 npm run test:analyst-credibility
+npm run test:deck-library
 npm run check
 npm run build
 npm run audit:links
@@ -63,6 +64,7 @@ npm run audit:links
 - Project filtering, lightbox behavior, motion, and navigation use lightweight client JavaScript.
 - Internal navigation uses a route-aware SQL query exit transition; native external, download, modified-click, same-page hash, and reduced-motion behavior remains untouched.
 - The optional `SQL_` console indexes validated case-study content at build time and exposes bounded commands without a backend or free-form SQL execution.
+- The Maleo case study includes eight approved representative Google Slides from 30+ client-facing decks and reports. One native dialog keeps the iframe inert until click and preserves direct-link fallbacks.
 - Query console commands include `help`, `work`, `projects`, `experience`, `skills`, `about`, `resume`, `contact`, `email`, and `linkedin`; unmatched text searches project title, slug, summary, and categories.
 - Analytics hooks cover contact actions, project navigation, filters, evidence views, query transition starts, console opens, console submits, and console result clicks. They safely no-op when no analytics provider is configured.
 - Analytics uses `window.portfolioAnalytics.track` and emits local `portfolio:analytics` events. GA4 loads only when `PUBLIC_GA_MEASUREMENT_ID` is configured; without it, no external analytics request is made.

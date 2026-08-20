@@ -25,7 +25,7 @@ Primary CTA: send email directly or connect through LinkedIn/GitHub. Secondary C
 - Download Resume: visitor obtains verified PDF
 - Contact Form Submit: not part of current production behavior
 - Email Link Click: direct mailto action
-- Exploratory signals: SQL transition starts, query console opens, bounded command submissions, and result clicks
+- Exploratory signals: SQL transition starts, query console opens, bounded command submissions, result clicks, approved deck preview opens/closes, and direct deck opens
 
 ## Evidence on hand
 
@@ -60,6 +60,7 @@ Tone: analytical, calm, modern, credible, editorial, spacious, professional. Avo
 - Internal page navigation frames the portfolio as queryable evidence through a brief route-aware SQL transition. It replaces generic page transition motion rather than stacking another animation layer.
 - Eligible internal links use a `950 ms` desktop or `700 ms` mobile sequence. Query text appears promptly, the result state receives a readable beat, then full-document Astro navigation proceeds.
 - The optional `SQL_` query console supports bounded route and project discovery commands, local matching against the build-time case-study index, `EXPLAIN <project>` analytical summaries, and up to five tab-scoped history entries. It does not execute arbitrary SQL, call a search backend, or replace primary navigation.
+- The Maleo case study presents eight approved Google Slides as representative evidence from 30+ client decks and reports. One shared native dialog loads a Google Slides `/preview` iframe only after explicit interaction, unloads it on close, and keeps a direct external link as fallback. Raw sources and all unapproved archive items remain protected.
 - Query console results remain native links. External, download, modified-click, same-page hash, current-page, `mailto:`, and `tel:` behavior remains native; reduced-motion users bypass transition animation.
 - `/` opens the console only outside editable controls and after the identity intro has cleared. Native dialog behavior provides focus containment, `Escape` close, backdrop close, and focus restoration.
 - The first session visit presents an explicit identity-intro gate. It does not block no-script users and does not replay during the same tab session.

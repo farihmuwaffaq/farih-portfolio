@@ -34,6 +34,7 @@ Kondisi production terverifikasi per 20 Agustus 2026:
 - Eligible internal links memakai route-aware SQL transition: 950 ms desktop dan 700 ms mobile.
 - Native-dialog `SQL_` query console mendukung shortcut `/`, bounded commands, build-time search, `EXPLAIN <project>`, dan maksimal lima tab-scoped query history entries tanpa free-form SQL atau backend.
 - Semua Work Detail memiliki governed evidence status, assumptions/constraints, dan decision log; project domain-kompleks dapat memiliki metric dictionary.
+- Maleo Work Detail menampilkan delapan approved Google Slides dari 30+ client decks/reports melalui satu lazy-loaded native dialog; iframe tidak memiliki `src` sebelum klik dan selalu memiliki direct-link fallback.
 - Mobile navigation adalah independent fixed fullscreen layer di luar floating navbar containing block.
 - About hero memakai tiga semantic headline lines pada desktop dan natural wrapping pada mobile.
 - About capability cards stack satu kolom di bawah 900px.
@@ -53,6 +54,7 @@ Kontrak penting:
 - Bedakan Professional Experience, Project-Based Internship, Technical Assessment, dan sample/training data.
 - Jangan intercept external, download, modified-click, same-page hash, current-page, `mailto:`, `tel:`, atau reduced-motion navigation dalam SQL transition.
 - Pertahankan native `<dialog>` semantics, semantic result links, Escape/backdrop close, dan focus restoration pada query console.
+- Untuk deck preview, jangan eager-load Google iframe. Unload `src` saat close, restore trigger focus, dan jangan memperluas izin delapan approved slides ke archive lain.
 
 Verification wajib sebelum menyatakan selesai:
 
@@ -63,14 +65,15 @@ Verification wajib sebelum menyatakan selesai:
 5. Jalankan `npm run test:v1-launch`.
 6. Jalankan `npm run test:query-interface`.
 7. Jalankan `npm run test:analyst-credibility`.
-8. Jalankan `npm run check`.
-9. Jalankan `npm run build`.
-10. Jalankan `npm run audit:links`.
-11. Jalankan `npm audit` dan syntax check untuk client JS yang diubah.
-12. Periksa `git diff --check`.
-13. Untuk perubahan UI, browser-test sekitar 390px, 768px, dan 1440px.
-14. Untuk fixed overlay atau dialog, ukur geometry aktual terhadap viewport dan cek focus, Escape, Tab loop, scroll lock, native link exclusions, serta reduced motion.
-15. Deploy hanya jika diminta atau merupakan bagian eksplisit dari task; smoke-test production setelah deploy.
+8. Jalankan `npm run test:deck-library`.
+9. Jalankan `npm run check`.
+10. Jalankan `npm run build`.
+11. Jalankan `npm run audit:links`.
+12. Jalankan `npm audit` dan syntax check untuk client JS yang diubah.
+13. Periksa `git diff --check`.
+14. Untuk perubahan UI, browser-test sekitar 390px, 768px, dan 1440px.
+15. Untuk fixed overlay atau dialog, ukur geometry aktual terhadap viewport dan cek focus, Escape, Tab loop, scroll lock, native link exclusions, serta reduced motion.
+16. Deploy hanya jika diminta atau merupakan bagian eksplisit dari task; smoke-test production setelah deploy.
 
 Konfigurasi eksternal yang masih optional:
 

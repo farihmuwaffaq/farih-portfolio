@@ -23,7 +23,8 @@ Current evidence mix:
 10. Ground every `assumptionsConstraints` and `decisionLog` entry in the case-study narrative. Do not infer business decisions, causality, impact, or system behavior that the evidence does not support.
 11. Add `dictionary` only when domain terms materially affect interpretation; definitions must match the published methodology.
 12. Credential evidence belongs in `public/credentials/` and `src/data/credentials.ts`; publish only approved, redacted PDFs.
-13. Run the applicable interaction contracts, then `npm run check`, `npm run build`, and `npm run audit:links`.
+13. Treat the eight approved Google Slides in `analytics-automation.md` as the only public client-deck exception. Verify access and permission before release, load previews only after visitor interaction, and retain direct-link fallbacks; approval does not extend to the remaining 30+ archive.
+14. Run the applicable interaction contracts, then `npm run check`, `npm run build`, and `npm run audit:links`.
 
 ## Verification matrix
 
@@ -33,12 +34,13 @@ Current evidence mix:
 - `npm run test:selected-credentials` checks credential content and local PDF evidence.
 - `npm run test:query-interface` checks navigation exclusions, project indexing, console behavior, accessibility hooks, and transition timing.
 - `npm run test:analyst-credibility` checks required evidence, constraint, and decision fields plus Work Detail and `EXPLAIN` presentation contracts.
+- `npm run test:deck-library` checks approved deck count, publication metadata, inert embeds, dialog cleanup, analytics hooks, and direct-link fallbacks.
 - `npm run check`, `npm run build`, and `npm run audit:links` remain mandatory release gates.
 
 ## Known claims intentionally withheld
 
 - SKINTIFIC operational metrics and visuals.
-- Future Creative Network client names, visuals, and exact time saved.
+- Future Creative Network raw operating data, credentials, stakeholder identities, unpublished campaign work, and unapproved client assets. Eight approved Google Slides may expose their client names and visuals with permission.
 - Lifepack delivery-cost and aggregator-growth claims.
 - The undocumented Kimia Farma 20% efficiency claim.
 - Selasar Kampus incubation, traction, milestone, and funding claims pending evidence.

@@ -29,6 +29,22 @@ const work = defineCollection({
       term: z.string().trim().min(1),
       definition: z.string().trim().min(1),
     })).min(2).max(8).optional(),
+    deckLibrary: z.object({
+      totalProduced: z.string().trim().min(1),
+      ownership: z.string().trim().min(1),
+      description: z.string().trim().min(1),
+      items: z.array(z.object({
+        title: z.string().trim().min(1),
+        client: z.string().trim().min(1),
+        cadence: z.string().trim().min(1),
+        year: z.string().regex(/^20\d{2}$/),
+        documentId: z.string().regex(/^[\w-]+$/),
+        href: z.string().regex(/^https:\/\/docs\.google\.com\/presentation\/d\/[\w-]+\/edit\?usp=sharing$/),
+      }).superRefine((deck, ctx) => {
+        const hrefDocumentId = deck.href.match(/\/presentation\/d\/([\w-]+)\//)?.[1];
+        if (hrefDocumentId !== deck.documentId) ctx.addIssue({ code: 'custom', path: ['href'], message: 'Google Slides href must match documentId' });
+      })).length(8),
+    }).optional(),
     coverImage: z.string(),
     coverAlt: z.string(),
     keyContributions: z.array(z.string()).min(1).max(6).optional(),

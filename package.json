@@ -15,6 +15,7 @@
     "test:v1-launch": "node scripts/test-v1-launch-contract.mjs",
     "test:query-interface": "node scripts/test-query-interface.mjs",
     "test:analyst-credibility": "node scripts/test-analyst-credibility.mjs",
+    "test:deck-library": "node scripts/test-deck-library.mjs",
     "preview": "astro preview"
   },
   "dependencies": {

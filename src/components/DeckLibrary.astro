@@ -1,0 +1,103 @@
+---
+import Icon from './Icon.astro';
+
+type DeckLibraryData = NonNullable<import('astro:content').CollectionEntry<'work'>['data']['deckLibrary']>;
+interface Props { library: DeckLibraryData }
+const { library } = Astro.props;
+---
+
+<section class="section deck-library" aria-labelledby="deck-library-title">
+  <div class="deck-library-intro">
+    <div><p class="eyebrow">Selected client reporting</p><h2 id="deck-library-title">Evidence in the room.</h2></div>
+    <div class="deck-library-proof"><strong>{library.totalProduced}</strong><span>Decks & reports led</span><p>{library.ownership}. {library.description}</p></div>
+  </div>
+  <div class="deck-library-grid">
+    {library.items.map((deck, index) => (
+      <article class="deck-card">
+        <div class="deck-card-index" aria-hidden="true">{String(index + 1).padStart(2, '0')}</div>
+        <div class="deck-card-body">
+          <p class="deck-card-meta"><span>{deck.client}</span><span>{deck.cadence}</span><span>{deck.year}</span></p>
+          <h3>{deck.title}</h3>
+          <div class="deck-card-actions">
+            <button type="button" data-deck-open data-document-id={deck.documentId} data-deck-title={deck.title}>Preview deck <Icon name="arrow-right" /></button>
+            <a href={deck.href} target="_blank" rel="noopener noreferrer" data-event="deck_external_open" data-event-label={deck.title}>Open in Google Slides <Icon name="arrow-up-right" /></a>
+          </div>
+        </div>
+      </article>
+    ))}
+  </div>
+  <p class="deck-library-disclosure">Preview loads from Google Slides after interaction. A direct link remains available if embedded viewing is unavailable.</p>
+</section>
+
+<dialog class="deck-preview" data-deck-dialog aria-labelledby="deck-preview-title" aria-describedby="deck-preview-note">
+  <div class="deck-preview-shell">
+    <header class="deck-preview-header"><div><p class="eyebrow">Public client work</p><h2 id="deck-preview-title" data-deck-dialog-title>Deck preview</h2></div><button class="deck-preview-close" type="button" data-deck-close aria-label="Close deck preview"><Icon name="x" /></button></header>
+    <div class="deck-preview-frame"><p class="deck-preview-status" data-deck-status role="status">Loading Google Slides preview...</p><iframe data-deck-frame title="Google Slides deck preview" allowfullscreen referrerpolicy="no-referrer"></iframe></div>
+    <footer class="deck-preview-footer"><p id="deck-preview-note">This preview is served by Google. Content and availability follow the source document.</p><a data-deck-external target="_blank" rel="noopener noreferrer">Open in Google Slides <Icon name="arrow-up-right" /></a></footer>
+  </div>
+</dialog>
+
+<script>
+  const dialog = document.querySelector<HTMLDialogElement>('[data-deck-dialog]');
+  let frame = dialog?.querySelector<HTMLIFrameElement>('[data-deck-frame]');
+  const title = dialog?.querySelector<HTMLElement>('[data-deck-dialog-title]');
+  const status = dialog?.querySelector<HTMLElement>('[data-deck-status]');
+  const external = dialog?.querySelector<HTMLAnchorElement>('[data-deck-external]');
+  let trigger: HTMLButtonElement | null = null;
+  let loadTimer = 0;
+  let activePreviewUrl = '';
+  const track = (event: string, label: string) => window.portfolioAnalytics?.track(event, { label });
+  const closePreview = () => dialog?.close();
+
+  document.querySelectorAll<HTMLButtonElement>('[data-deck-open]').forEach(button => button.addEventListener('click', () => {
+    if (!dialog || !frame || !title || !status || !external) return;
+    const documentId = button.dataset.documentId;
+    const deckTitle = button.dataset.deckTitle || 'Deck preview';
+    if (!documentId) return;
+    trigger = button;
+    title.textContent = deckTitle;
+    frame.title = `${deckTitle} — Google Slides preview`;
+    status.textContent = 'Loading Google Slides preview...';
+    status.hidden = false;
+    external.href = `https://docs.google.com/presentation/d/${documentId}/edit?usp=sharing`;
+    external.dataset.event = 'deck_external_open';
+    external.dataset.eventLabel = deckTitle;
+    dialog.showModal();
+    activePreviewUrl = `https://docs.google.com/presentation/d/${documentId}/preview`;
+    frame.src = activePreviewUrl;
+    track('deck_preview_open', deckTitle);
+    window.clearTimeout(loadTimer);
+    loadTimer = window.setTimeout(() => {
+      if (!status.hidden) {
+        status.textContent = 'Preview is taking longer than expected. Open the deck directly instead.';
+        track('deck_preview_error', deckTitle);
+      }
+    }, 12000);
+  }));
+
+  const bindFrameLoad = () => {
+    const boundFrame = frame;
+    boundFrame?.addEventListener('load', event => {
+    if (event.currentTarget !== boundFrame || boundFrame !== frame || !dialog?.open || !activePreviewUrl || boundFrame.src !== activePreviewUrl) return;
+    window.clearTimeout(loadTimer);
+    if (status) status.hidden = true;
+    });
+  };
+  bindFrameLoad();
+  dialog?.querySelector<HTMLButtonElement>('[data-deck-close]')?.addEventListener('click', closePreview);
+  dialog?.addEventListener('click', event => { if (event.target === dialog) closePreview(); });
+  dialog?.addEventListener('close', () => {
+    window.clearTimeout(loadTimer);
+    const deckTitle = title?.textContent || 'Deck preview';
+    activePreviewUrl = '';
+    if (frame) {
+      const cleanFrame = frame.cloneNode(false) as HTMLIFrameElement;
+      frame.replaceWith(cleanFrame);
+      frame = cleanFrame;
+      bindFrameLoad();
+    }
+    track('deck_preview_close', deckTitle);
+    trigger?.focus();
+    trigger = null;
+  });
+</script>

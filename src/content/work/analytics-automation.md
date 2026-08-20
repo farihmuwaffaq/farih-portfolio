@@ -1,7 +1,7 @@
 ---
 title: Social Media Analytics and Reporting Automation
 slug: analytics-automation
-summary: Built a repeatable social-media analytics pipeline that pulled multi-platform data from ClickHouse into automated spreadsheets, KOL scrapers, and BI dashboards for four FMCG brands.
+summary: Led 30+ client-facing reports and strategy decks while building a repeatable social-media analytics pipeline from multi-platform data into automated spreadsheets, KOL scrapers, and BI dashboards.
 evidenceType: Professional Experience
 organization: Future Creative Network (Maleo)
 industry: Marketing and creative analytics
@@ -11,11 +11,11 @@ tools: [ClickHouse, Apps Script, Python, PostgreSQL, MySQL, TablePlus, Google Sh
 categories: [Analytics & Automation, Business Intelligence]
 featured: true
 confidential: true
-confidentialityNote: Brand names and architecture tooling are shown with permission. Operating figures, stakeholder identities, competitor handles, internal file names, credentials, and campaign specifics are withheld. The pipeline diagram contains real tool relationships but no client performance data.
+confidentialityNote: Eight representative client decks, brand names, and architecture tooling are shown with permission. Raw operating data, stakeholder identities, competitor handles, internal file names, credentials, and unpublished campaign work remain withheld.
 evidenceStatus: RECONSTRUCTED VIEW
-evidenceNote: Real tool relationships are retained in the architecture diagram, while dashboard examples are recreated with synthetic data and client performance details, identities, credentials, and campaign specifics are withheld.
+evidenceNote: Eight approved Google Slides are public representative work. Architecture relationships are real and dashboard examples use synthetic data; raw operating data, identities, credentials, and unpublished client work remain protected.
 assumptionsConstraints:
-  - Reporting spans at least five social platforms and four FMCG brands.
+  - Reporting spans at least five social platforms, with four FMCG brands anchoring the recurring analytics workload and additional approved samples showing broader client output.
   - Approved quantitative measurements are unavailable for publication, so outcomes remain qualitative.
   - Automation depends on stable KPI definitions, freshness checks, ownership, and escalation paths.
 decisionLog:
@@ -34,10 +34,24 @@ dictionary:
     definition: Campaign-monitoring indicator shown alongside actual-versus-KPI views.
   - term: Data freshness
     definition: Whether scheduled reporting reflects sufficiently current source data.
+deckLibrary:
+  totalProduced: "30+"
+  ownership: Lead Analytics Author
+  description: Representative client-facing reports and strategy decks from recurring retainers and ad hoc analytical work, published with permission.
+  items:
+    - { title: SilverQueen Monthly Report — April 2026, client: SilverQueen, cadence: Monthly retainer, year: "2026", documentId: 1p5tm1MFBABe91lUf0_GGWlXuyHEUWrUY4n31tKmnZEA, href: "https://docs.google.com/presentation/d/1p5tm1MFBABe91lUf0_GGWlXuyHEUWrUY4n31tKmnZEA/edit?usp=sharing" }
+    - { title: KPI Activity Add Yours Ramadan 2026, client: BlueBand, cadence: Ad hoc, year: "2026", documentId: 15OBNAOjE-4W_hJ7y_R5_fCIOWohLVvJ6qx0MBvtpQW4, href: "https://docs.google.com/presentation/d/15OBNAOjE-4W_hJ7y_R5_fCIOWohLVvJ6qx0MBvtpQW4/edit?usp=sharing" }
+    - { title: Pantene KOL Strategy Update, client: Pantene, cadence: Ad hoc strategy, year: "2026", documentId: 1sqmeCXJOFOtdvR3lVXI1CS6G68O6yLy_Xj6YsXecI2g, href: "https://docs.google.com/presentation/d/1sqmeCXJOFOtdvR3lVXI1CS6G68O6yLy_Xj6YsXecI2g/edit?usp=sharing" }
+    - { title: Top Coffee KPI Feasibility Report, client: Top Coffee, cadence: Ad hoc, year: "2026", documentId: 17TIKDRk-J2nSxsDhfQrNXfnqEb9WI-v0-Xjtilk6G3E, href: "https://docs.google.com/presentation/d/17TIKDRk-J2nSxsDhfQrNXfnqEb9WI-v0-Xjtilk6G3E/edit?usp=sharing" }
+    - { title: Concerto Report — December 2025, client: Concerto, cadence: Monthly retainer, year: "2025", documentId: 1J9pBfwTaZ9RMTWH-WMvT-m25APNlKp2pN6pJZeYUaFI, href: "https://docs.google.com/presentation/d/1J9pBfwTaZ9RMTWH-WMvT-m25APNlKp2pN6pJZeYUaFI/edit?usp=sharing" }
+    - { title: CRV Maleo CF Report — November 2025, client: CRV, cadence: Monthly retainer, year: "2025", documentId: 1X0s4LqloQJUGfFrO_MPqsWl-jxhmoIGJoOiRzLCB9Ts, href: "https://docs.google.com/presentation/d/1X0s4LqloQJUGfFrO_MPqsWl-jxhmoIGJoOiRzLCB9Ts/edit?usp=sharing" }
+    - { title: Garnier Monthly Report — August 2025, client: Garnier, cadence: Monthly retainer, year: "2025", documentId: 14Gb00iK3MrM7_J2y3cDK7cSuKufVNwlOzgVQKG7fcXk, href: "https://docs.google.com/presentation/d/14Gb00iK3MrM7_J2y3cDK7cSuKufVNwlOzgVQKG7fcXk/edit?usp=sharing" }
+    - { title: OAP Monthly Report — September 2025, client: OAP, cadence: Monthly retainer, year: "2025", documentId: 1l7amDq87x3bHwqfYl67tE2eqHNxO3gjJo7R-U4JQPT4, href: "https://docs.google.com/presentation/d/1l7amDq87x3bHwqfYl67tE2eqHNxO3gjJo7R-U4JQPT4/edit?usp=sharing" }
 coverImage: /images/projects/maleo-dashboard-silverqueen.png
 coverAlt: Campaign monitoring dashboard for a SilverQueen campaign, recreated with synthetic data, showing actual-vs-KPI gauges, a track score, and best-performing content
 outcomes: [Reduced repetitive manual reporting across brands, Improved consistency of recurring monthly and campaign outputs, Created timely daily signals for performance discussions]
 keyContributions:
+  - Led data preparation, analytical framing, insight synthesis, and production for 30+ recurring, ad hoc, and pitch reports and decks.
   - Designed end-to-end analytics workflows from KPI definition through reporting across digital platforms.
   - Built and maintained multi-source automated pipelines, dashboards, and scheduled reporting outputs.
   - Developed an AI-assisted daily performance nudge and supported client-facing insight and pitch work.
@@ -47,7 +61,7 @@ relatedAssets:
 ---
 ## Snapshot
 
-Social-media reporting for several FMCG brands ran across five or more platforms, with raw data scattered across tools. I built a maintained pipeline that moved that data into automated spreadsheets, recurring reports, and dashboards so analysts could spend time on interpretation instead of manual preparation. Figures are described qualitatively because approved measurements are not available for publication.
+Social-media reporting ran across five or more platforms, with raw data scattered across tools. As Lead Analytics Author, I led data preparation, analytical framing, insight synthesis, and production for more than 30 client-facing decks and reports across bi-weekly, monthly, quarterly, and yearly retainers, ad hoc requests, and pitch work. I also built a maintained pipeline that moved source data into automated spreadsheets, recurring reports, and dashboards so analysts could spend time on interpretation instead of manual preparation. Eight representative decks are published with permission; operating figures remain qualitative unless visible in those approved source decks.
 
 ## The situation
 
