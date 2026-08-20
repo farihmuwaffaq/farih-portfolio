@@ -22,6 +22,7 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; background: var(--canvas); }
 body { margin: 0; color: var(--ink); background: var(--canvas); font: 400 1rem/1.65 var(--font); -webkit-font-smoothing: antialiased; }
+html.intro-pending, html.intro-pending body { overflow: hidden; }
 body::after { content: ''; position: fixed; inset: 0; z-index: 4; pointer-events: none; opacity: 0.035; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E"); }
 img, svg { display: block; max-width: 100%; }
 a { color: inherit; text-decoration-thickness: 0.06em; text-underline-offset: 0.18em; }
@@ -37,6 +38,73 @@ p { max-width: 66ch; }
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
 .skip-link { position: fixed; left: 1rem; top: 1rem; z-index: 40; padding: .8rem 1.1rem; border-radius: 999px; color: white; background: var(--ink); transform: translateY(-180%); transition: transform .5s var(--ease); }
 .skip-link:focus { transform: translateY(0); }
+
+/* Session identity reveal */
+.identity-intro { display: none; }
+.intro-pending .identity-intro { position: fixed; z-index: 20000; inset: 0; display: block; width: 100%; height: 100dvh; color: var(--ink); background: #f4f7f5; }
+.intro-frame { position: relative; display: grid; grid-template-rows: auto 1fr auto; width: 100%; height: 100%; padding: clamp(1.25rem,3vw,2.5rem) var(--gutter); overflow: hidden; }
+.intro-frame::before { content: ''; position: absolute; width: min(52rem,70vw); aspect-ratio: 1; left: 50%; top: 52%; border: 1px solid rgba(13,107,72,.1); border-radius: 50%; transform: translate(-50%,-50%) scale(.82); opacity: 0; }
+.intro-top { position: relative; display: flex; align-items: center; justify-content: space-between; opacity: 0; }
+.intro-top .mono { color: var(--muted); font-size: .62rem; letter-spacing: .12em; }
+.intro-core { position: relative; align-self: center; width: min(100%,58rem); margin: 0 auto; text-align: center; }
+.intro-status { position: relative; height: 1rem; margin-bottom: clamp(1.4rem,4vh,2.8rem); color: var(--signal); font-size: .62rem; letter-spacing: .18em; text-transform: uppercase; }
+.intro-status > span { position: absolute; inset: 0; opacity: 0; }
+.intro-status i { display: inline-block; width: .42rem; aspect-ratio: 1; margin-left: .4rem; border-radius: 50%; background: #2d9a69; vertical-align: .06rem; }
+.intro-name { margin: 0; font-size: clamp(3.4rem,8.4vw,8.5rem); font-weight: 620; line-height: .9; letter-spacing: -.07em; opacity: 0; transform: translateY(1.2rem); }
+.intro-role { margin: 1.1rem 0 0; color: var(--ink-soft); font: 500 clamp(.7rem,1vw,.86rem)/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; opacity: 0; }
+.intro-signals { display: flex; justify-content: center; gap: clamp(.65rem,2vw,1.6rem); margin: clamp(2rem,6vh,4rem) 0 0; font: 560 clamp(.8rem,1.4vw,1.12rem)/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+.intro-signals span, .intro-signals i { opacity: 0; transform: translateY(.5rem); }
+.intro-signals i { color: var(--signal); font-style: normal; }
+.intro-progress { position: relative; width: min(18rem,60vw); height: 1px; margin: clamp(2rem,5vh,3.5rem) auto 0; background: var(--line-strong); }
+.intro-progress i { position: absolute; inset: 0; background: var(--signal); transform: scaleX(0); transform-origin: left; }
+.intro-progress b { position: absolute; right: -.2rem; top: -.2rem; width: .4rem; aspect-ratio: 1; border-radius: 50%; background: var(--signal); opacity: 0; transform: scale(0); }
+.intro-skip { justify-self: end; padding: .45rem 0; border: 0; color: var(--muted); background: transparent; font: 500 .68rem var(--mono); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; opacity: 0; }
+.intro-skip span { display: inline-block; margin-left: .35rem; color: var(--signal); transition: transform .25s var(--ease); }
+.intro-skip:hover span { transform: translate(.15rem,-.12rem); }
+.identity-intro.is-running .intro-frame::before { animation: intro-orbit 1.8s var(--ease) .1s both; }
+.identity-intro.is-running .intro-top { animation: intro-in .3s ease .05s both; }
+.identity-intro.is-running .intro-status span:first-child { animation: intro-status-initial 1.35s ease .18s both; }
+.identity-intro.is-running .intro-status span:last-child { animation: intro-ready .25s ease 1.48s both; }
+.identity-intro.is-running .intro-status i { animation: boot-pulse .4s ease 1.55s 1; }
+.identity-intro.is-running .intro-name { animation: intro-name .55s var(--ease) .38s both; }
+.identity-intro.is-running .intro-role { animation: intro-in .35s ease .68s both; }
+.identity-intro.is-running .intro-signals span:nth-child(1) { animation: intro-signal .3s var(--ease) .82s both; }
+.identity-intro.is-running .intro-signals i:nth-child(2) { animation: intro-signal .25s ease .98s both; }
+.identity-intro.is-running .intro-signals span:nth-child(3) { animation: intro-signal .3s var(--ease) 1.08s both; }
+.identity-intro.is-running .intro-signals i:nth-child(4) { animation: intro-signal .25s ease 1.24s both; }
+.identity-intro.is-running .intro-signals span:nth-child(5) { animation: intro-signal .3s var(--ease) 1.34s both; }
+.identity-intro.is-running .intro-progress i { animation: intro-progress 1.45s var(--ease) .42s both; }
+.identity-intro.is-running .intro-progress b { animation: intro-ready .25s var(--ease) 1.48s both; }
+.identity-intro.is-running .intro-skip { animation: intro-in .3s ease .25s both; }
+.identity-intro.is-leaving { transform: translateY(-100%); transition: transform .65s var(--ease); }
+@keyframes intro-in { to { opacity: 1; transform: none; } }
+@keyframes intro-name { to { opacity: 1; transform: none; } }
+@keyframes intro-signal { to { opacity: 1; transform: none; } }
+@keyframes intro-status-initial { 0%,15% { opacity: 0; } 25%,75% { opacity: 1; } 100% { opacity: 0; } }
+@keyframes intro-ready { to { opacity: 1; transform: scale(1); } }
+@keyframes intro-progress { to { transform: scaleX(1); } }
+@keyframes intro-orbit { 0% { opacity: 0; transform: translate(-50%,-50%) scale(.82); } 35%,75% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%,-50%) scale(1); } }
+@media (max-width: 600px) {
+  .intro-frame { padding: 1.25rem 1rem 1.5rem; }
+  .intro-frame::before { width: 115vw; }
+  .intro-name { font-size: clamp(3.3rem,17vw,5rem); line-height: .92; }
+  .intro-role { margin-top: .9rem; font-size: .62rem; }
+  .intro-signals { gap: .5rem; margin-top: 2.4rem; font-size: .66rem; letter-spacing: .05em; }
+  .intro-progress { margin-top: 2.3rem; }
+  .identity-intro.is-running .intro-status span:first-child { animation-duration: .8s; animation-delay: .08s; }
+  .identity-intro.is-running .intro-status span:last-child { animation-delay: 1.05s; }
+  .identity-intro.is-running .intro-status i { animation-delay: 1.15s; }
+  .identity-intro.is-running .intro-name { animation-delay: .2s; }
+  .identity-intro.is-running .intro-role { animation-delay: .4s; }
+  .identity-intro.is-running .intro-signals span:nth-child(1) { animation-delay: .5s; }
+  .identity-intro.is-running .intro-signals i:nth-child(2) { animation-delay: .6s; }
+  .identity-intro.is-running .intro-signals span:nth-child(3) { animation-delay: .68s; }
+  .identity-intro.is-running .intro-signals i:nth-child(4) { animation-delay: .78s; }
+  .identity-intro.is-running .intro-signals span:nth-child(5) { animation-delay: .86s; }
+  .identity-intro.is-running .intro-progress i { animation-duration: .9s; animation-delay: .25s; }
+  .identity-intro.is-running .intro-progress b { animation-delay: 1.05s; }
+  .identity-intro.is-leaving { transition-duration: .45s; }
+}
 .container { width: min(calc(100% - (var(--gutter) * 2)), var(--container)); margin-inline: auto; }
 .section { padding: clamp(6.5rem, 12vw, 11rem) 0; }
 .section + .section { border-top: 1px solid var(--line); }

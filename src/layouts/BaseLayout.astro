@@ -29,8 +29,29 @@ const schemas = [
   <meta name="twitter:card" content="summary_large_image" />
   <title>{title}</title>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(schemas)} />
+  <script is:inline>
+    try {
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && !sessionStorage.getItem('fm-intro-seen')) document.documentElement.classList.add('intro-pending');
+    } catch (error) {
+      document.documentElement.classList.remove('intro-pending');
+    }
+  </script>
+  <noscript><style>.identity-intro{display:none!important}</style></noscript>
 </head>
 <body>
+  <div class="identity-intro" role="dialog" aria-modal="true" aria-label="Meet Farih Muwaffaq">
+    <div class="intro-frame">
+      <div class="intro-top"><span class="brand-mark">FM<em>/</em></span><span class="mono">01 / IDENTITY</span></div>
+      <div class="intro-core">
+        <div class="intro-status mono" aria-hidden="true"><span>Initializing</span><span>System ready <i></i></span></div>
+        <p class="intro-name">Farih Muwaffaq</p>
+        <p class="intro-role">Data Analyst · Jakarta</p>
+        <p class="intro-signals" aria-label="Data, systems, decisions"><span>Data</span><i>/</i><span>Systems</span><i>/</i><span>Decisions</span></p>
+        <div class="intro-progress" aria-hidden="true"><i></i><b></b></div>
+      </div>
+      <button class="intro-skip" type="button" data-intro-skip>Skip <span>↗</span></button>
+    </div>
+  </div>
   <a class="skip-link" href="#main">Skip to main content</a>
   <header class="site-header"><nav class="nav" aria-label="Primary navigation">
     <a class="brand" href="/"><span class="brand-mark">FM<em>/</em></span><span class="brand-role">Data Analyst — Jakarta</span></a>
@@ -43,7 +64,7 @@ const schemas = [
     <div class="mobile-menu-footer"><a class="mobile-menu-cta" href={`mailto:${site.email}`} tabindex="-1">Start a conversation <Icon name="arrow-up-right" /></a><div>{social.map(([label,href])=><a href={href} target="_blank" rel="noreferrer" tabindex="-1">{label}</a>)}</div></div>
   </div>
   <div class="nav-backdrop" aria-hidden="true"></div>
-  <main id="main"><slot /></main>
+  <main id="main" tabindex="-1"><slot /></main>
   <footer class:list={['site-footer',footerVariant==='compact'&&'footer-compact',footerVariant==='resume'&&'footer-resume']}>
     {footerVariant!=='compact' && <div class="container footer-cta">
       <div><p class="eyebrow">Direct line</p><p class="footer-prompt">Have a difficult data question?</p></div>

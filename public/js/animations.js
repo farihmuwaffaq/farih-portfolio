@@ -1,6 +1,40 @@
 (function () {
   'use strict';
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var intro = document.querySelector('.identity-intro');
+  var introPending = document.documentElement.classList.contains('intro-pending') && intro;
+  if (introPending) {
+    var introSkip = intro.querySelector('[data-intro-skip]');
+    var introDuration = window.matchMedia('(max-width: 600px)').matches ? 1150 : 1750;
+    var introExitDuration = window.matchMedia('(max-width: 600px)').matches ? 450 : 650;
+    var introTimer;
+    var introFinished = false;
+    var introBackground = document.querySelectorAll('.skip-link, .site-header, .mobile-menu, #main, .site-footer');
+    introBackground.forEach(function (element) { element.inert = true; });
+    try { sessionStorage.setItem('fm-intro-seen', 'true'); } catch (error) { /* Session gating remains best-effort. */ }
+    function skipIntro(event) { if (event.key === 'Escape') finishIntro(); }
+    function finishIntro() {
+      if (introFinished) return;
+      introFinished = true;
+      window.clearTimeout(introTimer);
+      document.removeEventListener('keydown', skipIntro);
+      intro.classList.add('is-leaving');
+      window.setTimeout(function () {
+        introBackground.forEach(function (element) { element.inert = false; });
+        document.documentElement.classList.remove('intro-pending');
+        intro.remove();
+        document.querySelector('#main')?.focus({ preventScroll: true });
+        window.dispatchEvent(new CustomEvent('intro:complete'));
+      }, introExitDuration);
+    }
+    requestAnimationFrame(function () {
+      intro.classList.add('is-running');
+      introSkip?.focus({ preventScroll: true });
+    });
+    introTimer = window.setTimeout(finishIntro, introDuration);
+    introSkip?.addEventListener('click', finishIntro);
+    document.addEventListener('keydown', skipIntro);
+  }
   var reveal = document.querySelectorAll('.rise, [data-reveal]');
   if (!reduced && 'IntersectionObserver' in window) {
     var observer = new IntersectionObserver(function (entries, io) {
@@ -36,7 +70,7 @@
       countBootMetric(bootMetrics[1], 1920, 480);
       countBootMetric(bootMetrics[2], 2120, 420);
     }
-    if (!reduced && 'IntersectionObserver' in window) {
+    function observeSystemBoot() {
       systemBoot.classList.add('is-boot-ready');
       bootMetrics.forEach(function (metric) { metric.textContent = formatBootMetric(metric, 0); });
       var bootObserver = new IntersectionObserver(function (entries) {
@@ -48,6 +82,10 @@
         });
       }, { threshold: 0.45 });
       bootObserver.observe(systemBoot);
+    }
+    if (!reduced && 'IntersectionObserver' in window) {
+      if (introPending) window.addEventListener('intro:complete', observeSystemBoot, { once: true });
+      else observeSystemBoot();
     }
   }
 

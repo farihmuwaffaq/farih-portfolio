@@ -9,6 +9,7 @@
     "check": "astro check",
     "audit:links": "node scripts/audit-links.mjs",
     "test:hero-boot": "node scripts/test-hero-boot.mjs",
+    "test:identity-intro": "node scripts/test-identity-intro.mjs",
     "preview": "astro preview"
   },
   "dependencies": {
