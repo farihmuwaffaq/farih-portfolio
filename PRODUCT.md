@@ -54,6 +54,9 @@ Tone: analytical, calm, modern, credible, editorial, spacious, professional. Avo
 
 ## Technical and operational truth
 
+- Internal page navigation frames the portfolio as queryable evidence through a brief route-aware SQL transition. It replaces generic page transition motion rather than stacking another animation layer.
+- The optional `SQL_` query console supports bounded route and project discovery commands. Native navigation remains primary, results remain native links, and reduced-motion users bypass transition animation.
+
 - Platform: Astro static site with TypeScript and Content Collections (Markdown case studies)
 - Production domain: `https://farih-portfolio.vercel.app`
 - Sitemap: `https://farih-portfolio.vercel.app/sitemap-index.xml`

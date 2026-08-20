@@ -208,6 +208,188 @@
     window.portfolioAnalytics?.track('project_view', { path: window.location.pathname });
   }
 
+  var queryTransition = document.querySelector('[data-query-transition]');
+  var queryConsole = document.querySelector('[data-query-console]');
+  var queryRunning = false;
+  var queryTimer = 0;
+
+  function getRouteQuery(url) {
+    var path = url.pathname.replace(/\/$/, '') || '/';
+    var route = path === '/' ? 'HOME' : path.split('/').filter(Boolean).pop().replace(/-/g, ' ').toUpperCase();
+    if (path.indexOf('/work/') === 0) {
+      var slug = path.slice('/work/'.length).replace(/'/g, "''");
+      return { route: 'CASE STUDY', code: "SELECT\n  problem,\n  system,\n  outcome\nFROM case_studies\nWHERE slug = '" + slug + "';", output: '1 ROW RETURNED' };
+    }
+    var queries = {
+      '/': { route: 'HOME', code: 'SELECT * FROM portfolio LIMIT 1;', output: '1 PORTFOLIO FOUND' },
+      '/work': { route: 'WORK', code: 'SELECT * FROM work WHERE evidence = TRUE;', output: '9 CASES FOUND' },
+      '/about': { route: 'ABOUT', code: 'SELECT perspective, experience FROM profile;', output: '1 PROFILE FOUND' },
+      '/resume': { route: 'RESUME', code: 'SELECT experience, education, skills FROM resume;', output: '1 RESUME FOUND' },
+      '/contact': { route: 'CONTACT', code: 'SELECT email, linkedin FROM contact;', output: '2 CHANNELS FOUND' }
+    };
+    return queries[path] || { route: route, code: "SELECT * FROM portfolio WHERE path = '" + path.replace(/'/g, "''") + "';", output: 'QUERY OK' };
+  }
+
+  function canRunQueryTransition(event, anchor) {
+    if (!queryTransition || queryRunning || reduced) return false;
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return false;
+    if (anchor.target && anchor.target !== '_self') return false;
+    if (anchor.hasAttribute('download')) return false;
+    var rawHref = anchor.getAttribute('href');
+    if (!rawHref || rawHref.charAt(0) === '#' || /^(mailto:|tel:|javascript:)/i.test(rawHref)) return false;
+    var url = new URL(anchor.href, window.location.href);
+    if (url.origin !== window.location.origin) return false;
+    if (url.hash && url.pathname === window.location.pathname) return false;
+    if (url.pathname === window.location.pathname && url.search === window.location.search) return false;
+    return true;
+  }
+
+  function runQueryTransition(anchor) {
+    var url = new URL(anchor.href, window.location.href);
+    var query = getRouteQuery(url);
+    var route = queryTransition.querySelector('[data-query-route]');
+    var code = queryTransition.querySelector('[data-query-code]');
+    var status = queryTransition.querySelector('[data-query-status]');
+    var output = queryTransition.querySelector('[data-query-output]');
+    var opening = queryTransition.querySelector('[data-query-opening]');
+    var clock = queryTransition.querySelector('[data-query-clock]');
+    var mobile = window.matchMedia('(max-width: 767px)').matches;
+    var revealDelay = mobile ? 90 : 130;
+    var resultDelay = mobile ? 250 : 390;
+    var navigateDelay = mobile ? 450 : 680;
+    queryRunning = true;
+    route.textContent = 'QUERY / ' + query.route;
+    code.textContent = '';
+    status.textContent = 'EXECUTING QUERY';
+    output.textContent = '';
+    opening.textContent = '';
+    clock.textContent = '00:00';
+    queryTransition.setAttribute('aria-hidden', 'false');
+    document.documentElement.classList.add('query-transition-running');
+    window.portfolioAnalytics?.track('query_transition_start', { label: url.pathname, path: window.location.pathname });
+    requestAnimationFrame(function () { queryTransition.classList.add('is-visible'); });
+    window.setTimeout(function () { code.textContent = query.code; clock.textContent = '00:01'; queryTransition.classList.add('has-query'); }, revealDelay);
+    window.setTimeout(function () { status.textContent = 'QUERY OK'; output.textContent = query.output; opening.textContent = 'Opening ' + url.pathname + ' →'; queryTransition.classList.add('is-complete'); }, resultDelay);
+    queryTimer = window.setTimeout(function () { window.location.assign(url.href); }, navigateDelay);
+  }
+
+  document.addEventListener('click', function (event) {
+    var anchor = event.target.closest('a[href]');
+    if (!anchor || !canRunQueryTransition(event, anchor)) return;
+    event.preventDefault();
+    runQueryTransition(anchor);
+  });
+
+  window.addEventListener('pageshow', function () {
+    window.clearTimeout(queryTimer);
+    queryRunning = false;
+    queryTransition?.classList.remove('is-visible', 'has-query', 'is-complete');
+    queryTransition?.setAttribute('aria-hidden', 'true');
+    document.documentElement.classList.remove('query-transition-running');
+  });
+
+  if (queryConsole) {
+    var consoleTriggers = Array.prototype.slice.call(document.querySelectorAll('[data-query-console-open]'));
+    var consoleClose = queryConsole.querySelector('[data-query-console-close]');
+    var consoleForm = queryConsole.querySelector('[data-query-console-form]');
+    var consoleInput = consoleForm.querySelector('input');
+    var consoleResults = queryConsole.querySelector('[data-query-console-results]');
+    var projectIndex = JSON.parse(document.querySelector('#query-project-index')?.textContent || '[]');
+    var lastConsoleTrigger = null;
+    var routeCommands = {
+      about: [{ title: 'About Farih Muwaffaq', href: '/about', meta: 'Perspective and profile' }],
+      profile: [{ title: 'About Farih Muwaffaq', href: '/about', meta: 'Perspective and profile' }],
+      experience: [{ title: 'Professional experience', href: '/about#experience', meta: 'Career timeline' }],
+      skills: [{ title: 'Skills and toolchain', href: '/resume#skills', meta: 'Data, BI, and business domains' }],
+      resume: [{ title: 'Resume', href: '/resume', meta: 'Experience, education, and skills' }],
+      contact: [{ title: 'Contact Farih', href: '/contact', meta: 'Email and LinkedIn' }],
+      email: [{ title: 'Email Farih', href: 'mailto:farihmuwaffaq@gmail.com', meta: 'farihmuwaffaq@gmail.com' }],
+      linkedin: [{ title: 'LinkedIn', href: 'https://www.linkedin.com/in/farihmuwaffaq/', meta: 'Professional profile', external: true }]
+    };
+
+    function renderConsoleResults(command, results, message) {
+      consoleResults.replaceChildren();
+      var summary = document.createElement('p');
+      summary.className = 'query-result-summary';
+      summary.textContent = message || results.length + (results.length === 1 ? ' record found' : ' records found');
+      consoleResults.appendChild(summary);
+      if (!results.length) {
+        var empty = document.createElement('p');
+        empty.className = 'query-result-empty';
+        empty.textContent = "No match for '" + command + "'. Try help, work, skills, or a project name.";
+        consoleResults.appendChild(empty);
+        return;
+      }
+      var list = document.createElement('ol');
+      results.forEach(function (result) {
+        var item = document.createElement('li');
+        var link = document.createElement('a');
+        link.href = result.href;
+        if (result.external) { link.target = '_blank'; link.rel = 'noopener noreferrer'; }
+        link.dataset.event = 'query_console_result_click';
+        link.dataset.eventLabel = command + ':' + result.href;
+        var title = document.createElement('strong');
+        title.textContent = result.title;
+        var meta = document.createElement('span');
+        meta.textContent = result.meta || '';
+        link.append(title, meta);
+        item.appendChild(link);
+        list.appendChild(item);
+      });
+      consoleResults.appendChild(list);
+    }
+
+    function handleConsoleCommand(value) {
+      var command = value.trim().toLowerCase().replace(/^(show|select|open|find)\s+/, '');
+      window.portfolioAnalytics?.track('query_console_submit', { label: command || 'help', path: window.location.pathname });
+      if (!command || command === 'help') {
+        renderConsoleResults(command, [
+          { title: 'work', href: '/work', meta: 'List all case studies' },
+          { title: 'experience', href: '/about#experience', meta: 'Open career timeline' },
+          { title: 'skills', href: '/resume#skills', meta: 'Open skills and toolchain' },
+          { title: 'contact', href: '/contact', meta: 'Open contact channels' }
+        ], 'Available commands');
+        return;
+      }
+      if (command === 'work' || command === 'projects' || command === 'case studies' || command === 'cases') {
+        renderConsoleResults(command, projectIndex.map(function (project) { return { title: project.title, href: '/work/' + project.slug, meta: project.categories.join(' · ') }; }));
+        return;
+      }
+      if (routeCommands[command]) { renderConsoleResults(command, routeCommands[command]); return; }
+      var terms = command.split(/\s+/).filter(Boolean);
+      var matches = projectIndex.filter(function (project) {
+        var haystack = [project.title, project.slug, project.summary].concat(project.categories).join(' ').toLowerCase();
+        return terms.every(function (term) { return haystack.indexOf(term) !== -1; });
+      }).map(function (project) { return { title: project.title, href: '/work/' + project.slug, meta: project.categories.join(' · ') }; });
+      renderConsoleResults(command, matches);
+    }
+
+    function openQueryConsole(trigger) {
+      lastConsoleTrigger = trigger?.classList.contains('mobile-query-trigger') ? document.querySelector('.nav-toggle') : trigger || document.activeElement;
+      setNav(false);
+      queryConsole.showModal();
+      window.portfolioAnalytics?.track('query_console_open', { label: trigger?.textContent.trim() || 'shortcut', path: window.location.pathname });
+      requestAnimationFrame(function () { consoleInput.focus(); });
+    }
+
+    function closeQueryConsole() {
+      queryConsole.close();
+      lastConsoleTrigger?.focus?.();
+    }
+
+    consoleTriggers.forEach(function (trigger) { trigger.addEventListener('click', function () { openQueryConsole(trigger); }); });
+    consoleClose.addEventListener('click', closeQueryConsole);
+    queryConsole.addEventListener('cancel', function (event) { event.preventDefault(); closeQueryConsole(); });
+    queryConsole.addEventListener('click', function (event) { if (event.target === queryConsole) closeQueryConsole(); });
+    consoleResults.addEventListener('click', function (event) { if (event.target.closest('a[href]')) queryConsole.close(); });
+    consoleForm.addEventListener('submit', function (event) { event.preventDefault(); handleConsoleCommand(consoleInput.value); });
+    document.addEventListener('keydown', function (event) {
+      var tag = event.target.tagName;
+      var editable = event.target.isContentEditable || event.target.closest('[contenteditable="true"]') || /INPUT|TEXTAREA|SELECT/.test(tag);
+      if (event.key === '/' && !editable && !queryConsole.open && !document.documentElement.classList.contains('intro-pending')) { event.preventDefault(); openQueryConsole(null); }
+    });
+  }
+
   var toggle = document.querySelector('.nav-toggle');
   var menu = document.querySelector('.mobile-menu');
   var close = document.querySelector('.mobile-menu-close');

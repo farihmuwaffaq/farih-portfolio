@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import '@fontsource-variable/geist';
 import '@fontsource-variable/geist-mono';
+import { getCollection } from 'astro:content';
 import { nav, site, social } from '../data/site';
 import Icon from '../components/Icon.astro';
 interface Props { title: string; description?: string; image?: string; type?: 'website'|'article'; jsonLd?: Record<string, unknown>|Record<string, unknown>[]; animate?: boolean; footerVariant?: 'default'|'compact'|'resume' }
@@ -9,6 +10,10 @@ const { title, description = site.description, image = '/social/social-card.svg'
 const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID || '';
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const current = Astro.url.pathname;
+const queryProjectIndex = (await getCollection('work'))
+  .sort((a,b)=>a.data.title.localeCompare(b.data.title))
+  .map(project=>({ title:project.data.title, slug:project.data.slug, summary:project.data.summary, categories:project.data.categories }));
+const serializedQueryProjectIndex = JSON.stringify(queryProjectIndex).replace(/</g, '\\u003c');
 const schemas = [
   { '@context':'https://schema.org','@type':'WebSite', name:`${site.name} Portfolio`, url:Astro.site?.toString() },
   ...(Array.isArray(jsonLd) ? jsonLd : jsonLd ? [jsonLd] : []),
@@ -57,15 +62,31 @@ const schemas = [
   <a class="skip-link" href="#main">Skip to main content</a>
   <header class="site-header"><nav class="nav" aria-label="Primary navigation">
     <a class="brand" href="/"><span class="brand-mark">FM<em>/</em></span><span class="brand-role">Data Analyst — Jakarta</span></a>
-    <div class="nav-shell"><ul class="nav-links" id="primary-links">{nav.map(([label,href], i) => <li><a href={href} aria-current={(href==='/' ? current==='/' : current.startsWith(href)) ? 'page' : undefined}><sup>{String(i+1).padStart(2,'0')}</sup>{label}</a></li>)}</ul><a class="nav-cta" href={current.startsWith('/contact')?'#message-form':'/contact'}>Start a conversation <Icon name="arrow-up-right" /></a></div>
+    <div class="nav-shell"><ul class="nav-links" id="primary-links">{nav.map(([label,href], i) => <li><a href={href} aria-current={(href==='/' ? current==='/' : current.startsWith(href)) ? 'page' : undefined}><sup>{String(i+1).padStart(2,'0')}</sup>{label}</a></li>)}</ul><button class="query-trigger" type="button" data-query-console-open aria-label="Open portfolio query console">SQL<span aria-hidden="true">_</span></button><a class="nav-cta" href={current.startsWith('/contact')?'#message-form':'/contact'}>Start a conversation <Icon name="arrow-up-right" /></a></div>
     <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation"><span class="sr-only">Toggle navigation</span><i></i><i></i></button>
   </nav></header>
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
     <div class="mobile-menu-top"><a class="brand" href="/" tabindex="-1"><span class="brand-mark">FM<em>/</em></span></a><button class="mobile-menu-close" type="button" aria-label="Close navigation"><i></i><i></i></button></div>
     <nav class="mobile-menu-nav" aria-label="Mobile navigation"><ul>{nav.map(([label,href], i) => <li><a href={href} aria-current={(href==='/' ? current==='/' : current.startsWith(href)) ? 'page' : undefined} tabindex="-1"><sup>{String(i+1).padStart(2,'0')}</sup>{label}</a></li>)}</ul></nav>
-    <div class="mobile-menu-footer"><a class="mobile-menu-cta" href={`mailto:${site.email}`} tabindex="-1">Start a conversation <Icon name="arrow-up-right" /></a><div>{social.map(([label,href])=><a href={href} target="_blank" rel="noreferrer" tabindex="-1">{label}</a>)}</div></div>
+    <div class="mobile-menu-footer"><button class="query-trigger mobile-query-trigger" type="button" data-query-console-open tabindex="-1">SQL_ <span>Query portfolio</span></button><a class="mobile-menu-cta" href={`mailto:${site.email}`} tabindex="-1">Start a conversation <Icon name="arrow-up-right" /></a><div>{social.map(([label,href])=><a href={href} target="_blank" rel="noreferrer" tabindex="-1">{label}</a>)}</div></div>
   </div>
   <div class="nav-backdrop" aria-hidden="true"></div>
+  <div class="query-transition" data-query-transition aria-hidden="true">
+    <div class="query-transition-frame">
+      <div class="query-transition-top"><span>FM/ QUERY CONSOLE</span><span data-query-clock>00:00</span></div>
+      <div class="query-transition-code" aria-live="polite"><span class="query-route" data-query-route>QUERY / PORTFOLIO</span><pre data-query-code></pre><span class="query-cursor" aria-hidden="true"></span></div>
+      <div class="query-transition-result"><span data-query-status>EXECUTING QUERY</span><strong data-query-output></strong><span data-query-opening></span></div>
+    </div>
+  </div>
+  <dialog class="query-console" data-query-console aria-labelledby="query-console-title">
+    <div class="query-console-shell">
+      <header><div><span class="brand-mark">FM<em>/</em></span><span id="query-console-title">QUERY PORTFOLIO</span></div><button type="button" data-query-console-close aria-label="Close query console">ESC <span>Close</span></button></header>
+      <form data-query-console-form role="search"><label for="portfolio-query">Query portfolio</label><span aria-hidden="true">›</span><input id="portfolio-query" name="query" type="search" autocomplete="off" spellcheck="false" placeholder="Try work, skills, contact, or a project name" /></form>
+      <div class="query-console-results" data-query-console-results aria-live="polite"><p class="query-console-hint">Type <kbd>help</kbd> for commands or search nine case studies.</p></div>
+      <footer><span>SQL_ INTERFACE</span><span><kbd>↵</kbd> Run · <kbd>Esc</kbd> Close</span></footer>
+    </div>
+  </dialog>
+  <script is:inline type="application/json" id="query-project-index" set:html={serializedQueryProjectIndex} />
   <main id="main" tabindex="-1"><slot /></main>
   <footer class:list={['site-footer',footerVariant==='compact'&&'footer-compact',footerVariant==='resume'&&'footer-resume']}>
     {footerVariant!=='compact' && <div class="container footer-cta">

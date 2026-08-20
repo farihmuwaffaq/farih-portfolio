@@ -34,6 +34,8 @@ Run `npm run check`, `npm run build`, and `npm run audit:links` before completio
 - Static output deploys to Vercel with sitemap and canonical metadata.
 - Mobile navigation is an independent fixed viewport layer, outside the floating navbar containing block.
 - Project filtering, lightbox behavior, motion, and navigation use lightweight client JavaScript.
+- Internal navigation uses a route-aware SQL query exit transition; native external, download, modified-click, same-page hash, and reduced-motion behavior remains untouched.
+- The optional `SQL_` console indexes validated case-study content at build time and exposes bounded commands without a backend or free-form SQL execution.
 - Analytics uses `window.portfolioAnalytics.track` and emits local `portfolio:analytics` events. GA4 loads only when `PUBLIC_GA_MEASUREMENT_ID` is configured; without it, no external analytics request is made.
 - Contact uses direct email and LinkedIn; no form endpoint is configured.
 
