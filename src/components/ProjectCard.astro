@@ -1,13 +1,13 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import Icon from './Icon.astro';
-const { project, index } = Astro.props as { project: CollectionEntry<'work'>; index?: number };
+const { project, index, featured = false } = Astro.props as { project: CollectionEntry<'work'>; index?: number; featured?: boolean };
 const d = project.data;
 ---
-<article class="card project" data-categories={d.categories.join('|')}>
+<article class:list={['card','project',featured&&'project-featured']} data-categories={d.categories.join('|')}>
   <div class="card-core project-core">
-    <div class="project-head"><span class="mono">{index !== undefined ? String(index + 1).padStart(2, '0') : ''} / {d.organization}</span>{d.confidential ? <span class="status confidential">Confidential<Icon name="lock" /></span> : <span class="status">{d.evidenceType}</span>}</div>
+    <div class="project-head"><span class="mono">{index !== undefined ? String(index + 1).padStart(2, '0') : ''} / {d.organization}</span>{featured ? <span class="status featured-status">Featured commercial study</span> : d.confidential ? <span class="status confidential">Confidential<Icon name="lock" /></span> : <span class="status">{d.evidenceType}</span>}</div>
     <div class="project-media"><img src={d.coverImage} alt={d.coverAlt} width="800" height="450" loading="lazy" /></div>
-    <div class="project-body"><div><p class="eyebrow">{d.evidenceType} · {d.industry}</p><h3>{d.title}</h3><p>{d.summary}</p></div><a class="card-link" href={`/work/${d.slug}`} aria-label={`Read ${d.title} case study`} data-event="view_project" data-event-label={d.slug}><Icon name="arrow-up-right" /></a><div class="project-meta"><div><span class="mono quiet">Role</span><p>{d.role}</p></div>{d.outcomes[0] && <div><span class="mono quiet">Proof</span><p>{d.outcomes[0]}</p></div>}</div></div>
+    <div class="project-body"><div><p class="eyebrow">{d.evidenceType} · {d.industry}</p><h3>{d.title}</h3><p class="project-summary">{d.summary}</p></div><a class="card-link" href={`/work/${d.slug}`} aria-label={`Read ${d.title} case study`} data-event="view_project" data-event-label={d.slug}><Icon name="arrow-up-right" /></a><div class="project-meta"><div><span class="mono quiet">Role</span><p>{d.role}</p></div>{d.outcomes[0] && <div class="project-proof"><span class="mono quiet">Evidence</span><p>{d.outcomes[0]}</p></div>}</div></div>
   </div>
 </article>

@@ -10,10 +10,11 @@ const labs=[['AdventureWorks Sales Report','Power BI · sample/training data','R
 <BaseLayout title="Data Analytics Work | Farih Muwaffaq" description="Case studies in analytics automation, business intelligence, commercial operations, machine learning, and sustainability by Farih Muwaffaq." animate={true}>
   <section class="section case-hero"><div class="container">
     <div class="section-heading"><div><p class="eyebrow rise"><span class="idx">Index</span> {projects.length} case studies · {labs.length} lab studies</p><h1 class="rise rise-1">Work with evidence.</h1></div><p class="lede rise rise-2">Analytics systems, models, and decision tools. Professional work protects confidential data; project exercises remain clearly labeled.</p></div>
-    <ProjectGrid projects={projects} filters={true} />
+    <div class="work-list-heading"><p class="eyebrow"><span class="idx">01</span> Selected systems</p><p>Professional and project-based systems with explicit role, evidence, and decision context.</p></div>
+    <ProjectGrid projects={projects} filters={true} featuredSlug="lifepack-delivery-margin-analysis" />
   </div></section>
   <section class="section" id="dashboard-lab"><div class="container">
-    <div class="section-heading"><div><p class="eyebrow"><span class="idx">Lab</span> Dashboard Lab</p><h2>Focused interface studies.</h2></div><p>Independent exercises using sample or training data. Gallery items, not client results or standalone case studies.</p></div>
-    <div class="card-grid">{labs.map((lab,i)=><article class="card project"><div class="card-core project-core"><Lightbox id={`lab-${i}`} src={lab[3]} alt={lab[0]} caption={lab[0]} /><div class="project-body"><div><p class="eyebrow">{lab[1]}</p><h3>{lab[0]}</h3><p>{lab[2]}</p></div></div></div></article>)}</div>
+    <div class="section-heading"><div><p class="eyebrow"><span class="idx">02</span> Dashboard Lab</p><h2>Focused interface studies.</h2></div><p>Independent exercises using sample or training data. Gallery items, not client results or standalone case studies.</p></div>
+    <div class="study-grid">{labs.map((lab,i)=><article class="study-card"><Lightbox id={`lab-${i}`} src={lab[3]} alt={lab[0]} caption={lab[0]} /><div class="study-body"><p class="eyebrow">{lab[1]}</p><h3>{lab[0]}</h3><p>{lab[2]}</p></div></article>)}</div>
   </div></section>
 </BaseLayout>

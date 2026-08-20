@@ -1,13 +1,13 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import ProjectCard from './ProjectCard.astro';
-interface Props { projects: CollectionEntry<'work'>[]; filters?: boolean }
-const { projects, filters = false } = Astro.props;
+interface Props { projects: CollectionEntry<'work'>[]; filters?: boolean; featuredSlug?: string }
+const { projects, filters = false, featuredSlug } = Astro.props;
 const categories = ['All','Analytics & Automation','Business Intelligence','Commercial & Operations','Machine Learning','Sustainability'];
 ---
 {filters && <div class="filters" aria-label="Filter projects">{categories.map((category, i) => <button class="filter" type="button" aria-pressed={i===0 ? 'true':'false'} data-filter={category}>{category}</button>)}</div>}
 <p id="filter-status" class="sr-only" aria-live="polite"></p>
-<div class="card-grid" id="project-grid">{projects.map((project, i) => <ProjectCard project={project} index={i} />)}</div>
+<div class="card-grid work-grid" id="project-grid">{projects.map((project, i) => <ProjectCard project={project} index={i} featured={project.data.slug===featuredSlug} />)}</div>
 {filters && <script>
   const buttons = [...document.querySelectorAll<HTMLButtonElement>('[data-filter]')];
   const cards = [...document.querySelectorAll<HTMLElement>('.project[data-categories]')];
