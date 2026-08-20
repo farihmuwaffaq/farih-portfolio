@@ -41,8 +41,8 @@ const schemas = [
   <main id="main"><slot /></main>
   <footer class="site-footer">
     <div class="container footer-cta">
-      <p class="eyebrow">Contact</p>
-      <a class="footer-email" href={`mailto:${site.email}`} data-event="footer_email">{site.email}</a>
+      <div><p class="eyebrow">Direct line</p><p class="footer-prompt">Have a difficult data question?</p></div>
+      <a class="footer-email" href={`mailto:${site.email}`} data-event="footer_email">{site.email}<Icon name="arrow-up-right" /></a>
     </div>
     <div class="container footer-grid">
       <ul class="footer-links">{nav.map(([label,href]) => <li><a href={href}>{label}</a></li>)}</ul>
