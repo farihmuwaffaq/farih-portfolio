@@ -29,10 +29,13 @@ for (const file of workFiles) {
 
 assert.match(layout, /Evidence status/, 'case-study layout must render evidence status');
 assert.match(layout, /Assumptions \/ constraints/, 'case-study layout must render assumptions and constraints');
+assert.match(layout, /class="assumptions-title"[\s\S]*class="sr-only">Assumptions \/ constraints<[\s\S]*class="assumptions-title-lines" aria-hidden="true"><span>Assumptions<\/span><span>\/<\/span><span>constraints<\/span>/, 'assumptions heading must use intentional accessible line breaks');
 assert.match(layout, /Decision log/, 'case-study layout must render decision log');
 assert.match(layout, /Metric dictionary/, 'case-study layout must render optional metric dictionary');
 assert.match(css, /\.evidence-status/, 'evidence status styling missing');
 assert.match(css, /\.decision-log/, 'decision log styling missing');
+assert.match(css, /\.assumptions-title\s*\{[^}]*font-size:\s*clamp\(2\.25rem,2\.8vw,3\.25rem\)/, 'assumptions heading needs panel-safe responsive type');
+assert.match(css, /\.assumptions-title-lines span\s*\{[^}]*white-space:\s*nowrap/, 'assumptions heading lines must not split mid-word');
 assert.match(css, /\.data-dictionary/, 'data dictionary styling missing');
 
 assert.match(base, /summary: project\.data\.summary/, 'query index must expose project summary');

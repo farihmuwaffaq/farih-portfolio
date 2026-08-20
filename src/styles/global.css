@@ -435,6 +435,9 @@ p { max-width: 66ch; }
 .evidence-status p { max-width: 52rem; margin: 0; color: var(--ink-soft); font-size: .9rem; }
 .analysis-frame { display: grid; grid-template-columns: minmax(18rem,.72fr) minmax(0,1.28fr); margin: clamp(5rem,9vw,8rem) 0; border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line-strong); }
 .analysis-frame h2 { max-width: 9ch; margin: 1rem 0 2rem; }
+.analysis-frame .assumptions-title { max-width: 100%; font-size: clamp(2.25rem,2.8vw,3.25rem); line-height: .95; }
+.assumptions-title-lines, .assumptions-title-lines span { display: block; }
+.assumptions-title-lines span { white-space: nowrap; }
 .assumption-panel, .decision-panel { padding: clamp(2rem,5vw,4rem); }
 .assumption-panel { color: #edf7f2; background: var(--ink); }
 .assumption-panel .eyebrow { color: #9fcab4; background: rgba(255,255,255,.08); }
