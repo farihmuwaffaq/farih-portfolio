@@ -11,12 +11,13 @@ tools: [ClickHouse, Apps Script, Python, PostgreSQL, MySQL, TablePlus, Google Sh
 categories: [Analytics & Automation, Business Intelligence]
 featured: true
 confidential: true
-confidentialityNote: Brand names are shown with permission, but all operating figures, stakeholder identities, competitor handles, internal file names, and campaign specifics are withheld. Code samples are generic templates with placeholders; diagrams and tables use illustrative data.
+confidentialityNote: Brand names and architecture tooling are shown with permission. Operating figures, stakeholder identities, competitor handles, internal file names, credentials, and campaign specifics are withheld. The pipeline diagram contains real tool relationships but no client performance data.
 coverImage: /images/projects/maleo-dashboard-silverqueen.png
 coverAlt: Campaign monitoring dashboard for a SilverQueen campaign, recreated with synthetic data, showing actual-vs-KPI gauges, a track score, and best-performing content
 outcomes: [Reduced repetitive manual reporting across brands, Improved consistency of recurring monthly and campaign outputs, Created timely daily signals for performance discussions]
 relatedAssets:
-  - { label: Sanitized architecture diagram, type: image, href: /images/projects/analytics-automation.svg, available: true, note: Abstract representation only }
+  - { label: Maleo pipeline architecture, type: image, href: /images/lab/maleo-pipeline-architecture.png, available: true, note: Real architecture diagram with client performance data withheld }
+  - { label: Editorial pipeline architecture, type: image, href: /images/lab/social-pipeline-maleo.svg, available: true, note: Reframed for web readability }
 ---
 ## Snapshot
 

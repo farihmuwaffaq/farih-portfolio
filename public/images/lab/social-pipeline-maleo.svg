@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">Maleo social media analytics pipeline</title>
+  <desc id="desc">Data flows from Metricool and labelled Lark Base data through ClickHouse into dashboards and AI-assisted daily nudges.</desc>
+  <rect width="1600" height="900" fill="#f1efe8"/>
+  <path d="M70 82H1530M70 820H1530" stroke="#171a18" stroke-width="2"/>
+  <text x="70" y="138" fill="#71756f" font-family="ui-monospace, monospace" font-size="21" letter-spacing="4">MALEO / SOCIAL MEDIA ANALYTICS</text>
+  <text x="70" y="218" fill="#171a18" font-family="Arial, sans-serif" font-size="68" font-weight="700" letter-spacing="-3">One warehouse.</text>
+  <text x="70" y="286" fill="#171a18" font-family="Arial, sans-serif" font-size="68" font-weight="700" letter-spacing="-3">Many decision surfaces.</text>
+  <g font-family="ui-monospace, monospace" font-size="17" letter-spacing="2">
+    <rect x="70" y="350" width="360" height="380" fill="#fff" stroke="#171a18" stroke-width="2"/>
+    <rect x="70" y="350" width="360" height="48" fill="#bd7617"/>
+    <text x="94" y="382" fill="#fffdf8">01 / DATA SOURCE</text>
+    <text x="94" y="438" fill="#171a18" font-family="Arial, sans-serif" font-size="31" font-weight="700">Metricool</text>
+    <text x="94" y="474" fill="#71756f" font-size="18" letter-spacing="0">Instagram · TikTok · Facebook</text>
+    <text x="94" y="503" fill="#71756f" font-size="18" letter-spacing="0">Twitter/X · YouTube</text>
+    <rect x="94" y="535" width="300" height="55" fill="#f1efe8" stroke="#171a18"/>
+    <text x="110" y="569" fill="#171a18" font-size="16">Public / competitor / Rapid API</text>
+    <rect x="94" y="610" width="300" height="72" fill="#e7eee9" stroke="#075e57"/>
+    <text x="110" y="640" fill="#075e57" font-size="16">Lark Base</text>
+    <text x="110" y="664" fill="#71756f" font-size="15" letter-spacing="0">categorical labelling</text>
+    <path d="M430 540H505" stroke="#d4542d" stroke-width="5"/><path d="m495 528 16 12-16 12" fill="none" stroke="#d4542d" stroke-width="5"/>
+    <rect x="525" y="350" width="360" height="380" fill="#fffdf8" stroke="#171a18" stroke-width="2"/>
+    <rect x="525" y="350" width="360" height="48" fill="#e0ae34"/>
+    <text x="549" y="382" fill="#171a18">02 / DATA WAREHOUSE</text>
+    <text x="549" y="458" fill="#171a18" font-family="Arial, sans-serif" font-size="38" font-weight="700">ClickHouse</text>
+    <rect x="549" y="500" width="312" height="70" fill="#f1efe8" stroke="#171a18"/>
+    <text x="568" y="530" fill="#171a18" font-size="16">Query per KPI</text>
+    <text x="568" y="554" fill="#71756f" font-size="15" letter-spacing="0">and daily refresh</text>
+    <text x="549" y="620" fill="#71756f" font-size="16" letter-spacing="0">Performance · labelling</text>
+    <text x="549" y="646" fill="#71756f" font-size="16" letter-spacing="0">processing data</text>
+    <path d="M885 540H960" stroke="#d4542d" stroke-width="5"/><path d="m950 528 16 12-16 12" fill="none" stroke="#d4542d" stroke-width="5"/>
+    <rect x="980" y="350" width="550" height="380" fill="#fff5f0" stroke="#d4542d" stroke-width="2"/>
+    <rect x="980" y="350" width="550" height="48" fill="#d4542d"/>
+    <text x="1004" y="382" fill="#fffdf8">03 / DATA CONSUMPTION</text>
+    <g font-family="Arial, sans-serif" font-weight="700" font-size="22">
+      <rect x="1010" y="430" width="210" height="62" fill="#fff" stroke="#171a18"/><text x="1072" y="468" fill="#171a18">Lark Base</text>
+      <path d="M1220 461H1260" stroke="#171a18" stroke-width="3"/><rect x="1260" y="430" width="220" height="62" fill="#fff" stroke="#171a18"/><text x="1302" y="468" fill="#171a18">Lark Dashboard</text>
+      <rect x="1010" y="525" width="210" height="62" fill="#fff" stroke="#171a18"/><text x="1082" y="563" fill="#171a18">Tableau</text>
+      <rect x="1260" y="525" width="220" height="62" fill="#fff" stroke="#171a18"/><text x="1325" y="563" fill="#171a18">Looker</text>
+      <path d="M1370 587V625" stroke="#171a18" stroke-width="3"/><rect x="1260" y="625" width="220" height="62" fill="#e7eee9" stroke="#075e57"/><text x="1293" y="663" fill="#075e57">Master Looker Base</text>
+    </g>
+  </g>
+  <text x="980" y="770" fill="#d4542d" font-family="ui-monospace, monospace" font-size="18" letter-spacing="2">AI DAILY NUDGE</text>
+  <text x="1190" y="770" fill="#71756f" font-family="ui-monospace, monospace" font-size="17">Prefect / Astronomer / Airbyte → N8N → AI Agent → AnyCross → Chat card → Lark Chat</text>
+</svg>
