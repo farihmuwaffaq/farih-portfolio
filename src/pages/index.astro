@@ -3,97 +3,17 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
 const projects = (await getCollection('work')).filter(p=>p.data.featured).sort((a,b)=>['analytics-automation','nexus-bi-platform','loan-default-model'].indexOf(a.data.slug)-['analytics-automation','nexus-bi-platform','loan-default-model'].indexOf(b.data.slug));
-const heroProof: Record<string, string> = {
-  'analytics-automation': 'Four-brand pipeline',
-  'nexus-bi-platform': 'BigQuery BI platform · RBAC',
-  'loan-default-model': 'AUC 0.857 / KS 0.57',
-};
+const heroProof: Record<string, string> = {'analytics-automation':'Four-brand pipeline','nexus-bi-platform':'BigQuery BI platform · RBAC','loan-default-model':'AUC 0.857 / KS 0.57'};
 const person = {'@context':'https://schema.org','@type':'Person',name:'Farih Muwaffaq',jobTitle:'Data Analyst',address:{'@type':'PostalAddress',addressLocality:'Jakarta',addressCountry:'ID'},knowsAbout:['Analytics automation','Business intelligence','Commercial analytics','Data pipelines']};
-const capabilities = [
-  ['Analytics systems','Reliable data flows that connect, clean, and keep fragmented business data trustworthy.'],
-  ['Automation','Repeatable reporting, alerts, and updates that remove manual operating steps.'],
-  ['Business intelligence','Decision-ready dashboards and KPI structures built around stakeholder questions.'],
-  ['Commercial and operational analysis','Analysis framed around inventory, pricing, and performance — ending in business action.'],
-];
+const capabilities = [['Analytics systems','Reliable data flows connecting fragmented business data.'],['Automation','Repeatable reporting, alerts, and updates removing manual steps.'],['Business intelligence','Decision-ready dashboards built around stakeholder questions.'],['Commercial analysis','Inventory, pricing, and performance analysis ending in action.']];
 ---
 <BaseLayout title="Farih Muwaffaq | Data Analyst & Analytics Automation" jsonLd={person} animate={true}>
-  <div id="intro-splash" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-label="Welcome">
-    <div class="splash-canvas-wrap"><canvas class="splash-canvas" aria-hidden="true"></canvas></div>
-    <div class="splash-inner">
-      <div class="splash-teaser">
-        <p class="t-line">Want to see data turned into decisions?</p>
-        <p class="t-line">Pipelines, dashboards, and models that move teams to act.</p>
-        <p class="t-line t-proof">AUC 0.857 · 10+ dashboards shipped · Four-brand reporting pipeline.</p>
-      </div>
-      <p class="splash-name">Farih Muwaffaq <span>— Data Analyst</span></p>
-      <button class="splash-enter" type="button" disabled>Enter — get to know me</button>
-      <button class="splash-skip" type="button">Skip intro</button>
-    </div>
-  </div>
-
-  <section class="hero"><canvas id="hero-canvas" aria-hidden="true"></canvas><div class="container">
-    <p class="eyebrow rise"><span class="idx">Portfolio — IDX.2025</span> Data Analyst · Analytics Automation · Business Intelligence</p>
-    <h1 class="hero-name rise rise-1">Farih Muwaffaq</h1>
-    <p class="hero-role rise rise-2"><span class="dot" aria-hidden="true"></span> Data Analyst <span aria-hidden="true">·</span> Jakarta, Indonesia</p>
-    <p class="lede rise rise-3">I build data systems that move teams from reporting to action — turning fragmented data into reliable pipelines, dashboards, alerts, and business recommendations across FMCG, healthcare, and marketing analytics.</p>
-    <div class="actions rise rise-4"><a class="button" href="/work">View selected work<Icon name="arrow-right" /></a><a class="button secondary" href="/Farih-Muwaffaq-Resume.pdf" download="Farih-Muwaffaq-Resume.pdf" data-event="download_resume">Download resume<Icon name="download" /></a><a class="button-link" href="/contact">Contact <Icon name="arrow-right" /></a></div>
-    <div class="hero-meta rise rise-4">
-      <span class="stack-meta"><b>Stack</b> <span class="stack-logos"><span class="stack-item"><Icon name="logo-postgresql" size="1em" />SQL</span><span class="stack-item"><Icon name="logo-python" size="1em" />Python</span><span class="stack-item"><Icon name="logo-tableau" size="1em" />Tableau</span><span class="stack-item"><Icon name="logo-powerbi" size="1em" />Power BI</span><span class="stack-item"><Icon name="logo-looker" size="1em" />Looker Studio</span></span></span>
-      <span><b>Domain</b> FMCG · Health-tech · Marketing</span>
-      <span><b>Index</b> 06 case studies</span>
-    </div>
-     <p class="proof-line rise rise-4"><span><b>Proof</b> <span data-count="1567" data-count-suffix="%">1,567%</span> production capacity growth supported · <span data-count="10" data-count-suffix="+">10+</span> dashboards · Four-brand reporting pipeline</span><span><b>Experience</b> SKINTIFIC · Future Creative Network · Lifepack.id · Kimia Farma & ID/X Partners projects</span></p>
+  <section class="hero home-hero"><div class="container hero-layout">
+    <div class="hero-copy"><p class="eyebrow rise"><span class="idx">00</span> Data systems · Commercial intelligence</p><h1 class="rise rise-1">Data, made decisive.</h1><p class="lede rise rise-2">I build analytics systems that move teams from raw signals to trusted, repeatable business decisions.</p><div class="actions rise rise-3"><a class="button" href="/work">Explore selected work<Icon name="arrow-up-right" /></a><a class="button secondary" href="/about">How I work<Icon name="arrow-right" /></a></div><p class="proof-line rise rise-4"><span><b>Experience</b> SKINTIFIC · Maleo · Lifepack.id · FMCG operations</span></p></div>
+    <aside class="surface hero-cockpit rise rise-2"><div class="surface-core cockpit-core"><p class="availability">Jakarta · Open to high-impact data roles</p><div class="metric-stack"><div class="metric"><strong>1,567%</strong><span>Production capacity growth supported</span></div><div class="metric"><strong>10+</strong><span>Operational dashboards and reports</span></div><div class="metric"><strong>04</strong><span>Brands in one reporting pipeline</span></div></div></div></aside>
   </div></section>
-
-  <section class="section" data-reveal><div class="container">
-    <p class="eyebrow"><span class="idx">01</span> Selected work</p>
-    <h2 style="max-width:18ch">Systems built around decisions</h2>
-    <div class="register">
-      {projects.map((p, i) => (
-        <a class="register-row" href={`/work/${p.data.slug}`} data-event="view_project" data-event-label={p.data.slug}>
-          <span class="register-num">{String(i + 1).padStart(2, '0')}</span>
-          <span>
-            <span class="register-title">{p.data.title}</span>
-            <p class="register-summary">{p.data.summary}</p>
-            <p class="register-proof">{heroProof[p.data.slug]}</p>
-            <span class="register-tags">
-              {p.data.tools.slice(0, 4).map(tool => <span class="tag">{tool}</span>)}
-              {p.data.confidential && <span class="status confidential">Confidential</span>}
-            </span>
-          </span>
-          <span class="register-meta">
-            <span>{p.data.organization}</span>
-            <span>{p.data.timeline}</span>
-            <span>{p.data.evidenceType}</span>
-          </span>
-          <span class="register-arrow" aria-hidden="true"><Icon name="arrow-right" size="1.3rem" /></span>
-        </a>
-      ))}
-    </div>
-    <div class="actions"><a class="button secondary" href="/work">See all case studies<Icon name="arrow-right" /></a></div>
-  </div></section>
-
-  <section class="section" data-reveal><div class="container">
-    <p class="eyebrow"><span class="idx">02</span> Capabilities</p>
-    <dl class="defs">
-      {capabilities.map(([term, def], i) => (
-        <div class="def-row">
-          <dt><span class="mono">{String(i + 1).padStart(2, '0')}</span> {term}</dt>
-          <dd>{def}</dd>
-        </div>
-      ))}
-    </dl>
-  </div></section>
-
-  <section class="section" data-reveal><div class="container grid two">
-    <div><p class="eyebrow"><span class="idx">03</span> Current focus</p><h2>Commercial and inventory analytics</h2></div>
-    <p>At SKINTIFIC, I support inventory and commercial analytics across multiple brands and channels, including stock health, slow-moving inventory, pricing parity, NPD monitoring, critical SKU tracking, and promotional analysis. Public descriptions remain high-level to protect confidential operating data.</p>
-  </div></section>
-
-  <section class="section" data-reveal><div class="container">
-    <p class="eyebrow"><span class="idx">04</span> Contact</p>
-    <h2 style="max-width:20ch">Need an analyst who connects systems to decisions?</h2>
-    <p class="lede">I am open to conversations about data analytics, business intelligence, commercial analytics, and analytics automation.</p>
-    <div class="actions"><a class="button" href="/contact">Contact Farih<Icon name="arrow-right" /></a><a class="button secondary" href="/Farih-Muwaffaq-Resume.pdf" download="Farih-Muwaffaq-Resume.pdf" data-event="download_resume">Download resume<Icon name="download" /></a></div>
-  </div></section>
+  <section class="section" data-reveal><div class="container"><div class="section-heading"><div><p class="eyebrow"><span class="idx">01</span> Selected work</p><h2>Systems built around decisions.</h2></div><p>Selected analytics systems spanning governed BI, automated reporting, and predictive modeling.</p></div><div class="work-bento">{projects.map((p,i)=><article class="card project"><div class="card-core project-core"><div class="project-head"><span class="mono">{String(i+1).padStart(2,'0')} / {p.data.organization}</span><span class="status">{p.data.evidenceType}</span></div><div class="project-media"><img src={p.data.coverImage} alt={p.data.coverAlt} width="800" height="450" loading={i===0?'eager':'lazy'} /></div><div class="project-body"><div><p class="eyebrow">{p.data.industry}</p><h3>{p.data.title}</h3><p>{p.data.summary}</p></div><a class="card-link" href={`/work/${p.data.slug}`} aria-label={`Read ${p.data.title}`}><Icon name="arrow-up-right" /></a><div class="project-meta"><span class="mono">{heroProof[p.data.slug]}</span></div></div></div></article>)}</div><div class="actions" style="margin-top:2rem"><a class="button secondary" href="/work">See all case studies<Icon name="arrow-right" /></a></div></div></section>
+  <section class="section" data-reveal><div class="container"><div class="section-heading"><div><p class="eyebrow"><span class="idx">02</span> Capabilities</p><h2>From infrastructure to action.</h2></div><p>Technical delivery stays connected to decision context, ownership, and measurable use.</p></div><dl class="defs">{capabilities.map(([term,def],i)=><div class="resume-item"><dt><span class="mono idx">{String(i+1).padStart(2,'0')}</span><h3>{term}</h3></dt><dd>{def}</dd></div>)}</dl></div></section>
+  <section class="section" data-reveal><div class="container grid two"><div><p class="eyebrow"><span class="idx">03</span> Current focus</p><h2>Commercial and inventory intelligence.</h2></div><div><p class="lede">At SKINTIFIC, I support inventory and commercial analytics across brands and channels: stock health, pricing parity, NPD, critical SKU, and promotional analysis.</p><p class="quiet">Public descriptions remain high-level to protect confidential operating data.</p></div></div></section>
+  <section class="section" data-reveal><div class="container"><p class="eyebrow"><span class="idx">04</span> Contact</p><h2 style="max-width:15ch">Need an analyst who connects systems to decisions?</h2><p class="lede">Open to conversations about analytics, business intelligence, commercial performance, and automation.</p><div class="actions"><a class="button" href="/contact">Contact Farih<Icon name="arrow-up-right" /></a><a class="button secondary" href="/Farih-Muwaffaq-Resume.pdf" download="Farih-Muwaffaq-Resume.pdf">Download resume<Icon name="download" /></a></div></div></section>
 </BaseLayout>

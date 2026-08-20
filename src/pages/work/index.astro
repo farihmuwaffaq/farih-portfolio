@@ -8,16 +8,12 @@ const projects=(await getCollection('work')).sort((a,b)=>order.indexOf(a.data.sl
 const labs=[['AdventureWorks Sales Report','Power BI · sample/training data','Revenue, profit, orders, returns, category and customer analysis.','/images/lab/adventureworks.png'],['Maven Cycles Report','Power BI · sample/training data','Product, geography, period and profit analysis.','/images/lab/maven-cycles.png'],['UNIX-O Sales Dashboard','Excel · sample/training data','Sales, profit, marketplace, rating and product analysis.','/images/lab/unix-o-dashboard.png'],['Couture28 Sales Dashboard','Excel · sample/training data','Structured cleaning, pivot analysis and interactive dashboarding.','/images/lab/couture28-dashboard.png'],['Kimia Farma Sales Dashboard','Looker Studio · project-based internship','Invoices, sales, product volume, customers and purchasing trends.','/images/lab/kimia-farma-dashboard.jpg'],['Maleo Social Media Analytics Pipeline','ClickHouse · Metricool · Looker · N8N · real architecture','Production pipeline from multi-platform performance data to dashboards and AI-assisted daily nudges. No client performance data.','/images/lab/maleo-pipeline-architecture.png']];
 ---
 <BaseLayout title="Data Analytics Work | Farih Muwaffaq" description="Case studies in analytics automation, business intelligence, commercial operations, machine learning, and sustainability by Farih Muwaffaq." animate={true}>
-  <section class="section"><div class="container">
-    <p class="eyebrow rise"><span class="idx">Index</span> {projects.length} case studies · {labs.length} lab studies</p>
-    <h1 class="rise rise-1" style="max-width:16ch">Analytics systems, models, and decision tools.</h1>
-    <p class="lede rise rise-2">Filter by problem type. Professional case studies protect confidential data; project exercises are labeled and bounded by their source datasets.</p>
+  <section class="section case-hero"><div class="container">
+    <div class="section-heading"><div><p class="eyebrow rise"><span class="idx">Index</span> {projects.length} case studies · {labs.length} lab studies</p><h1 class="rise rise-1">Work with evidence.</h1></div><p class="lede rise rise-2">Analytics systems, models, and decision tools. Professional work protects confidential data; project exercises remain clearly labeled.</p></div>
     <ProjectGrid projects={projects} filters={true} />
   </div></section>
   <section class="section" id="dashboard-lab"><div class="container">
-    <p class="eyebrow"><span class="idx">Lab</span> Dashboard Lab</p>
-    <h2>Focused interface studies</h2>
-    <p class="lede">Independent exercises using sample or training data. These are gallery items — not client results or standalone case studies. Visuals are safe abstract placeholders until source exports are available.</p>
-    <div class="card-grid">{labs.map((lab,i)=><article class="card"><Lightbox id={`lab-${i}`} src={lab[3]} alt={lab[0]} caption={lab[0]} /><p class="eyebrow" style="margin-top:1rem">{lab[1]}</p><p>{lab[2]}</p></article>)}</div>
+    <div class="section-heading"><div><p class="eyebrow"><span class="idx">Lab</span> Dashboard Lab</p><h2>Focused interface studies.</h2></div><p>Independent exercises using sample or training data. Gallery items, not client results or standalone case studies.</p></div>
+    <div class="card-grid">{labs.map((lab,i)=><article class="card project"><div class="card-core project-core"><Lightbox id={`lab-${i}`} src={lab[3]} alt={lab[0]} caption={lab[0]} /><div class="project-body"><div><p class="eyebrow">{lab[1]}</p><h3>{lab[0]}</h3><p>{lab[2]}</p></div></div></div></article>)}</div>
   </div></section>
 </BaseLayout>

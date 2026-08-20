@@ -3,10 +3,5 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import Icon from '../components/Icon.astro';
 ---
 <BaseLayout title="Page not found | Farih Muwaffaq" description="The requested page could not be found.">
-  <section class="hero"><div class="container">
-    <p class="eyebrow rise"><span class="idx">404</span> Out of range</p>
-    <h1 class="hero-name rise rise-1">This page is outside the model.</h1>
-    <p class="lede rise rise-2">The link may be outdated or the address may be incomplete.</p>
-    <div class="actions rise rise-3"><a class="button" href="/">Return home<Icon name="arrow-right" /></a><a class="button secondary" href="/work">Browse work<Icon name="arrow-right" /></a></div>
-  </div></section>
+  <section class="hero"><div class="container grid two"><div><p class="eyebrow rise"><span class="idx">404</span> Out of range</p><h1 class="rise rise-1">This page is outside the model.</h1><p class="lede rise rise-2">The link may be outdated or the address may be incomplete.</p><div class="actions rise rise-3"><a class="button" href="/">Return home<Icon name="arrow-up-right" /></a><a class="button secondary" href="/work">Browse work<Icon name="arrow-right" /></a></div></div><aside class="surface rise rise-2"><div class="surface-core cockpit-core"><span class="mono quiet">ERROR / ROUTE</span><p style="font-size:clamp(7rem,18vw,15rem);line-height:.8;margin:4rem 0 1rem;letter-spacing:-.09em">404</p><p class="availability">Navigation system online</p></div></aside></div></section>
 </BaseLayout>

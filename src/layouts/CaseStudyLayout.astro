@@ -6,38 +6,25 @@ import Lightbox from '../components/Lightbox.astro';
 interface Props { project: CollectionEntry<'work'> }
 const { project } = Astro.props;
 const d = project.data;
-const breadcrumb = {'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[
-  {'@type':'ListItem',position:1,name:'Home',item:new URL('/',Astro.site)}, {'@type':'ListItem',position:2,name:'Work',item:new URL('/work',Astro.site)}, {'@type':'ListItem',position:3,name:d.title,item:Astro.url}
-]};
+const breadcrumb = {'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Home',item:new URL('/',Astro.site)},{'@type':'ListItem',position:2,name:'Work',item:new URL('/work',Astro.site)},{'@type':'ListItem',position:3,name:d.title,item:Astro.url}]};
 const creative = {'@context':'https://schema.org','@type':'CreativeWork',name:d.title,description:d.summary,author:{'@type':'Person',name:'Farih Muwaffaq'},isBasedOn:d.evidenceType};
-const imageAssets = d.relatedAssets.filter(asset => asset.type === 'image' && asset.available && asset.href);
-const otherAssets = d.relatedAssets.filter(asset => asset.type !== 'image' || !asset.available || !asset.href);
+const imageAssets = d.relatedAssets.filter(asset=>asset.type==='image'&&asset.available&&asset.href);
+const otherAssets = d.relatedAssets.filter(asset=>asset.type!=='image'||!asset.available||!asset.href);
 ---
 <BaseLayout title={`${d.title} | Farih Muwaffaq`} description={d.summary} type="article" jsonLd={[breadcrumb,creative]}>
-  <section class="section"><div class="container">
-    <p class="mono rise" style="margin-bottom:1.5rem"><a href="/work">← Index / All work</a></p>
-    <p class="eyebrow rise rise-1"><span class="idx">{d.evidenceType}</span> · {d.industry}</p>
-    <h1 class="rise rise-2" style="max-width:16ch">{d.title}</h1>
-    <p class="lede rise rise-3">{d.summary}</p>
-    {d.confidential && <p class="rise rise-3" style="margin-top:1.5rem"><span class="status confidential">{d.confidentialityNote}</span></p>}
-    <dl class="spec rise rise-4">
-      <div class="spec-row"><dt>Organization</dt><dd>{d.organization}</dd></div>
-      <div class="spec-row"><dt>Role</dt><dd>{d.role}</dd></div>
-      <div class="spec-row"><dt>Timeline</dt><dd>{d.timeline}</dd></div>
-      <div class="spec-row"><dt>Tools</dt><dd><ul class="tags">{d.tools.map(tool => <li class="tag">{tool}</li>)}</ul></dd></div>
-    </dl>
-    <figure style="margin:2.5rem 0 0">
-      <img src={d.coverImage} alt={d.coverAlt} width="1200" height="675" style="border:1px solid var(--line);border-radius:var(--radius)" />
-      <figcaption class="mono" style="margin-top:0.6rem;font-size:0.72rem;color:var(--muted)">FIG. 01 — {d.coverAlt}</figcaption>
-    </figure>
-    {d.outcomes.length > 0 && <div class="panel" aria-label="Validated outcomes"><p class="mono" style="margin-bottom:0.75rem;color:var(--signal-deep)">Validated outcomes</p>{d.outcomes.map(outcome => <p>{outcome}</p>)}</div>}
-    {d.keyContributions && <section class="contribution-block rise"><div class="contribution-heading"><span class="idx">My role</span><h2>My contribution</h2><p>Work I directly owned or delivered within the broader team effort.</p></div><ol class="contribution-list">{d.keyContributions.map((item, i) => <li><span>{String(i + 1).padStart(2, '0')}</span><p>{item}</p></li>)}</ol></section>}
+  <section class="section case-hero"><div class="container">
+    <p class="mono rise"><a href="/work">← Work index</a> / {d.organization}</p>
+    <div class="case-title-grid">
+      <div class="case-title"><p class="eyebrow rise rise-1"><span class="idx">{d.evidenceType}</span> {d.industry}</p><h1 class="rise rise-2">{d.title}</h1><p class="lede rise rise-3">{d.summary}</p>{d.confidential&&<span class="status confidential"><Icon name="lock" /> Published with protected details</span>}</div>
+      <figure class="surface case-cover rise rise-2"><div class="surface-core"><img src={d.coverImage} alt={d.coverAlt} width="1600" height="900" /></div></figure>
+    </div>
+    <dl class="case-spec rise rise-3"><div><dt>Organization</dt><dd>{d.organization}</dd></div><div><dt>Role</dt><dd>{d.role}</dd></div><div><dt>Timeline</dt><dd>{d.timeline}</dd></div><div><dt>Stack</dt><dd>{d.tools.join(' · ')}</dd></div></dl>
+    {d.outcomes.length>0&&<div class="outcome-grid" aria-label="Validated outcomes">{d.outcomes.map(outcome=><p>{outcome}</p>)}</div>}
+    {d.confidential&&<aside class="notice"><Icon name="lock" /><div><strong>Privacy boundary</strong><p>{d.confidentialityNote}</p></div></aside>}
+    {d.keyContributions&&<section class="contribution-block" data-reveal><div class="contribution-heading"><span class="eyebrow">My role</span><h2>My contribution.</h2><p>Work I directly owned or delivered within the broader team effort.</p></div><ol class="contribution-list">{d.keyContributions.map((item,i)=><li><span>{String(i+1).padStart(2,'0')}</span><p>{item}</p></li>)}</ol></section>}
     <article class="prose"><slot /></article>
-    {imageAssets.length > 0 && <section class="evidence-section" aria-labelledby="evidence-title">
-      <div class="evidence-heading"><p class="mono">Selected evidence</p><h2 id="evidence-title">Work, not placeholders.</h2><p>Published views are selected for clarity and privacy. Open any frame to inspect it at full size.</p></div>
-      <div class="evidence-grid">{imageAssets.map((asset, index) => <div class:list={['evidence-item', index === 0 && 'evidence-item-featured']}><span class="mono evidence-index">FIG. {String(index + 2).padStart(2, '0')}</span><Lightbox id={`evidence-${d.slug}-${index}`} src={asset.href} alt={asset.label} caption={asset.label} /></div>)}</div>
-    </section>}
-    {otherAssets.length > 0 && <section class="prose"><h2>Related evidence</h2><ul>{otherAssets.map(asset => <li>{asset.available && asset.href ? <a href={asset.href} data-event="open_project_asset" data-event-label={asset.label}>{asset.label}</a> : <span><strong>{asset.label}</strong> — {asset.note || 'Not publicly available.'}</span>}</li>)}</ul></section>}
-    <div class="actions"><a class="button" href="/contact" data-event="case_study_contact">Discuss this work<Icon name="arrow-right" /></a><a class="button secondary" href="/work">Explore more work<Icon name="arrow-right" /></a></div>
+    {imageAssets.length>0&&<section class="evidence-gallery" aria-labelledby="evidence-title"><div class="evidence-heading"><p class="eyebrow"><span class="idx">Evidence</span> Selected frames</p><div><h2 id="evidence-title">Work, not placeholders.</h2><p>Published views are selected for clarity and privacy. Open any frame to inspect it at full size.</p></div></div><div class="evidence-grid">{imageAssets.map((asset,i)=><Lightbox id={`evidence-${i}`} src={asset.href!} alt={asset.label} caption={asset.label} />)}</div></section>}
+    {otherAssets.length>0&&<section class="section"><h2>Related assets</h2><ul class="asset-list">{otherAssets.map(asset=><li><span>{asset.label}</span>{asset.available&&asset.href?<a href={asset.href} target="_blank" rel="noreferrer">Open asset <Icon name="arrow-up-right" /></a>:<span class="status">Not public</span>}</li>)}</ul></section>}
+    <section class="section"><p class="eyebrow"><span class="idx">Next</span> Continue the conversation</p><h2 style="max-width:14ch">Want to discuss how this system was built?</h2><div class="actions"><a class="button" href="/contact">Discuss this work<Icon name="arrow-up-right" /></a><a class="button secondary" href="/work">Explore more work<Icon name="arrow-right" /></a></div></section>
   </div></section>
 </BaseLayout>

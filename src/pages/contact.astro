@@ -4,7 +4,7 @@ import Icon from '../components/Icon.astro';
 const endpoint=import.meta.env.PUBLIC_CONTACT_FORM_ENDPOINT || '';
 ---
 <BaseLayout title="Contact Farih Muwaffaq | Data Analyst" description="Contact Farih Muwaffaq about data analytics, business intelligence, commercial performance, and automation-focused roles or collaborations.">
-<section class="section"><div class="container grid two">
+<section class="section case-hero"><div class="container grid two">
   <div>
     <p class="eyebrow rise"><span class="idx">Signal</span> Contact</p>
     <h1 class="rise rise-1">Let's turn a data question into a useful system.</h1>
@@ -16,7 +16,7 @@ const endpoint=import.meta.env.PUBLIC_CONTACT_FORM_ENDPOINT || '';
       <div class="spec-row"><dt>Location</dt><dd>Jakarta, Indonesia · open to relocation · remote-friendly</dd></div>
     </dl>
   </div>
-  <form class="form card" id="contact-form" data-endpoint={endpoint} novalidate>
+  <form class="contact-form" id="contact-form" data-endpoint={endpoint} novalidate>
     <p class="mono" style="margin:0">Message form</p>
     <div class="field"><label for="name">Name</label><input id="name" name="name" autocomplete="name" required /></div>
     <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
