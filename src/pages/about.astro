@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import Icon from '../components/Icon.astro';
 const profile={'@context':'https://schema.org','@type':'ProfilePage',mainEntity:{'@type':'Person',name:'Farih Muwaffaq',jobTitle:'Data Analyst'}};
 const career = [
   ['SKINTIFIC','Senior Associate Data Analyst','June 2026 — present','Contribution: governed BI, semantic definitions, row-level access, pricing snapshots, and commercial monitoring across brands and channels.'],
@@ -9,59 +8,25 @@ const career = [
   ['PT Gajahpangan Jaya Makmur','Data Analyst','March — October 2024','Contribution: production and profit bottleneck analysis supporting capacity growth from 300 to 5,000 units/day and channel expansion.'],
   ['Selasar Kampus','Founder and CEO','August 2021 — June 2023','Built an education-startup initiative and developed entrepreneurial and stakeholder experience. Specific incubation, traction, and funding claims are not published because supporting evidence has not been verified.'],
 ];
+const capabilities = [
+  ['01 / SYSTEMS','Analytics systems and automation','Pipelines, semantic layers, scheduled reports, dashboards, and recovery workflows.'],
+  ['02 / DECISIONS','Commercial and operational analysis','Production, pricing, channel, inventory, and performance signals tied to action.'],
+  ['03 / TRUST','Data quality and governance','Clear definitions, validation, access control, and escalation paths around sensitive data.'],
+];
+const technical = [
+  ['Data & querying','SQL · BigQuery · PostgreSQL · MySQL'],
+  ['Analysis & modeling','Python · Pandas · NumPy · scikit-learn · Jupyter'],
+  ['BI & reporting','Looker Studio · Power BI · Tableau · Metabase'],
+  ['Operational workflows','Excel · Google Sheets · REST APIs · TablePlus'],
+];
 ---
 <BaseLayout title="About Farih Muwaffaq | Data Analyst" description="About Farih Muwaffaq: analytics systems, commercial analysis, management education, and Forestry Engineering background." jsonLd={profile}>
-  <section class="section case-hero"><div class="container grid two">
-    <div><p class="eyebrow rise"><span class="idx">Profile</span> About</p><h1 class="rise rise-1">Systems thinking, business context, practical analysis.</h1><figure class="about-portrait rise rise-1"><img src="/images/farih.png" alt="Portrait of Farih Muwaffaq" width="928" height="1080" loading="lazy" /></figure></div>
-    <div><p class="lede">I am a Data Analyst who enjoys solving the gap between available data and actual decisions. My work spans analytics systems, reporting automation, commercial analysis, and stakeholder communication across FMCG, healthcare, startups, and creative industries.</p><p>I studied Forestry Engineering at Institut Teknologi Bandung and am pursuing a Master's degree in Management at PPM School of Management. That combination shapes how I work: understand the system, test the assumptions, and connect technical outputs to business consequences.</p>
-      <aside class="about-glance"><dl>
-        <div class="g-row"><dt>Currently</dt><dd>Senior Associate Data Analyst, SKINTIFIC</dd></div>
-        <div class="g-row"><dt>Focus</dt><dd>Commercial analytics, inventory, pricing, reporting automation</dd></div>
-        <div class="g-row"><dt>Location</dt><dd>Jakarta, Indonesia</dd></div>
-        <div class="g-row"><dt>Open to</dt><dd>Analytics systems &amp; decision-support work</dd></div>
-      </dl></aside></div>
+  <section class="section about-hero"><div class="container about-hero-grid">
+    <div class="about-intro"><p class="eyebrow rise"><span class="idx">Profile</span> About</p><h1 class="rise rise-1">Systems thinking, business context, practical analysis.</h1><p class="lede rise rise-2">I am a Data Analyst who works across analytics systems, reporting automation, commercial analysis, and stakeholder communication.</p><p class="rise rise-3">I tend to start with the business question, trace the data and operational systems behind it, then build analysis that helps people decide what to do next.</p><aside class="about-glance rise rise-3"><dl><div class="g-row"><dt>Currently</dt><dd>Senior Associate Data Analyst, SKINTIFIC</dd></div><div class="g-row"><dt>Focus</dt><dd>Commercial analytics, inventory, pricing, reporting automation</dd></div><div class="g-row"><dt>Location</dt><dd>Jakarta, Indonesia</dd></div><div class="g-row"><dt>Open to</dt><dd>Analytics systems &amp; decision-support work</dd></div></dl></aside></div>
+    <figure class="about-portrait rise rise-2"><img src="/images/farih.png" alt="Portrait of Farih Muwaffaq" width="928" height="1080" loading="eager" /><figcaption><span class="availability">Jakarta · Indonesia</span><span class="mono">Data / decisions / systems</span></figcaption></figure>
   </div></section>
-  <section class="section"><div class="container"><p class="eyebrow"><span class="idx">02</span> Contribution across roles</p><div class="grid three contribution-summary"><article><span class="mono">01 / SYSTEMS</span><h3>Analytics systems and automation</h3><p>Pipelines, semantic layers, scheduled reports, dashboards, and recovery workflows.</p></article><article><span class="mono">02 / DECISIONS</span><h3>Commercial and operational analysis</h3><p>Production, pricing, channel, inventory, and performance signals tied to action.</p></article><article><span class="mono">03 / TRUST</span><h3>Data quality and governance</h3><p>Clear definitions, validation, access control, and escalation paths around sensitive data.</p></article></div></div></section>
-  <section class="section"><div class="container">
-    <p class="eyebrow"><span class="idx">01</span> Career</p>
-    <h2>A selective timeline</h2>
-    <div class="resume-block">
-      {career.map(([org, role, when, desc], i) => (
-        <div class={`resume-item${i === 0 ? ' is-current' : ''}`}>
-          <span class="when">{when}</span>
-          <div>
-            <h3><span class="mono" style="color:var(--signal);margin-right:0.6rem">{String(i + 1).padStart(2, '0')}</span>{role} · {org}</h3>
-            <p>{desc}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-  </div></section>
-  <section class="section"><div class="container">
-    <p class="eyebrow"><span class="idx">02</span> Endorsements</p>
-    <blockquote class="panel endorsement">
-      <p>&ldquo;We are always directed to create useful and relevant content based on data. His ability to analyze the latest trends and markets in data-driven content creation is undeniable.&rdquo;</p>
-      <footer class="endorsement-by">Fadhila Hanna Ramdhani<span class="endorsement-role">Forestry Engineering, Institut Teknologi Bandung · reported directly to Farih, Selasar Kampus</span></footer>
-    </blockquote>
-  </div></section>
-  <section class="section"><div class="container grid two">
-    <article class="card"><p class="eyebrow"><span class="idx">03</span> Education</p><h2>Management and forestry</h2><p><strong>PPM School of Management</strong><br />Master of Management, January 2026 — present.</p><p><strong>Institut Teknologi Bandung</strong><br />Bachelor of Forestry Engineering, 2018 — 2023.</p></article>
-    <article class="card"><p class="eyebrow"><span class="idx">04</span> Tools</p><h2>Technical range</h2>
-      <ul class="tool-grid" role="list">
-        <li class="tool-item"><Icon name="logo-postgresql" size="1.4em" /><span>PostgreSQL</span></li>
-        <li class="tool-item"><Icon name="logo-mysql" size="1.4em" /><span>MySQL</span></li>
-        <li class="tool-item"><Icon name="logo-python" size="1.4em" /><span>Python</span></li>
-        <li class="tool-item"><Icon name="logo-pandas" size="1.4em" /><span>Pandas</span></li>
-        <li class="tool-item"><Icon name="logo-numpy" size="1.4em" /><span>NumPy</span></li>
-        <li class="tool-item"><Icon name="logo-scikitlearn" size="1.4em" /><span>scikit-learn</span></li>
-        <li class="tool-item"><Icon name="logo-tableau" size="1.4em" /><span>Tableau</span></li>
-        <li class="tool-item"><Icon name="logo-powerbi" size="1.4em" /><span>Power BI</span></li>
-        <li class="tool-item"><Icon name="logo-looker" size="1.4em" /><span>Looker Studio</span></li>
-        <li class="tool-item"><Icon name="logo-metabase" size="1.4em" /><span>Metabase</span></li>
-        <li class="tool-item"><Icon name="logo-excel" size="1.4em" /><span>Excel</span></li>
-        <li class="tool-item"><Icon name="logo-googlesheets" size="1.4em" /><span>Google Sheets</span></li>
-        <li class="tool-item"><Icon name="logo-jupyter" size="1.4em" /><span>Jupyter</span></li>
-      </ul>
-      <p class="tool-note">Plus SQL, TablePlus, and REST APIs. Tools support the work; decisions remain the organizing principle.</p></article>
-  </div></section>
+  <section class="section about-method"><div class="container"><div class="section-heading about-method-heading"><div><p class="eyebrow"><span class="idx">01</span> How I work</p><h2>From question to useful action.</h2></div><p>Business context organizes the work. Tools, models, and dashboards support a decision rather than becoming the outcome.</p></div><div class="grid three contribution-summary">{capabilities.map(([index,title,description])=><article><span class="mono">{index}</span><h3>{title}</h3><p>{description}</p></article>)}</div></div></section>
+  <section class="section about-career"><div class="container"><p class="eyebrow"><span class="idx">02</span> Career</p><h2>A selective timeline.</h2><div class="resume-block">{career.map(([org,role,when,desc],i)=><div class:list={['resume-item',i===0&&'is-current']}><span class="when">{when}</span><div><h3><span class="mono resume-index">{String(i+1).padStart(2,'0')}</span>{role} · {org}</h3><p>{desc}</p></div></div>)}</div></div></section>
+  <section class="section foundation-zone"><div class="container"><div class="section-heading"><div><p class="eyebrow"><span class="idx">03</span> Foundation</p><h2>Management and systems perspective.</h2></div><p>Formal study and operating experience shape how I connect technical work to organizational consequences.</p></div><div class="foundation-grid"><div class="foundation-study"><article><span class="mono">Management / current</span><h3>PPM School of Management</h3><p>Master of Management, January 2026 — present. Extending technical analysis through commercial, strategic, and organizational context.</p></article><article><span class="mono">Systems / foundation</span><h3>Institut Teknologi Bandung</h3><p>Bachelor of Forestry Engineering, 2018 — 2023. A systems foundation shaped by interconnected resources, constraints, evidence, and long-term outcomes.</p></article></div><blockquote class="panel endorsement"><p>&ldquo;We are always directed to create useful and relevant content based on data. His ability to analyze the latest trends and markets in data-driven content creation is undeniable.&rdquo;</p><footer class="endorsement-by">Fadhila Hanna Ramdhani<span class="endorsement-role">Forestry Engineering, Institut Teknologi Bandung · reported directly to Farih, Selasar Kampus</span></footer></blockquote></div></div></section>
+  <section class="section technical-zone"><div class="container"><div class="section-heading"><div><p class="eyebrow"><span class="idx">04</span> Technical range</p><h2>Tools organized by purpose.</h2></div><p>Capability matters more than inventory. Each tool belongs to a specific part of the analytical workflow.</p></div><div class="technical-grid">{technical.map(([category,tools],i)=><article><span class="mono">{String(i+1).padStart(2,'0')}</span><h3>{category}</h3><p>{tools}</p></article>)}</div><p class="tool-note">Tools support the work; decisions remain the organizing principle.</p></div></section>
 </BaseLayout>
