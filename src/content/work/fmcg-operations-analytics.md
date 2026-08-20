@@ -12,8 +12,8 @@ categories: [Commercial & Operations, Business Intelligence]
 featured: false
 confidential: true
 confidentialityNote: Production and profit outcomes are reported at business level during my engagement; supplier details, SKU-level data, margin formulas, and transaction records remain withheld.
-coverImage: /images/projects/fmcg-operations-analytics.svg
-coverAlt: Abstract FMCG operations view connecting production, channels, and commercial decisions
+coverImage: /images/projects/fmcg-operations/page-09.png
+coverAlt: FMCG dashboard, visualization, coding, and data-processing evidence from the project portfolio
 outcomes: ['Supported production capacity growth of 1,567%, from 300 to 5,000 units per day', 'Supported monthly profit growth from below IDR 100M to above IDR 700M', 'Informed Modern Trade to General Trade expansion']
 keyContributions:
   - Analyzed production and profit bottlenecks to support operational scaling.
@@ -22,7 +22,6 @@ keyContributions:
 relatedAssets:
   - { label: FMCG project overview and key contributions, type: image, href: /images/projects/fmcg-operations/page-08.png, available: true, note: Portfolio evidence page with approved business outcomes }
   - { label: FMCG dashboard and analysis evidence, type: image, href: /images/projects/fmcg-operations/page-09.png, available: true, note: Portfolio evidence page with dashboard and data-processing visuals }
-  - { label: Abstract decision workflow, type: image, href: /images/projects/fmcg-operations-analytics.svg, available: true }
 ---
 ## Snapshot
 
