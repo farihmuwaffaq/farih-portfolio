@@ -336,7 +336,7 @@ p { max-width: 66ch; }
 .timeline-logo[data-logo-type="combination"] { max-height: 2.7rem; }
 .timeline-logo[data-logo-type="wordmark"] { max-height: 2.25rem; }
 /* fine-tune: Lifepack is the thinnest, most detailed mark — still sinks at class size */
-.timeline-logo[data-logo="lifepack"] { max-height: 4.05rem; }
+.timeline-logo[data-logo="lifepack"] { max-height: 4.4rem; }
 .timeline-current { order: 3; margin-top: .65rem; font-size: .58rem; font-weight: 700; letter-spacing: .14em; color: var(--signal); text-transform: uppercase; }
 .timeline-name { order: 4; margin-top: .5rem; font-size: .92rem; font-weight: 700; letter-spacing: -.01em; color: var(--paper); }
 .timeline-role { order: 5; font-size: .75rem; line-height: 1.35; color: #aaa9a1; }
