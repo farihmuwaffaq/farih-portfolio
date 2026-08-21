@@ -18,6 +18,7 @@
     "test:deck-library": "node scripts/test-deck-library.mjs",
     "test:gajahpangan-decks": "node scripts/test-gajahpangan-decks.mjs",
     "test:maleo-evidence": "node scripts/test-maleo-evidence.mjs",
+    "test:logo-orbit": "node scripts/test-logo-orbit.mjs",
     "preview": "astro preview"
   },
   "dependencies": {
