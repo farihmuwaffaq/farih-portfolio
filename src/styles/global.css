@@ -332,9 +332,11 @@ p { max-width: 66ch; }
 /* optical sizing by logo shape (source assets are pre-trimmed): square/compact
    lockups read far smaller than wide wordmarks at equal height, so they get a
    larger max-height. One rule per shape class, not per logo. */
-.timeline-logo[data-logo-type="compact"] { max-height: 3.4rem; }
+.timeline-logo[data-logo-type="compact"] { max-height: 3.9rem; }
 .timeline-logo[data-logo-type="combination"] { max-height: 2.7rem; }
 .timeline-logo[data-logo-type="wordmark"] { max-height: 2.25rem; }
+/* fine-tune: Lifepack is the thinnest, most detailed mark — still sinks at class size */
+.timeline-logo[data-logo="lifepack"] { max-height: 4.05rem; }
 .timeline-current { order: 3; margin-top: .65rem; font-size: .58rem; font-weight: 700; letter-spacing: .14em; color: var(--signal); text-transform: uppercase; }
 .timeline-name { order: 4; margin-top: .5rem; font-size: .92rem; font-weight: 700; letter-spacing: -.01em; color: var(--paper); }
 .timeline-role { order: 5; font-size: .75rem; line-height: 1.35; color: #aaa9a1; }
