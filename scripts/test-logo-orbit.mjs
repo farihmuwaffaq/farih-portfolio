@@ -27,6 +27,17 @@ assert.match(css, /data-logo-type="combination"[\s\S]*height:\s*clamp\(/, 'combi
 assert.match(css, /data-logo-type="compact"[\s\S]*height:\s*clamp\(/, 'compact logos need distinct optical height');
 assert.match(home, /data-logo-type=/, 'logos must carry optical type classification');
 assert.match(home, /data-tone=/, 'logos must carry recolor tone classification');
+assert.match(home, /career-timeline/, 'organizations must render as a career timeline');
+assert.match(home, /timeline-years/, 'timeline nodes must carry year ranges');
+assert.match(home, /timeline-summary/, 'timeline nodes must carry role summaries');
+assert.equal((home.match(/years:'/g) || []).length, 5, 'timeline must carry 5 organization year ranges');
+assert.equal((home.match(/summary:'/g) || []).length, 5, 'timeline must carry 5 organization summaries');
+assert.match(home, /professional-orbit-light/, 'brands must render on a light surface');
+assert.match(css, /\.career-timeline::after[\s\S]*scaleX/, 'timeline line must grow on reveal');
+assert.match(css, /\.professional-orbit\.is-visible \.career-timeline::after/, 'timeline growth must trigger on section visibility');
+assert.match(css, /@media \(max-width: 767px\)[\s\S]*\.career-timeline \{ grid-template-columns: 1fr/, 'timeline must stack vertically on mobile');
+assert.match(css, /prefers-reduced-motion[\s\S]*\.timeline-dot \{ opacity: 1/, 'timeline must be fully visible for reduced motion');
+assert.match(css, /\.professional-orbit-light \{ --orbit-bg: #f2f5f1/, 'brands surface must be off-white');
 assert.match(css, /img\[data-tone="mono"\][\s\S]*brightness\(0\) invert\(1\)/, 'mono-safe logos forced to off-white');
 assert.match(css, /img\[data-tone="color"\][\s\S]*saturate\(/, 'multicolor logos keep identity, desaturated not recolored');
 assert.doesNotMatch(css, /\.professional-orbit img \{[^}]*brightness\(0\) invert\(1\)/, 'forced monochrome must not apply globally');
