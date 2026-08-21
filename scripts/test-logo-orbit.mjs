@@ -55,8 +55,12 @@ assert.doesNotMatch(resume, /education-mark|\/logos\/education\//i, 'Resume must
 // Polish: current-role endpoint + readability
 assert.match(home, /' is-current'/, 'last timeline node must be marked is-current');
 assert.match(home, /class="timeline-current mono">Current</, 'current role must carry a CURRENT micro-label');
-assert.match(css, /\.career-node \.timeline-logo\[data-tone="color"\]\s*\{[^}]*opacity:\s*1/, 'timeline color logos must be lifted to full opacity');
+// Timeline logos sit on off-white plates so every original mark reads on the dark canvas
+assert.match(css, /\.timeline-logo\s*\{[^}]*background:\s*#f1f4f1/, 'timeline logos must mount on an off-white plate');
+assert.match(css, /\.timeline-logo img\s*\{[^}]*object-fit:\s*contain/, 'timeline logos must use object-fit:contain');
+assert.match(css, /\.career-node \.timeline-logo\[data-tone\]\s*\{[^}]*filter:\s*none/, 'timeline logos must keep original colors (no forced grayscale/invert)');
 assert.match(css, /\.is-current \.timeline-dot\s*\{[^}]*background:\s*var\(--signal\)/, 'current node dot must be filled green');
+assert.match(css, /\.is-current \.timeline-logo\s*\{[^}]*border-color/, 'current plate must carry a subtle green border');
 assert.match(css, /\.timeline-current\s*\{[^}]*color:\s*var\(--signal\)/, 'CURRENT label must use the signal color');
 assert.match(css, /\.career-timeline::after\s*\{[^}]*linear-gradient/, 'progress line must use a gradient so the run-up to current is brighter');
 assert.match(css, /\.professional-orbit-marquee::before\s*\{[^}]*22%/, 'brand rail edges must use a stepped soft-fade, not a hard crop');
