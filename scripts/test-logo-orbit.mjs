@@ -12,12 +12,19 @@ const [home, about, css, resume, professionalAssets, educationAssets] = await Pr
 
 assert.match(home, /Professional Orbit/i, 'Home must introduce professional logo evidence');
 assert.match(home, /Organizations where I worked[\s\S]*brands or projects I supported/i, 'Home must distinguish professional relationships');
-assert.match(home, /Worked at/i, 'Home must label workplace logos');
-assert.match(home, /Client &amp; project exposure/i, 'Home must label client and project logos');
+assert.match(home, /professional-orbit-label[\s\S]*Organizations[\s\S]*professional-orbit-label[\s\S]*Brands/i, 'Home must split organizations and brands into separate labeled groups');
+assert.match(home, /workplaceLogos[\s\S]*role:/i, 'Workplace logos must carry role context');
+assert.match(home, /clientLogos[\s\S]*context:/i, 'Client logos must carry context labels');
+assert.match(home, /logo-context/i, 'Home must include context labels for hover reveal');
 assert.match(home, /data-orbit-toggle[\s\S]*Pause motion/i, 'moving logo tracks must provide a pause control');
 assert.match(home, /aria-hidden="true"/, 'visual marquee duplicate must be hidden from assistive technology');
 assert.match(home, /loading="lazy"/, 'logo assets must load lazily below hero');
 assert.match(home, /decoding="async"/, 'logo assets must decode asynchronously');
+assert.match(css, /\.professional-orbit img[\s\S]*opacity:\s*\.8[0-9]/, 'logo default opacity must be at least 80%');
+assert.match(css, /\.professional-orbit li:hover img[\s\S]*opacity:\s*1/, 'logo opacity must reach 100% on hover');
+assert.match(css, /\.professional-orbit img[\s\S]*height:\s*clamp\(/, 'logo size must use optical height normalization');
+assert.match(css, /\.logo-context[\s\S]*opacity:\s*0/, 'context label must be hidden by default');
+assert.match(css, /\.professional-orbit li:hover \.logo-context[\s\S]*opacity:\s*1/, 'context label must appear on hover');
 assert.match(css, /professional-orbit-track[\s\S]*animation:/, 'professional logo track must animate');
 assert.match(css, /prefers-reduced-motion[\s\S]*professional-orbit-track/, 'professional logo motion must stop for reduced motion');
 assert.equal(professionalAssets.filter(name => name.endsWith('.svg')).length, 21, 'must publish all 21 professional logos');
