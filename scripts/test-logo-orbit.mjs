@@ -26,6 +26,10 @@ assert.match(css, /\.professional-orbit img[\s\S]*height:\s*clamp\(/, 'logo size
 assert.match(css, /data-logo-type="combination"[\s\S]*height:\s*clamp\(/, 'combination logos need distinct optical height');
 assert.match(css, /data-logo-type="compact"[\s\S]*height:\s*clamp\(/, 'compact logos need distinct optical height');
 assert.match(home, /data-logo-type=/, 'logos must carry optical type classification');
+assert.match(home, /data-tone=/, 'logos must carry recolor tone classification');
+assert.match(css, /img\[data-tone="mono"\][\s\S]*brightness\(0\) invert\(1\)/, 'mono-safe logos forced to off-white');
+assert.match(css, /img\[data-tone="color"\][\s\S]*saturate\(/, 'multicolor logos keep identity, desaturated not recolored');
+assert.doesNotMatch(css, /\.professional-orbit img \{[^}]*brightness\(0\) invert\(1\)/, 'forced monochrome must not apply globally');
 assert.match(css, /\.logo-context[\s\S]*opacity:\s*0/, 'context label must be hidden by default');
 assert.match(css, /\.professional-orbit li:hover \.logo-context[\s\S]*opacity:\s*1/, 'context label must appear on hover');
 assert.match(css, /professional-orbit-track[\s\S]*animation:/, 'professional logo track must animate');
