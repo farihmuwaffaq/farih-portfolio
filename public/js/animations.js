@@ -59,9 +59,11 @@
     }
     function startSystemBoot() {
       systemBoot.classList.add('is-booted');
-      countBootMetric(bootMetrics[0], 1650, 800);
-      countBootMetric(bootMetrics[1], 1920, 480);
-      countBootMetric(bootMetrics[2], 2120, 420);
+      bootMetrics.forEach(function (metric, index) {
+        var delay = 1650 + (index * 270);
+        var duration = index === 0 ? 800 : (index === 1 ? 480 : 420);
+        countBootMetric(metric, delay, duration);
+      });
     }
     function observeSystemBoot() {
       systemBoot.classList.add('is-boot-ready');

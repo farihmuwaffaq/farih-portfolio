@@ -271,6 +271,8 @@ p { max-width: 66ch; }
 .system-boot.is-booted .cockpit-footer i { animation: boot-pulse .55s ease 2.48s 1; }
 @keyframes boot-pulse { 0%,100% { box-shadow: 0 0 0 .28rem rgba(45,154,105,.1); } 50% { box-shadow: 0 0 0 .62rem rgba(45,154,105,.2); } }
 @keyframes boot-point-pulse { 0%,100% { filter: drop-shadow(0 0 0 rgba(45,154,105,0)); } 50% { filter: drop-shadow(0 0 .35rem rgba(45,154,105,.65)); } }
+@keyframes signal-pulse { 0%,100% { opacity: 1; } 50% { opacity: .75; } }
+.system-boot.is-booted .signal-path { animation: signal-pulse 4s ease-in-out 2.8s infinite; }
 @media (hover: hover) and (pointer: fine) {
   .system-boot.is-booted .signal-chart:hover .signal-path { stroke: #2d9a69; }
   .system-boot.is-booted .signal-chart:hover circle { fill: #2d9a69; }
