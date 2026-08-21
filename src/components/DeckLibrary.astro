@@ -8,8 +8,8 @@ const { library } = Astro.props;
 
 <section class="section deck-library" aria-labelledby="deck-library-title">
   <div class="deck-library-intro">
-    <div><p class="eyebrow">Selected client reporting</p><h2 id="deck-library-title">Evidence in the room.</h2></div>
-    <div class="deck-library-proof"><strong>{library.totalProduced}</strong><span>Decks & reports led</span><p>{library.ownership}. {library.description}</p></div>
+    <div><p class="eyebrow">{library.eyebrow ?? 'Selected client reporting'}</p><h2 id="deck-library-title">{library.heading ?? 'Evidence in the room.'}</h2></div>
+    <div class="deck-library-proof"><strong>{library.totalProduced}</strong><span>{library.proofLabel ?? 'Decks & reports led'}</span><p>{library.ownership}. {library.description}</p></div>
   </div>
   <div class="deck-library-grid">
     {library.items.map((deck, index) => (
@@ -32,7 +32,7 @@ const { library } = Astro.props;
 
 <dialog class="deck-preview" data-deck-dialog aria-labelledby="deck-preview-title" aria-describedby="deck-preview-note">
   <div class="deck-preview-shell">
-    <header class="deck-preview-header"><div><p class="eyebrow">Public client work</p><h2 id="deck-preview-title" data-deck-dialog-title>Deck preview</h2></div><button class="deck-preview-close" type="button" data-deck-close aria-label="Close deck preview"><Icon name="x" /></button></header>
+    <header class="deck-preview-header"><div><p class="eyebrow">{library.dialogLabel ?? 'Public client work'}</p><h2 id="deck-preview-title" data-deck-dialog-title>Deck preview</h2></div><button class="deck-preview-close" type="button" data-deck-close aria-label="Close deck preview"><Icon name="x" /></button></header>
     <div class="deck-preview-frame"><p class="deck-preview-status" data-deck-status role="status">Loading Google Slides preview...</p><iframe data-deck-frame title="Google Slides deck preview" allowfullscreen referrerpolicy="no-referrer"></iframe></div>
     <footer class="deck-preview-footer"><p id="deck-preview-note">This preview is served by Google. Close this window and try again if the embed is unavailable.</p></footer>
   </div>

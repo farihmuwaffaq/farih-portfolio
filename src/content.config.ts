@@ -18,7 +18,7 @@ const work = defineCollection({
     featured: z.boolean(),
     confidential: z.boolean(),
     confidentialityNote: z.string().optional(),
-    evidenceStatus: z.enum(['PROTECTED DETAILS', 'RECONSTRUCTED VIEW', 'SYNTHETIC DATA', 'PUBLIC PROJECT']),
+    evidenceStatus: z.enum(['PROTECTED DETAILS', 'APPROVED INTERNAL WORK', 'RECONSTRUCTED VIEW', 'SYNTHETIC DATA', 'PUBLIC PROJECT']),
     evidenceNote: z.string().trim().min(1),
     assumptionsConstraints: z.array(z.string().trim().min(1)).min(2).max(4),
     decisionLog: z.array(z.object({
@@ -33,6 +33,11 @@ const work = defineCollection({
       totalProduced: z.string().trim().min(1),
       ownership: z.string().trim().min(1),
       description: z.string().trim().min(1),
+      eyebrow: z.string().trim().min(1).optional(),
+      heading: z.string().trim().min(1).optional(),
+      proofLabel: z.string().trim().min(1).optional(),
+      dialogLabel: z.string().trim().min(1).optional(),
+      cardEvidence: z.string().trim().min(1).optional(),
       items: z.array(z.object({
         title: z.string().trim().min(1),
         client: z.string().trim().min(1),
@@ -40,12 +45,12 @@ const work = defineCollection({
         year: z.string().regex(/^20\d{2}$/),
         documentId: z.string().regex(/^[\w-]+$/),
         href: z.string().regex(/^https:\/\/docs\.google\.com\/presentation\/d\/[\w-]+\/edit\?usp=sharing$/),
-        thumbnail: z.string().regex(/^\/images\/projects\/maleo\/decks\/[\w-]+\.webp$/),
+        thumbnail: z.string().regex(/^\/images\/projects\/[\w-]+\/decks\/[\w-]+\.webp$/),
         thumbnailAlt: z.string().trim().min(1),
       }).superRefine((deck, ctx) => {
         const hrefDocumentId = deck.href.match(/\/presentation\/d\/([\w-]+)\//)?.[1];
         if (hrefDocumentId !== deck.documentId) ctx.addIssue({ code: 'custom', path: ['href'], message: 'Google Slides href must match documentId' });
-      })).length(8),
+      })).min(1).max(12),
     }).optional(),
     coverImage: z.string(),
     coverAlt: z.string(),

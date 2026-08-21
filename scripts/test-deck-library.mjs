@@ -17,7 +17,7 @@ assert.match(schema, /documentId:\s*z\.string/, 'deck records must validate Goog
 assert.match(schema, /thumbnail:\s*z\.string/, 'deck records must require a local thumbnail');
 assert.match(schema, /thumbnailAlt:\s*z\.string/, 'deck thumbnails must have descriptive alternative text');
 assert.match(schema, /hrefDocumentId !== deck\.documentId/, 'deck href must resolve to its declared document ID');
-assert.match(schema, /\.length\(8\)/, 'representative library must contain eight approved decks');
+assert.match(schema, /\.min\(1\)\.max\(12\)/, 'schema must support bounded approved deck libraries');
 assert.match(content, /totalProduced:\s*["']30\+["']/, 'Maleo case study must state 30+ decks and reports');
 assert.match(content, /ownership:\s*Lead Analytics Author/, 'deck ownership must be explicit');
 assert.equal((content.match(/documentId:/g) || []).length, 8, 'Maleo library must list eight representative decks');

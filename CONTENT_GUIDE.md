@@ -24,6 +24,7 @@ Current evidence mix:
 11. Add `dictionary` only when domain terms materially affect interpretation; definitions must match the published methodology.
 12. Credential evidence belongs in `public/credentials/` and `src/data/credentials.ts`; publish only approved, redacted PDFs.
 13. Treat the eight approved Google Slides and local first-slide thumbnails in `analytics-automation.md` as the only public client-deck exception. Verify access and permission before release, load Google previews only after visitor interaction, and expose no direct source links; approval does not extend to the remaining 30+ archive.
+14. Treat the four approved internal decision decks in `fmcg-operations-analytics.md` as a separate, explicit Gajahpangan publication boundary. Preserve original Gajahpangan Data team attribution, load previews only after interaction, and do not infer approval for supplier details, SKU-level transactions, margin formulas, credentials, or unpublished operational files.
 14. Run the applicable interaction contracts, then `npm run check`, `npm run build`, and `npm run audit:links`.
 
 ## Verification matrix
@@ -35,6 +36,7 @@ Current evidence mix:
 - `npm run test:query-interface` checks navigation exclusions, project indexing, console behavior, accessibility hooks, and transition timing.
 - `npm run test:analyst-credibility` checks required evidence, constraint, and decision fields plus Work Detail and `EXPLAIN` presentation contracts.
 - `npm run test:deck-library` checks approved deck count, local thumbnails, publication metadata, preview-only cards, inert embeds, dialog cleanup, and analytics hooks.
+- `npm run test:gajahpangan-decks` checks the four approved internal decision decks, six contribution points, team attribution, local thumbnails, and Work-card evidence.
 - `npm run check`, `npm run build`, and `npm run audit:links` remain mandatory release gates.
 
 ## Known claims intentionally withheld

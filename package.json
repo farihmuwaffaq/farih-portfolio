@@ -16,6 +16,7 @@
     "test:query-interface": "node scripts/test-query-interface.mjs",
     "test:analyst-credibility": "node scripts/test-analyst-credibility.mjs",
     "test:deck-library": "node scripts/test-deck-library.mjs",
+    "test:gajahpangan-decks": "node scripts/test-gajahpangan-decks.mjs",
     "preview": "astro preview"
   },
   "dependencies": {
