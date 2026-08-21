@@ -12,7 +12,6 @@ const { evidence } = Astro.props;
   <div class="dashboard-evidence-grid">
     {evidence.items.map((item, index) => (
       <article class="dashboard-record">
-        <figure class="dashboard-visual"><img src={item.image} alt={item.imageAlt} width={item.imageWidth} height={item.imageHeight} loading="lazy" /><figcaption><span>{item.brand} · {item.campaign}</span><a href={item.image} target="_blank" rel="noopener">Open sanitized crop <span aria-hidden="true">↗</span></a></figcaption></figure>
         <div class="dashboard-record-body">
           <header><span class="mono">Dashboard / {String(index + 1).padStart(2, '0')}</span><span>{item.period}</span></header>
           <div class="dashboard-title"><p>{item.brand}</p><h3>{item.campaign}</h3><p>{item.summary}</p></div>

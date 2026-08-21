@@ -575,13 +575,7 @@ p { max-width: 66ch; }
 .dashboard-evidence { background: var(--ink); color: var(--paper); margin-inline: calc(50% - 50vw); padding-inline: max(1.2rem,calc((100vw - var(--container))/2)); }
 .dashboard-evidence-heading > p { color: #a9a9a1; }
 .dashboard-evidence-grid { display: grid; gap: clamp(3rem,7vw,7rem); }
-.dashboard-record { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(24rem,.9fr); gap: clamp(2rem,5vw,5rem); align-items: start; }
-.dashboard-record:nth-child(even) .dashboard-visual { order: 2; }
-.dashboard-visual { overflow: hidden; background: #191917; border: 1px solid #343431; border-radius: 1rem; }
-.dashboard-visual img { display: block; width: 100%; height: auto; max-height: 50rem; object-fit: cover; object-position: top; }
-.dashboard-visual figcaption { display: flex; justify-content: space-between; gap: 1rem; padding: .75rem 1rem; color: #92928c; border-top: 1px solid #343431; font: .65rem/1.4 var(--mono); text-transform: uppercase; }
-.dashboard-visual a { color: #c9c9c2; text-decoration: none; }
-.dashboard-visual a:hover, .dashboard-visual a:focus-visible { color: #fff; }
+.dashboard-record { max-width: 72rem; padding: clamp(1.25rem,3vw,2rem); background: #191917; border: 1px solid #343431; border-radius: 1.5rem; }
 .dashboard-record-body > header { border-color: #343431; color: #a9a9a1; }
 .dashboard-title { padding: 2rem 0; }
 .dashboard-title h3 { margin-block: .6rem 1.25rem; font-size: clamp(2.2rem,4vw,4.5rem); }
@@ -952,7 +946,7 @@ p { max-width: 66ch; }
   .contact-direct h2 { margin-top: 3rem; }
   .case-cover-core { min-height: 0; padding: .7rem; }
   .case-cover img { max-height: none; }
-  .evidence-section-heading, .report-identity, .dashboard-record { grid-template-columns: 1fr; }
+  .evidence-section-heading, .report-identity { grid-template-columns: 1fr; }
   .evidence-section-heading > p { min-width: 0; }
   .report-identity { gap: .8rem; }
   .report-metrics { grid-template-columns: 1fr; }
@@ -960,8 +954,6 @@ p { max-width: 66ch; }
   .report-metrics > div:last-child { border-bottom: 0; }
   .report-analysis { grid-template-columns: 1fr; }
   .report-analysis > div, .report-analysis > div + div { padding: 1.25rem 0; }
-  .dashboard-record:nth-child(even) .dashboard-visual { order: initial; }
-  .dashboard-visual img { max-height: 38rem; }
   .dashboard-metrics { grid-template-columns: 1fr; }
   .dashboard-metrics > div, .dashboard-metrics > div + div { grid-template-columns: minmax(7rem,.65fr) 1fr; }
   .prose img { width: calc(100vw - 2.4rem); margin-block: 2rem; }

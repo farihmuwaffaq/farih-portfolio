@@ -46,8 +46,6 @@ const work = defineCollection({
       eyebrow: z.string().trim().min(1), heading: z.string().trim().min(1), description: z.string().trim().min(1),
       items: z.array(z.object({
         campaign: z.string().trim().min(1), brand: z.string().trim().min(1), period: z.string().trim().min(1), summary: z.string().trim().min(1),
-        image: z.string().regex(/^\/images\/projects\/[\w-]+\/dashboards\/[\w-]+\.webp$/), imageAlt: z.string().trim().min(1),
-        imageWidth: z.number().int().positive(), imageHeight: z.number().int().positive(),
         metrics: z.array(z.object({ value: z.string().trim().min(1), label: z.string().trim().min(1), context: z.string().trim().min(1) })).min(2).max(3),
         contribution: z.string().trim().min(1), caveat: z.string().trim().min(1),
       })).length(3),

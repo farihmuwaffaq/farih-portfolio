@@ -100,10 +100,6 @@ dashboardEvidence:
       brand: BlueBand
       period: 2026 campaign monitoring
       summary: TikTok performance materially exceeded the campaign’s visible reach, impression, and engagement targets.
-      image: /images/projects/maleo/dashboards/blueband-ramadan-2026.webp
-      imageAlt: Sanitized BlueBand Festive Ramadan 2026 dashboard crop showing TikTok actual-versus-KPI gauges.
-      imageWidth: 1600
-      imageHeight: 900
       metrics:
         - { value: 44.5M, label: TikTok impressions, context: actual versus 409,568 KPI }
         - { value: 27.0M, label: TikTok reach, context: actual versus 359,232 KPI }
@@ -114,10 +110,6 @@ dashboardEvidence:
       brand: BlueBand Professional
       period: 2026 campaign monitoring
       summary: The same monitoring frame surfaced both metrics above target and gaps requiring follow-up.
-      image: /images/projects/maleo/dashboards/blueband-pro-ramadan-2026.webp
-      imageAlt: Sanitized BlueBand Professional Festive Ramadan 2026 dashboard crop showing Instagram organic actual-versus-KPI results.
-      imageWidth: 1600
-      imageHeight: 957
       metrics:
         - { value: "88,446", label: Instagram impressions, context: 105.29% of an 84,000 KPI }
         - { value: "1,583", label: follower additions, context: 104.14% of a 1,520 KPI }
@@ -128,10 +120,6 @@ dashboardEvidence:
       brand: SilverQueen
       period: 2026 campaign monitoring
       summary: Monitored total campaign delivery, KPI attainment, phase contribution, channel mix, and paid-media performance.
-      image: /images/projects/maleo/dashboards/silverqueen-lovefest-2026.webp
-      imageAlt: Sanitized SilverQueen Lovefest 2026 dashboard crop showing channel contribution charts without budget details.
-      imageWidth: 1200
-      imageHeight: 577
       metrics:
         - { value: 76.5%, label: TikTok impression contribution, context: versus 23.5% from Instagram }
         - { value: 73.9%, label: TikTok reach contribution, context: versus 26.1% from Instagram }

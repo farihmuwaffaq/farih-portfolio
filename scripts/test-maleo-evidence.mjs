@@ -39,8 +39,7 @@ assert.match(content, /88,446[\s\S]*Instagram impressions/, 'BlueBand Profession
 assert.match(content, /76\.5%[\s\S]*TikTok impression contribution/, 'SilverQueen dashboard evidence missing');
 
 assert.doesNotMatch(content, /150\.17%|95\.73%|9,724\.3%/, 'known inconsistent dashboard percentages must stay excluded');
-assert.match(content, /Sanitized BlueBand Professional/, 'BlueBand Professional visual must be explicitly sanitized');
-assert.match(content, /Sanitized SilverQueen/, 'SilverQueen visual must be explicitly sanitized');
+assert.doesNotMatch(content, /^\s+image(?:Alt|Width|Height)?:/gm, 'dashboard evidence must not depend on screenshot fields');
 assert.doesNotMatch(content, /I (?:increased|generated|drove)\b/i, 'brand performance must not be presented as sole analyst causation');
 assert.match(content, /Performance figures are brand- or campaign-level outcomes observed during the engagement/, 'team-level attribution boundary missing');
 
@@ -50,6 +49,7 @@ assert.ok(layout.indexOf('<ReportEvidence') < layout.indexOf('<DashboardEvidence
 assert.ok(layout.indexOf('<DashboardEvidence') < layout.indexOf('<DeckLibrary'), 'campaign dashboards must precede additional previews');
 assert.match(reports, /report-evidence-grid/, 'report evidence component missing');
 assert.match(dashboards, /dashboard-evidence-grid/, 'dashboard evidence component missing');
+assert.doesNotMatch(dashboards, /<img|<figure|Open sanitized crop/, 'dashboard evidence must render as text-only cards');
 assert.match(css, /\.report-evidence-grid/, 'report evidence styles missing');
 assert.match(css, /\.dashboard-evidence-grid/, 'dashboard evidence styles missing');
 assert.match(guide, /three selected 2025 brand reports/i, 'publishing guide must document report boundary');
