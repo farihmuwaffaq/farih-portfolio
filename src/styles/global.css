@@ -319,7 +319,9 @@ p { max-width: 66ch; }
 .workplace-logo-list { display: grid; grid-template-columns: repeat(5,1fr); max-width: var(--container); margin: 0 auto; padding: 0 var(--gutter); list-style: none; }
 .workplace-logo-list li { display: grid; place-items: center; min-height: clamp(8rem,13vw,11rem); border-right: 1px solid #3b3b37; position: relative; }
 .workplace-logo-list li:last-child { border-right: 0; }
-.professional-orbit img { display: block; width: auto; max-width: clamp(7rem,11vw,10rem); height: clamp(3.25rem,6vw,5rem); object-fit: contain; filter: grayscale(1) brightness(0) invert(1); opacity: .85; transition: opacity .25s ease, filter .25s ease, transform .25s ease; }
+.professional-orbit img { display: block; width: auto; max-width: clamp(9rem,13vw,12rem); height: clamp(2rem,3.4vw,2.75rem); object-fit: contain; filter: grayscale(1) brightness(0) invert(1); opacity: .78; transition: opacity .25s ease, filter .25s ease, transform .25s ease; }
+.professional-orbit img[data-logo-type="combination"] { height: clamp(2.4rem,4vw,3.25rem); }
+.professional-orbit img[data-logo-type="compact"] { height: clamp(2.9rem,4.6vw,3.75rem); }
 .professional-orbit li:hover img, .professional-orbit li:focus-within img { filter: grayscale(1) brightness(0) saturate(100%) invert(68%) sepia(29%) saturate(872%) hue-rotate(105deg) brightness(95%); opacity: 1; transform: scale(1.04); }
 .logo-context { position: absolute; bottom: .8rem; left: 50%; transform: translate(-50%,1rem); display: flex; flex-direction: column; gap: .15rem; text-align: center; opacity: 0; pointer-events: none; transition: opacity .25s ease, transform .25s ease; }
 .logo-context b { font-size: .6rem; font-weight: 700; line-height: 1.2; letter-spacing: .03em; color: var(--paper); }

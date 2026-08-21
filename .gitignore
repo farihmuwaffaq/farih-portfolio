@@ -60,3 +60,7 @@ secrets.*
 Thumbs.db
 AUDIT.md
 .vercel
+
+# Logo source backups (regenerable via scripts/trim-logo-canvas.mjs)
+public/images/logos/_originals/
+Asset Logo Portofolio/

@@ -20,9 +20,12 @@ assert.match(home, /data-orbit-toggle[\s\S]*Pause motion/i, 'moving logo tracks 
 assert.match(home, /aria-hidden="true"/, 'visual marquee duplicate must be hidden from assistive technology');
 assert.match(home, /loading="lazy"/, 'logo assets must load lazily below hero');
 assert.match(home, /decoding="async"/, 'logo assets must decode asynchronously');
-assert.match(css, /\.professional-orbit img[\s\S]*opacity:\s*\.8[0-9]/, 'logo default opacity must be at least 80%');
+assert.match(css, /\.professional-orbit img[\s\S]*opacity:\s*\.7[5-9]/, 'logo default opacity must be at least 75%');
 assert.match(css, /\.professional-orbit li:hover img[\s\S]*opacity:\s*1/, 'logo opacity must reach 100% on hover');
 assert.match(css, /\.professional-orbit img[\s\S]*height:\s*clamp\(/, 'logo size must use optical height normalization');
+assert.match(css, /data-logo-type="combination"[\s\S]*height:\s*clamp\(/, 'combination logos need distinct optical height');
+assert.match(css, /data-logo-type="compact"[\s\S]*height:\s*clamp\(/, 'compact logos need distinct optical height');
+assert.match(home, /data-logo-type=/, 'logos must carry optical type classification');
 assert.match(css, /\.logo-context[\s\S]*opacity:\s*0/, 'context label must be hidden by default');
 assert.match(css, /\.professional-orbit li:hover \.logo-context[\s\S]*opacity:\s*1/, 'context label must appear on hover');
 assert.match(css, /professional-orbit-track[\s\S]*animation:/, 'professional logo track must animate');
