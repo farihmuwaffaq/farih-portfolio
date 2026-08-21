@@ -328,8 +328,13 @@ p { max-width: 66ch; }
 .timeline-years { order: 1; font-size: .7rem; letter-spacing: .08em; color: #898981; text-transform: uppercase; }
 .timeline-dot { order: 2; position: relative; z-index: 1; width: 12px; height: 12px; margin: .55rem 0; border-radius: 50%; background: var(--ink); border: 2px solid #464640; opacity: 0; transform: scale(.4); transition: opacity .4s var(--ease), transform .4s var(--ease), border-color .4s var(--ease), background .3s ease, box-shadow .3s ease; transition-delay: calc(.15s + var(--i) * .18s); }
 .professional-orbit.is-visible .timeline-dot { opacity: 1; transform: scale(1); }
-.timeline-logo { order: 3; box-sizing: border-box; display: flex; align-items: center; justify-content: center; width: clamp(7.5rem,11vw,9.25rem); max-width: 100%; height: clamp(3.25rem,4vw,4rem); margin-top: .6rem; padding: .6rem .85rem; background: #f1f4f1; border: 1px solid #dcded8; border-radius: .55rem; }
-.timeline-logo img { width: auto; max-width: 100%; height: auto; max-height: 2.25rem; object-fit: contain; }
+.timeline-logo { order: 3; box-sizing: border-box; width: auto; max-width: 100%; height: auto; max-height: 2.25rem; margin-top: .6rem; padding: .35rem .5rem; background: #f1f4f1; border: 1px solid #dcded8; border-radius: .5rem; object-fit: contain; }
+/* per-logo optical sizing: match perceived size, not a single number */
+.timeline-logo[data-logo="selasar-kampus"] { max-height: 3.6rem; padding: .2rem .35rem; }
+.timeline-logo[data-logo="lifepack"] { max-height: 3.3rem; padding: .22rem .4rem; }
+.timeline-logo[data-logo="gajahpangan"] { max-height: 2.5rem; }
+.timeline-logo[data-logo="maleo"] { max-height: 2.3rem; }
+.timeline-logo[data-logo="skintific"] { max-height: 2.45rem; }
 .timeline-current { order: 3; margin-top: .65rem; font-size: .58rem; font-weight: 700; letter-spacing: .14em; color: var(--signal); text-transform: uppercase; }
 .timeline-name { order: 4; margin-top: .5rem; font-size: .92rem; font-weight: 700; letter-spacing: -.01em; color: var(--paper); }
 .timeline-role { order: 5; font-size: .75rem; line-height: 1.35; color: #aaa9a1; }
