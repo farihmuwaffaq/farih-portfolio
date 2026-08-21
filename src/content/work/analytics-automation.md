@@ -100,30 +100,33 @@ dashboardEvidence:
       brand: BlueBand
       period: 2026 campaign monitoring
       summary: TikTok performance materially exceeded the campaign’s visible reach, impression, and engagement targets.
+      mode: extreme
       metrics:
-        - { value: 44.5M, label: TikTok impressions, context: "actual versus 409,568 KPI" }
-        - { value: 27.0M, label: TikTok reach, context: "actual versus 359,232 KPI" }
-        - { value: "87,733", label: TikTok engagements, context: "actual versus 3,840 KPI" }
+        - { value: 44.5M, label: Impressions, target: 409.6K, attainment: 108.7, context: 108.7× target }
+        - { value: 27.0M, label: Reach, target: 359.2K, attainment: 75.2, context: 75.2× target }
+        - { value: 87.7K, label: Engagements, target: 3.84K, attainment: 22.8, context: 22.8× target }
       contribution: Built a channel-level monitoring view with actual-versus-KPI gauges, content rankings, and submission tracking.
       caveat: Actuals and targets are shown together because high achievement ratios depend heavily on the campaign KPI denominator.
     - campaign: Festive Ramadan 2026
       brand: BlueBand Professional
       period: 2026 campaign monitoring
       summary: The same monitoring frame surfaced both metrics above target and gaps requiring follow-up.
+      mode: threshold
       metrics:
-        - { value: "88,446", label: Instagram impressions, context: "105.29% of an 84,000 KPI" }
-        - { value: "1,583", label: follower additions, context: "104.14% of a 1,520 KPI" }
-        - { value: "48,321", label: Instagram reach, context: "76.70% of a 63,000 KPI" }
+        - { value: "88,446", label: Impressions, target: "84,000", attainment: 105.29, context: 105.29% attainment }
+        - { value: "1,583", label: Follower additions, target: "1,520", attainment: 104.14, context: 104.14% attainment }
+        - { value: "48,321", label: Reach, target: "63,000", attainment: 76.70, context: 76.70% attainment }
       contribution: Built a decision view that made overperformance and underperformance legible in the same campaign snapshot.
       caveat: A submission-activity percentage with no clear visible actual is excluded from this evidence.
     - campaign: Lovefest 2026
       brand: SilverQueen
       period: 2026 campaign monitoring
       summary: Monitored total campaign delivery, KPI attainment, phase contribution, channel mix, and paid-media performance.
+      mode: composition
       metrics:
-        - { value: 76.5%, label: TikTok impression contribution, context: versus 23.5% from Instagram }
-        - { value: 73.9%, label: TikTok reach contribution, context: versus 26.1% from Instagram }
-        - { value: 71.4%, label: TikTok engagement contribution, context: versus 28.6% from Instagram }
+        - { value: 76.5%, label: Impressions, attainment: 76.5, secondaryValue: 23.5, secondaryLabel: Instagram, context: TikTok contribution }
+        - { value: 73.9%, label: Reach, attainment: 73.9, secondaryValue: 26.1, secondaryLabel: Instagram, context: TikTok contribution }
+        - { value: 71.4%, label: Engagement, attainment: 71.4, secondaryValue: 28.6, secondaryLabel: Instagram, context: TikTok contribution }
       contribution: Built a multi-level dashboard connecting overall delivery to phase, channel, content, and paid-performance views.
       caveat: A displayed reach achievement and one Always On percentage were inconsistent with visible components, so both are excluded here.
 coverImage: /images/projects/maleo-dashboard-silverqueen.png

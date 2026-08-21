@@ -34,10 +34,9 @@ for (const expected of [
 assert.match(content, /9\.16M[\s\S]*273% of engagement KPI/, 'CONCERTO KPI evidence missing');
 assert.match(content, /9,611[\s\S]*Instagram engagements/, 'BlueBand Professional report evidence missing');
 assert.match(content, /26\.1M[\s\S]*campaign reach/, 'SilverQueen report evidence missing');
-assert.match(content, /44\.5M[\s\S]*TikTok impressions/, 'BlueBand dashboard evidence missing');
-assert.match(content, /88,446[\s\S]*Instagram impressions/, 'BlueBand Professional dashboard evidence missing');
-assert.match(content, /76\.5%[\s\S]*TikTok impression contribution/, 'SilverQueen dashboard evidence missing');
-assert.match(content, /context: "actual versus 409,568 KPI"/, 'dashboard KPI context must preserve thousands separators');
+assert.match(content, /44\.5M[\s\S]*label: Impressions[\s\S]*target: 409\.6K/, 'BlueBand dashboard evidence missing');
+assert.match(content, /88,446[\s\S]*label: Impressions[\s\S]*target: "84,000"/, 'BlueBand Professional dashboard evidence missing');
+assert.match(content, /76\.5%[\s\S]*label: Impressions[\s\S]*secondaryValue: 23\.5/, 'SilverQueen dashboard evidence missing');
 assert.match(content, /context: "net growth of 8,692 during the comparison period"/, 'report growth context must preserve thousands separators');
 
 assert.doesNotMatch(content, /150\.17%|95\.73%|9,724\.3%/, 'known inconsistent dashboard percentages must stay excluded');
@@ -52,6 +51,16 @@ assert.ok(layout.indexOf('<DashboardEvidence') < layout.indexOf('<DeckLibrary'),
 assert.match(reports, /report-evidence-grid/, 'report evidence component missing');
 assert.match(dashboards, /dashboard-evidence-grid/, 'dashboard evidence component missing');
 assert.doesNotMatch(dashboards, /<img|<figure|Open sanitized crop/, 'dashboard evidence must render as text-only cards');
+assert.match(reports, /role="tablist"/, 'report explorer must expose desktop tab semantics');
+assert.match(reports, /aria-expanded/, 'report explorer must expose mobile accordion state');
+assert.match(reports, /data-report-panel/, 'report explorer must progressively disclose one report panel');
+assert.match(reports, /ArrowRight|ArrowDown/, 'report explorer must support keyboard navigation');
+assert.match(dashboards, /role="tablist"/, 'campaign monitor must expose campaign tab semantics');
+assert.match(dashboards, /data-monitor-mode/, 'campaign monitor must render campaign-specific visualization modes');
+assert.match(dashboards, /extreme|threshold|composition/, 'campaign monitor must support three analytical visualization modes');
+assert.match(dashboards, /IntersectionObserver/, 'campaign monitor must animate on viewport entry');
+assert.match(dashboards, /prefers-reduced-motion/, 'campaign monitor must respect reduced-motion preferences');
+assert.match(dashboards, /Decision signal ready/i, 'campaign monitor must expose a non-looping ready state');
 assert.match(css, /\.report-evidence-grid/, 'report evidence styles missing');
 assert.match(css, /\.dashboard-evidence-grid/, 'dashboard evidence styles missing');
 assert.match(guide, /three selected 2025 brand reports/i, 'publishing guide must document report boundary');

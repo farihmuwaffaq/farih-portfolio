@@ -2,24 +2,75 @@
 type DashboardEvidenceData = NonNullable<import('astro:content').CollectionEntry<'work'>['data']['dashboardEvidence']>;
 interface Props { evidence: DashboardEvidenceData }
 const { evidence } = Astro.props;
+const slug = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+const barValue = (mode: string, value = 0) => mode === 'extreme' ? Math.min(100, 42 + Math.log10(value) * 28) : mode === 'threshold' ? Math.min(100, value / 1.12) : value;
 ---
 
-<section class="section dashboard-evidence" aria-labelledby="dashboard-evidence-title">
+<section class="section dashboard-evidence" aria-labelledby="dashboard-evidence-title" data-campaign-monitor data-enhanced="false">
   <header class="evidence-section-heading dashboard-evidence-heading">
-    <div><p class="eyebrow">{evidence.eyebrow}</p><h2 id="dashboard-evidence-title">{evidence.heading}</h2></div>
+    <div><p class="eyebrow">Campaign monitor / 2026</p><h2 id="dashboard-evidence-title">{evidence.heading}</h2></div>
     <p>{evidence.description}</p>
   </header>
-  <div class="dashboard-evidence-grid">
-    {evidence.items.map((item, index) => (
-      <article class="dashboard-record">
-        <div class="dashboard-record-body">
-          <header><span class="mono">Dashboard / {String(index + 1).padStart(2, '0')}</span><span>{item.period}</span></header>
-          <div class="dashboard-title"><p>{item.brand}</p><h3>{item.campaign}</h3><p>{item.summary}</p></div>
-          <dl class="dashboard-metrics">{item.metrics.map(metric => <div><dt>{metric.label}</dt><dd><strong>{metric.value}</strong><span>{metric.context}</span></dd></div>)}</dl>
-          <div class="dashboard-contribution"><span class="mono">Built for decisions</span><p>{item.contribution}</p></div>
-          <p class="evidence-caveat">Validation note · {item.caveat}</p>
-        </div>
-      </article>
-    ))}
+  <div class="campaign-monitor-shell">
+    <div class="campaign-selector" role="tablist" aria-label="Select campaign">
+      {evidence.items.map((item, index) => {
+        const id = slug(item.brand);
+        return <button id={`campaign-tab-${id}`} role="tab" aria-controls={`campaign-panel-${id}`} aria-selected={index === 0 ? 'true' : 'false'} tabindex={index === 0 ? 0 : -1} data-campaign-select={index}><span>{String(index + 1).padStart(2, '0')}</span>{item.brand.replace(' Professional', ' Pro')}</button>;
+      })}
+    </div>
+    <div class="dashboard-evidence-grid">
+      {evidence.items.map((item, index) => {
+        const id = slug(item.brand);
+        return (
+          <article id={`campaign-panel-${id}`} class="campaign-panel" role="tabpanel" aria-labelledby={`campaign-tab-${id}`} data-campaign-panel={index} data-monitor-mode={item.mode} data-open="true">
+            <header class="campaign-heading"><div><span class="mono">Campaign / {item.campaign}</span><h3>{item.brand}</h3></div><p>{item.summary}</p></header>
+            <div class="campaign-chart" aria-label={`${item.brand} campaign metrics`}>
+              {item.metrics.map(metric => (
+                <div class="campaign-metric" style={`--metric-value:${barValue(item.mode, metric.attainment)}%;--secondary-value:${metric.secondaryValue ?? 0}%`}>
+                  <span class="campaign-metric-label">{metric.label}</span>
+                  <span class="campaign-metric-value">{metric.value}</span>
+                  {item.mode === 'extreme' && <span class="campaign-metric-target">KPI {metric.target}</span>}
+                  <span class="campaign-track"><span class="campaign-fill"></span>{item.mode === 'threshold' && <i title="KPI 100%"></i>}</span>
+                  <span class="campaign-metric-context">{metric.context}</span>
+                  {item.mode === 'composition' && <span class="campaign-split"><b>TikTok {metric.value}</b><b>{metric.secondaryLabel} {metric.secondaryValue}%</b></span>}
+                  {item.mode === 'threshold' && <span class="campaign-detail">{metric.value} actual - {metric.target} target - {metric.attainment}% attainment</span>}
+                </div>
+              ))}
+            </div>
+            {item.mode === 'extreme' && <p class="campaign-scale-note">Visual bars are capped for readability; attainment labels show the full multiple against target.</p>}
+            <footer class="campaign-decision"><div><span class="mono">Built for decisions</span><p>{item.contribution}</p></div><div><span class="mono">Validation note</span><p>{item.caveat}</p></div></footer>
+            <p class="campaign-ready"><span></span> Decision signal ready</p>
+          </article>
+        );
+      })}
+    </div>
   </div>
 </section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-campaign-monitor]').forEach(monitor => {
+    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const tabs = [...monitor.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    const panels = [...monitor.querySelectorAll<HTMLElement>('[data-campaign-panel]')];
+    monitor.dataset.enhanced = 'true';
+    const activate = (index: number, focus = false) => {
+      monitor.classList.remove('is-ready');
+      panels.forEach((panel, panelIndex) => panel.dataset.open = String(panelIndex === index));
+      tabs.forEach((tab, tabIndex) => { tab.setAttribute('aria-selected', String(tabIndex === index)); tab.tabIndex = tabIndex === index ? 0 : -1; });
+      requestAnimationFrame(() => requestAnimationFrame(() => monitor.classList.add('is-ready')));
+      if (focus) tabs[index]?.focus();
+    };
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => activate(index));
+      tab.addEventListener('keydown', event => {
+        if (!['ArrowRight', 'ArrowLeft', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : index + (event.key === 'ArrowRight' ? 1 : -1);
+        activate((next + tabs.length) % tabs.length, true);
+      });
+    });
+    if (reducedMotion || typeof IntersectionObserver === 'undefined') monitor.classList.add('is-ready');
+    else new IntersectionObserver(([entry], observer) => { if (entry.isIntersecting) { monitor.classList.add('is-ready'); observer.disconnect(); } }, { threshold: .2 }).observe(monitor);
+    activate(0);
+  });
+</script>

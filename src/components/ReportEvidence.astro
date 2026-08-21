@@ -2,25 +2,62 @@
 type ReportEvidenceData = NonNullable<import('astro:content').CollectionEntry<'work'>['data']['reportEvidence']>;
 interface Props { evidence: ReportEvidenceData }
 const { evidence } = Astro.props;
+const slug = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
 ---
 
-<section class="section report-evidence" aria-labelledby="report-evidence-title">
+<section class="section report-evidence" aria-labelledby="report-evidence-title" data-report-explorer data-enhanced="false">
   <header class="evidence-section-heading">
     <div><p class="eyebrow">{evidence.eyebrow}</p><h2 id="report-evidence-title">{evidence.heading}</h2></div>
     <p>{evidence.description}</p>
   </header>
+  <div class="report-explorer-tabs" role="tablist" aria-label="Select brand report">
+    {evidence.items.map((item, index) => {
+      const id = slug(item.brand);
+      return <button id={`report-tab-${id}`} role="tab" aria-controls={`report-panel-${id}`} aria-selected={index === 0 ? 'true' : 'false'} tabindex={index === 0 ? 0 : -1} data-report-select={index}><span>{String(index + 1).padStart(2, '0')}</span>{item.brand}</button>;
+    })}
+  </div>
   <div class="report-evidence-grid">
-    {evidence.items.map((item, index) => (
-      <article class="report-brief">
-        <header><span class="mono">Report / {String(index + 1).padStart(2, '0')}</span><span class="report-period">{item.period}</span></header>
-        <div class="report-identity"><p>{item.reportType}</p><h3>{item.brand}</h3><p>{item.summary}</p></div>
-        <dl class="report-metrics">
-          {item.metrics.map(metric => <div><dt>{metric.label}</dt><dd><strong>{metric.value}</strong><span>{metric.context}</span></dd></div>)}
-        </dl>
-        <div class="report-analysis"><div><span class="mono">My contribution</span><p>{item.contribution}</p></div><div><span class="mono">Analytical read</span><p>{item.insight}</p></div></div>
-        <p class="evidence-caveat">Scope note · {item.caveat}</p>
-      </article>
-    ))}
+    {evidence.items.map((item, index) => {
+      const id = slug(item.brand);
+      return (
+        <article id={`report-panel-${id}`} class="report-brief" role="tabpanel" aria-labelledby={`report-tab-${id}`} data-report-panel={index} data-open="true">
+          <button class="report-accordion-trigger" type="button" aria-expanded={index === 0 ? 'true' : 'false'} aria-controls={`report-content-${id}`} data-report-select={index}><span><small>{String(index + 1).padStart(2, '0')}</small>{item.brand}</span><span aria-hidden="true">+</span></button>
+          <div id={`report-content-${id}`} class="report-panel-content">
+            <header><span class="mono">Report / {String(index + 1).padStart(2, '0')}</span><span class="report-period">{item.period}</span></header>
+            <div class="report-identity"><p>{item.reportType}</p><h3>{item.brand}</h3><p>{item.summary}</p></div>
+            <dl class="report-metrics">
+              {item.metrics.map(metric => <div><dt>{metric.label}</dt><dd><strong>{metric.value}</strong><span>{metric.context}</span></dd></div>)}
+            </dl>
+            <div class="report-analysis"><div><span class="mono">Analytical read</span><p>{item.insight}</p></div><div><span class="mono">My contribution</span><p>{item.contribution}</p></div></div>
+            <p class="evidence-caveat">Scope note - {item.caveat}</p>
+          </div>
+        </article>
+      );
+    })}
   </div>
   <p class="evidence-attribution">{evidence.attribution}</p>
 </section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-report-explorer]').forEach(explorer => {
+    const tabs = [...explorer.querySelectorAll<HTMLButtonElement>('[role="tab"]')];
+    const triggers = [...explorer.querySelectorAll<HTMLButtonElement>('.report-accordion-trigger')];
+    const panels = [...explorer.querySelectorAll<HTMLElement>('[data-report-panel]')];
+    explorer.dataset.enhanced = 'true';
+    const select = (index: number, focus = false) => {
+      panels.forEach((panel, panelIndex) => panel.dataset.open = String(panelIndex === index));
+      tabs.forEach((tab, tabIndex) => { tab.setAttribute('aria-selected', String(tabIndex === index)); tab.tabIndex = tabIndex === index ? 0 : -1; });
+      triggers.forEach((trigger, triggerIndex) => trigger.setAttribute('aria-expanded', String(triggerIndex === index)));
+      if (focus) tabs[index]?.focus();
+    };
+    [...tabs, ...triggers].forEach(control => control.addEventListener('click', () => select(Number(control.dataset.reportSelect))));
+    tabs.forEach((tab, index) => tab.addEventListener('keydown', event => {
+      const keys = ['ArrowRight', 'ArrowLeft', 'Home', 'End'];
+      if (!keys.includes(event.key)) return;
+      event.preventDefault();
+      const next = event.key === 'Home' ? 0 : event.key === 'End' ? tabs.length - 1 : index + (event.key === 'ArrowRight' || event.key === 'ArrowDown' ? 1 : -1);
+      select((next + tabs.length) % tabs.length, true);
+    }));
+    select(0);
+  });
+</script>
