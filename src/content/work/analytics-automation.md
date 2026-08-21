@@ -76,7 +76,7 @@ reportEvidence:
       metrics:
         - { value: "9,611", label: Instagram engagements, context: highest total in the report’s three-brand benchmark }
         - { value: "5,479", label: Instagram follower additions, context: report-stated growth of 15.31% }
-        - { value: "521", label: LinkedIn engagements, context: across 11 posts, averaging 47 per post }
+        - { value: "521", label: LinkedIn engagements, context: "across 11 posts, averaging 47 per post" }
       contribution: Combined owned-channel analysis with competitive benchmarking and developed recommendations around practical recipes, chef-led communication, and business-value storytelling.
       insight: Instagram led the benchmark on total engagement, while LinkedIn needed a distinct editorial role rather than a direct reuse of consumer-channel content.
       caveat: Core report scope ends in September; a separate October TikTok appendix is excluded from these headline metrics.
@@ -85,9 +85,9 @@ reportEvidence:
       reportType: Performance recap
       summary: Separated campaign, paid, organic, and competitive views across Instagram and TikTok to distinguish visibility from channel health.
       metrics:
-        - { value: 26.1M, label: campaign reach, context: Banyak Makna Cinta, the strongest campaign contributor }
-        - { value: "166,949", label: Instagram followers, context: net growth of 8,692 during the comparison period }
-        - { value: "84,728", label: TikTok followers, context: net growth of 4,942 during the comparison period }
+        - { value: 26.1M, label: campaign reach, context: "Banyak Makna Cinta, the strongest campaign contributor" }
+        - { value: "166,949", label: Instagram followers, context: "net growth of 8,692 during the comparison period" }
+        - { value: "84,728", label: TikTok followers, context: "net growth of 4,942 during the comparison period" }
       contribution: Structured cross-channel performance and competitor views, diagnosed paid-versus-organic movement, and converted the findings into channel-specific recommendations.
       insight: The report classified Instagram visibility gains under paid activity, while softer organic engagement and slowing TikTok follower momentum pointed to a need for stronger native, initiative-led content.
       caveat: The report classified most large Instagram visibility gains under paid activity rather than organic performance.
@@ -101,9 +101,9 @@ dashboardEvidence:
       period: 2026 campaign monitoring
       summary: TikTok performance materially exceeded the campaign’s visible reach, impression, and engagement targets.
       metrics:
-        - { value: 44.5M, label: TikTok impressions, context: actual versus 409,568 KPI }
-        - { value: 27.0M, label: TikTok reach, context: actual versus 359,232 KPI }
-        - { value: "87,733", label: TikTok engagements, context: actual versus 3,840 KPI }
+        - { value: 44.5M, label: TikTok impressions, context: "actual versus 409,568 KPI" }
+        - { value: 27.0M, label: TikTok reach, context: "actual versus 359,232 KPI" }
+        - { value: "87,733", label: TikTok engagements, context: "actual versus 3,840 KPI" }
       contribution: Built a channel-level monitoring view with actual-versus-KPI gauges, content rankings, and submission tracking.
       caveat: Actuals and targets are shown together because high achievement ratios depend heavily on the campaign KPI denominator.
     - campaign: Festive Ramadan 2026
@@ -111,9 +111,9 @@ dashboardEvidence:
       period: 2026 campaign monitoring
       summary: The same monitoring frame surfaced both metrics above target and gaps requiring follow-up.
       metrics:
-        - { value: "88,446", label: Instagram impressions, context: 105.29% of an 84,000 KPI }
-        - { value: "1,583", label: follower additions, context: 104.14% of a 1,520 KPI }
-        - { value: "48,321", label: Instagram reach, context: 76.70% of a 63,000 KPI }
+        - { value: "88,446", label: Instagram impressions, context: "105.29% of an 84,000 KPI" }
+        - { value: "1,583", label: follower additions, context: "104.14% of a 1,520 KPI" }
+        - { value: "48,321", label: Instagram reach, context: "76.70% of a 63,000 KPI" }
       contribution: Built a decision view that made overperformance and underperformance legible in the same campaign snapshot.
       caveat: A submission-activity percentage with no clear visible actual is excluded from this evidence.
     - campaign: Lovefest 2026

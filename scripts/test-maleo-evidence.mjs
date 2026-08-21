@@ -37,6 +37,8 @@ assert.match(content, /26\.1M[\s\S]*campaign reach/, 'SilverQueen report evidenc
 assert.match(content, /44\.5M[\s\S]*TikTok impressions/, 'BlueBand dashboard evidence missing');
 assert.match(content, /88,446[\s\S]*Instagram impressions/, 'BlueBand Professional dashboard evidence missing');
 assert.match(content, /76\.5%[\s\S]*TikTok impression contribution/, 'SilverQueen dashboard evidence missing');
+assert.match(content, /context: "actual versus 409,568 KPI"/, 'dashboard KPI context must preserve thousands separators');
+assert.match(content, /context: "net growth of 8,692 during the comparison period"/, 'report growth context must preserve thousands separators');
 
 assert.doesNotMatch(content, /150\.17%|95\.73%|9,724\.3%/, 'known inconsistent dashboard percentages must stay excluded');
 assert.doesNotMatch(content, /^\s+image(?:Alt|Width|Height)?:/gm, 'dashboard evidence must not depend on screenshot fields');
