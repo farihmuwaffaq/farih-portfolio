@@ -8,6 +8,8 @@ Current evidence mix:
 - Two Project-Based Internship case studies.
 - One Technical Assessment case study.
 - Six additional lab studies appear as a separate Work gallery. They are interface or pipeline studies, not standalone case studies; sample/training status is stated per item.
+- Maleo reporting evidence includes three selected 2025 brand reports and three 2026 campaign-monitoring dashboards. These are representative examples within the existing 30+ reports and decks led, not six additional claims or the complete client portfolio.
+- Eight approved Google Slides remain an additional preview library. Report deep dives show analytical depth; dashboards show monitoring delivery; the preview library shows breadth.
 
 ## Before publishing a change
 

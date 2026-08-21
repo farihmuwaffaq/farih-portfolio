@@ -11,12 +11,12 @@ tools: [ClickHouse, Apps Script, Python, PostgreSQL, MySQL, TablePlus, Google Sh
 categories: [Analytics & Automation, Business Intelligence]
 featured: true
 confidential: true
-confidentialityNote: Eight representative client decks, brand names, and architecture tooling are shown with permission. Raw operating data, stakeholder identities, competitor handles, internal file names, credentials, and unpublished campaign work remain withheld.
+confidentialityNote: Selected report findings, campaign dashboards, eight representative client decks, brand names, and architecture tooling are shown with permission. Raw operating data, media budgets, stakeholder identities, competitor handles, internal file names, credentials, and unpublished campaign work remain withheld.
 evidenceStatus: RECONSTRUCTED VIEW
-evidenceNote: Eight approved Google Slides are public representative work. Architecture relationships are real and dashboard examples use synthetic data; raw operating data, identities, credentials, and unpublished client work remain protected.
+evidenceNote: Three selected 2025 brand reports, three 2026 campaign-monitoring dashboards, and eight approved Google Slides are representative work. Figures are reported account-level outcomes; raw operating data, identities, budgets, credentials, and unpublished client assets remain withheld.
 assumptionsConstraints:
   - Reporting spans at least five social platforms, with four FMCG brands anchoring the recurring analytics workload and additional approved samples showing broader client output.
-  - Approved quantitative measurements are unavailable for publication, so outcomes remain qualitative.
+  - Published figures are limited to approved report and dashboard evidence; raw records and sensitive commercial details remain unavailable.
   - Automation depends on stable KPI definitions, freshness checks, ownership, and escalation paths.
 decisionLog:
   - decision: Build a maintained multi-source pipeline from ClickHouse into spreadsheets, reports, and BI dashboards.
@@ -37,7 +37,12 @@ dictionary:
 deckLibrary:
   totalProduced: "30+"
   ownership: Lead Analytics Author
-  description: Representative client-facing reports and strategy decks from recurring retainers and ad hoc analytical work, published with permission.
+  description: Eight additional approved previews from recurring retainers and ad hoc analytical work, shown as a broader sample beyond the detailed evidence above.
+  eyebrow: Additional approved work
+  heading: More reporting evidence.
+  proofLabel: decks & reports led
+  dialogLabel: Approved Google Slides preview
+  cardEvidence: 30+ reports · 3 brand deep dives · 3 campaign dashboards
   items:
     - { title: SilverQueen Monthly Report — April 2026, client: SilverQueen, cadence: Monthly retainer, year: "2026", documentId: 1p5tm1MFBABe91lUf0_GGWlXuyHEUWrUY4n31tKmnZEA, href: "https://docs.google.com/presentation/d/1p5tm1MFBABe91lUf0_GGWlXuyHEUWrUY4n31tKmnZEA/edit?usp=sharing", thumbnail: /images/projects/maleo/decks/silverqueen-april-2026.webp, thumbnailAlt: Red cover of the SilverQueen April 2026 monthly social media report }
     - { title: KPI Activity Add Yours Ramadan 2026, client: BlueBand, cadence: Ad hoc, year: "2026", documentId: 15OBNAOjE-4W_hJ7y_R5_fCIOWohLVvJ6qx0MBvtpQW4, href: "https://docs.google.com/presentation/d/15OBNAOjE-4W_hJ7y_R5_fCIOWohLVvJ6qx0MBvtpQW4/edit?usp=sharing", thumbnail: /images/projects/maleo/decks/blueband-ramadan-2026.webp, thumbnailAlt: BlueBand Ramadan campaign deck cover showing a family preparing food }
@@ -47,6 +52,92 @@ deckLibrary:
     - { title: CRV Maleo CF Report — November 2025, client: CRV, cadence: Monthly retainer, year: "2025", documentId: 1X0s4LqloQJUGfFrO_MPqsWl-jxhmoIGJoOiRzLCB9Ts, href: "https://docs.google.com/presentation/d/1X0s4LqloQJUGfFrO_MPqsWl-jxhmoIGJoOiRzLCB9Ts/edit?usp=sharing", thumbnail: /images/projects/maleo/decks/crv-november-2025.webp, thumbnailAlt: Blue and white cover of the CeraVe November 2025 content factory report }
     - { title: Garnier Monthly Report — August 2025, client: Garnier, cadence: Monthly retainer, year: "2025", documentId: 14Gb00iK3MrM7_J2y3cDK7cSuKufVNwlOzgVQKG7fcXk, href: "https://docs.google.com/presentation/d/14Gb00iK3MrM7_J2y3cDK7cSuKufVNwlOzgVQKG7fcXk/edit?usp=sharing", thumbnail: /images/projects/maleo/decks/garnier-august-2025.webp, thumbnailAlt: Light blue cover of the Garnier August 2025 social media performance report }
     - { title: OAP Monthly Report — September 2025, client: OAP, cadence: Monthly retainer, year: "2025", documentId: 1l7amDq87x3bHwqfYl67tE2eqHNxO3gjJo7R-U4JQPT4, href: "https://docs.google.com/presentation/d/1l7amDq87x3bHwqfYl67tE2eqHNxO3gjJo7R-U4JQPT4/edit?usp=sharing", thumbnail: /images/projects/maleo/decks/oap-september-2025.webp, thumbnailAlt: L'Oréal Paris September 2025 social media performance report cover }
+reportEvidence:
+  eyebrow: Selected 2025 brand reports
+  heading: Three reports. Different decision contexts.
+  description: Three representative performance reports from a broader client portfolio, selected to show how recurring analysis moved from channel results to decision-ready recommendations. These examples represent only part of the broader portfolio handled during the engagement.
+  attribution: Performance figures are brand- or campaign-level outcomes observed during the engagement and reflect broader content, media, account, and client execution.
+  items:
+    - brand: CONCERTO
+      period: February–October 2025
+      reportType: Social media monitoring report
+      summary: Evaluated KPI achievement across reach, engagement, paid clicks, impressions, follower growth, and publishing activity.
+      metrics:
+        - { value: 9.16M, label: total reach, context: 102% of a 9.0M KPI }
+        - { value: "34,869", label: total engagements, context: 273% of engagement KPI }
+        - { value: "4,964", label: paid clicks, context: 175% of paid-click KPI }
+      contribution: Consolidated performance data, evaluated KPI achievement, identified content and format patterns associated with performance, and translated findings into recommendations for the next reporting cycle.
+      insight: Engagement and paid-click KPIs materially outpaced plan, while impressions and follower acquisition remained below target and required a different optimization response.
+      caveat: Data was cut off in October; this is not a full-calendar-year result.
+    - brand: BlueBand Professional
+      period: January–September 2025
+      reportType: Owned social media report
+      summary: Analyzed Instagram and LinkedIn performance against competitor and industry benchmarks.
+      metrics:
+        - { value: "9,611", label: Instagram engagements, context: highest total in the report’s three-brand benchmark }
+        - { value: "5,479", label: Instagram follower additions, context: report-stated growth of 15.31% }
+        - { value: "521", label: LinkedIn engagements, context: across 11 posts, averaging 47 per post }
+      contribution: Combined owned-channel analysis with competitive benchmarking and developed recommendations around practical recipes, chef-led communication, and business-value storytelling.
+      insight: Instagram led the benchmark on total engagement, while LinkedIn needed a distinct editorial role rather than a direct reuse of consumer-channel content.
+      caveat: Core report scope ends in September; a separate October TikTok appendix is excluded from these headline metrics.
+    - brand: SilverQueen
+      period: January–October 2025
+      reportType: Performance recap
+      summary: Separated campaign, paid, organic, and competitive views across Instagram and TikTok to distinguish visibility from channel health.
+      metrics:
+        - { value: 26.1M, label: campaign reach, context: Banyak Makna Cinta, the strongest campaign contributor }
+        - { value: "166,949", label: Instagram followers, context: net growth of 8,692 during the comparison period }
+        - { value: "84,728", label: TikTok followers, context: net growth of 4,942 during the comparison period }
+      contribution: Structured cross-channel performance and competitor views, diagnosed paid-versus-organic movement, and converted the findings into channel-specific recommendations.
+      insight: The report classified Instagram visibility gains under paid activity, while softer organic engagement and slowing TikTok follower momentum pointed to a need for stronger native, initiative-led content.
+      caveat: The report classified most large Instagram visibility gains under paid activity rather than organic performance.
+dashboardEvidence:
+  eyebrow: 2026 campaign monitoring dashboards
+  heading: KPIs made operational.
+  description: Separate from the 2025 report studies, these selected dashboards show how campaign targets, channel contribution, and performance gaps were made visible for ongoing decisions.
+  items:
+    - campaign: Festive Ramadan 2026
+      brand: BlueBand
+      period: 2026 campaign monitoring
+      summary: TikTok performance materially exceeded the campaign’s visible reach, impression, and engagement targets.
+      image: /images/projects/maleo/dashboards/blueband-ramadan-2026.webp
+      imageAlt: Sanitized BlueBand Festive Ramadan 2026 dashboard crop showing TikTok actual-versus-KPI gauges.
+      imageWidth: 1600
+      imageHeight: 900
+      metrics:
+        - { value: 44.5M, label: TikTok impressions, context: actual versus 409,568 KPI }
+        - { value: 27.0M, label: TikTok reach, context: actual versus 359,232 KPI }
+        - { value: "87,733", label: TikTok engagements, context: actual versus 3,840 KPI }
+      contribution: Built a channel-level monitoring view with actual-versus-KPI gauges, content rankings, and submission tracking.
+      caveat: Actuals and targets are shown together because high achievement ratios depend heavily on the campaign KPI denominator.
+    - campaign: Festive Ramadan 2026
+      brand: BlueBand Professional
+      period: 2026 campaign monitoring
+      summary: The same monitoring frame surfaced both metrics above target and gaps requiring follow-up.
+      image: /images/projects/maleo/dashboards/blueband-pro-ramadan-2026.webp
+      imageAlt: Sanitized BlueBand Professional Festive Ramadan 2026 dashboard crop showing Instagram organic actual-versus-KPI results.
+      imageWidth: 1600
+      imageHeight: 957
+      metrics:
+        - { value: "88,446", label: Instagram impressions, context: 105.29% of an 84,000 KPI }
+        - { value: "1,583", label: follower additions, context: 104.14% of a 1,520 KPI }
+        - { value: "48,321", label: Instagram reach, context: 76.70% of a 63,000 KPI }
+      contribution: Built a decision view that made overperformance and underperformance legible in the same campaign snapshot.
+      caveat: A submission-activity percentage with no clear visible actual is excluded from this evidence.
+    - campaign: Lovefest 2026
+      brand: SilverQueen
+      period: 2026 campaign monitoring
+      summary: Monitored total campaign delivery, KPI attainment, phase contribution, channel mix, and paid-media performance.
+      image: /images/projects/maleo/dashboards/silverqueen-lovefest-2026.webp
+      imageAlt: Sanitized SilverQueen Lovefest 2026 dashboard crop showing channel contribution charts without budget details.
+      imageWidth: 1200
+      imageHeight: 577
+      metrics:
+        - { value: 76.5%, label: TikTok impression contribution, context: versus 23.5% from Instagram }
+        - { value: 73.9%, label: TikTok reach contribution, context: versus 26.1% from Instagram }
+        - { value: 71.4%, label: TikTok engagement contribution, context: versus 28.6% from Instagram }
+      contribution: Built a multi-level dashboard connecting overall delivery to phase, channel, content, and paid-performance views.
+      caveat: A displayed reach achievement and one Always On percentage were inconsistent with visible components, so both are excluded here.
 coverImage: /images/projects/maleo-dashboard-silverqueen.png
 coverAlt: Campaign monitoring dashboard for a SilverQueen campaign, recreated with synthetic data, showing actual-vs-KPI gauges, a track score, and best-performing content
 outcomes: [Reduced repetitive manual reporting across brands, Improved consistency of recurring monthly and campaign outputs, Created timely daily signals for performance discussions]

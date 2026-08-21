@@ -17,6 +17,7 @@
     "test:analyst-credibility": "node scripts/test-analyst-credibility.mjs",
     "test:deck-library": "node scripts/test-deck-library.mjs",
     "test:gajahpangan-decks": "node scripts/test-gajahpangan-decks.mjs",
+    "test:maleo-evidence": "node scripts/test-maleo-evidence.mjs",
     "preview": "astro preview"
   },
   "dependencies": {

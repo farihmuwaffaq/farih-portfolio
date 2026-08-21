@@ -5,6 +5,8 @@ import BaseLayout from './BaseLayout.astro';
 import Icon from '../components/Icon.astro';
 import Lightbox from '../components/Lightbox.astro';
 import DeckLibrary from '../components/DeckLibrary.astro';
+import ReportEvidence from '../components/ReportEvidence.astro';
+import DashboardEvidence from '../components/DashboardEvidence.astro';
 interface Props { project: CollectionEntry<'work'> }
 const { project } = Astro.props;
 const d = project.data;
@@ -42,6 +44,8 @@ const relatedProjects = allProjects
       <div class="assumption-panel"><p class="eyebrow">Analysis frame</p><h2 class="assumptions-title"><span class="sr-only">Assumptions / constraints</span><span class="assumptions-title-lines" aria-hidden="true"><span>Assumptions</span><span>/</span><span>constraints</span></span></h2><ul>{d.assumptionsConstraints.map(item=><li>{item}</li>)}</ul></div>
       <div class="decision-panel"><p class="eyebrow">Technical judgment</p><h2>Decision log</h2><ol class="decision-log">{d.decisionLog.map((item,index)=><li><span>{String(index+1).padStart(2,'0')}</span><div><strong>{item.decision}</strong><small>Why</small><p>{item.why}</p></div></li>)}</ol></div>
     </section>
+    {d.reportEvidence&&<ReportEvidence evidence={d.reportEvidence} />}
+    {d.dashboardEvidence&&<DashboardEvidence evidence={d.dashboardEvidence} />}
     {d.deckLibrary&&<DeckLibrary library={d.deckLibrary} />}
     {d.dictionary&&<details class="data-dictionary"><summary><span><span class="eyebrow">Domain reference</span><strong>Metric dictionary</strong></span><span class="mono">View definitions +</span></summary><dl>{d.dictionary.map(item=><div><dt>{item.term}</dt><dd>{item.definition}</dd></div>)}</dl></details>}
     <article class="prose"><slot /></article>

@@ -1,0 +1,26 @@
+---
+type DashboardEvidenceData = NonNullable<import('astro:content').CollectionEntry<'work'>['data']['dashboardEvidence']>;
+interface Props { evidence: DashboardEvidenceData }
+const { evidence } = Astro.props;
+---
+
+<section class="section dashboard-evidence" aria-labelledby="dashboard-evidence-title">
+  <header class="evidence-section-heading dashboard-evidence-heading">
+    <div><p class="eyebrow">{evidence.eyebrow}</p><h2 id="dashboard-evidence-title">{evidence.heading}</h2></div>
+    <p>{evidence.description}</p>
+  </header>
+  <div class="dashboard-evidence-grid">
+    {evidence.items.map((item, index) => (
+      <article class="dashboard-record">
+        <figure class="dashboard-visual"><img src={item.image} alt={item.imageAlt} width={item.imageWidth} height={item.imageHeight} loading="lazy" /><figcaption><span>{item.brand} · {item.campaign}</span><a href={item.image} target="_blank" rel="noopener">Open sanitized crop <span aria-hidden="true">↗</span></a></figcaption></figure>
+        <div class="dashboard-record-body">
+          <header><span class="mono">Dashboard / {String(index + 1).padStart(2, '0')}</span><span>{item.period}</span></header>
+          <div class="dashboard-title"><p>{item.brand}</p><h3>{item.campaign}</h3><p>{item.summary}</p></div>
+          <dl class="dashboard-metrics">{item.metrics.map(metric => <div><dt>{metric.label}</dt><dd><strong>{metric.value}</strong><span>{metric.context}</span></dd></div>)}</dl>
+          <div class="dashboard-contribution"><span class="mono">Built for decisions</span><p>{item.contribution}</p></div>
+          <p class="evidence-caveat">Validation note · {item.caveat}</p>
+        </div>
+      </article>
+    ))}
+  </div>
+</section>
