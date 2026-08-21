@@ -1,0 +1,12 @@
+---
+interface Props {
+  lang?: string;
+  label?: string;
+  code: string;
+}
+const { lang, label, code } = Astro.props;
+const langLabel = label ?? (lang ? lang.toUpperCase() : 'Code');
+const langClass = lang ? `language-${lang}` : '';
+---
+
+<pre class:list={['code-surface', langClass]} data-lang={langLabel}><code set:html={code.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')} /></pre>

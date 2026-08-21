@@ -13,7 +13,7 @@ const [layout, base, card, lightbox, resumePage, contactPage, css, js] = await P
 ]);
 
 assert.match(layout, /caseOrder/, 'case studies need an explicit deterministic order');
-assert.match(layout, /case-navigation/, 'case studies need previous and next navigation');
+assert.match(layout, /case-nav-compact|case-navigation/, 'case studies need previous and next navigation');
 assert.match(layout, /data-case-progress/, 'case studies need a reading-progress hook');
 assert.match(js, /--case-progress/, 'reading progress must update a CSS custom property');
 assert.match(js, /\[50, 90\]/, 'reading progress must define midpoint and completion thresholds');

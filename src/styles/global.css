@@ -518,8 +518,31 @@ p { max-width: 66ch; }
 .prose li + li { margin-top: .7rem; }
 .prose img { position: relative; left: 50%; width: min(76rem,calc(100vw - 2.4rem)); height: auto; max-height: 52rem; margin: 2.5rem 0; object-fit: contain; object-position: center; border-radius: 1.5rem; box-shadow: var(--soft-shadow); transform: translateX(-50%); }
 .prose code { padding: .15rem .35rem; border-radius: .35rem; background: var(--paper-deep); }
-.prose pre { max-height: 25rem; overflow: auto; margin: 2rem 0 3.5rem; padding: 1.4rem; border: 1px solid rgba(255,255,255,.08); border-radius: 1.2rem; color: #dcebe4; background: #101713; }
-.prose pre code { padding: 0; background: transparent; }
+/* Reusable code surface — light elevated panel for real code artifacts */
+.code-surface, .prose pre { max-height: 26rem; overflow: auto; margin: 2.5rem 0 3.5rem; padding: 1.5rem; border: 1px solid var(--line-strong); border-radius: 1rem; color: var(--ink); background: var(--paper-deep); font: 400 .875rem/1.65 var(--mono); }
+.prose pre code, .code-surface code { padding: 0; background: transparent; }
+.code-surface-label { display: block; margin: -.5rem 0 1.2rem; padding-bottom: .5rem; border-bottom: 1px solid var(--line); color: var(--signal-deep); font: 600 .58rem/1 var(--mono); text-transform: uppercase; letter-spacing: .1em; }
+.prose pre[class*="language-"] { position: relative; padding-top: 2.6rem; }
+.prose pre[class*="language-"]::before, .code-surface[data-lang]::before { content: attr(data-lang); position: absolute; top: 0; left: 0; right: 0; padding: .4rem 1.5rem; border-bottom: 1px solid var(--line); color: var(--signal-deep); font: 600 .58rem/1 var(--mono); text-transform: uppercase; letter-spacing: .1em; background: var(--paper); }
+.code-surface[data-lang] { padding-top: 2.6rem; }
+.prose pre[class~="language-sql"]::before { content: 'SQL'; }
+.prose pre[class~="language-javascript"]::before { content: 'JavaScript'; }
+.prose pre[class~="language-python"]::before { content: 'Python'; }
+.prose pre[class~="language-bash"]::before { content: 'Shell'; }
+.prose pre[class~="language-sh"]::before { content: 'Shell'; }
+.prose pre:not([class*="language-"])::before { content: 'Code'; }
+/* Shiki css-variables theme — subtle light syntax */
+.code-surface, .prose .astro-code, .prose pre[class*="language-"] {
+  --shiki-foreground: #101714;
+  --shiki-background: var(--paper-deep);
+  --shiki-token-keyword: #0d6b48;
+  --shiki-token-string: #8d601c;
+  --shiki-token-comment: #4a544f;
+  --shiki-token-function: #285573;
+  --shiki-token-constant: #285573;
+  --shiki-token-punctuation: #46514c;
+  --shiki-token-parameter: var(--ink-soft);
+}
 .prose table { width: 100%; margin: 2rem 0; border-collapse: separate; border-spacing: 0; overflow: hidden; border-radius: 1rem; background: var(--paper); }
 .prose th, .prose td { padding: 1rem; border-bottom: 1px solid var(--line); text-align: left; }
 .evidence-gallery { margin-top: 8rem; }
@@ -564,6 +587,12 @@ p { max-width: 66ch; }
 .case-navigation strong { max-width: 18ch; font-size: clamp(1.35rem,2.5vw,2.2rem); line-height: 1.05; }
 .case-navigation a:last-child strong { justify-self: end; }
 .case-navigation small { align-self: end; color: var(--muted); }
+.case-nav-compact { display: flex; justify-content: space-between; align-items: center; gap: 2rem; margin-top: clamp(4rem,8vw,7rem); padding-top: 2rem; border-top: 1px solid var(--line); }
+.case-nav-compact a { display: inline-flex; align-items: center; gap: .6rem; color: var(--ink); transition: color .25s var(--ease); font-size: .85rem; line-height: 1; }
+.case-nav-compact a:last-child { text-align: right; }
+.case-nav-compact a:hover { color: var(--signal); }
+.case-nav-compact .mono { font-size: .7rem; color: var(--signal-deep); text-transform: uppercase; letter-spacing: .08em; }
+.case-nav-compact a:last-child .mono { color: var(--ink-soft); }
 .case-cta { padding-bottom: 2rem; }
 .case-cta h2 { max-width: 14ch; }
 .placeholder-button { width: 100%; padding: .45rem; border: 0; cursor: zoom-in; text-align: left; }
@@ -942,6 +971,8 @@ p { max-width: 66ch; }
   .case-navigation-grid { grid-template-columns: 1fr; }
   .case-navigation a { min-height: 9rem; }
   .case-navigation a + a { border-top: 1px solid var(--line); border-left: 0; }
+  .case-nav-compact { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+  .case-nav-compact a:last-child { text-align: left; }
   :root { --gutter: 1rem; --radius: 1.5rem; }
   .section { padding: 6rem 0; }
   .case-body { padding-top: 4rem; padding-bottom: 4rem; }
@@ -1011,7 +1042,7 @@ p { max-width: 66ch; }
   .technical-grid { grid-template-columns: 1fr; }
   .technical-grid article:nth-child(n) { padding: 1.7rem 0 2.5rem; border-right: 0; border-top: 1px solid var(--line); }
   .technical-grid h3 { margin-top: 2rem; }
-  .case-body .prose pre { margin-block: 1.5rem 2.5rem; padding: 1rem; }
+  .case-body .prose pre { margin-block: 1.5rem 2.5rem; padding: 1.5rem 1rem 1rem; font-size: .8125rem; }
   .resume-page { padding-top: 8rem; padding-bottom: 4rem; }
   .resume-page > .container > h1 { font-size: clamp(3rem,14vw,4.8rem); }
   .resume-page .resume-block { margin-top: 4rem; }

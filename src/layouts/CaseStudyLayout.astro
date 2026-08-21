@@ -20,12 +20,14 @@ const orderedProjects = [...allProjects].sort((a,b)=>caseOrder.indexOf(a.data.sl
 const currentIndex = orderedProjects.findIndex(item=>item.data.slug===d.slug);
 const previousCase = orderedProjects[(currentIndex - 1 + orderedProjects.length) % orderedProjects.length];
 const nextCase = orderedProjects[(currentIndex + 1) % orderedProjects.length];
+const excludedSlugs = new Set([d.slug, previousCase.data.slug, nextCase.data.slug]);
 const relatedProjects = allProjects
-  .filter(entry=>entry.data.slug!==d.slug)
+  .filter(entry=>!excludedSlugs.has(entry.data.slug))
   .map(entry=>({entry,overlap:entry.data.categories.filter(category=>d.categories.includes(category)).length}))
   .sort((a,b)=>b.overlap-a.overlap||Number(b.entry.data.featured)-Number(a.entry.data.featured))
   .slice(0,2)
   .map(item=>item.entry);
+const hasRelated = relatedProjects.length > 0;
 ---
 <BaseLayout title={`${d.title} | Farih Muwaffaq`} description={d.summary} image={`/social/cases/${d.slug}.png`} type="article" jsonLd={[breadcrumb,creative]}>
   <div class="case-progress" data-case-progress aria-hidden="true"><span></span></div>
@@ -52,8 +54,8 @@ const relatedProjects = allProjects
     {d.outcomes.length>0&&<section class="case-outcome" aria-labelledby="outcome-title"><div class="case-outcome-heading"><p class="eyebrow"><span class="idx">Outcome</span> Validated evidence</p><h2 id="outcome-title">What changed.</h2><p>Published outcomes stay within what can be supported by project evidence.</p></div><div class="outcome-grid">{d.outcomes.map(outcome=><p>{outcome}</p>)}</div></section>}
     {imageAssets.length>0&&<section class="evidence-gallery" aria-labelledby="evidence-title"><div class="evidence-heading"><p class="eyebrow"><span class="idx">Evidence</span> Selected frames</p><h2 id="evidence-title">Selected evidence.</h2><p>Published views are selected for clarity and privacy. Open any frame to inspect it at full size.</p></div><div class="evidence-grid">{imageAssets.map((asset,i)=><Lightbox id={`evidence-${i}`} src={asset.href!} alt={asset.label} caption={asset.label} index={i+1} variant={imageAssets.length===1||i%3===2?'featured':'standard'} />)}</div></section>}
     {otherAssets.length>0&&<section class="section"><h2>Related assets</h2><ul class="asset-list">{otherAssets.map(asset=><li><span>{asset.label}</span>{asset.available&&asset.href?<a href={asset.href} target="_blank" rel="noreferrer">Open asset <Icon name="arrow-up-right" /></a>:<span class="status">Not public</span>}</li>)}</ul></section>}
-    <section class="related-work" aria-labelledby="related-title"><div class="evidence-heading"><p class="eyebrow"><span class="idx">Next</span> Related work</p><div><h2 id="related-title">Other evidence.</h2><p>Projects selected by adjacent capability, not chronology.</p></div></div><div class="related-grid">{relatedProjects.map(item=><a href={`/work/${item.data.slug}`} data-event="related_work_click" data-event-label={item.data.slug}><span class="mono">{item.data.categories[0]}</span><h3>{item.data.title}</h3><p>{item.data.outcomes[0]||item.data.summary}</p><Icon name="arrow-up-right" /></a>)}</div></section>
-    <nav class="case-navigation" aria-label="Case study navigation"><div class="case-navigation-grid"><a href={`/work/${previousCase.data.slug}`} data-event="related_work_click" data-event-label={previousCase.data.slug}><span class="mono">← Previous case</span><strong>{previousCase.data.title}</strong><small>{previousCase.data.categories[0]}</small></a><a href={`/work/${nextCase.data.slug}`} data-event="related_work_click" data-event-label={nextCase.data.slug}><span class="mono">Next case →</span><strong>{nextCase.data.title}</strong><small>{nextCase.data.categories[0]}</small></a></div></nav>
+    {hasRelated&&<section class="related-work" aria-labelledby="related-title"><div class="evidence-heading"><p class="eyebrow"><span class="idx">Next</span> Related work</p><div><h2 id="related-title">Other evidence.</h2><p>Projects selected by adjacent capability, not chronology.</p></div></div><div class="related-grid">{relatedProjects.map(item=><a href={`/work/${item.data.slug}`} data-event="related_work_click" data-event-label={item.data.slug}><span class="mono">{item.data.categories[0]}</span><h3>{item.data.title}</h3><p>{item.data.outcomes[0]||item.data.summary}</p><Icon name="arrow-up-right" /></a>)}</div></section>}
+    <nav class="case-nav-compact" aria-label="Case study navigation"><a href="/work" rel="index" data-event="related_work_click" data-event-label="work-index"><span class="mono">←</span> Back to all work</a><a href={`/work/${nextCase.data.slug}`} rel="next" data-event="related_work_click" data-event-label={nextCase.data.slug}>Next case <span class="mono">{nextCase.data.title}</span> →</a></nav>
     <section class="section case-cta"><p class="eyebrow"><span class="idx">Contact</span> Continue the conversation</p><h2>Want to discuss how this system was built?</h2><div class="actions"><a class="button" href="/contact">Discuss this work<Icon name="arrow-up-right" /></a><a class="button secondary" href="/work">Explore more work<Icon name="arrow-right" /></a></div></section>
   </div></section>
 </BaseLayout>
