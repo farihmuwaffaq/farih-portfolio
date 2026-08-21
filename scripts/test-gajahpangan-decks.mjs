@@ -1,11 +1,12 @@
 import assert from 'node:assert/strict';
 import { access, readFile } from 'node:fs/promises';
 
-const [schema, content, component, projectCard, guide] = await Promise.all([
+const [schema, content, component, projectCard, caseLayout, guide] = await Promise.all([
   readFile(new URL('../src/content.config.ts', import.meta.url), 'utf8'),
   readFile(new URL('../src/content/work/fmcg-operations-analytics.md', import.meta.url), 'utf8'),
   readFile(new URL('../src/components/DeckLibrary.astro', import.meta.url), 'utf8'),
   readFile(new URL('../src/components/ProjectCard.astro', import.meta.url), 'utf8'),
+  readFile(new URL('../src/layouts/CaseStudyLayout.astro', import.meta.url), 'utf8'),
   readFile(new URL('../CONTENT_GUIDE.md', import.meta.url), 'utf8'),
 ]);
 
@@ -36,7 +37,9 @@ for (const thumbnail of thumbnails) {
 }
 
 assert.equal((content.match(/thumbnailAlt:/g) || []).length, 4, 'all four thumbnails need alt text');
-assert.match(content, /cardEvidence: 4 approved decision-deck previews/, 'Work card needs accurate Gajahpangan evidence');
+assert.match(content, /cardEvidence: 1,567% capacity growth · monthly profit <IDR 100M to >IDR 700M/, 'Work card must lead with business impact');
+assert.match(schema, /impactHighlights/, 'case studies must support prominent impact highlights');
+assert.match(content, /impactHighlights:[\s\S]*1,567%[\s\S]*300 to 5,000 units per day[\s\S]*below IDR 100M to above IDR 700M/, 'Gajahpangan must surface both approved outcomes near the hero');
 assert.match(content, /dialogLabel: Approved internal work/, 'dialog must identify the approved internal boundary');
 assert.match(content, /evidenceStatus: APPROVED INTERNAL WORK/, 'evidence status must reflect publication approval');
 assert.match(content, /shown with permission/i, 'disclosure must state permission boundary');
@@ -53,6 +56,9 @@ assert.match(component, /library\.eyebrow/, 'deck section must render configurab
 assert.match(component, /library\.heading/, 'deck section must render configurable heading');
 assert.match(component, /library\.dialogLabel/, 'deck dialog must render configurable classification');
 assert.match(projectCard, /d\.deckLibrary\.cardEvidence/, 'Work card must render configured evidence copy');
+assert.match(caseLayout, /d\.impactHighlights/, 'case-study layout must render impact highlights');
+assert.ok(caseLayout.indexOf('d.impactHighlights') < caseLayout.indexOf('d.keyContributions'), 'impact highlights must appear before contribution detail');
+assert.ok(caseLayout.indexOf('d.impactHighlights') < caseLayout.indexOf('<DeckLibrary'), 'impact highlights must appear before deck evidence');
 assert.match(guide, /four approved internal decision decks/i, 'publishing guide must document Gajahpangan boundary');
 
 console.log('Gajahpangan deck contract passed.');

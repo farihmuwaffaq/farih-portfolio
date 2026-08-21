@@ -30,6 +30,13 @@ dictionary:
     definition: Stock-keeping unit; unit-level operating data remains withheld.
   - term: Business-level outcome
     definition: Result attributed to broader company or team execution during the engagement.
+impactHighlights:
+  - value: 1,567%
+    label: Production capacity growth
+    context: Business capacity increased from 300 to 5,000 units per day during the engagement.
+  - value: "> IDR 700M"
+    label: Monthly profit level
+    context: Business-level monthly profit increased from below IDR 100M to above IDR 700M during the engagement.
 coverImage: /images/projects/fmcg-operations/page-09.png
 coverAlt: FMCG dashboard, visualization, coding, and data-processing evidence from the project portfolio
 outcomes: ['Supported production capacity growth of 1,567%, from 300 to 5,000 units per day', 'Supported monthly profit growth from below IDR 100M to above IDR 700M', 'Informed Modern Trade to General Trade expansion']
@@ -48,7 +55,7 @@ deckLibrary:
   heading: Analysis made actionable.
   proofLabel: Approved internal decks
   dialogLabel: Approved internal work
-  cardEvidence: 4 approved decision-deck previews
+  cardEvidence: 1,567% capacity growth · monthly profit <IDR 100M to >IDR 700M
   items:
     - title: Social Media Activation Wispish Snack
       client: Wispish Snack

@@ -29,6 +29,11 @@ const work = defineCollection({
       term: z.string().trim().min(1),
       definition: z.string().trim().min(1),
     })).min(2).max(8).optional(),
+    impactHighlights: z.array(z.object({
+      value: z.string().trim().min(1),
+      label: z.string().trim().min(1),
+      context: z.string().trim().min(1),
+    })).min(2).max(3).optional(),
     deckLibrary: z.object({
       totalProduced: z.string().trim().min(1),
       ownership: z.string().trim().min(1),
