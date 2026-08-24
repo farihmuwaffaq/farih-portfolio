@@ -11,7 +11,7 @@ interface Props { project: CollectionEntry<'work'> }
 const { project } = Astro.props;
 const d = project.data;
 const breadcrumb = {'@context':'https://schema.org','@type':'BreadcrumbList',itemListElement:[{'@type':'ListItem',position:1,name:'Home',item:new URL('/',Astro.site)},{'@type':'ListItem',position:2,name:'Work',item:new URL('/work',Astro.site)},{'@type':'ListItem',position:3,name:d.title,item:Astro.url}]};
-const creative = {'@context':'https://schema.org','@type':'CreativeWork',name:d.title,description:d.summary,author:{'@type':'Person',name:'Farih Muwaffaq'},isBasedOn:d.evidenceType};
+const creative = {'@context':'https://schema.org','@type':'CreativeWork',name:d.title,description:d.summary,url:Astro.url.toString(),image:new URL(`/social/cases/${d.slug}.png`,Astro.site).toString(),author:{'@type':'Person',name:'Farih Muwaffaq',url:'https://farih-portfolio.vercel.app/'}};
 const imageAssets = d.relatedAssets.filter(asset=>asset.type==='image'&&asset.available&&asset.href);
 const otherAssets = d.relatedAssets.filter(asset=>asset.type!=='image'||!asset.available||!asset.href);
 const allProjects = await getCollection('work');
