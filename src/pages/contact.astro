@@ -20,8 +20,8 @@ const endpoint=import.meta.env.PUBLIC_CONTACT_FORM_ENDPOINT || '';
     <p class="mono" style="margin:0">Message form</p>
     <div class="field"><label for="name">Name</label><input id="name" name="name" autocomplete="name" required /></div>
     <div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required /></div>
-    <div class="field"><label for="message">Message</label><textarea id="message" name="message" required minlength="20"></textarea></div>
-    <div class="field honeypot"><label for="company">Company</label><input id="company" name="company" tabindex="-1" autocomplete="off" /></div>
+    <div class="field"><label for="message">Message</label><textarea id="message" name="message" rows="5" required minlength="20"></textarea></div>
+    <div class="field honeypot" aria-hidden="true"><label for="company">Company</label><input id="company" name="company" tabindex="-1" autocomplete="off" /></div>
     <button class="button" type="submit"><span class="btn-label">Send message</span><Icon name="arrow-right" /></button>
     <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
   </form> : <aside class="contact-form contact-direct" id="message-form"><p class="mono">Direct message</p><h2>Email works best.</h2><p>Share the question, context, and expected outcome. I will reply as soon as I can.</p><a class="button" href="mailto:farihmuwaffaq@gmail.com?subject=Data%20conversation" data-event="contact_cta_click"><span>Write an email</span><Icon name="arrow-right" /></a><a class="contact-link" href="https://www.linkedin.com/in/farihmuwaffaq/" target="_blank" rel="noopener noreferrer" data-event="linkedin_click" data-event-label="contact_alternative">Or connect on LinkedIn<Icon name="arrow-up-right" /></a></aside>}
@@ -29,13 +29,15 @@ const endpoint=import.meta.env.PUBLIC_CONTACT_FORM_ENDPOINT || '';
 <script>
   const form=document.querySelector<HTMLFormElement>('form#message-form');
   const status=document.querySelector<HTMLElement>('#form-status');
+  const submitBtn=form?.querySelector<HTMLButtonElement>('button[type="submit"]');
+  if(form && !form.dataset.endpoint){ if(submitBtn){submitBtn.setAttribute('aria-disabled','true');} if(status){status.textContent='The form is not configured yet. Please use the email link.';} }
   form?.addEventListener('submit', async event=>{
     event.preventDefault();
     const data=new FormData(form);
     if(data.get('company')) return;
     if(!form.reportValidity()) return;
     const endpoint=form.dataset.endpoint||'';
-    const button=form.querySelector<HTMLButtonElement>('button[type="submit"]');
+    const button=submitBtn!;
     if(!endpoint){status!.textContent='The form endpoint is not configured. Please use the email link instead.';return;}
     button!.disabled=true;const label=button!.querySelector('.btn-label');label!.textContent='Sending…';
     try{
