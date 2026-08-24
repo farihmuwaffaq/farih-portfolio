@@ -519,16 +519,16 @@
   var menu = document.querySelector('.mobile-menu');
   var close = document.querySelector('.mobile-menu-close');
   var navFocusables = menu?.querySelectorAll('a, button') || [];
-  function setNav(open) {
+    function setNav(open) {
     toggle?.setAttribute('aria-expanded', String(open));
     toggle?.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
     menu?.classList.toggle('is-open', open);
     menu?.setAttribute('aria-hidden', String(!open));
-    navFocusables.forEach(function (item) { item.setAttribute('tabindex', open ? '0' : '-1'); });
-    document.body.classList.toggle('nav-open', open);
+    navFocusables.forEach(function (item) { item.setAttribute('tabindex', open ? '0' : '-1'); });    document.body.classList.toggle('nav-open', open);
     if (open) requestAnimationFrame(function () { close?.focus(); }); else toggle?.focus();
   }
   toggle?.addEventListener('click', function () { setNav(toggle.getAttribute('aria-expanded') !== 'true'); });
+  setNav(toggle?.getAttribute('aria-expanded') === 'true');
   close?.addEventListener('click', function () { setNav(false); });
   document.addEventListener('keydown', function (event) {
     if (toggle?.getAttribute('aria-expanded') !== 'true') return;
