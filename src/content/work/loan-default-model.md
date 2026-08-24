@@ -33,7 +33,7 @@ dictionary:
     definition: Validation approach preserving class proportions across folds.
   - term: Calibration
     definition: Alignment between predicted probabilities and observed outcomes.
-coverImage: /images/projects/loan-default/model-results.png
+coverImage: /images/projects/loan-default/model-results.webp
 coverAlt: Loan default model results showing ROC and Kolmogorov-Smirnov evaluation charts
 outcomes: [Random Forest AUC of 0.857 on the project dataset, KS statistic of 0.5675 in the project report, Compared three model families]
 keyContributions:
@@ -41,8 +41,8 @@ keyContributions:
   - Compared model families using exploratory analysis and a reproducible evaluation workflow.
   - Applied stratified cross-validation and grid search, then evaluated the Random Forest with AUC and KS.
 relatedAssets:
-  - { label: Random Forest model results, type: image, href: /images/projects/loan-default/model-results.png, available: true }
-  - { label: Model training and evaluation workflow, type: image, href: /images/projects/loan-default/model-evaluation.png, available: true }
+  - { label: Random Forest model results, type: image, href: /images/projects/loan-default/model-results.webp, available: true }
+  - { label: Model training and evaluation workflow, type: image, href: /images/projects/loan-default/model-evaluation.webp, available: true }
   - { label: Repository, type: repository, available: false, note: No verified public repository URL was supplied. }
 ---
 ## Snapshot

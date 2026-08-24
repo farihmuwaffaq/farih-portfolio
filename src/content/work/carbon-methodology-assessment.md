@@ -33,12 +33,12 @@ dictionary:
     definition: Methodology approach recommended within the supplied assessment scenario.
   - term: Verification
     definition: Assessment step included before certification.
-coverImage: /images/projects/carbon-methodology/vm0010-plan.png
+coverImage: /images/projects/carbon-methodology/vm0010-plan.webp
 coverAlt: VM0010 forest carbon methodology recommendation and implementation pathway
 outcomes: [Compared methodology options, Outlined baseline and monitoring needs, Created an implementation and certification pathway]
 relatedAssets:
-  - { label: IFM and APD methodology comparison, type: image, href: /images/projects/carbon-methodology/methodology-comparison.png, available: true }
-  - { label: VM0010 methodology and concession plan, type: image, href: /images/projects/carbon-methodology/vm0010-plan.png, available: true }
+  - { label: IFM and APD methodology comparison, type: image, href: /images/projects/carbon-methodology/methodology-comparison.webp, available: true }
+  - { label: VM0010 methodology and concession plan, type: image, href: /images/projects/carbon-methodology/vm0010-plan.webp, available: true }
   - { label: VM0010 implementation timeline, type: image, href: /images/projects/carbon-methodology/implementation-timeline.png, available: true }
 ---
 ## Snapshot

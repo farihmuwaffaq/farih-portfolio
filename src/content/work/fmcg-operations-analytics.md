@@ -37,7 +37,7 @@ impactHighlights:
   - value: "> IDR 700M"
     label: Monthly profit level
     context: Business-level monthly profit increased from below IDR 100M to above IDR 700M during the engagement.
-coverImage: /images/projects/fmcg-operations/page-09.png
+coverImage: /images/projects/fmcg-operations/page-09.webp
 coverAlt: FMCG dashboard, visualization, coding, and data-processing evidence from the project portfolio
 outcomes: ['Supported production capacity growth of 1,567%, from 300 to 5,000 units per day', 'Supported monthly profit growth from below IDR 100M to above IDR 700M', 'Informed Modern Trade to General Trade expansion']
 keyContributions:
@@ -90,8 +90,8 @@ deckLibrary:
       thumbnail: /images/projects/fmcg-operations/decks/marketplace-users-2024.webp
       thumbnailAlt: Cover of the Shopee, Tokopedia, and TikTok Shop user analysis deck
 relatedAssets:
-  - { label: FMCG project overview and key contributions, type: image, href: /images/projects/fmcg-operations/page-08.png, available: true, note: Portfolio evidence page with approved business outcomes }
-  - { label: FMCG dashboard and analysis evidence, type: image, href: /images/projects/fmcg-operations/page-09.png, available: true, note: Portfolio evidence page with dashboard and data-processing visuals }
+  - { label: FMCG project overview and key contributions, type: image, href: /images/projects/fmcg-operations/page-08.webp, available: true, note: Portfolio evidence page with approved business outcomes }
+  - { label: FMCG dashboard and analysis evidence, type: image, href: /images/projects/fmcg-operations/page-09.webp, available: true, note: Portfolio evidence page with dashboard and data-processing visuals }
 ---
 ## Snapshot
 

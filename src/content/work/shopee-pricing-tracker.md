@@ -34,7 +34,7 @@ dictionary:
     definition: Target suggested retail price used as a comparison benchmark.
   - term: Snapshot
     definition: Daily stored record of each SKU's channel prices.
-coverImage: /images/projects/shopee-pricing-tracker.png
+coverImage: /images/projects/shopee-pricing-tracker.webp
 coverAlt: Pricing tracker dashboard showing a daily summary snapshot and per-SKU price comparison across channels with synthetic data
 outcomes: [Replaced manual daily price checks with an automated snapshot, Made cross-channel pricing gaps visible in one dashboard, Flagged SKUs priced below benchmark for commercial follow-up]
 keyContributions:

@@ -45,7 +45,7 @@ assert.match(css, /\.logo-context[\s\S]*opacity:\s*0/, 'context label must be hi
 assert.match(css, /\.professional-orbit li:hover \.logo-context[\s\S]*opacity:\s*1/, 'context label must appear on hover');
 assert.match(css, /professional-orbit-track[\s\S]*animation:/, 'professional logo track must animate');
 assert.match(css, /prefers-reduced-motion[\s\S]*professional-orbit-track/, 'professional logo motion must stop for reduced motion');
-assert.equal(professionalAssets.filter(name => name.endsWith('.svg')).length, 21, 'must publish all 21 professional logos');
+assert.equal(professionalAssets.filter(name => name.endsWith('.webp')).length, 21, 'must publish all 21 professional logos as optimized WebP');
 assert.equal(educationAssets.filter(name => name.endsWith('.svg')).length, 2, 'must publish both education logos');
 assert.match(about, /education-mark/i, 'About Foundation must display education marks');
 assert.match(about, /class="education-mark"[\s\S]*alt=""/, 'education marks must be decorative beside institution headings');
