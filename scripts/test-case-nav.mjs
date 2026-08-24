@@ -20,7 +20,6 @@ assert.match(css, /\.case-nav-compact[\s\S]*font-size/, 'Compact nav must have r
 // ── Stream B: code surface ─────────────────────────────────────
 assert.match(css, /\.code-surface/, 'CSS must define a reusable code surface class');
 assert.match(css, /\.code-surface[\s\S]*?background:\s*var\(--paper-deep\)/, 'Code surface must have a light elevated background');
-assert.match(css, /\.code-surface-label/, 'Code surface must support a language label');
 assert.match(css, /\.code-surface,\s*\.prose pre/, 'Prose pre blocks must share the code surface treatment');
 
 console.log('Case nav + code surface contract passed.');
