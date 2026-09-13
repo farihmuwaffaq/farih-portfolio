@@ -69,6 +69,7 @@ Tone: analytical, calm, modern, credible, editorial, spacious, professional. Avo
 
 - Platform: Astro static site with TypeScript and Content Collections (Markdown case studies)
 - Production domain: `https://farihmuwaffaq.my.id`
+- Legacy domain: `https://farih-portfolio.vercel.app` permanently redirects to the production domain
 - Sitemap: `https://farihmuwaffaq.my.id/sitemap-index.xml`
 - Robots.txt: configured for crawler access; no tracking cookies enabled
 - Analytics: local event abstraction emitting `portfolio:analytics`; no external trackers required
@@ -76,8 +77,8 @@ Tone: analytical, calm, modern, credible, editorial, spacious, professional. Avo
 
 ## Configuration boundaries
 
-- **Configured:** LinkedIn URL, GitHub URL, professional headshot, verified PDF resume, sanitized project visuals, and social preview.
-- **Optional:** external analytics provider and custom domain. A contact form requires a new explicit decision.
+- **Configured:** custom production domain, LinkedIn URL, GitHub URL, professional headshot, verified PDF resume, sanitized project visuals, and social preview.
+- **Optional:** external analytics provider. A contact form requires a new explicit decision.
 - **Prohibited:** secrets, raw operational data, customer/SKU/account identifiers, private URLs, unsupported metrics, and unsanitized source materials.
 
 ## Next steps

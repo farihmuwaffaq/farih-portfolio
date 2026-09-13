@@ -72,8 +72,8 @@ npm run audit:links
 
 ## External configuration
 
-- Canonical Vercel production URL, LinkedIn, GitHub, portrait, resume, and approved evidence assets are configured.
-- Custom domain remains optional. To enable GA4, set `PUBLIC_GA_MEASUREMENT_ID` (for example, `G-XXXXXXXXXX`) in the deployment environment. A contact form would require a separate explicit product and implementation decision.
+- Canonical production URL, LinkedIn, GitHub, portrait, resume, and approved evidence assets are configured.
+- Custom domain migration to `https://farihmuwaffaq.my.id` is complete. `astro.config.mjs` holds the canonical `site`, and `farih-portfolio.vercel.app` permanently redirects to it. To enable GA4, set `PUBLIC_GA_MEASUREMENT_ID` (for example, `G-XXXXXXXXXX`) in the deployment environment. A contact form would require a separate explicit product and implementation decision.
 - Never publish raw source assets, operational data, customer/SKU/account identifiers, credentials, private URLs, or unsupported impact claims.
 
 See `CONTENT_GUIDE.md` before changing project claims or evidence.

@@ -43,6 +43,7 @@ Kondisi production terverifikasi per 20 Agustus 2026:
 - Contact production menggunakan direct email dan social links; tidak ada form endpoint.
 - Analytics hanya memakai local event abstraction; tidak ada external tracker atau cookie.
 - Query transition dan console ikut mengirim local analytics events yang aman no-op tanpa provider.
+- Production domain sudah bermigrasi ke `https://farihmuwaffaq.my.id`; `astro.config.mjs` menyimpan canonical `site`, dan `https://farih-portfolio.vercel.app` melakukan permanent redirect ke domain tersebut.
 
 Kontrak penting:
 
@@ -78,7 +79,6 @@ Verification wajib sebelum menyatakan selesai:
 Konfigurasi eksternal yang masih optional:
 
 - External analytics provider
-- Custom domain
 - Physical-device, screen-reader, dan Lighthouse audit baru; `AUDIT.md` lama bukan skor production terkini
 
 Jangan commit atau publikasikan `.env`, secrets, credentials, raw source materials, spreadsheet operasional, customer/SKU/account identifiers, private URLs, atau data rahasia. Audit keamanan setiap aset sebelum publikasi.
