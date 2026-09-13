@@ -68,8 +68,8 @@ Tone: analytical, calm, modern, credible, editorial, spacious, professional. Avo
 - The About page exposes four selected credentials as approved local PDF evidence.
 
 - Platform: Astro static site with TypeScript and Content Collections (Markdown case studies)
-- Production domain: `https://farih-portfolio.vercel.app`
-- Sitemap: `https://farih-portfolio.vercel.app/sitemap-index.xml`
+- Production domain: `https://farihmuwaffaq.my.id`
+- Sitemap: `https://farihmuwaffaq.my.id/sitemap-index.xml`
 - Robots.txt: configured for crawler access; no tracking cookies enabled
 - Analytics: local event abstraction emitting `portfolio:analytics`; no external trackers required
 - Quality gates: all six `test:*` source contracts, `npm run check`, `npm run build`, `npm run audit:links`, and `npm audit` must pass before deploy

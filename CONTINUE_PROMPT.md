@@ -9,7 +9,7 @@ Repository:
 https://github.com/farihmuwaffaq/farih-portfolio
 
 Production:
-https://farih-portfolio.vercel.app
+https://farihmuwaffaq.my.id
 
 Branch:
 main

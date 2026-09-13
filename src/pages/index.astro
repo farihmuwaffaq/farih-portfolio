@@ -10,7 +10,7 @@ const uniqueOrgs = new Set(allProjects.map(p=>p.data.organization)).size;
 const uniqueDomains = new Set(allProjects.flatMap(p=>p.data.categories)).size;
 const totalTouchpoints = 5 + 16; // workplaceLogos + clientLogos
 const impactMetric = '1567'; // Gajahpangan production capacity growth
-const person = {'@context':'https://schema.org','@type':'Person',name:'Farih Muwaffaq',url:'https://farih-portfolio.vercel.app/',image:'https://farih-portfolio.vercel.app/images/farih.webp',jobTitle:'Data Analyst',address:{'@type':'PostalAddress',addressLocality:'Jakarta',addressCountry:'ID'},sameAs:['https://www.linkedin.com/in/farihmuwaffaq/','https://github.com/farihmuwaffaq'],knowsAbout:['Analytics automation','Business intelligence','Commercial analytics','Data pipelines']};
+const person = {'@context':'https://schema.org','@type':'Person',name:'Farih Muwaffaq',url:'https://farihmuwaffaq.my.id/',image:'https://farihmuwaffaq.my.id/images/farih.webp',jobTitle:'Data Analyst',address:{'@type':'PostalAddress',addressLocality:'Jakarta',addressCountry:'ID'},sameAs:['https://www.linkedin.com/in/farihmuwaffaq/','https://github.com/farihmuwaffaq'],knowsAbout:['Analytics automation','Business intelligence','Commercial analytics','Data pipelines']};
 const capabilities = [
   { stage: 'Ingest', term: 'Analytics systems', definition: 'Reliable data flows connecting fragmented business data.', tools: ['SQL', 'BigQuery', 'PostgreSQL'] },
   { stage: 'Govern', term: 'Automation', definition: 'Repeatable reporting, alerts, and updates removing manual steps.', tools: ['Apps Script', 'REST APIs', 'Git'] },

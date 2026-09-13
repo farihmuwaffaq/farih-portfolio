@@ -1,6 +1,6 @@
 # Farih Muwaffaq portfolio
 
-Static Astro + TypeScript portfolio for a Jakarta-based Data Analyst. Production: https://farih-portfolio.vercel.app. Source: https://github.com/farihmuwaffaq/farih-portfolio.
+Static Astro + TypeScript portfolio for a Jakarta-based Data Analyst. Production: https://farihmuwaffaq.my.id. Source: https://github.com/farihmuwaffaq/farih-portfolio.
 
 `PRD_Portfolio_Farih_Muwaffaq_EN.md` preserves the original product brief and includes a dated implementation addendum. Current implementation contracts live in `PRODUCT.md` and `DESIGN.md`; claim and confidentiality rules live in `CONTENT_GUIDE.md`.
 
